@@ -3,12 +3,6 @@
 ### Arch
 - Must install Snap manualy, if paru is installed like garuda the initilising script command bellow will install it
   
-### Fedora
--  delete the first section of native bashrc file for bash to work  (SHOULD NOT MATTER ANYMORE I OVER WRITE NATIVE BASH AND ZSH FILES NOW INSTEAD OF APPENDING SOURCES)
-	``` # Source global definitions
-   	 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-    	fi ``` 
 
 ### Windows 
 - Install Ansible preferably with `winget install -e --id Cygwin.Cygwin` if not  `choco install cygwin`
