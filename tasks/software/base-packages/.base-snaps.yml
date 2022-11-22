@@ -1,0 +1,15 @@
+# Need Classic Condifement
+#- name: Install Snaps
+#  community.general.snap:
+#    name:
+#    classic: true
+#  become: true
+
+
+# Don't need classic confinement
+- name: Install Snaps
+  community.general.snap:
+    name:
+      - firefox
+      - raindrop
+  become: true

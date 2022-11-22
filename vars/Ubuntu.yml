@@ -1,0 +1,5 @@
+cron_package: cron
+dconf_package: dconf-cli
+python_package: python3
+python_pip_package: pip
+neovim_package: neovim

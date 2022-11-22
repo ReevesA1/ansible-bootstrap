@@ -1,0 +1,25 @@
+# FYI Mac Installed with Homebrew script
+
+################################################################
+##                          Linux                            ##
+################################################################
+
+
+- name: Next Cloud Desktop Flatpak 
+  become_user: rocket
+  flatpak:
+    name:
+      - com.nextcloud.desktopclient.nextcloud 
+    method: user
+    state: present
+      
+
+
+
+- name: Next Cloud Desktop overlays
+  package: 
+    name:
+      - nautilus-nextcloud #needed for nautilus integration overlays
+    state: latest
+    update_cache: yes
+  when: ansible_local['custom']['env']['desktop'] in ["gnome"] # custom fact     

@@ -1,0 +1,54 @@
+################################################################
+##                   Linux                                    ##
+################################################################
+
+- name: Server Packages For linux
+  block:
+
+  #Flatpaks
+  - name: Server Flatpaks
+    become_user: rocket
+    flatpak:
+      name:
+        - org.gabmus.whatip
+        - com.github.unrud.VideoDownloader
+        - org.videolan.VLC
+        - org.gnome.World.PikaBackup
+        - io.gitlab.librewolf-community #-Q
+        - org.cryptomator.Cryptomator #-Q
+
+
+      method: user
+      state: present
+  
+  
+    
+  
+
+  # Snaps
+  # DO I need classic confinment if yes look in base-snap package playbook for that play 
+  - name: Install Server Snaps
+    community.general.snap:
+      name:
+      - nextcloud
+    become: true
+  
+
+  - name: Install Server packages
+    package: # fyi works on ubuntu apt not sure abot fedora or arch?
+      name:
+        - solaar
+      state: latest
+      update_cache: yes
+
+  
+  
+  # This line is for the block
+  when: ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]
+
+ 
+
+
+################################################################
+##                                                            ##
+################################################################

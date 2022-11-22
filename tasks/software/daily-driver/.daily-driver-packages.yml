@@ -1,0 +1,266 @@
+###########################################################################################################################################
+##########################                         Linux  Present                           ###############################################
+###########################################################################################################################################
+
+- name: Daily Driver Packages for Linux
+  block:
+
+#Flatpaks
+  - name: Daily Driver Flatpaks
+    become_user: rocket
+    flatpak:
+      name:
+      
+ 
+      # Media  
+        - com.spotify.Client
+        - org.videolan.VLC
+        - io.mpv.Mpv
+        - de.haeckerfelix.Shortwave #live radio
+        - org.gnome.Podcasts
+        - io.github.seadve.Mousai #like shazam
+        - com.gitlab.newsflash
+
+      #Locale Media Players
+        - org.gnome.Totem  #for videos
+        - com.github.johnfactotum.Foliate  #for books and comics
+        - io.bassi.Amberol  #for music
+
+
+        #Utilities
+        - re.sonny.Junction 
+        - com.github.tchx84.Flatseal 
+        - app.drey.Warp # Transfer Files
+        - org.gabmus.whatip 
+        - nl.hjdskes.gcolor3 # Color picker
+
+        # Hypervisor 
+        - org.gnome.Boxes
+
+
+        # Coding
+        - com.visualstudio.code 
+        - io.github.shiftey.Desktop  #github desktop
+        - org.godotengine.Godot 
+
+        #Productivity
+        - com.todoist.Todoist 
+        - net.cozic.joplin_desktop 
+
+        #Securtiy
+        - com.bitwarden.desktop 
+
+        # Q
+        - io.gitlab.librewolf-community 
+        - org.cryptomator.Cryptomator 
+
+        #Gaming
+        - net.davidotek.pupgui2  #proton qt for gaming
+
+        #Social (could all be replaced by edge, would probably safer especialy if I harden edge)
+        - com.sindresorhus.Caprine  # Facebook Messenger
+        - com.discordapp.Discord 
+        - io.gitlab.caveman250.headlines # Reddit Reader
+
+        # Social
+        - network.loki.Session # Private Messenger
+
+
+       
+      
+
+
+
+
+      method: user
+      state: present
+  
+  
+
+  # Snaps
+  # DO I need classic confinment if yes look in base-snap package playbook for that play 
+#  - name: Install Snaps
+#    community.general.snap:
+#      name:
+#      -   
+#    become: true
+
+
+
+    
+  when: ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]
+
+###########################################################################################################################################
+##########################                         Linux  Absent                           ################################################
+###########################################################################################################################################
+
+- name: Extra Packages For Linux
+  block:
+
+############################### Flatpaks
+
+  - name: Absent Flatpaks
+    become_user: rocket
+    flatpak:
+      name:
+      # Other Browsers
+      - com.github.hugolabe.Wike #wikipedia browser
+      - org.qutebrowser.qutebrowser
+      - com.google.Chrome
+      - org.chromium.Chromium
+    
+
+      #Utilities
+      - org.freefilesync.FreeFileSync 
+      - com.sweethome3d.Sweethome3d 
+
+      #Downloaders
+      #tested fragments and transmission as servers no good had to open ports etc, just use qbittorent and Jdownlaoder
+      - org.gustavoperedo.FontDownloader
+      - com.github.unrud.VideoDownloader
+      - org.nickvision.tubeconverter
+      - org.qbittorrent.qBittorrent 
+      - org.jdownloader.JDownloader 
+      - org.freedownloadmanager.Manager
+
+      #Security
+      - dev.geopjr.Collision #Check hashes for your files
+      - com.github.ADBeveridge.Raider #File Shreder
+      - fr.romainvigier.MetadataCleaner
+      - com.github.micahflee.torbrowser-launcher
+
+
+      #Backups 
+      - org.gnome.World.PikaBackup
+      - org.gnome.DejaDup
+
+
+      #Books
+      #Audio Books
+      - com.github.geigi.cozy
+
+
+      #Audio
+      - com.rafaelmardojai.Blanket
+  
+
+
+
+      #Virtualization
+      - com.usebottles.bottles
+      - pm.mirko.Atoms
+
+      # Contanerization
+      - org.cockpit_project.CockpitClient
+      - io.podman_desktop.PodmanDesktop
+
+      #Communication
+      - org.telegram.desktop
+      - org.signal.Signal
+
+      #Pictures
+      - org.flameshot.Flameshot
+      - org.gnome.Cheese
+
+
+      #Productivity
+      - com.github.ransome1.sleek
+      - org.gnome.GTG #Getting things Gnome
+      - net.daase.journable
+      - com.github.hluk.copyq
+      - com.sweethome3d.Sweethome3d
+      - org.onlyoffice.desktopeditors 
+      - com.github.marktext.marktext
+      - com.logseq.Logseq
+      - md.obsidian.Obsidian
+      - com.github.zadam.trilium
+      - io.appflowy.AppFlowy
+
+
+      #Game Design
+      - org.kde.krita 
+      - com.vscodium.codium # I use the official vscode from microsoft plugins suck for this and I can't sign in to sync
+      - org.audacityteam.Audacity 
+
+      #Gaming
+      - com.heroicgameslauncher.hgl 
+      - org.solarus_games.solarus.Launcher 
+      - net.lutris.Lutris 
+      - sh.ppy.osu
+      - io.github.hmlendea.geforcenow-electron
+      - com.leinardi.gwe #green with envy
+
+      #Emulation
+      - org.libretro.RetroArch
+      - org.yuzu_emu.yuzu
+      - org.ryujinx.Ryujinx
+      - org.DolphinEmu.dolphin-emu
+      - net.rpcs3.RPCS3
+      - org.desmume.DeSmuME
+      - org.purei.Play
+      - net.pcsx2.PCSX2
+      - org.mamedev.MAME
+      - com.dosbox.DOSBox
+      - org.citra_emu.citra
+      - io.mgba.mGBA
+      - net.kuribo64.melonDS
+      - ca._0ldsk00l.Nestopia
+      - com.snes9x.Snes9x
+      - org.ppsspp.PPSSPP
+      - org.duckstation.DuckStation
+      - org.flycast.Flycast
+      - app.xemu.xemu
+
+
+      #Media
+      - tv.plex.PlexDesktop #client not server
+      - com.github.iwalton3.jellyfin-media-player
+      - tv.kodi.Kodi
+      - io.freetubeapp.FreeTube 
+      #flatpak install stremio  #Keeps kicking out internet on Garuda
+
+      #Misc
+      - com.bitstower.Markets
+
+      #Stores
+      - io.github.prateekmedia.appimagepool # Appimage store
+
+
+      # Game streaming
+      - com.parsecgaming.parsec
+      - com.moonlight_stream.Moonlight
+
+      # Emojies
+      - it.mijorus.smile
+
+
+
+
+      method: user
+      state: absent
+  
+  
+  ##############################Snaps
+
+
+# DO I need classic confinment if yes look in base-snap package playbook for that play 
+  - name: Absent Snaps
+    community.general.snap:
+      name:
+        - pokemmo
+      state: absent
+    become: true
+    
+
+
+  when: ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]
+
+
+################################################################
+##                                                            ##
+################################################################
+
+################################################################
+##                                                            ##
+################################################################
+

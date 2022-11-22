@@ -1,0 +1,237 @@
+ #########################################################################################
+ ##################                   Linux                                ################# 
+##########################################################################################
+- name: Plays tasks files 
+  block:
+
+# I think this play actualy installs oh-my-zsh not just clone repo? or else how else does it get installed?
+  - name: Install Oh-My-zsh (Linux)
+    git:
+      repo: "https://github.com/ohmyzsh/ohmyzsh.git"
+      dest: /home/rocket/.oh-my-zsh
+      version: master
+    
+  - name: copy oh-my-zsh 
+    copy:
+      src: files/home-base/dotfiles/custom-oh-my-zsh
+      dest: /home/rocket/.zshrc
+      owner: rocket
+      group: rocket    
+
+ 
+ # Don't need this anymore I have it hard coded in the custom-oh-my-zshrc file
+ # - name:  re source zshrc
+ #   lineinfile:
+ #     path: /home/rocket/.zshrc
+ #     line: "{{ item }}"
+ #   with_items:
+ #     - '################################################################'
+ #     - 'source /home/rocket/Dotfiles/source-aliases'
+ #     - 'source /home/rocket/Dotfiles/source-exports'
+ #     - 'source /home/rocket/Dotfiles/source-settings'
+
+
+  when: ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]
+
+
+ #########################################################################################
+ ##################                   MAC                                ################# 
+##########################################################################################
+- name: Plays tasks files 
+  block: 
+
+# I think this play actualy installs oh-my-zsh not just clone repo? or else how else does it get installed?
+  - name: Install Oh-My-zsh (Mac)
+    git:
+      repo: "https://github.com/ohmyzsh/ohmyzsh.git"
+      dest: /Users/rocket/.oh-my-zsh
+      version: master
+    
+  - name: copy oh-my-zsh 
+    copy:
+      src: files/home-base/dotfiles/custom-oh-my-zsh
+      dest: /Users/rocket/.zshrc
+      owner: rocket
+  
+  # Don't need this anymore I have it hard coded in the custom-oh-my-zshrc file
+  #- name: re source zshrc (Mac)
+  #  lineinfile:
+  #    path: /Users/rocket/.zshrc
+  #    line: "{{ item }}"
+  #  with_items:
+  #    - '################################################################'
+  #    - 'source /Users/rocket/Dotfiles/source-aliases'
+  #    - 'source /Users/rocket/Dotfiles/source-exports'
+  #    - 'source /Users/rocket/Dotfiles/source-settings'
+#ZSH change path of directory from "home" to "user"
+  - name: change path of directory from "home" to "user"
+    lineinfile:
+      dest: /Users/rocket/.zshrc
+      regexp: '^source /home/rocket/Dotfiles/source-aliases'
+      line: 'source /Users/rocket/Dotfiles/source-aliases'
+      state: present
+
+  - name: change path of directory from "home" to "user"
+    lineinfile:
+      dest: /Users/rocket/.zshrc
+      regexp: '^source /home/rocket/Dotfiles/source-exports'
+      line: 'source /Users/rocket/Dotfiles/source-exports'
+      state: present
+
+  - name: change path of directory from "home" to "user"
+    lineinfile:
+      dest: /Users/rocket/.zshrc
+      regexp: '^source /home/rocket/Dotfiles/source-settings'
+      line: 'source /Users/rocket/Dotfiles/source-settings'
+      state: present
+
+  when: ansible_local['custom']['device']['dev'] in ["mac"] # custom fact
+
+ #########################################################################################
+ ##################                   Change default SHell               ################# 
+##########################################################################################
+
+- name: Change shell
+  user:
+    name: rocket
+    shell: /bin/zsh 
+
+
+ #########################################################################################
+ ##################         Install Plugins                                ################# 
+##########################################################################################
+
+- name: Install zsh-syntax-highlighting (Linux)
+  become: true
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: /home/rocket/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+    version: master
+  when: ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]
+
+
+- name: Install zsh-syntax-highlighting (Mac)
+  become: true
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: /Users/rocket/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+    version: master
+  when: ansible_local['custom']['device']['dev'] in ["mac"] # custom fact
+
+#############################
+
+
+- name: Install zsh-autosuggestions (Linux)
+  become: true
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: /home/rocket/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    version: master
+  when: ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]
+
+
+- name: Install zsh-autosuggestions (Mac)
+  become: true
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: /Users/rocket/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    version: master
+  when: ansible_local['custom']['device']['dev'] in ["mac"] # custom fact
+
+ #########################################################################################
+ ##################         Install Plugins   (THINGS IVE TRIED)                       
+################# Could be usefull if I want to add plugins to zsh without oh my zsh 
+##########################################################################################
+
+#- name: Install zsh syntax highlighing (Linux)
+#  become: true
+#  shell:
+#    cmd: "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /home/rocket/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+#  when: ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]
+#
+#- name: Install zsh syntax highlighing (Mac)
+#  become: true
+#  shell:
+#    cmd: "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /User/rocket/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+#  when: ansible_local['custom']['device']['dev'] in ["mac"] # custom fact
+
+##################################################
+#
+#- name: Install oh-my-zsh-plugins
+#  dnf: 
+#    name:
+#      - zsh-autosuggestions
+#      - zsh-syntax-highlighting
+#    state: latest
+#    update_cache: yes
+#  when: ansible_distribution in ["Fedora"]
+#
+#
+#- name: Install oh-my-zsh-plugins
+#  apt:
+#    name:
+#      - zsh-autosuggestions
+#      - zsh-syntax-highlighting
+#    state: latest
+#    update_cache: yes
+#  when: ansible_distribution in ["Ubuntu"]
+#
+#
+#- name: Install oh-my-zsh-plugins
+#  pacman:
+#    name:
+#      - zsh-autosuggestions
+#      - zsh-syntax-highlighting
+#    update_cache: yes
+#    state: latest
+#    #upgrade: yes #Fail error is "parameters are mutually exclusive: name|upgrade"
+#    extra_args: --noconfirm 
+#  when: ansible_distribution in ["Archlinux"]
+
+
+################################################################
+##            Source oh My ZSH Plugins  Linux                 ##
+################################################################
+#FYI zsh-autosuggestions and zsh-syntax-highlighting source lines must be at the end of ZSHRC!!!!
+
+
+
+#Linux
+# lineinfile:
+#- name: Source oh My ZSH Plugins  Linux   
+#    path: /home/rocket/Dotfiles/source-settings
+#    line: "{{ item }}"
+#  with_items:
+#    - '#################################################################!'
+#    - '##               Source oh My ZSH Plugins  Linux               ##'
+#    - '#################################################################!' 
+#    - 'source /home/rocket/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh'
+#  when: ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]
+#
+#
+#
+##Mac 
+#- name: Source oh My ZSH Plugins  Mac  
+#  lineinfile:
+#    path: /Users/rocket/Dotfiles/source-settings
+#    line: "{{ item }}"
+#  with_items:
+#    - '#################################################################!'
+#    - '##               Source oh My ZSH Plugins  Linux               ##'
+#    - '#################################################################!' 
+#    - 'source /Users/rocket/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh'
+#  when: ansible_local['custom']['device']['dev'] in ["mac"] # custom fact
+
+
+#Mac 
+#- name: Source oh My ZSH Plugins  Linux   
+#  lineinfile:
+#    path: /Users/rocket/Dotfiles/source-settings
+#    line: "{{ item }}"
+#  with_items:
+#    - '#################################################################!'
+#    - '##        Source oh My ZSH Plugins  Linux   Mac                ##'
+#    - '#################################################################!'
+#    - 'source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
+#    - 'source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+#  when: ansible_local['custom']['device']['dev'] in ["mac"] # custom fact

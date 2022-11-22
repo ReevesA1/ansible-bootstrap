@@ -1,0 +1,487 @@
+                                ################################################################
+                                ################################################################
+                                ################################################################
+                                ##                        Pre Tasks                           ##
+                                ################################################################
+                                ################################################################
+                                ################################################################
+                                ################################################################
+
+- hosts: localhost
+  connection: local
+  become: true
+  pre_tasks:
+
+   
+
+################################################################
+##                          Update                            ##
+################################################################
+
+
+  - name: Update && Upgrade
+    tags: always
+    apt:
+      upgrade: dist 
+      update_cache: yes
+    changed_when: False
+    when: ansible_distribution in ["Ubuntu"]
+
+    
+  - name: Update && Upgrade 
+    tags: always
+    pacman:
+      update_cache: yes
+      upgrade: yes
+    changed_when: False
+    when: ansible_distribution in ["Archlinux"]
+
+
+  - name: Update && Upgrade 
+    tags: always
+    dnf: 
+      update_only: yes
+      update_cache: yes
+    changed_when: False
+    when: ansible_distribution in ["Fedora"]
+
+
+################################################################
+##                          Dependencies                      ##
+################################################################
+  - name: pre packages that need to be installed first
+    package:
+      name:
+      - flatpak
+      - snapd
+      state: latest
+    when: ansible_distribution in ["Fedora", "Ubuntu"]
+
+  - name: pre packages that need to be installed first
+    package:
+      name:
+      - flatpak
+      #Snapd on arch should have been installed through initial script or do manully if paru isnt installed
+      state: latest
+    when: ansible_distribution in ["Archlinux"]
+
+
+## Add Repos (Fyi notice how this is not a block job, just a single import)
+  - name: add flatpak repo
+    become: true
+    import_tasks: tasks/repos/flathub-repo.yml
+    when: ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]
+
+
+### Enabling Snaps 
+  - name: Create a symbolic link for snapd # `ls -l /snap` (to see if it worked)
+    ansible.builtin.file:
+      src: /var/lib/snapd/snap
+      dest: /snap
+      owner: root
+      group: root
+      state: link
+    when: ansible_distribution in ["Fedora", "Archlinux"] # native on ubuntu
+
+  - name: start snapd.socket
+    service:
+      name: snapd.socket
+      state: started
+      enabled: yes
+    when: ansible_distribution in ["Fedora", "Archlinux"] # native on ubuntu
+
+  - name: start snapd.seeded service
+    service:
+      name: snapd.seeded
+      state: started
+      enabled: yes
+    when: ansible_distribution in ["Fedora", "Archlinux"] # native on ubuntu
+
+
+################################################################
+##              Making And Removing Directories              ##
+################################################################
+  - name: remove preinstalled clutter from home directory
+    file:
+      path: /home/rocket/{{ item }}
+      state: absent
+    with_items:
+      #- examples.desktop #(not sure what this is but dont delete it like Jay)
+      #- Desktop #(do not delete like Jay (adds fucking folders to desktop)
+      - Documents
+      - Music
+      - Pictures
+      - Public
+      - Videos
+
+
+### Making Directories
+  - name: Creates Linux directory # leave as a pre-task, I've tried making its own play no go
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: rocket
+      group: rocket
+      mode: 0775
+      recurse: yes
+    with_items:
+    - /home/rocket/Dotfiles
+    - /home/rocket/Bin
+    when: ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]
+
+  - name: Creates Mac directory # leave as a pre-task, I've tried making its own play no go
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: rocket
+      mode: 0775
+    with_items:
+    - /Users/rocket/Dotfiles
+    - /Users/rocket/Bin
+    when: ansible_local['custom']['device']['dev'] in ["mac"] # custom fact
+
+
+
+
+### Templates folder
+  - name: Templates Folder Setup
+    copy:
+      src: "{{ item }}"
+      dest: /home/rocket/Templates
+      owner: rocket
+      group: rocket
+    with_items: 
+    -  files/home-base/templates/Bash-Template.sh
+    -  files/home-base/templates/text-file.txt
+    when: ansible_local['custom']['env']['desktop'] in ["gnome"] # custom fact     
+
+  - name: Templates Folder Setup
+    copy:
+      src: "{{ item }}"
+      dest: /home/rocket/Templates
+      owner: rocket
+      group: rocket
+    with_items: 
+    -  files/home-base/templates/Bash-Template.desktop
+    -  files/home-base/templates/Bash-Template.sh
+    -  files/home-base/templates/text-file.txt
+    when: ansible_local['custom']['env']['desktop'] in ["kde"] # custom fact  
+    
+### Bin folder
+  - name: Bin Folder Setup
+    copy:
+      src: "{{ item }}"
+      dest: /home/rocket/Bin
+      owner: rocket
+      group: rocket
+    with_items: 
+    -  files/home-base/bin/cp-ansible-pull.sh
+    when: ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]   
+
+  - name: Bin Folder Setup
+    copy:
+      src: "{{ item }}"
+      dest: /Users/rocket/Bin
+      owner: rocket
+    with_items: 
+    -  files/home-base/bin/cp-ansible-pull.sh
+    when: ansible_local['custom']['device']['dev'] in ["mac"] # custom fact
+
+################################################################
+##                          Dotfiles                           ##
+################################################################
+
+  - name: Dotfiles bootstrap
+    import_tasks: tasks/bootstrap/automated/dotfiles-bootstrap.yml
+    when: (ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]) or (ansible_local['custom']['device']['dev'] in ["mac"] )
+    
+
+
+
+
+###################################
+
+
+
+
+                                ################################################################
+                                ################################################################
+                                ################################################################
+                                ##                        BASE                                ##
+                                ################################################################
+                                ################################################################
+                                ################################################################
+                                ################################################################
+
+- hosts: localhost
+  connection: local
+  tasks:      
+  
+
+#################
+  - include_vars: "{{ ansible_distribution }}.yml" 
+  #Load distro-specific variables, FYI Issues when I add distros that don't have a vars yet. (in that case i must create it manually)
+#################
+    
+################################################################
+##                        Linux Loop                           ##
+################################################################    
+
+  - name: Plays tasks files 
+    block:
+ 
+    #########All Distros (order matters!!!!)
+
+ 
+
+
+## Base Packages
+    - import_tasks: tasks/software/base-packages/.base-packages.yml 
+    - import_tasks: tasks/software/base-packages/.base-flatpaks.yml
+    - import_tasks: tasks/software/base-packages/.base-snaps.yml 
+
+
+## Services (Systemctl)
+    - import_tasks: tasks/system/start-systemctl.yml
+
+
+
+###### these lines pertains to the whole block above
+    become: true   
+    when: ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]
+
+
+    
+
+################################################################
+##                           Mac Loop                         ##
+################################################################
+- hosts: localhost
+  connection: local
+  tasks:
+
+#  - name: Plays tasks files 
+#    block:
+#no go#    - import_tasks: tasks/software/base-packages/.base-mas.yml
+#no go#    - import_tasks: tasks/software/base-packages/.base-homebrew.yml
+#no go#    - import_tasks: tasks/env/mac-env.yml
+#   when: ansible_local['custom']['device']['dev'] in ["mac"] # custom fact
+
+
+
+
+################################################################
+##                       Windows loop                         ##
+################################################################
+- hosts: localhost
+  connection: local
+  tasks:
+
+
+  
+
+  #- name: Plays tasks files 
+  #  block:
+  #  - import_tasks: tasks/????
+  #  when: ansible_local['custom']['device']['dev'] in ["windows"] # custom fact
+
+
+
+################################################################
+##                       Base-Universal-Apps                  ##
+################################################################
+- hosts: localhost
+  connection: local
+  become: true
+  tasks:
+  
+
+  - name: Universal Apps (Alphabetical)
+    block:
+
+# Autojump (keep before oh-my-zsh so the sourcing in oh-my-zsh is last)
+    - import_tasks: tasks/software/base-packages/autojump.yml 
+      tags: 100,
+
+# Barrier 
+    - import_tasks: tasks/software/base-packages/barrier.yml 
+      tags: 100,
+
+# Microsoft Edge 
+    - import_tasks: tasks/software/base-packages/microsoft-edge.yml 
+      tags: 100,
+
+# Neovim (better to keep these seperated so I can pick and choose)
+    #- import_tasks: tasks/software/base-packages/neovim.yml 
+    #  tags: 100,
+    - import_tasks: tasks/software/base-packages/neovim-flatpak.yml 
+      tags: 100,
+    - import_tasks: tasks/software/base-packages/neovim-snap.yml 
+      tags: 100,
+    - import_tasks: tasks/software/base-packages/neovim-mac.yml 
+      tags: 100,
+      when: ansible_local['custom']['device']['dev'] in ["mac"] # custom fact
+
+# Nextcloud 
+    - import_tasks: tasks/software/base-packages/nextcloud.yml 
+      tags: 100,
+
+# oh-my-zsh
+    - import_tasks: tasks/software/base-packages/oh-my-zsh.yml 
+      tags: 100,
+
+# Starship 
+    - import_tasks: tasks/software/base-packages/starship.yml # Keep after oh-my-zsh so starship line is sourced at the end of zshrc
+      tags: 100,
+
+# Topgrade
+    - import_tasks: tasks/software/base-packages/topgrade.yml 
+      tags: 100,
+
+
+# Zerotier
+    - import_tasks: tasks/software/base-packages/zerotier.yml 
+      tags: 100,
+
+
+
+
+    when: (ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]) or (ansible_local['custom']['device']['dev'] in ["mac"] )
+
+
+
+################################################################
+##                   Enviroment Loop                          ##
+################################################################
+
+
+- hosts: localhost
+  connection: local
+  tasks:
+
+
+
+  - name: Gnome Environment Jobs
+    block:
+    - import_tasks: tasks/env/gnome-apps.yml 
+    - import_tasks: tasks/env/gnome-env.yml 
+    - import_tasks: tasks/env/gnome-keybindings.yml 
+    - import_tasks: tasks/env/gnome-nautilus-env.yml
+#    - import_tasks: tasks/env/gnome-epiphany-env.yml   
+    become: true
+    when: ansible_local['custom']['env']['desktop'] in ["gnome"] # custom fact  
+
+################################################################
+##                   Device Loop                              ##
+################################################################
+
+### Laptop Sound Fix
+#  - name: Sound FIX append to alsa-base.conf
+#    become: true
+#    lineinfile:
+#      path: /etc/modprobe.d/alsa-base.conf
+#      line: 'options snd-hda-intel model=asus-zenbook'
+#    when: ansible_local['custom']['device']['dev'] in ["rogstrix-lap"] # custom fact  
+
+################################################################
+##                   Roles  Loop                              ##
+################################################################
+- hosts: localhost
+  connection: local
+  tasks:
+
+
+    # Daily Drivers
+  - name: DAILY-DRIVER JOBS
+    block:
+    - import_tasks: tasks/software/daily-driver/.daily-driver-packages.yml
+
+
+
+    # Ulauncher
+#    - import_tasks: tasks/software/daily-driver/ulauncher.yml
+#      when: ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"] 
+
+    become: true
+    when: ansible_local['custom']['role']['machine'] in ["daily-driver"] # custom fact
+
+
+#################################
+
+    # Servers
+  - name: SERVER JOBS 
+    block:
+    - import_tasks: tasks/software/server/.server-packages.yml
+    # - import role here that will make all folders for pika backup etc
+    # - Script that installs mega (since I get it from the website, ansible might have a way, overlays?)
+    # - Do i have to install cron job on ubuntu server if yes add it
+    become: true
+    when: ansible_local['custom']['role']['machine'] in ["server"] # custom fact
+
+
+
+
+
+                                ################################################################
+                                ################################################################
+                                ################################################################
+                                ##                     End Of Run Tasks                       ##
+                                ################################################################
+                                ################################################################
+                                ################################################################
+                                ################################################################
+
+
+- hosts: localhost
+  connection: local
+  become: true 
+  tasks:
+  
+
+  - name: update Snaps # this command has to stay at the bottom because it executes to fast at the top and fails in Fedora
+    tags: always
+    shell:
+      cmd: snap refresh
+    become: true
+    when: ansible_distribution in ["Ubuntu", "Archlinux", "Fedora"]
+
+
+  - name: update flatpaks 
+    tags: always
+    shell:
+      cmd: flatpak update --noninteractive
+    become: true
+    when: ansible_distribution in ["Ubuntu", "Archlinux", "Fedora"]
+
+  - name: Cleanup flatpaks
+    tags: always
+    shell:
+      cmd: flatpak uninstall --unused
+    become: true
+    when: ansible_distribution in ["Ubuntu", "Archlinux", "Fedora"]
+
+
+###########################################
+  #these two "apt" plays have to stay separate to work
+  - name: cleanup package cache 
+    tags: always
+    apt:
+      autoclean: yes
+    changed_when: false
+    when: ansible_distribution in ["Ubuntu"]
+
+
+  - name: autoremove orphan packages
+    tags: always
+    apt:
+      autoremove: yes
+      purge: yes
+    when: ansible_distribution in ["Ubuntu"]
+########################################
+
+
+
+
+ 
+
+       

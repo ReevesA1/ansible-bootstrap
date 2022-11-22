@@ -1,0 +1,21 @@
+########################################################################
+##                           Linux Paths                              ##
+#######################################################################
+
+export PATH="/home/rocket/Bin:$PATH" #Home Bin Folder
+export PATH="/home/rocket/Nextcloud/bin:$PATH" #Nextcloud Bin Folder
+export PATH="/home/rocket/.cargo/bin:$PATH" #needed Path to be able to run cargo installed apps like topgrade
+export PATH="/home/rocket/.local/bin:$PATH" #needed for topgrade and lunarvim
+export PATH="/home/rocket/.emacs.d/bin:$PATH" # needed for doomemacs
+
+
+
+########################################################################
+##                           Mac Paths                               ##
+#######################################################################
+
+export PATH="/Users/rocket/Bin:$PATH" #Home Bin Folder
+export PATH="/Users/rocket/Nextcloud/bin:$PATH" #Nextcloud Bin Folder
+export PATH="/Users/rocket/.cargo/bin:$PATH" #needed Path to be able to run cargo installed apps like topgrade
+export PATH="/Users/rocket/.local/bin:$PATH" #needed for topgrade and lunarvim
+export PATH="/Users/rocket/.emacs.d/bin:$PATH" # needed for doomemacs

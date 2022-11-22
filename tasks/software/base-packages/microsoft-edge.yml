@@ -1,0 +1,13 @@
+################################################################
+##                          Linux                            ##
+################################################################
+
+
+- name: Base Flatpaks 
+  become_user: rocket
+  flatpak:
+    name:
+      - com.microsoft.Edge
+    method: user
+    state: present
+

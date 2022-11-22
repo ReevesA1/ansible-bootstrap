@@ -1,0 +1,99 @@
+########################################################################
+##                            Default Apps                            ##
+#######################################################################
+export EDITOR="nvim"
+export BROWSER="firefox"
+#export READER="zathura"
+#export TERMINAL="konsole"
+export VIDEO="vlc"
+#export IMAGE=""
+#export OPENER="xdg-open"
+#export WM="bspwm"
+
+export TERM="xterm-256color"  
+export COLORTERM="truecolor"
+
+
+########################################################################
+##                            color man pages                         ##
+#######################################################################
+
+### "bat" as manpager (does it work with ubunbtu batcat?)
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+### "nvim" as manpager
+#export MANPAGER="nvim -c 'set ft=man' -"
+
+########################################################################
+##                            Vim-mode                                ##
+#######################################################################
+set -o vi
+
+
+
+
+
+
+########################################################################
+## Enable 'ctrl+s' for Saving in neovim by checking interactive shell ##
+#######################################################################
+
+##Bash command 
+#[[ $- == *i* ]] && stty -ixon
+##ZSH Command
+[[ -o login ]] && stty -ixon
+##Normal command but Ill get errors on certain shells (like gnome-terminal)
+#stty -ixon
+
+
+
+################################################################
+##                         NALA Functions                     ##
+################################################################
+
+
+# better way to alias nala so both apt and nala work
+apt() { 
+  command nala "$@"
+}
+sudo() {
+  if [ "$1" = "apt" ]; then
+    shift
+    command sudo nala "$@"
+  else
+    command sudo "$@"
+  fi
+}
+
+# if titus commands above for nala don't work reactivate the -g command below
+#Debian based
+#alias -g apt='nala' #-g stands for global alias and only works on zsh
+#alias nala='sudo nala update && sudo nala upgrade' #best i can do in bash for nala
+
+
+################################################################
+##                         Guake Functions                    ##
+################################################################
+
+
+# for Guake to not get the instant prompt thing
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+
+
+################################################################
+##                         Arch                               ##
+################################################################
+
+# Replace yay with paru if installed
+[ ! -x /usr/bin/yay ] && [ -x /usr/bin/paru ] && alias yay='paru'
+
+
+
+################################################################
+##                         cheat                              ##
+################################################################
+function cheat() { curl -m 7 "http://cheat.sh/$1"; }
+
+
+

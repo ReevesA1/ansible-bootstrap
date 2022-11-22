@@ -1,0 +1,7 @@
+cron_package: cronie
+dconf_package: dconf
+python_package: python
+python_pip_package: python-pip
+neovim_package: neovide
+
+

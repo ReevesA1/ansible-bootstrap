@@ -1,0 +1,43 @@
+- name: Neovim Flatpak
+  become_user: rocket
+  flatpak:
+    name: 
+      - io.neovim.nvim
+    method: user
+    state: present
+  when: ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]
+
+
+
+
+
+####################
+### My Init.Vim  ### 
+####################
+
+
+
+### Making Directories
+- name: Creates directory (LINUX)
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: rocket
+    group: rocket
+    mode: 0775
+    recurse: yes
+  with_items:
+  - /home/rocket/.var/app/io.neovim.nvim/config/nvim
+  when: ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]
+
+
+
+### Copy vimrc
+- name: copy custom-vimrc file (LINUX)
+  copy:
+    src: files/home-base/dotfiles/custom-init.vim
+    dest: /home/rocket/.var/app/io.neovim.nvim/config/nvim/init.vim
+    owner: rocket
+    group: rocket
+  when: ansible_distribution in ["Debian", "Ubuntu", "Archlinux", "Fedora", "Pop!_OS"]
+

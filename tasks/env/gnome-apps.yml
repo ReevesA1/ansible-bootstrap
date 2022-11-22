@@ -1,0 +1,39 @@
+################################################################
+##                   Gnome APPS                              ##
+################################################################
+
+- name: gnome | packages | install gnome packages
+  tags: gnome,gnome-packages
+  package:
+    name:
+      - gnome-calendar
+      - gnome-contacts 
+      - gnome-photos # might be old now ( I know the online accounts don't work )
+      - gnome-backgrounds
+      - gnome-control-center
+      - gnome-disk-utility
+      - gnome-icon-theme
+      - gnome-power-manager
+      - gnome-remote-desktop
+      - gnome-shell
+      - gnome-shell-extensions
+      - gnome-system-monitor
+      - gnome-terminal
+      - gnome-todo
+      - gnome-tweaks
+      - gnome-firmware
+      - gnome-text-editor
+      - gedit
+      - nautilus
+      - eog # image viewer
+      - file-roller # Archive Manager
+
+- name: gnome | packages | install flatpak support in gnome software
+  tags: gnome,gnome-packages
+  package:
+    name:
+    - gnome-software-plugin-flatpak
+  when: ansible_distribution in ["Debian", "Ubuntu"] # Not needed for POPOS I think
+
+
+    

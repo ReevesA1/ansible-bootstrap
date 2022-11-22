@@ -1,0 +1,167 @@
+################################################################
+##                   Linux                                    ##
+################################################################
+
+
+####################################### UNIVERSAL LINUX 
+
+- name: Install packages
+  package: # using package instead of apt or pacman etc resorts to the default OS's package manager
+    name:
+      - "{{ cron_package }}"
+      - "{{ dconf_package }}" # Cli Version
+      - "{{ python_package}}"
+      - "{{ python_pip_package }}"
+      - "{{ neovim_package }}"
+      - dconf-editor
+      - neofetch
+      - exa
+      - bpytop
+      - htop
+      - flatpak
+      - snapd
+      - zsh
+      - bat
+      - git
+      - ripgrep
+      - wget
+      - xclip # needed for dt's hub script and bash script that copies to clipboard
+      - links
+      - fzf
+      - youtube-dl
+      - make
+      - binutils
+      - gcc
+      - fakeroot
+      - dmenu
+      - rofi
+      - ufw
+      - tldr
+      - gparted
+      - cmatrix
+      - sweeper
+      - stacer
+      - figlet
+      - rpi-imager
+      - fail2ban
+      - colordiff
+      - sysstat
+      - pciutils
+      - wkhtmltopdf
+      - npm
+      - cargo
+      - guake
+      - shellcheck
+      - fd-find 
+      - curl 
+      - trash-cli
+    state: latest
+    update_cache: yes
+  when: ansible_distribution in ["Ubuntu", "Fedora"]
+
+
+############################################# Ubuntu Only Packages
+
+- name: Ubuntu Only 
+  apt:
+    name:
+      - ubuntu-restricted-extras # for sure only ubuntu
+      - nala # for sure only ubuntu
+      - build-essential # for sure only ubuntu
+      - libfuse2 # for app images to work
+
+      - ffmpeg # No package on fedora (maybe the flatpak?) 
+      - gufw # No package on fedora
+      - mlocate #clashes with plocate fedora
+      - gdu # no package on Fedora
+      - steam #issues witf fedora beta maybe?
+      - pkg-config # needed for topgrade caro install, not sure about other distros?
+
+      # Old Ubuntu Wallpapers
+      - ubuntu-wallpapers-*
+      - edgy-wallpapers 
+      - feisty-wallpapers
+      - gutsy-wallpapers
+
+      
+    state: latest
+    update_cache: yes
+  when: ansible_distribution in ["Ubuntu"]
+
+
+
+######################################### Archlinux Only Packages
+
+- name: Archlinux only
+  pacman: #using package instead of pacman not sure if it chooses chaotic-aur or paru or yay?
+    name:
+      - base-devel # Only Arch
+      - "{{ cron_package }}"
+      - "{{ dconf_package }}" # Cli Version
+      - "{{ python_package}}"
+      - "{{ python_pip_package }}"
+      - "{{ neovim_package }}"
+      - dconf-editor
+      - neofetch
+      - exa
+      - bpytop
+      - htop
+      - flatpak
+      - snapd
+      - zsh
+      - bat
+      - git
+      - ripgrep
+      - wget
+      - xclip # needed for dt's hub script
+      - links
+      - fzf
+      - youtube-dl
+      - make
+      - binutils
+      - gcc
+      - fakeroot
+      - dmenu
+      - rofi
+      - ufw
+      - gparted
+      - cmatrix
+      - sweeper
+      - stacer
+      - figlet
+      - rpi-imager
+      - fail2ban
+      - colordiff
+      - sysstat
+      - pciutils
+      #- wkhtmltopdf # Would not install on garuda-kde
+      - npm
+      - rust #(needed for cargo)
+      - guake
+      - shellcheck
+      - curl 
+      #- tldr # conflicts on garuda
+    update_cache: yes
+    state: latest
+    #upgrade: yes #Fail error is "parameters are mutually exclusive: name|upgrade"
+    extra_args: --noconfirm 
+  when: ansible_distribution in ["Archlinux"]
+
+
+# WORKS BUT IM TRYING TO AVOID USING AUR
+#- name: Install package from AUR using a Pacman compatible AUR helper
+#  community.general.pacman:
+#    name:
+#      - 
+#    state: present
+#    executable: /usr/bin/paru
+#    extra_args: 
+#      --builddir /var/cache/paru
+#      --noconfirm 
+#  when: ansible_distribution in ["Archlinux"]
+
+
+
+################################################################
+##                                                            ##
+################################################################

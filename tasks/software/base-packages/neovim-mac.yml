@@ -1,0 +1,45 @@
+# Neovim itself is install through the homebrew bootstrap
+
+
+
+####################
+### Mkdir      ### 
+####################
+- name: Creates directory (MAC)
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0775
+    recurse: yes
+  with_items:
+  - /Users/rocket/.config/nvim/
+
+
+
+
+####################
+### My Init.Vim  ### 
+####################
+
+
+
+
+- name: copy custom-vimrc file (MAC)
+  copy:
+    src: files/home-base/dotfiles/custom-init.vim
+    dest: /Users/rocket/.config/nvim/init.vim
+
+
+####################
+###   NVChad     ### 
+####################
+
+
+#- name: clone NVChad
+#  git:
+#    repo: https://github.com/NvChad/NvChad
+#    dest: /Users/rocket/.config/nvim
+#    clone: yes
+#    update: no
+#  become_user: rocket
+

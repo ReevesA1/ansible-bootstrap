@@ -1,0 +1,68 @@
+# FYI Mac installed Via homebrew
+# Fix : Fedora Bash - (the sourcing line below did not work for bash in fedora wtf, zsh works tho)
+# Fix : Garuda Conflicts
+
+###################################
+
+- name: Install autojump
+  dnf: 
+    name:
+      - autojump #for bash (it the sourcing line below did not work for bash tho wtf)
+      - autojump-zsh
+      - autojump-fish
+    state: latest
+    update_cache: yes
+  when: ansible_distribution in ["Fedora"]
+
+
+- name: Install autojump
+  apt:
+    name:
+      - autojump
+    state: latest
+    update_cache: yes
+  when: ansible_distribution in ["Ubuntu"]
+
+
+#- name: Install autojump
+#  package:
+#    name:
+#      - autojump # conflicts on garuda might have to manualy install it or it might allreay be there?
+#    update_cache: yes
+#    state: latest
+#    #upgrade: yes #Fail error is "parameters are mutually exclusive: name|upgrade"
+#    extra_args: --noconfirm 
+#  when: ansible_distribution in ["Archlinux"]
+
+
+################################################################
+##                        Source AutoJump                      ##
+################################################################
+#FYI Fedora doesnt need to be sourced and neither does Arch
+
+
+#Linux
+- name: Source AutoJump  
+  lineinfile:
+    path: /home/rocket/Dotfiles/source-settings
+    line: "{{ item }}"
+  with_items:
+    - '#################################################################'
+    - '##                        Source AutoJump  Linux               ##'
+    - '#################################################################!' 
+    - '. /usr/share/autojump/autojump.sh'
+  when: ansible_distribution in ["Ubuntu"]
+
+
+
+#Mac 
+- name: Source AutoJump  
+  lineinfile:
+    path: /Users/rocket/Dotfiles/source-settings
+    line: "{{ item }}"
+  with_items:
+    - '#################################################################'
+    - '##                        Source AutoJump  Mac               ##'
+    - '#################################################################!'
+    - '[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh' 
+  when: ansible_local['custom']['device']['dev'] in ["mac"] # custom fact

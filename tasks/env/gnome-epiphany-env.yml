@@ -1,0 +1,61 @@
+- name: Install packages
+  package: 
+    name:
+      - epiphany
+    state: latest
+    update_cache: yes
+  when: ansible_local['custom']['env']['desktop'] in ["gnome"] # custom fact
+
+#####################
+# epiphany settings #
+#####################
+
+- name: do not ask to set epiphany as the default browser
+  dconf:
+    key: "/org/gnome/epiphany/ask-for-default"
+    value: "false"
+
+- name: always restore epiphany session
+  dconf:
+    key: "/org/gnome/epiphany/restore-session-policy"
+    value: "'false'"
+
+- name: do not expand epiphany tabs to fill bar
+  dconf:
+    key: "/org/gnome/epiphany/ui/expand-tabs-bar"
+    value: "true"
+
+- name: always show epiphany tab bar
+  dconf:
+    key: "/org/gnome/epiphany/ui/tabs-bar-visibility-policy"
+    value: "'always'"
+
+- name: ask where to save downloads in epiphany
+  dconf:
+    key: "/org/gnome/epiphany/web/ask-on-download"
+    value: "true"
+
+- name: enable epiphany adblock
+  dconf:
+    key: "/org/gnome/epiphany/web/enable-adblock"
+    value: "true"
+
+- name: disable epiphany popups
+  dconf:
+    key: "/org/gnome/epiphany/web/enable-popups"
+    value: "false"
+
+- name: enable epiphany safe browsing
+  dconf:
+    key: "/org/gnome/epiphany/web/enable-safe-browsing"
+    value: "true"
+
+- name: disable smooth scrolling in epiphany
+  dconf:
+    key: "/org/gnome/epiphany/web/enable-smooth-scrolling"
+    value: "false"
+
+- name: do not offer to remember passwords in epiphany
+  dconf:
+    key: "/org/gnome/epiphany/web/remember-passwords"
+    value: "false"
