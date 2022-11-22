@@ -25,8 +25,10 @@
   
 
 ### Parallels 
+- Making "rocket" Account
+	- as the parallel user create a new Admin User with the GUI then log out and log back in as rocket
 - Ubuntu Keyboard Shortcut
-  -  change command + L to Ctrl + L 
+    -  change command + L to Ctrl + L 
     
 
 
