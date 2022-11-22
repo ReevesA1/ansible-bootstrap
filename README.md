@@ -40,8 +40,9 @@
 		# and here are more per-package modules (the "Additional" block)
 		password	optional	pam_gnome_keyring.so 
 		# end of pam-auth-update config ```
-		- Ubuntu Keyboard Shortcut in Parallels Preference under the VM I want changed under shortcuts
-		change command + L to Ctrl + L OR MAYBE JUST Command to Control ```
+
+	- Ubuntu Keyboard Shortcut in Parallels Preference under the VM I want changed under shortcuts
+		change Command to Control 
     
 
 

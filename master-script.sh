@@ -141,7 +141,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         echo 'machine = daily-driver or server'
         echo
         echo '[device]'
-        echo 'dev = rogstrix-lap or rogstrix-desk or steamdeck' 
+        echo 'dev = rogstrix-lap or rogstrix-desk or steamdeck or parallels' 
 } >> /etc/ansible/facts.d/custom.fact
 #elif [ "$(expr substr $(uname -s) 1 10)" == "Windows" ]; then
     # Do something under 32 bits Windows NT platform
