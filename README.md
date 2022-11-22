@@ -22,30 +22,21 @@
 - Disable Mac gate keeper
 	- `sudo spctl --master-disable`
     
-- WTF THIS NEXT LINE I CANT GET TO WORK YET? But topgrade isnt even telling me it needs it so maybe skip it next time?
-    - Instal rust & cargo
-        - `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh` # https://www.rust-lang.org/tools/install
-            - then source it for current shell 
-                - `source "$HOME/.cargo/env"` then `sudo cargo install cargo-update`
 
 
-# Manual Scripts to Initialise First
-
-### OLD - As a Public Repo
-- `wget https://raw.githubusercontent.com/ReevesA1/ansible/main/tasks/bootstrap/manual/master-script.sh && find $HOME/master-script.sh  -type f -print0 | xargs -0 chmod 775 && ./master-script.sh`
-
-### NEW - As  a Private Repo ( NO GO)
-- No Go because the token line below changes everytime I make a commit
-- `wget https://raw.githubusercontent.com/ReevesA1/ansible/main/tasks/bootstrap/manual/master-script.sh?token=GHSAT0AAAAAAB2MTFQOXNV6IFITEXEJ4QPCY32VUXA && find $HOME/master-script.sh?token=GHSAT0AAAAAAB2MTFQOXNV6IFITEXEJ4QPCY32VUXA  -type f -print0 | xargs -0 chmod 775 && ./master-script.sh?token=GHSAT0AAAAAAB2MTFQOXNV6IFITEXEJ4QPCY32VUXA`
-- I must `wget` the RAW!!! command manualy from here https://github.com/ReevesA1/ansible/blob/main/tasks/bootstrap/manual/master-script.sh
-- Once downloaded change the name to `master-script.sh` then in the same directory run the next command in terminal
-- `find $HOME/master-script.sh  -type f -print0 | xargs -0 chmod 775 && ./master-script.sh`
+# Download Bootstrap Scripts
 
 
-- Then Run desired scripts 
-    - If installing dash-to-dock for Gnome (not needed on ubuntu), must do a restart before it can be enabled!
-        - Enable it manually!
-            - `gnome-extensions enable dash-to-dock@micxgx.gmail.com`
+- `wget https://raw.githubusercontent.com/ReevesA1/ansible-pull/main/master-script.sh && find $HOME/master-script.sh  -type f -print0 | xargs -0 chmod 775 && ./master-script.sh`
+
+
+
+
+# Run desired scripts 
+
+- dash-to-dock for Gnome (not needed on ubuntu)
+    - Must do a restart before it can be enabled!
+    - Enable it manually! with this command `gnome-extensions enable dash-to-dock@micxgx.gmail.com`
 
 
 # Set Custom Facts
