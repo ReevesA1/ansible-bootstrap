@@ -38,24 +38,24 @@ fi
 
 if [ "$(uname)" == "Darwin" ]; then
     #base homebrew-packages
-    wget https://raw.githubusercontent.com/ReevesA1/ansible/main/tasks/software/base-packages/.base-homebrew.sh
+    wget https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Darwin/.base-homebrew.sh
     mv /Users/rocket/bootstrap/.base-homebrew.sh /Users/rocket/bootstrap/base-homebrew.command
     chmod u+x /Users/rocket/bootstrap/base-homebrew.command
     #base mas-packages
-    wget https://raw.githubusercontent.com/ReevesA1/ansible/main/tasks/software/base-packages/.base-mas.sh
+    wget https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Darwin/.base-mas.sh
     mv /Users/rocket/bootstrap/.base-mas.sh /Users/rocket/bootstrap/base-mas.command
     chmod u+x /Users/rocket/bootstrap/base-mas.command
-    #Nuke
-    wget https://raw.githubusercontent.com/ReevesA1/ansible/main/tasks/bootstrap/manual/nuke-folder.sh
-    mv /Users/rocket/bootstrap/nuke-folder.sh /Users/rocket/bootstrap/nuke-folder.command
-    chmod u+x /Users/rocket/bootstrap/nuke-folder.command
     #Homebrew Nerdfonts
-    wget https://raw.githubusercontent.com/ReevesA1/ansible/main/tasks/bootstrap/manual/homebrew-nerdfonts.sh
+    wget https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Darwin/homebrew-nerdfonts.sh
     mv /Users/rocket/bootstrap/homebrew-nerdfonts.sh /Users/rocket/bootstrap/homebrew-nerdfonts.command
     chmod u+x /Users/rocket/bootstrap/homebrew-nerdfonts.command
+    #Nuke
+    wget https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/nuke-folder.sh
+    mv /Users/rocket/bootstrap/nuke-folder.sh /Users/rocket/bootstrap/nuke-folder.command
+    chmod u+x /Users/rocket/bootstrap/nuke-folder.command
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    wget https://raw.githubusercontent.com/ReevesA1/ansible/main/tasks/bootstrap/manual/dash-to-dock.sh
-    wget https://raw.githubusercontent.com/ReevesA1/ansible/main/tasks/bootstrap/manual/nuke-folder.sh
+    wget https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Linux/dash-to-dock.sh
+    wget https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/nuke-folder.sh
 #elif [ "$(expr substr $(uname -s) 1 10)" == "Windows" ]; then
     # Do something under 32 bits Windows NT platform
 fi
