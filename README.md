@@ -1,25 +1,3 @@
-# Reformat FYI's 
-- Make sure my user is allways rocket for scripts to work (mac and linux for sure)
-
-# FYI's
-### Fonts
-- install nerd fonts with the entire library on nextcloud or clone the repo from https://github.com/ryanoasis/nerd-fonts and ./install
-
-## HELP (pull not working) Common Fixes 
-- Most of the time its permissions. if I'm restructering pay attention at how the become:true and become_user were implemented
-- Git module = make sure the source http link I'm cloning ends with .git 
-
-# Commands
-### line to Gather facts
-- `ansible localhost -m gather_facts | grep ansible_distribution`
-### line to gather custom facts
-- `ansible localhost -m setup -a 'gather_subset=!all,!min,virtual' -a filter=ansible_local`
-### my custom facts conditions
-- `when: ansible_local['custom']['env']['desktop'] in ["gnome"]` --> or kde 
-- `when: ansible_local['custom']['device']['dev'] in ["mac"]`   -- > or rogstrix-lap, rogstrix-desk
-- `when: ansible_local['custom']['role']['machine'] in ["daily-driver"]`  --> or server
-
-
 # Manual Setup
 
 ### Arch
@@ -70,9 +48,6 @@
 - `find $HOME/master-script.sh  -type f -print0 | xargs -0 chmod 775 && ./master-script.sh`
 
 
-
-
-
 - Then Run desired scripts 
     - If installing dash-to-dock for Gnome (not needed on ubuntu), must do a restart before it can be enabled!
         - Enable it manually!
@@ -86,15 +61,5 @@
     - Mac `open -e /etc/ansible/facts.d/custom.fact` 
 
 
-# LASTLY, Run ansible pull
-
-### OLD - As a Public Repo
-- `sudo ansible-pull -U https://github.com/ReevesA1/ansible.git -vv`
-### NEW - As  a Private Repo
-- `sudo ansible-pull -U https://ReevesA1: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@github.com/ReevesA1/ansible.git -vv`
-
-# Post Playbook Run
-- ** After REBOOT SYSTEM!!! or flatpaks won't show, and shell wont change to zsh **
-- open neovim and run `:PlugInstall` sometimes it installes it by itself????
-
-
+# Fonts
+- install nerd fonts with the entire library on nextcloud or clone the repo from https://github.com/ryanoasis/nerd-fonts and ./install
