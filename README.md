@@ -1,4 +1,5 @@
 # Manual Setup
+- No matter what OS Im using make sure my username is "rocket"
 
 ### Arch
 - Must install Snap manualy, if paru is installed like garuda the initilising script command bellow will install it
