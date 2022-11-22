@@ -1,8 +1,0 @@
-cron_package: cronie
-dconf_package: dconf
-python_package: python3
-python_pip_package: pip
-neovim_package: neovim
-
-
-
