@@ -27,8 +27,21 @@
 ### Parallels 
 - Making "rocket" Account
 	- as the parallel user create a new Admin User with the GUI then log out and log back in as rocket
-- Ubuntu Keyboard Shortcut
-    -  change command + L to Ctrl + L 
+	- changing complex password to simple go to `sudo gedit /etc/pam.d/common-password` and the bottom section should look like this
+  
+	``` # here are the per-package modules (the "Primary" block)
+	   	password	[success=1 default=ignore]	pam_unix.so minlen=4 sha512
+	   	# here's the fallback if no module succeeds
+	   	password	requisite			pam_deny.so
+	   	# prime the stack with a positive return value if there isn't one already;
+		# this avoids us returning an error just because nothing sets a success code
+		# since the modules above will each just jump around	
+		password	required			pam_permit.so
+		# and here are more per-package modules (the "Additional" block)
+		password	optional	pam_gnome_keyring.so 
+		# end of pam-auth-update config ```
+		- Ubuntu Keyboard Shortcut in Parallels Preference under the VM I want changed under shortcuts
+		change command + L to Ctrl + L OR MAYBE JUST Command to Control ```
     
 
 
