@@ -1,5 +1,6 @@
 # Manual Setup
 - No matter what OS Im using make sure my username is "rocket"
+- Make sure it is updated `sudo apt update` or packages won't get installed
 
 ### Arch
 - Must install Snap manualy, if paru is installed like garuda the initilising script command bellow will install it
