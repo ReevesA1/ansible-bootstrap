@@ -21,6 +21,11 @@
 	- `brew install ansible`
 - Disable Mac gate keeper
 	- `sudo spctl --master-disable`
+  
+
+### Parallels 
+- Ubuntu Keyboard Shortcut
+  -  change command + L to Ctrl + L 
     
 
 
