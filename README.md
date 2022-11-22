@@ -27,7 +27,7 @@
 # Download Bootstrap Scripts
 
 
-- `wget https://raw.githubusercontent.com/ReevesA1/ansible-pull/main/master-script.sh && find $HOME/master-script.sh  -type f -print0 | xargs -0 chmod 775 && ./master-script.sh`
+- `wget https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/master-script.sh && find $HOME/master-script.sh  -type f -print0 | xargs -0 chmod 775 && ./master-script.sh`
 
 
 
