@@ -25,6 +25,9 @@
   
 
 ### Parallels 
+- Ubuntu Keyboard Shortcut in Parallels Preference under the VM I want changed under shortcuts
+		change Command to Control 
+
 - Making "rocket" Account
 	- as the parallel user create a new Admin User with the GUI then log out and log back in as rocket
 	- changing complex password to simple go to `sudo gedit /etc/pam.d/common-password` and the bottom section should look like this
@@ -40,10 +43,6 @@
 		# and here are more per-package modules (the "Additional" block)
 		password	optional	pam_gnome_keyring.so 
 		# end of pam-auth-update config ```
-
-	- Ubuntu Keyboard Shortcut in Parallels Preference under the VM I want changed under shortcuts
-		change Command to Control 
-    
 
 
 # Download Bootstrap Scripts
