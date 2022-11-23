@@ -62,6 +62,9 @@
     - Must do a restart before it can be enabled!
     - Enable it manually! with this command `gnome-extensions enable dash-to-dock@micxgx.gmail.com`
 
+- Brew_apps script
+	- First run Parallels will fail because I must accept the little iterm2 pop up and run it again
+
 
 # Set Custom Facts
 
