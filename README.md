@@ -26,10 +26,12 @@
   
 
 ### Parallels 
+- after the main script run I have to `sudo apt remove ansible` and then install it with pip `sudo apt install pip && pip install ansible`
+- Also I have to run `ansible-pull` with `--tags parallels` 
 - Ubuntu Keyboard Shortcut in Parallels Preference under the VM I want changed under shortcuts
 		change Command to Control 
 
-- Making "rocket" Account
+- Make "rocket" Account
 	- as the parallel user create a new Admin User with the GUI then log out and log back in as rocket
 	- changing complex password to simple go to `sudo gedit /etc/pam.d/common-password` and the bottom section should look like this
   
