@@ -51,8 +51,8 @@ brew install --cask hiddenbar
 
 
 
-
-
+# Social 
+brew install --cask session #Onion routing based messenger
 
 
 #######################################   NOT CASK'S    ###########################################
