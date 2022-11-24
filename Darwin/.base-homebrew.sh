@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-test
+
 #FYI if having issues installing apps I can try to force using different architectures
 #  `arch -arm64 brew install --cask nameofapp`
 ##################################          INSTALL      #################################
@@ -11,11 +11,12 @@ test
 #IMPORTANT
 brew install --cask barrier
 brew install --cask protonvpn
-brew install --cask authy # Moving forward I only want authy on mac and iphone only
-# brew install --cask roboform # I dont want it, to COMPARTMENTALISE away from Authy (apple keychain instead)
+brew install --cask authy # Moving forward I only want authy on apple stuff
+ brew install --cask roboform 
 brew install --cask zerotier-one
 brew install --cask nextcloud
 brew install --cask lulu
+brew install --cask firefox		
 # brew install --cask little-snitch # Lulu is apparently better and free
 
 
@@ -26,6 +27,8 @@ brew install --cask cool-retro-term
 
 #Media
 brew install --cask sonoair
+brew install --cask spotify
+brew install --cask plex-media-player
 
 # Hypervisors
 brew install --cask parallels #need to allow iterm permission pop up so it works
@@ -49,10 +52,21 @@ brew install --cask icanhazshortcut
 brew install --cask rectangle
 brew install --cask hiddenbar
 
+#Productivity
+brew install --cask todoist
+brew install --cask notion
+
+#Codiing
+brew install --cask visual-studio-code
+brew install --cask github #github desktop
+brew install --cask godot
 
 
 # Social 
 brew install --cask session #Onion routing based messenger
+brew install --cask messenger
+brew install --cask discord
+
 
 
 #######################################   NOT CASK'S    ###########################################
@@ -114,14 +128,12 @@ brew install autojump
 #brew install --cask qbittorrent
 
 #Browsers (just use safari and arc)
-#brew install --cask firefox		
 #brew install --cask microsoft-edge
 #brew install --cask tor-browser
 
 
 #Gaming (not going to game on mac)
 #brew install --cask epic-games
-#brew install --cask godot
 #brew install --cask steam
 #brew install --cask heroic
 #brew install --cask itch
@@ -132,8 +144,6 @@ brew install autojump
 #brew install --cask neovide
 #brew install --cask mark-text
 #brew install --cask sleek
-#brew install --cask notion
-#brew install --cask todoist
 #brew install --cask onlyoffice
 #brew install --cask krita
 #brew install --cask joplin
@@ -145,8 +155,7 @@ brew install autojump
 #Social (Don't really need with main machine right here, could be useful on a mac laptop)
 #brew install --cask signal
 #brew install --cask telegram-desktop
-#brew install --cask messenger
-#brew install --cask discord
+
 
 #Paid Apps
 #brew install --cask dropzone
@@ -161,7 +170,6 @@ brew install autojump
 #brew install --cask raspberry-pi-imager
 #brew install --cask nitroshare
 #brew install --cask kindle
-#brew install --cask visual-studio-code
 #brew install --cask vscodium # I use the official one way better with plugins
 #brew install --cask bluestacks
 
@@ -173,10 +181,9 @@ brew install autojump
 #Ferdium act as Email client --> UPDATE NOW I KNOW I CAN ADD ALL ACCOUNTS TO NATIVE MAIL APP DONT NEED FERDIUM!!!
 #brew install --cask ferdium
 
-#Media (no Need)
+#Media 
 #brew install --cask kodi
-#brew install --cask spotify
-#brew install --cask plex-media-player
+
 
 
 #Not tested yet
