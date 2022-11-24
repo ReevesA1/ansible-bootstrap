@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+test
 #FYI if having issues installing apps I can try to force using different architectures
 #  `arch -arm64 brew install --cask nameofapp`
 ##################################          INSTALL      #################################
