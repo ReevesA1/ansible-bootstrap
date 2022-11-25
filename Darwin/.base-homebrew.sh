@@ -12,7 +12,7 @@
 brew install --cask barrier
 brew install --cask protonvpn
 brew install --cask authy # Moving forward I only want authy on apple stuff
- brew install --cask roboform 
+brew install --cask roboform 
 brew install --cask zerotier-one
 brew install --cask nextcloud
 brew install --cask lulu
@@ -67,7 +67,8 @@ brew install --cask session #Onion routing based messenger
 brew install --cask messenger
 brew install --cask discord
 
-
+# $ Paid Apps
+brew install --cask macupdater
 
 #######################################   NOT CASK'S    ###########################################
 
