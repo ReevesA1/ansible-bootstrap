@@ -123,13 +123,13 @@ sudo chmod -x /etc/ansible/facts.d/custom.fact
 if [ "$(uname)" == "Darwin" ]; then
     {
         echo '[env]'
-        echo 'desktop = none'
+        echo 'desktop = skip'
         echo 
         echo '[role]'
-        echo 'machine = daily-driver or server'
+        echo 'machine = daily-driver'
         echo
         echo '[device]'
-        echo 'dev = mac' 
+        echo 'dev = skip' 
 
 } >> /etc/ansible/facts.d/custom.fact
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
@@ -141,7 +141,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         echo 'machine = daily-driver or server'
         echo
         echo '[device]'
-        echo 'dev = rogstrix-lap or rogstrix-desk or steamdeck or parallels' 
+        echo 'dev = rogstrix-lap or rogstrix-desk or steamdeck' 
 } >> /etc/ansible/facts.d/custom.fact
 #elif [ "$(expr substr $(uname -s) 1 10)" == "Windows" ]; then
     # Do something under 32 bits Windows NT platform
