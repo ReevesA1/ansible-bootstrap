@@ -10,15 +10,18 @@
 
 #IMPORTANT
 brew install --cask barrier
+brew install --cask nextcloud	
+
+#Security
 brew install --cask protonvpn
 brew install --cask authy # Moving forward I only want authy on apple stuff
+brew install --cask lulu
 brew install --cask roboform 
 brew install --cask zerotier-one
-brew install --cask nextcloud
-brew install --cask lulu
-brew install --cask firefox		
-# brew install --cask little-snitch # Lulu is apparently better and free
 
+#Browsers
+brew install --cask firefox	
+brew install --cask librewolf
 
 #Terminals
 brew install --cask iterm2
@@ -56,7 +59,7 @@ brew install --cask hiddenbar
 brew install --cask todoist
 brew install --cask notion
 
-#Codiing
+#Coding
 brew install --cask visual-studio-code
 brew install --cask github #github desktop
 brew install --cask godot
@@ -194,6 +197,9 @@ brew install autojump
 #brew install --cask bitwarden
 #brew install --cask rustdesk #fyi does not work with vpn on
 
+
+#Security
+# brew install --cask little-snitch # Lulu is apparently better and free
 
 
 
