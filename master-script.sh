@@ -129,7 +129,7 @@ if [ "$(uname)" == "Darwin" ]; then
         echo 'machine = daily-driver'
         echo
         echo '[device]'
-        echo 'dev = skip' 
+        echo 'dev = skip'  # I use when: ansible_ansible_os_family in ["Darwin"] Now
 
 } >> /etc/ansible/facts.d/custom.fact
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
