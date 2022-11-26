@@ -1,4 +1,4 @@
-# Manual Setup
+# Setting UP the DISTRUBUTION 
 - No matter what OS Im using make sure my username is "rocket"
 - Make sure it is updated `sudo apt update` or packages won't get installed
 
