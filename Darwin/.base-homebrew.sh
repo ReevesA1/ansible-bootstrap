@@ -76,6 +76,7 @@ brew install --cask memory-cleaner
 brew install --cask onyx
 brew install --cask vlc
 brew install --cask the-unarchiver
+brew install --cask flameshot
 
 
 #Hotkeys and dock
@@ -102,6 +103,7 @@ brew install --cask discord
 
 # $ Paid Apps
 brew install --cask macupdater
+brew install --cask dropzone
 
 #######################################   NOT CASK'S    ###########################################
 
@@ -191,14 +193,11 @@ brew install autojump
 #brew install --cask telegram-desktop
 
 
-#Paid Apps
-#brew install --cask dropzone
 
 # Display Manager (i dont really share the display anymore)
 #brew install --cask betterdisplay # if not manualy install lunar cause brew doesnt work for it
 
 #Misc (Don't really need with main machine right here, could be useful on a mac laptop)
-#brew install --cask flameshot
 #brew install --cask sweet-home3d
 #brew install --cask balenaetcher
 #brew install --cask raspberry-pi-imager
