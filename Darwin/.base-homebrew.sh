@@ -79,6 +79,7 @@ brew install --cask the-unarchiver
 brew install --cask flameshot
 
 
+
 #Hotkeys and dock
 brew install --cask amethyst
 brew install --cask thor
@@ -147,6 +148,7 @@ brew install git
 brew install colordiff
 brew install shellcheck
 brew install autojump
+brew install rustup-init
 
 
 
