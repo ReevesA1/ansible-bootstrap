@@ -107,6 +107,9 @@ brew install --cask setapp ####### ALL THESE COULD BE REPLACED WITH setapp $$$ M
 brew install --cask dropzone
 brew install --cask bartender # bought a license
 
+#hacking
+brew install --cask altserver
+
 
 #######################################   NOT CASK'S    ###########################################
 
