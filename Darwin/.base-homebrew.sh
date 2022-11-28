@@ -241,4 +241,5 @@ brew install rustup-init
 # Utility
 #brew install --cask hiddenbar # I dont use because on my m2 mac laptop the camera notch hides icons and bartender is the only one that can fix it
 #brew install --cask roboform # USE the mas app, this just adds extensions to browsers that i can do manualy
+#brew install --cask memory-cleaner # did not work (nov 2022) could be replaced with setapps subscription
 
