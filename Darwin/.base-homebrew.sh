@@ -235,7 +235,8 @@ brew install rustup-init
 
 
 #Security
-# brew install --cask little-snitch # Lulu is apparently better and free
+#brew install --cask little-snitch # Lulu is apparently better and free
+#brew install --cask expressvpn
 
 # Utility
 #brew install --cask hiddenbar # I dont use because on my m2 mac laptop the camera notch hides icons and bartender is the only one that can fix it
