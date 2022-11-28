@@ -118,6 +118,7 @@ brew install neovim
 brew install fail2ban
 brew install mas
 brew install starship
+brew install fish
 
 ## Oh My zsh
 brew install zsh-syntax-highlighting
