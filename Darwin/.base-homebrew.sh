@@ -72,7 +72,6 @@ brew install --cask parallels #need to allow iterm permission pop up so it works
 brew install --cask alfred
 brew install --cask raycast # another launcher
 brew install --cask appcleaner
-brew install --cask memory-cleaner
 brew install --cask onyx
 brew install --cask vlc
 brew install --cask the-unarchiver
@@ -102,9 +101,12 @@ brew install --cask messenger
 brew install --cask discord
 
 # $ Paid Apps
-brew install --cask macupdater
+brew install --cask macupdater # not on set app
+brew install --cask setapp ####### ALL THESE COULD BE REPLACED WITH setapp $$$ MONTHLY
+#brew install --cask memory-cleaner # did not work (nov 2022)
 brew install --cask dropzone
-brew install --cask bartender
+brew install --cask bartender # bought a license
+
 
 #######################################   NOT CASK'S    ###########################################
 
