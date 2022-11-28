@@ -46,7 +46,6 @@ brew install --cask nextcloud
 brew install --cask protonvpn
 brew install --cask authy # Moving forward I only want authy on apple stuff
 brew install --cask lulu
-brew install --cask roboform 
 brew install --cask zerotier-one
 
 #Browsers
@@ -239,5 +238,5 @@ brew install rustup-init
 
 # Utility
 #brew install --cask hiddenbar # I dont use because on my m2 mac laptop the camera notch hides icons and bartender is the only one that can fix it
-
+#brew install --cask roboform # not like the windows app, this just adds extensions to browsers that i can do manualy
 
