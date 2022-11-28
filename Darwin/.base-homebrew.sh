@@ -85,7 +85,6 @@ brew install --cask amethyst
 brew install --cask thor
 brew install --cask icanhazshortcut
 brew install --cask rectangle
-brew install --cask hiddenbar
 
 #Productivity
 brew install --cask todoist
@@ -105,6 +104,7 @@ brew install --cask discord
 # $ Paid Apps
 brew install --cask macupdater
 brew install --cask dropzone
+brew install --cask bartender
 
 #######################################   NOT CASK'S    ###########################################
 
@@ -232,6 +232,7 @@ brew install rustup-init
 #Security
 # brew install --cask little-snitch # Lulu is apparently better and free
 
-
+# Utility
+#brew install --cask hiddenbar # I dont use because on my m2 mac laptop the camera notch hides icons and bartender is the only one that can fix it
 
 
