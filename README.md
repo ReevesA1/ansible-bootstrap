@@ -28,14 +28,10 @@
   
 
 ### Parallels 
-- after the main script run I have to `sudo apt remove ansible` and then install it with pip `sudo apt install pip && pip install ansible`
-- Also I have to run `ansible-pull` with `--tags parallels` 
-- Ubuntu Keyboard Shortcut in Parallels Preference under the VM I want changed under shortcuts
-		change Command to Control 
-
-- Make "rocket" Account
-	- as the parallel user create a new Admin User with the GUI then log out and log back in as rocket
-	- changing complex password to simple go to `sudo gedit /etc/pam.d/common-password` and the bottom section should look like this
+- First BEFORE RUNNING THE SCRIPT
+  - Make "my_normal_user" Account
+	- as the parallel user create a new Admin User with the GUI then log out and log back in as that "new_normal_user"
+	- To Change complex password to simple go to `sudo gedit /etc/pam.d/common-password` and the bottom section should look like this
   
 	``` # here are the per-package modules (the "Primary" block)
 	   	password	[success=1 default=ignore]	pam_unix.so minlen=4 sha512
@@ -49,6 +45,10 @@
 		password	optional	pam_gnome_keyring.so 
 		# end of pam-auth-update config ```
 
+- AFTER RUNNING THE MAIN SCRIPT 
+  -  run I have to `sudo apt remove ansible` and then install it with pip `sudo apt install pip && pip install ansible`
+  - Ubuntu Keyboard Shortcut in Parallels Preference under the VM I want changed under shortcuts
+    - change Command to Control 
 
 # Download Bootstrap Scripts
 
