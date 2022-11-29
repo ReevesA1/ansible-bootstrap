@@ -13,11 +13,11 @@
 - Install xcode-command-line-tools
 	- `xcode-select --install` 
 - Install Homebrew
-	- ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"```
-    - Run these 2 Commands to Add Path
-     	- ```echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/rocket/.zprofile```
-     	- ```eval "$(/opt/homebrew/bin/brew shellenv)"```
-   	- Install `brew bundle`
+- ```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"```
+  - Run these 2 Commands to Add Path
+   	- ```echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/rocket/.zprofile```
+   	- ```eval "$(/opt/homebrew/bin/brew shellenv)"```
+  - Install `brew bundle`
       
 - Turn off google analytics `brew analytics off`
 - Install wget to pull the script below
