@@ -57,7 +57,7 @@
 - AFTER RUNNING THE MAIN SCRIPT RUN
   -  (LAST TIME I DID NOT HAVE TO DO  `sudo apt remove ansible`)
   -  (Next time try without this) `sudo apt install pip && pip install ansible`
-  -  did have to install cargo manually `sudo apt install cargo`
+  -  when I run I get an error at a cargo command so I thought to  `sudo apt install cargo` (NEVER MIND THIS IS AN ERROR WITH ANSIBLE cause cargo will get installed with ansible pull)
   
 
 # Download & Run Bootstrap Scripts
