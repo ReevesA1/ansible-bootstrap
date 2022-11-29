@@ -36,8 +36,8 @@
 	- as the parallel user create a new Admin User with the GUI then log out and log back in as that "new_normal_user"
     	- also enable log in automaticaly
 	-  Change complex password to simple 
-      	-  go to `sudo gedit /etc/pam.d/common-password` and overwrite the  bottom section with the code below. 
-      	-  Once changed use the `passwd` command to change to my normal password.
+   	    -  go to `sudo gedit /etc/pam.d/common-password` and overwrite the  bottom section with the code below. 
+   	    -  Once changed use the `passwd` command to change to my normal password.
 	- Update with `sudo apt update && sudo apt upgrade` it will ask to overwrite "pam password file" choose no 
 	- delete old parallel User from GUI
   
