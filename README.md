@@ -54,8 +54,10 @@
 		password	optional	pam_gnome_keyring.so 
 		# end of pam-auth-update config 
 
-- AFTER RUNNING THE MAIN SCRIPT 
-  -  run I have to `sudo apt remove ansible` and then install it with pip `sudo apt install pip && pip install ansible`
+- AFTER RUNNING THE MAIN SCRIPT RUN
+  -  (LAST TIME I DID NOT HAVE TO DO  `sudo apt remove ansible`)
+  -  (Next time try without this) `sudo apt install pip && pip install ansible`
+  -  did have to install cargo manually `sudo apt install cargo`
   
 
 # Download & Run Bootstrap Scripts
