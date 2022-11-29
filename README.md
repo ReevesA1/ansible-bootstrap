@@ -81,5 +81,3 @@
     - Mac `open -e /etc/ansible/facts.d/custom.fact` 
 
 
-# Fonts
-- install nerd fonts with the entire library on nextcloud or clone the repo from https://github.com/ryanoasis/nerd-fonts and ./install
