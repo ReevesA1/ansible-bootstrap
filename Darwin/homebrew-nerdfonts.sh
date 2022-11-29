@@ -32,7 +32,7 @@
 # https://www.nerdfonts.com/font-downloads
 
 ############################
-# Hack-Nerd-Font works great with starship icons (must set manualy in iterm2 and warp on mac int the terminal gui options)
+# Hack-Nerd-Font works great with starship icons (must set manualy in iterm2 and warp and cool-retro-term on mac in the terminal gui options)
 
 brew tap homebrew/cask-fonts # need this to make these work
 brew install --cask font-hack-nerd-font
