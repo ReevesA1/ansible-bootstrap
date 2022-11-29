@@ -50,7 +50,7 @@
   - Ubuntu Keyboard Shortcut in Parallels Preference under the VM I want changed under shortcuts
     - change Command to Control 
 
-# Download Bootstrap Scripts
+# Download & Run Bootstrap Scripts
 
 
 - `wget https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/master-script.sh && find $HOME/master-script.sh  -type f -print0 | xargs -0 chmod 775 && ./master-script.sh`
