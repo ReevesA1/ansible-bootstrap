@@ -37,15 +37,17 @@ fi
 #Clone All scripts I run manualy 
 
 if [ "$(uname)" == "Darwin" ]; then
-    #base homebrew-packages
-    wget https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Darwin/.base-homebrew.sh
-    mv /Users/rocket/bootstrap/.base-homebrew.sh /Users/rocket/bootstrap/base-homebrew.command
-    chmod u+x /Users/rocket/bootstrap/base-homebrew.command
-    #base mas-packages
-    wget https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Darwin/.base-mas.sh
-    mv /Users/rocket/bootstrap/.base-mas.sh /Users/rocket/bootstrap/base-mas.command
-    chmod u+x /Users/rocket/bootstrap/base-mas.command
-    #Homebrew Nerdfonts
+    #base homebrew-packages (depricated, I use the homebrew dump method with alias now, but keep these for reference)
+    #wget https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Darwin/.base-homebrew.sh
+    #mv /Users/rocket/bootstrap/.base-homebrew.sh /Users/rocket/bootstrap/base-homebrew.command
+    #chmod u+x /Users/rocket/bootstrap/base-homebrew.command
+
+    #base mas-packages (depricated, I use the homebrew dump method with alias now, but keep these for reference)
+    #wget https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Darwin/.base-mas.sh
+    #mv /Users/rocket/bootstrap/.base-mas.sh /Users/rocket/bootstrap/base-mas.command
+    #chmod u+x /Users/rocket/bootstrap/base-mas.command
+
+    #Homebrew Nerdfonts for Mac
     wget https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Darwin/homebrew-nerdfonts.sh
     mv /Users/rocket/bootstrap/homebrew-nerdfonts.sh /Users/rocket/bootstrap/homebrew-nerdfonts.command
     chmod u+x /Users/rocket/bootstrap/homebrew-nerdfonts.command
