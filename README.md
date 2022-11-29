@@ -44,7 +44,7 @@
 		password	required			pam_permit.so
 		# and here are more per-package modules (the "Additional" block)
 		password	optional	pam_gnome_keyring.so 
-		# end of pam-auth-update config ```
+		# end of pam-auth-update config 
 
 - AFTER RUNNING THE MAIN SCRIPT 
   -  run I have to `sudo apt remove ansible` and then install it with pip `sudo apt install pip && pip install ansible`
