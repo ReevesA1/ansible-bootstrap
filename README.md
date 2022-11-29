@@ -32,7 +32,8 @@
   - Make "my_normal_user" Account
 	- as the parallel user create a new Admin User with the GUI then log out and log back in as that "new_normal_user"
     	- also enable log in automaticaly
-	- Now To Change complex password to simple go to `sudo gedit /etc/pam.d/common-password` and the bottom section should look like the code below. Once changed use the `passwd` command to change to my normal password.
+	- Now To Change complex password to simple go to `sudo gedit /etc/pam.d/common-password` and overwrite the  bottom section with the code below. Once changed use the `passwd` command to change to my normal password.
+	- Update with `sudo apt update && sudo apt upgrade`
   
 	``` # here are the per-package modules (the "Primary" block)
 	   	password	[success=1 default=ignore]	pam_unix.so minlen=4 sha512
