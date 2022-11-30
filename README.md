@@ -56,9 +56,8 @@
 
 - AFTER RUNNING THE MAIN SCRIPT RUN
   -  (LAST TIME I DID NOT HAVE TO DO  `sudo apt remove ansible`)
-  -  (Next time try without this) `sudo apt install pip && pip install ansible`
-  -  when I run I get an error at a cargo command so I thought to  `sudo apt install cargo` (NEVER MIND THIS IS AN ERROR WITH ANSIBLE cause cargo will get installed with ansible pull)
-     -  I trie this `echo "export PATH="/home/rocket/.local/bin:$PATH"" >> $HOME/.bashrc`
+  -  (Next time try without this) `sudo apt install pip && sudo pip install ansible` FUCKING MAKE SURE THESE BOTH HAVE SUDO
+  
 
   
 
