@@ -29,6 +29,13 @@ else {
 } 
 
 ```
+- add pythong to path 
+	- Open up the Control Panel and navigate to System and Security > System
+	- Click on the Advanced system settings link on the left panel
+	- Click Environment Variables.
+	- Under System Variables, double-click the variable PATH.
+	- Click New, and add the directory where pip is installed, e.g. C:Python33Scripts, and select OK.
+	- `C:\Users\rocket\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\Scripts`
 
 ### Method 2
 - Install Ansible preferably with `winget install -e --id Cygwin.Cygwin` if not  `choco install cygwin`
