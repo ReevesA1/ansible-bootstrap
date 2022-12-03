@@ -2,23 +2,38 @@
 - No matter what OS Im using make sure my username is "rocket"
 - Make sure it is updated `sudo apt update` or packages won't get installed
 
-### Arch
+## Arch
 - Must install Snap manualy, if paru is installed like garuda the initilising script command bellow will install it
   
 
-### Windows
-- Method 1
+## Windows
+
+### Method 1
 	- Install python 3.10 with the microsoft store
-	- Reggedit go to Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem\LongPathsEnabled and change the 0 to 1
+	- Fix [WinError 206] The filename or extension is too long with one of three methods (https://www.youtube.com/watch?v=obJmcid_erI) 
+		-I choose the one below 
+		- `Reggedit go to Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem\LongPathsEnabled` and change the 0 to 1
 	- in Command prompt (not sure if it also works in powershel) run these commands
 		- `pip3 install --upgrade pip`
 		- `pip3 install ansible`
+	- Install Chocco
 
+```
+	 # Ensure chocolatey installed
+if ([bool](Get-Command -Name 'choco' -ErrorAction SilentlyContinue)) {
+    Write-Verbose "Chocolatey is already installed, skip installation." -Verbose
+}
+else {
+    Write-Verbose "Installing Chocolatey..." -Verbose
+    Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+} 
 
-- Method 2
+```
+
+### Method 2
 	- Install Ansible preferably with `winget install -e --id Cygwin.Cygwin` if not  `choco install cygwin`
 
-### Mac 
+## Mac 
 - Install xcode-command-line-tools
 	- `xcode-select --install` 
 - Install Homebrew
@@ -36,7 +51,7 @@
 	- `sudo spctl --master-disable`
   
 
-### Parallels Ubuntu
+## Parallels Ubuntu
 - First BEFORE RUNNING THE SCRIPT
   - CHANGE KEY BINDINGS
     - Top Bar --> Device --> Keyboard --> customize --> click on Ubuntu in left pane 
