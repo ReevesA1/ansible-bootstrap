@@ -9,14 +9,14 @@
 ## Windows
 
 ### Method 1
-	- Install python 3.10 with the microsoft store
-	- Fix [WinError 206] The filename or extension is too long with one of three methods (https://www.youtube.com/watch?v=obJmcid_erI) 
-		-I choose the one below 
-		- `Reggedit go to Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem\LongPathsEnabled` and change the 0 to 1
-	- in Command prompt (not sure if it also works in powershel) run these commands
-		- `pip3 install --upgrade pip`
-		- `pip3 install ansible`
-	- Install Chocco
+- Install python 3.10 with the microsoft store
+- Fix [WinError 206] The filename or extension is too long with one of three methods (https://www.youtube.com/watch?v=obJmcid_erI) 
+	-I choose the one below 
+	- `Reggedit go to Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem\LongPathsEnabled` and change the 0 to 1
+- in Command prompt (not sure if it also works in powershel) run these commands
+	- `pip3 install --upgrade pip`
+	- `pip3 install ansible`
+- Install Chocco
 
 ```
 	 # Ensure chocolatey installed
@@ -31,7 +31,7 @@ else {
 ```
 
 ### Method 2
-	- Install Ansible preferably with `winget install -e --id Cygwin.Cygwin` if not  `choco install cygwin`
+- Install Ansible preferably with `winget install -e --id Cygwin.Cygwin` if not  `choco install cygwin`
 
 ## Mac 
 - Install xcode-command-line-tools
@@ -66,7 +66,8 @@ else {
 	- delete old parallel User from GUI
   
   
-	``` # here are the per-package modules (the "Primary" block)
+	```
+	 # here are the per-package modules (the "Primary" block)
 	   	password	[success=1 default=ignore]	pam_unix.so minlen=4 sha512
 	   	# here's the fallback if no module succeeds
 	   	password	requisite			pam_deny.so
@@ -77,6 +78,8 @@ else {
 		# and here are more per-package modules (the "Additional" block)
 		password	optional	pam_gnome_keyring.so 
 		# end of pam-auth-update config 
+
+	```
 
 - AFTER RUNNING THE MAIN SCRIPT RUN
   -  (LAST TIME I DID NOT HAVE TO DO  `sudo apt remove ansible`)
