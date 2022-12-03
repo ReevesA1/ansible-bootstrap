@@ -6,8 +6,17 @@
 - Must install Snap manualy, if paru is installed like garuda the initilising script command bellow will install it
   
 
-### Windows 
-- Install Ansible preferably with `winget install -e --id Cygwin.Cygwin` if not  `choco install cygwin`
+### Windows
+- Method 1
+	- Install python 3.10 with the microsoft store
+	- Reggedit go to Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem\LongPathsEnabled and change the 0 to 1
+	- in Command prompt (not sure if it also works in powershel) run these commands
+		- `pip3 install --upgrade pip`
+		- `pip3 install ansible`
+
+
+- Method 2
+	- Install Ansible preferably with `winget install -e --id Cygwin.Cygwin` if not  `choco install cygwin`
 
 ### Mac 
 - Install xcode-command-line-tools
