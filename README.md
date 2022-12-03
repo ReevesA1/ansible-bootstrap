@@ -12,7 +12,7 @@
 - Install python 3.10 with the microsoft store
 - Fix [WinError 206] The filename or extension is too long with one of three methods (https://www.youtube.com/watch?v=obJmcid_erI) 
 	-I choose the one below 
-	- `Reggedit go to Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem\LongPathsEnabled` and change the 0 to 1
+	- `Reggedit go to Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem` then in LongPathsEnabled and change the 0 to 1
 - in Command prompt (not sure if it also works in powershel) run these commands
 	- `pip3 install --upgrade pip`
 	- `pip3 install ansible`
