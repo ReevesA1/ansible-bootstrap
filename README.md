@@ -66,14 +66,21 @@ else {
 ```
 ### WSL Method
 
-- search for Turn Windows features on or off 
-- turn on Windows Subsystem for Linux & Virtual Machine Platform 
+- search for Turn Windows features on or off and turn on Windows Subsystem for Linux & Virtual Machine Platform 
+```
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
 - restart machine
 - go to windows store and download Newest Ubuntu
 - might have to get kernal file here (works for arm and X64) https://learn.microsoft.com/en-ca/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package
 - On Apple Silicone Chips I have to run WSL1 so in powershell as Admin
 	- `wsl --set-default-version 1` 
 - `sudo apt update && sudo apt upgrade`
+- `sudo apt-get install software-properties-common`
+- `sudo apt-add-repository ppa:ansible/ansible`
+- `sudo apt-get update`
+- `sudo apt-get install ansible -y`
 - `sudo apt install git ansible`
 
 ### Cygwin Method (I think cygwin choco or the exe install ansible 2.8 )
@@ -99,6 +106,13 @@ else {
 	- Under System Variables, double-click the variable PATH.
 	- Click New, and add the directory where pip is installed, e.g. C:Python33Scripts, and select OK.
 	- `C:\Users\rocket\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\Scripts`
+
+- More python shit
+	- `sudo apt install python3-pip`
+	- `sudo pip3 install pywinrm`
+	- `sudo pip3 install pyvmomi`
+	- `sudo pip3 install ansible`
+	- `sudo pip3 install ansible[azure]`
 
 
 ###############################################################
