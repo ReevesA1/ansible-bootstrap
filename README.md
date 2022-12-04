@@ -2,22 +2,58 @@
 - No matter what OS Im using make sure my username is "rocket"
 - Make sure it is updated `sudo apt update` or packages won't get installed
 
+
+################################################################
+##                   Linux                                    ##
+################################################################
+#    _nnnn_
+#        dGGGGMMb
+#       @p~qp~~qMb
+#       M|@||@) M|
+#       @,----.JM|
+#      JS^\__/  qKL
+#     dZP        qKRb
+#    dZP          qKKb
+#   fZP            SMMb
+#   HZM            MMMM
+#   FqM            MMMM
+# __| ".        |\dS"qML
+# |    `.       | `' \Zq
+#_)      \.___.,|     .'
+#\____   )MMMMMP|   .'
+#     `-'       `--' hjm
+#
+
 ## Arch
 - Must install Snap manualy, if paru is installed like garuda the initilising script command bellow will install it
-  
+
+################################################################
+##                   Windows                                ##
+################################################################
+
+#                   .oodMMMMMMMMMMMMM
+#       ..oodMMM  MMMMMMMMMMMMMMMMMMM
+# oodMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+# 
+# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+# `^^^^^^MMMMMMM  MMMMMMMMMMMMMMMMMMM
+#       ````^^^^  ^^MMMMMMMMMMMMMMMMM
+#                      ````^^^^^^MMMM
+
 
 ## Windows
+- https://phoenixnap.com/kb/install-ansible-on-windows
 
-### Method 1
-- Install python 3.10 with the microsoft store
-- Fix [WinError 206] The filename or extension is too long with one of three methods (https://www.youtube.com/watch?v=obJmcid_erI) 
-	-I choose the one below 
-	- `Reggedit go to Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem` then in LongPathsEnabled and change the 0 to 1
-- in Command prompt (not sure if it also works in powershel) run these commands
-	- `pip3 install --upgrade pip`
-	- `pip3 install ansible`
-- Install Chocco
-
+### Install Choco (all methods need it)
 ```
 	 # Ensure chocolatey installed
 if ([bool](Get-Command -Name 'choco' -ErrorAction SilentlyContinue)) {
@@ -27,9 +63,36 @@ else {
     Write-Verbose "Installing Chocolatey..." -Verbose
     Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 } 
-
 ```
-- add pythong to path 
+### WSL Method
+
+- search for Turn Windows features on or off 
+- turn on Windows Subsystem for Linux & Virtual Machine Platform 
+- restart machine
+- go to windows store and download Newest Ubuntu
+- might have to get kernal file here (works for arm and X64) https://learn.microsoft.com/en-ca/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package
+- On Apple Silicone Chips I have to run WSL1 so in powershell as Admin
+	- `wsl --set-default-version 1` 
+- `sudo apt update && sudo apt upgrade`
+- `sudo apt install git ansible`
+
+### Cygwin Method (I think cygwin choco or the exe install ansible 2.8 )
+- Install Ansible preferably with Choco could not figure out winget version
+	- `choco install cygwin` and get the package manager `choco install cyg-get`
+- TEST `cyg-get git` then `cyg-get git` 
+- if that doesn't work I have to install it manually from the exe https://cygwin.com/setup-x86_64.exe
+
+
+### Python Method (is this the Windows rm  ( not really for Ansible pull ) method?)
+- Install python 3.10 with the microsoft store
+- Fix [WinError 206] The filename or extension is too long with one of three methods (https://www.youtube.com/watch?v=obJmcid_erI) 
+	-I choose the one below 
+	- `Reggedit go to Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem` then in LongPathsEnabled and change the 0 to 1
+- in Command prompt (not sure if it also works in powershel) run these commands
+	- `pip3 install --upgrade pip`
+	- `pip3 install ansible`
+
+- add python to path 
 	- Open up the Control Panel and navigate to System and Security > System
 	- Click on the Advanced system settings link on the left panel
 	- Click Environment Variables.
@@ -37,8 +100,36 @@ else {
 	- Click New, and add the directory where pip is installed, e.g. C:Python33Scripts, and select OK.
 	- `C:\Users\rocket\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\Scripts`
 
-### Method 2
-- Install Ansible preferably with `winget install -e --id Cygwin.Cygwin` if not  `choco install cygwin`
+
+###############################################################
+##                  Mac                                   ##
+################################################################
+
+#                       .888
+#                     .8888'
+#                    .8888'
+#                    888'
+#                    8'
+#       .88888888888. .88888888888.
+#    .8888888888888888888888888888888.
+#  .8888888888888888888888888888888888.
+# .&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'
+# &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'
+# &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.
+# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.
+# `%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.
+# `00000000000000000000000000000000000'
+#  `000000000000000000000000000000000'
+#   `0000000000000000000000000000000'
+#     `###########################'
+#       `#######################'
+#         `#########''########'
+#           `""""""'  `"""""'
+#
 
 ## Mac 
 - Install xcode-command-line-tools
