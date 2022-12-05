@@ -168,7 +168,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 - First BEFORE RUNNING THE SCRIPT
   - CHANGE KEY BINDINGS
     - Top Bar --> Device --> Keyboard --> customize --> click on Ubuntu in left pane 
-      - at the bottom hit the + button and straight up add from mac single "command button" and to Linux single "control button" 
+      - at the bottom hit the + button and straight up add from mac single "command button" and to Linux single "control button"  ONLY HAVE TO DO THIS ONCE!
   - Make "my_normal_user" Account
 	- as the parallel user create a new Admin User with the GUI then log out and log back in as that "new_normal_user"
     	- also enable log in automaticaly
@@ -195,7 +195,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 	```
 
 - AFTER RUNNING THE MAIN SCRIPT RUN
-  -  `sudo apt remove ansible`)
+  -  `sudo apt remove ansible`
   -  (Next time try without this) `sudo apt install pip && sudo pip install ansible` FUCKING MAKE SURE THESE BOTH HAVE SUDO
   
 
