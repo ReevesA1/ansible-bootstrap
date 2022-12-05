@@ -175,7 +175,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 	-  Change complex password to simple 
    	    -  go to `sudo gedit /etc/pam.d/common-password` and overwrite the  bottom section with the code below. 
    	    -  Once changed use the `passwd` command to change to my normal password.
-	- Update with `sudo apt update && sudo apt upgrade` it will ask to overwrite "pam password file" choose no 
+	- Update with `sudo apt update && sudo apt upgrade` it will ask to overwrite "pam password file" choose NO!!!S 
 	- delete old parallel User from GUI
   
   
