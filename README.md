@@ -195,7 +195,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 	```
 
 - AFTER RUNNING THE MAIN SCRIPT RUN
-  -  (LAST TIME I DID NOT HAVE TO DO  `sudo apt remove ansible`)
+  -  `sudo apt remove ansible`)
   -  (Next time try without this) `sudo apt install pip && sudo pip install ansible` FUCKING MAKE SURE THESE BOTH HAVE SUDO
   
 
