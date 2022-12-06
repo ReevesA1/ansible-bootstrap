@@ -65,7 +65,10 @@ else {
 } 
 ```
 ### WSL Method
+FYI this Method works, I have to make custom facts file manualy (i only tested write skip on all of them)
+FYI eveythin is contained inside the WSL distro and I can't manipulate windows at all
 
+STEPS
 - search for Turn Windows features on or off and turn on Windows Subsystem for Linux & Virtual Machine Platform or use the commands below
 ```
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
@@ -81,8 +84,10 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 - `sudo apt-add-repository ppa:ansible/ansible`
 - `sudo apt-get update`
 - `sudo apt-get install ansible -y`
-- `sudo apt install git ansible`
-- Maybe need to add this `ansible-galaxy collection install ansible.windows` or I need a requirements.yml file with all the windows collections
+- `sudo apt install git`
+
+This next line I use while trying to manipulate windows with wsl (which is not doable I dont think but keep for reference, I dont need it)
+- Maybe use a  requirements.yml file with all the windows collections on root of repo
 ```
 #collections:
 #  - name: ansible.windows
@@ -97,24 +102,32 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 - if that doesn't work I have to install it manually from the exe https://cygwin.com/setup-x86_64.exe
 
 
-### Python Method (is this the Windows rm  ( not really for Ansible pull ) method?)
-- Install python 3.10 with the microsoft store
-- Fix [WinError 206] The filename or extension is too long with one of three methods (https://www.youtube.com/watch?v=obJmcid_erI) 
-	-I choose the one below 
-	- `Reggedit go to Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem` then in LongPathsEnabled and change the 0 to 1
+### WinRM Method 
+FYI Need power shell 3.0 and DO IT AS ADMIN
+
+- DONWLOAD AND INSTALL PYTHON ON WINDOWS (FROM THE WEBSITE IS BETTER BECAUSE THERE IS 3 IMPORTANT CHECK BOXES, RUN AS ADMIN, ADD PATH, THEN LONG PATH FIX)
+	- Install python3 from https://www.python.org/  download (64-bit or ARM64) 
+	- I can also get it from the microsoft store
+- Fix [WinError 206] The filename or extension is too long 
+	- if downloaded from the website its a quick check box during the install process  
+	- if downloaded from the microsoft store choose one of three methods (https://www.youtube.com/watch?v=obJmcid_erI). 
+	- I chose this one 
+		- `Reggedit go to Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem` then in LongPathsEnabled and change the 0 to 1
 - in Command prompt (not sure if it also works in powershel) run these commands
 	- `pip3 install --upgrade pip`
 	- `pip3 install ansible`
 
-- add python to path 
-	- Open up the Control Panel and navigate to System and Security > System
-	- Click on the Advanced system settings link on the left panel
-	- Click Environment Variables.
-	- Under System Variables, double-click the variable PATH.
-	- Click New, and add the directory where pip is installed, e.g. C:Python33Scripts, and select OK.
-	- `C:\Users\rocket\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\Scripts`
+- BEFORE THOSE COMMANDS WORK MOST LIKELY WILL NEED TO add python to path 
+	- GET TO  Environment Variables `rundll32.exe sysdm.cpl,EditEnvironmentVariables`
+	- Since I am Admin --> Under System Variables NOT USER, Click New, Name it python and add the proper directory below, and select OK.
+	- Paths's
+		- Windows store `C:\Users\rocket\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\Scripts`
+		- Arm from website (but it should have been added automatialy if I hit the check box during install)
+			- `C:\Users\rocket\AppData\Local\Programs\Python\Python311-arm64;C:\Users\rocker\AppData\Local\Programs\Python\Python311-arm64\scripts`
 
-- More python shit
+		                    
+
+- More python shit (might be handy?)
 	- `sudo apt install python3-pip`
 	- `sudo pip3 install pywinrm`
 	- `sudo pip3 install pyvmomi`
