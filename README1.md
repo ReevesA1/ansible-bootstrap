@@ -107,7 +107,7 @@ FYI Need power shell 3.0 and DO IT AS ADMIN
 
 - DONWLOAD AND INSTALL PYTHON ON WINDOWS (FROM THE WEBSITE IS BETTER BECAUSE THERE IS 3 IMPORTANT CHECK BOXES, RUN AS ADMIN, ADD PATH, THEN LONG PATH FIX)
 	- Install python3 from https://www.python.org/  download (64-bit or ARM64) 
-		- if I use this method with the 3 check boxes I can go straight into installing asible ----------> which is????
+		- if I use this method with the 3 check boxes I can go straight into installing asible ----------> `pip3 install ansible`
 	- I can also get it from the microsoft store
 - Fix [WinError 206] The filename or extension is too long 
 	- if downloaded from the website its a quick check box during the install process  
