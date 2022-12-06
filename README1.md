@@ -66,7 +66,7 @@ else {
 ```
 ### WSL Method
 
-- search for Turn Windows features on or off and turn on Windows Subsystem for Linux & Virtual Machine Platform 
+- search for Turn Windows features on or off and turn on Windows Subsystem for Linux & Virtual Machine Platform or use the commands below
 ```
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
@@ -83,6 +83,12 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 - `sudo apt-get install ansible -y`
 - `sudo apt install git ansible`
 - Maybe need to add this `ansible-galaxy collection install ansible.windows` or I need a requirements.yml file with all the windows collections
+```
+#collections:
+#  - name: ansible.windows
+#  - name: chocolatey.chocolatey
+#  - name: community.windows
+```
 
 ### Cygwin Method (I think cygwin choco or the exe install ansible 2.8 )
 - Install Ansible preferably with Choco could not figure out winget version
