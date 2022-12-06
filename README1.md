@@ -118,21 +118,21 @@ FYI Need power shell 3.0 and DO IT AS ADMIN
 	- `pip3 install ansible`
 
 - BEFORE THOSE COMMANDS WORK MOST LIKELY WILL NEED TO add python to path 
-	- GET TO  Environment Variables `rundll32.exe sysdm.cpl,EditEnvironmentVariables`
+	- GET TO  Environment Variables `rundll32.exe sysdm.cpl,EditEnvironmentVariables` or type CTRL + R and type `sysdm.cpl` then advanced tap I should see enviroment variables
 	- Since I am Admin --> Under System Variables NOT USER, Click New, Name it python and add the proper directory below, and select OK.
-	- Paths's
+	- Paths's (FYI I HAVE TO EXIT POWER SHELL AND REOPEN IT AFTER ADDING PATH "SOURCE IT")
 		- Windows store `C:\Users\rocket\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\Scripts`
 		- Arm from website (but it should have been added automatialy if I hit the check box during install)
 			- `C:\Users\rocket\AppData\Local\Programs\Python\Python311-arm64;C:\Users\rocker\AppData\Local\Programs\Python\Python311-arm64\scripts`
+	- to see if path added in  Windows PowerShell, list all the environment variables with `Get-ChildItem Env:` if I did it with the checkbox it should just be called "path"
 
 		                    
 
 - More python shit (might be handy?)
-	- `sudo apt install python3-pip`
-	- `sudo pip3 install pywinrm`
-	- `sudo pip3 install pyvmomi`
-	- `sudo pip3 install ansible`
-	- `sudo pip3 install ansible[azure]`
+	- `pip3 install pywinrm`
+	- `pip3 install pyvmomi`
+	- `pip3 install ansible`
+	- `pip3 install ansible[azure]`
 
 
 ###############################################################
