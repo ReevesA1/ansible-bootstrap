@@ -57,10 +57,12 @@
 - Copy paste this code block into Powershell as Adminastrator (Ctrl+V will copy as a block but only when as Admin for some reason)
 - Will need to run it twice because the first time its install choco then the second time it will install cywin
 
+$file = "$env:temp\cygwin-setup.ps1"
+
 ```
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $url = "https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/1-cygwin-setup.ps1"
-$file = "$env:temp\cygwin-setup.ps1"
+$file = "C:\Users\rocket\Downloads\1-cygwin-setup.ps1"
 
 (New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
 powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
