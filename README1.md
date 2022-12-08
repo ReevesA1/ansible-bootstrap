@@ -62,7 +62,7 @@ $file = "$env:temp\cygwin-setup.ps1"
 ```
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $url = "https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/1-cygwin-setup.ps1"
-$file = "C:\Users\rocket\Downloads\1-cygwin-setup.ps1"
+$file = "%HOMEPATH%\Downloads\1-cygwin-setup.ps1"
 
 (New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
 powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
