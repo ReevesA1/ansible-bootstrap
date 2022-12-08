@@ -21,6 +21,8 @@ else {
 
 choco install cygwin --params "/InstallDir:C:\cygwin64 /DesktopIcon"
 
+# the rest make a second script and run in cygwin
+
 cd C:\cygwin64
 
 ./cygwinsetup.exe --quiet-mode --packages git,pip
