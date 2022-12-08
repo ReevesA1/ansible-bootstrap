@@ -52,14 +52,14 @@
 
 ## Windows
 
-### CYGWIN Method (Automated)
+### CYGWIN Method 
 
 - Copy paste this code block into Powershell as Adminastrator (Ctrl+V will copy as a block but only when as Admin for some reason)
 - Will need to run it twice because the first time its install choco then the second time it will install cywin
 
 ```
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$url = "https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/cygwin-setup.ps1"
+$url = "https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/1-cygwin-setup.ps1"
 $file = "$env:temp\cygwin-setup.ps1"
 
 (New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
@@ -90,28 +90,6 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 	- `sudo apt-get install ansible git -y`
 
 
-
-### WinRM (Linux Controler + Windows Host) Method 
-FYI will never work with ansible-pull because winRM protocol can only be sent through a controller machine not localy
-FYI when I tried making a host file in my normal ansible repo (linux and mac one) it would not let me run ansible-pull even on linux or mac 
-
-
-### Git bash Method
-- In powershell not as admin
-	- `winget install --id Git.Git -e --source winget`
-
-### Choco and Winget Dump method
-- Make a script that I would run as Admin in Powershell
-```
-	 # Ensure chocolatey installed
-if ([bool](Get-Command -Name 'choco' -ErrorAction SilentlyContinue)) {
-    Write-Verbose "Chocolatey is already installed, skip installation." -Verbose
-}
-else {
-    Write-Verbose "Installing Chocolatey..." -Verbose
-    Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-} 
-```
 
 
 ###############################################################
