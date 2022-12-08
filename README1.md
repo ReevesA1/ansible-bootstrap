@@ -54,7 +54,8 @@
 
 ### CYGWIN Method (Automated)
 
-- Copy paste this code block into Powershell as Adminastrator
+- Copy paste this code block into Powershell as Adminastrator (Ctrl+V will copy as a block but only when as Admin for some reason)
+- Will need to run it twice because the first time its install choco then the second time it will install cywin
 
 ```
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -94,20 +95,6 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 FYI will never work with ansible-pull because winRM protocol can only be sent through a controller machine not localy
 FYI when I tried making a host file in my normal ansible repo (linux and mac one) it would not let me run ansible-pull even on linux or mac 
 
-### CYGWIN Method 
-- FYI When running in my normal ansble repo (linux and mac one) it would start the ansible play but get cought up on every linux "snap" play for some reason????
-	- FYI My plan is to try building a ansible repo only for windows
-- STEPS TO INSTALL ING CYGWIN in POWERSHELL AS ADMIN
-- Install choco 
-	- `Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
-- Install Cygwin & Packages
-	- `choco install cygwin --params "/InstallDir:C:\cygwin64 /DesktopIcon"`
-	- `cd C:\cygwin64`
-	- `./cygwinsetup.exe --quiet-mode --packages git,pip`
-	- `pip3 install ansible`
-	- `/usr/bin/python3.7 -m pip install --upgrade pip`
-	- `ansible-galaxy collection install ansible.windows`
-	- `ansible-galaxy collection install chocolatey.chocolatey`
 
 ### Git bash Method
 - In powershell not as admin
