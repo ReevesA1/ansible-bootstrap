@@ -95,6 +95,7 @@ FYI when I tried making a host file in my normal ansible repo (linux and mac one
 	- `pip3 install ansible`
 	- `/usr/bin/python3.7 -m pip install --upgrade pip`
 	- `ansible-galaxy collection install ansible.windows`
+	- `ansible-galaxy collection install chocolatey.chocolatey`
 
 ### Choco and Winget Dump method
 - Make a script that I would run as Admin in Powershell
