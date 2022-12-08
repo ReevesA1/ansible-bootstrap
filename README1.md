@@ -91,7 +91,9 @@ FYI when I tried making a host file in my normal ansible repo (linux and mac one
 - Install Cygwin & Packages
 	- `choco install cygwin --params "/InstallDir:C:\cygwin64 /DesktopIcon"`
 	- `cd C:\cygwin64`
-	- `./cygwinsetup.exe --quiet-mode --packages wget,nano,git,ansible`
+	- `./cygwinsetup.exe --quiet-mode --packages wget,nano,git,pip`
+	- `pip3 install ansible`
+	- `/usr/bin/python3.7 -m pip install --upgrade pip`
 
 ### Choco and Winget Dump method
 - Make a script that I would run as Admin in Powershell
