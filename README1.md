@@ -55,7 +55,6 @@
 ### CYGWIN Method 
 
 - Copy paste this code block into Powershell as Adminastrator (Ctrl+V will copy as a block but only when as Admin for some reason)
-- Will need to run it twice because the first time its install choco then the second time it will install cywin
 
 
 ```
@@ -66,7 +65,9 @@ $file = "$env:homepath\Downloads\1-cygwin-setup.ps1"
 (New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
 powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
 ```
-- get the second script I need to run in cygwin
+- Will need to run it twice CLOSE AND RELAUNCH POWERSHELL MANUALY then run code block again
+	- First time its install choco then the second time it will install cygwin (i need to find a way to .source powershell to avoid this)
+- then get the second script I need to run in cygwin 
 ```
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $url = "https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/2-run-in-cygwin.sh"
