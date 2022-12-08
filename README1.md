@@ -51,7 +51,19 @@
 
 
 ## Windows
-- https://phoenixnap.com/kb/install-ansible-on-windows
+
+### CYGWIN Method (Automated)
+
+- Copy paste this code block into Powershell as Adminastrator
+
+```
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+$url = "https://raw.githubusercontent.com/AlexNabokikh/windows-playbook/master/setup.ps1"
+$file = "$env:temp\setup.ps1"
+
+(New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
+powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
+```
 
 
 ### WSL Method (Works)
@@ -91,11 +103,15 @@ FYI when I tried making a host file in my normal ansible repo (linux and mac one
 - Install Cygwin & Packages
 	- `choco install cygwin --params "/InstallDir:C:\cygwin64 /DesktopIcon"`
 	- `cd C:\cygwin64`
-	- `./cygwinsetup.exe --quiet-mode --packages wget,nano,git,pip`
+	- `./cygwinsetup.exe --quiet-mode --packages git,pip`
 	- `pip3 install ansible`
 	- `/usr/bin/python3.7 -m pip install --upgrade pip`
 	- `ansible-galaxy collection install ansible.windows`
 	- `ansible-galaxy collection install chocolatey.chocolatey`
+
+### Git bash Method
+- In powershell not as admin
+	- `winget install --id Git.Git -e --source winget`
 
 ### Choco and Winget Dump method
 - Make a script that I would run as Admin in Powershell
