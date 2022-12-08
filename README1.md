@@ -53,19 +53,9 @@
 ## Windows
 - https://phoenixnap.com/kb/install-ansible-on-windows
 
-### Install Choco (all methods need it)
-```
-	 # Ensure chocolatey installed
-if ([bool](Get-Command -Name 'choco' -ErrorAction SilentlyContinue)) {
-    Write-Verbose "Chocolatey is already installed, skip installation." -Verbose
-}
-else {
-    Write-Verbose "Installing Chocolatey..." -Verbose
-    Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-} 
-```
-### WSL Method
-FYI this Method works, I have to make custom facts file manualy (i only tested "skip" fact on all of them--> could make a script to automate that)
+
+### WSL Method (Works)
+FYI I have to make custom facts file manualy (i only tested "skip" fact on all of them--> could make a script to automate that)
 FYI eveything is contained inside the WSL distro and I can't manipulate windows at all
 
 STEPS
@@ -89,28 +79,32 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 
 
 ### WinRM (Linux Controler + Windows Host) Method 
+FYI will never work with ansible-pull because winRM protocol can only be sent through a controller machine not localy
+FYI when I tried making a host file in my normal ansible repo (linux and mac one) it would not let me run ansible-pull even on linux or mac 
 
-Windows Host machine
-- enable and configure winrm `winrm quickconfig`
+### CYGWIN Method 
+- FYI When running in my normal ansble repo (linux and mac one) it would start the ansible play but get cought up on every linux "snap" play for some reason????
+	- FYI My plan is to try building a ansible repo only for windows
+- STEPS TO INSTALL ING CYGWIN in POWERSHELL AS ADMIN
+- Install choco 
+	- `Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`
+- Install Cygwin & Packages
+	- `choco install cygwin --params "/InstallDir:C:\cygwin64 /DesktopIcon"`
+	- `cd C:\cygwin64`
+	- `./cygwinsetup.exe --quiet-mode --packages wget,nano,git,ansible`
 
-Linux Controler Machine
-- Make a hosts file in sudo nano /etc/ansible/hosts
+### Choco and Winget Dump method
+- Make a script that I would run as Admin in Powershell
 ```
-- [win] #This is the group name
-35.177.240.58
-
-[win:vars] # These are the group variables
-ansible_user=Administrator
-ansible_password="hvADJA(xnxEMiPPMc?I8HgjiMEKDkqek"
-ansible_port=5986
-ansible_connection=winrm
-ansible_winrm_scheme=https
-ansible_winrm_server_cert_validation=ignore
-ansible_winrm_kerberos_delegation=true
+	 # Ensure chocolatey installed
+if ([bool](Get-Command -Name 'choco' -ErrorAction SilentlyContinue)) {
+    Write-Verbose "Chocolatey is already installed, skip installation." -Verbose
+}
+else {
+    Write-Verbose "Installing Chocolatey..." -Verbose
+    Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+} 
 ```
-- Change The Server IP address to be your server's IP address
-- Change the ansible_password to be your server password for the user Administrator
-- then see if they connect `ansible win -m win_ping`
 
 
 ###############################################################
@@ -143,7 +137,7 @@ ansible_winrm_kerberos_delegation=true
 #           `""""""'  `"""""'
 #
 
-## Mac 
+## Mac Homebrew file Dump Method
 - Install xcode-command-line-tools
 	- `xcode-select --install` 
 - Install Homebrew
