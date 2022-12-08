@@ -21,7 +21,7 @@ else {
 
 choco install cygwin --params "/InstallDir:C:\cygwin64 /DesktopIcon"
 
-# the rest make a second script and run in cygwin
+# the rest make a second script and run in cygwin maybe
 
 cd C:\cygwin64
 
