@@ -70,7 +70,7 @@ powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
 ```
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $url = "https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/2-run-in-cygwin.sh"
-$file = "$env:homepath\Downloads\2-run-in-cygwin.sh"
+$file = "C:\cygwin64\home\rocket\2-run-in-cygwin.sh"
 (New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
 ```
 
