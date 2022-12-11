@@ -67,7 +67,9 @@ $ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA
 Invoke-Expression $($ScriptFromGithHub.Content)
 }
 ```
+- Restart PC
 - If I want Debloat with `irm christitus.com/win | iex`
+	- Restart PC Again
 
 ### WSL Method (Works)
 FYI I have to make custom facts file manualy (i only tested "skip" fact on all of them--> could make a script to automate that)
