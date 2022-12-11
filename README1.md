@@ -25,7 +25,7 @@ _)      \.___.,|     .'
      `-'       `--' hjm
 ```
 
-### Arch
+## Arch
 - Must install Snap manualy, if paru is installed like garuda the initilising script command bellow will install it
 
 
@@ -50,7 +50,7 @@ _)      \.___.,|     .'
        ````^^^^  ^^MMMMMMMMMMMMMMMMM
                       ````^^^^^^MMMM
 ```
-### pull straight from git method (no ansible)
+## Pull From Git Method (NO Ansible)
 
 
 - Always Run `winget upgrade --all`
@@ -67,7 +67,7 @@ Invoke-Expression $($ScriptFromGithHub.Content)
 	- Keep in mind My script has Titus's right click menu command  and bloated apps Commands
 	- Restart PC Again
 
-### Ansible WSL Method (Works)
+## Ansible WSL Method (Works)
 FYI I have to make custom facts file manualy (i only tested "skip" fact on all of them--> could make a script to automate that)
 FYI eveything is contained inside the WSL distro and I can't manipulate windows at all
 
@@ -122,7 +122,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
            `""""""'  `"""""'
 ```
 
-### Mac Homebrew file Dump Method
+## Mac Homebrew file Dump Method
 - Install xcode-command-line-tools
 	- `xcode-select --install` 
 - Install Homebrew
@@ -140,7 +140,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 	- `sudo spctl --master-disable`
   
 
-### Parallels Ubuntu
+## Parallels Ubuntu
 - First BEFORE RUNNING THE SCRIPT
   - CHANGE KEY BINDINGS
     - Top Bar --> Device --> Keyboard --> customize --> click on Ubuntu in left pane 
@@ -213,7 +213,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 ```
 
 
-### Download & Run Bootstrap Scripts
+## Download & Run Bootstrap Scripts
 
 
 - `wget https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/master-script.sh && find $HOME/master-script.sh  -type f -print0 | xargs -0 chmod 775 && ./master-script.sh`
@@ -221,7 +221,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 
 
 
-### Run desired scripts 
+## Run desired scripts 
 
 - dash-to-dock for Gnome (not needed on ubuntu)
     - Must do a restart before it can be enabled!
@@ -229,7 +229,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 
 
 
-### Set Custom Facts
+## Set Custom Facts
 
 - Edit Custom facts if need be
     - Linux  `nano /etc/ansible/facts.d/custom.fact`
