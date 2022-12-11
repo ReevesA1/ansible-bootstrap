@@ -55,10 +55,10 @@
 ### CYGWIN Method 
 
 
-- Programs I need to download manually
+- Programs I need to download manually (should all be in mega folder)
 	- Only Arm64 so powershell admin works properly in windows Terminal = https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170
 	- Python3 (need to hit 3 options during install) = https://www.python.org/downloads/windows/
-	- Ms Build Tools (Must check Visual Studio Build tools 2022 7gb ish/will work for Arm)= https://visualstudio.microsoft.com/visual-cpp-build-tools/
+	- Visual Studio Build Tools (Must check Desktop development with C++ 7gb ish/will work for Arm)= https://visualstudio.microsoft.com/visual-cpp-build-tools/
 
 
 - then update winget `winget upgrade --all`
