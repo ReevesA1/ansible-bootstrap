@@ -29,21 +29,21 @@ else {
 Write-Host "Installing Choco Apps"
 
 $ChocoPackages = @(
-    "7zip"
-    "qttabbar"
-    "onecommander"
-    "streamdeck"
-    "winaero-tweaker.install"
-    "tinymediamanager"
     "bat"
     "ripgrep"
     "hackfont"
+    "7zip"
+    "qttabbar"
+    "onecommander"
+    "winaero-tweaker.install"
+    "tinymediamanager"
     "object-desktop"
     "files"
+    "godot"
+#    "streamdeck"
 #    "icloud"
 #    "logseq"
 #    "utorrent"
-#    "godot"
 #    "translucenttb"
 #    "freefilesync"
 #    "airexplorer " #Closed sourse program I thought about using to sync megasync on a schedule 
@@ -51,6 +51,23 @@ $ChocoPackages = @(
 )
 
 ForEach ($ChocoApp in $ChocoPackages)
+{
+    choco install $ChocoApp  -y
+}
+
+
+################################################################
+##                       Install Winget Packages               ##
+################################################################
+
+Write-Host "Installing Winget Apps"
+
+$WingetPackages = @(
+    "7zip"
+  
+)
+
+ForEach ($WingetApp in $WingetPackages)
 {
     choco install $ChocoApp  -y
 }
