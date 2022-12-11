@@ -50,7 +50,7 @@ $Chocolist = @(
 Write-Host "Installing Choco Apps"
 
 foreach ($ChocoApp in $Chocolist) {
-    choco install $PackageName -y "*$ChocoApp*" 
+    choco install "*$ChocoApp*"  -y 
     Write-Host "Installing $ChocoApp."
 }
 
