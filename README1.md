@@ -194,15 +194,15 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
          !.........||||                     ||||
          !.........||||                     ||||
          !.........||||                     ||||
-         .........||||                     ,||||
+          .........||||                     ||||
           .;.......||||               _.-!!|||||
    .,uodWBBBBb.....||||       _.-!!|||||||||!:
-!YBBBBBBBBBBBBBBb..!|||:..-!!|||||||!iof68BBBBBb
-!..YBBBBBBBBBBBBBBb!!||||||||!iof68BBBBBBRPFT?!::   
-!....YBBBBBBBBBBBBBBbaaitf68BBBBBBRPFT?!:::::::::     
-!......YBBBBBBBBBBBBBBBBBBBRPFT?!::::::;:!^";:::       
-!........YBBBBBBBBBBRPFT?!::::::::::^...::::::;       
-..........YBRPFT?!::::::::::::::::::::::::;iof68bo.     
+  BBBBBBBBBBBBBBb..!|||:..-!!|||||||!iof68BBBBBb
+ ..YBBBBBBBBBBBBBBb!!||||||||!iof68BBBBBBRPFT?!::   
+ ....YBBBBBBBBBBBBBBbaaitf68BBBBBBRPFT?!:::::::::     
+ ......YBBBBBBBBBBBBBBBBBBBRPFT?!::::::;:!^";:::       
+ ........YBBBBBBBBBBRPFT?!::::::::::^...::::::;       
+ ..........YBRPFT?!::::::::::::::::::::::::;iof68bo.     
   ..........:::::::::::::::::::::::;iof688888888888b.    
     ........::::::::::::::::;iof688888888888888888888b.     
       ......:::::::::;iof688888888888888888888888888888b.
@@ -212,7 +212,9 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
                 !!8888888888888888899fT|!^"
                   !988888888899fT|!^"
                     !9899fT|!^"
-                      !^"  ```
+                      !^"  
+
+```
 
 
 # Download & Run Bootstrap Scripts
