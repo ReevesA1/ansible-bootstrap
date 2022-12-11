@@ -58,21 +58,25 @@
 
 
 ```
+.{
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $url = "https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/1-cygwin-setup.ps1"
 $file = "$env:homepath\Downloads\1-cygwin-setup.ps1"
 
 (New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
 powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
+}
 ```
 - Will need to run it twice CLOSE AND RELAUNCH POWERSHELL MANUALY then run code block again
 	- First time its install choco then the second time it will install cygwin (i need to find a way to .source powershell to avoid this)
 - Then Still in powershell as Admin get the second script I need to run in cygwin 
 ```
+.{
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $url = "https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/2-run-in-cygwin.sh"
 $file = "C:\cygwin64\home\rocket\2-run-in-cygwin.sh"
 (New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
+}
 ```
 - Open cygwin and run it
 
