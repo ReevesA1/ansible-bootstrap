@@ -179,7 +179,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
   -  `sudo apt remove ansible`
   -  (Next time try without this) `sudo apt install pip && sudo pip install ansible` FUCKING MAKE SURE THESE BOTH HAVE SUDO
   
-
+# Universal
 
 ```
 
@@ -218,7 +218,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 ```
 
 
-# Download & Run Bootstrap Scripts
+### Download & Run Bootstrap Scripts
 
 
 - `wget https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/master-script.sh && find $HOME/master-script.sh  -type f -print0 | xargs -0 chmod 775 && ./master-script.sh`
@@ -226,7 +226,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 
 
 
-# Run desired scripts 
+### Run desired scripts 
 
 - dash-to-dock for Gnome (not needed on ubuntu)
     - Must do a restart before it can be enabled!
@@ -234,7 +234,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 
 
 
-# Set Custom Facts
+### Set Custom Facts
 
 - Edit Custom facts if need be
     - Linux  `nano /etc/ansible/facts.d/custom.fact`
