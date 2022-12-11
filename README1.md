@@ -3,8 +3,8 @@
 - Make sure it is updated `sudo apt update` or packages won't get installed
 
 
-################################################################
-##                   Linux                                    ##
+
+# Linux 
 
 ```
     _nnnn_
@@ -25,11 +25,11 @@ _)      \.___.,|     .'
      `-'       `--' hjm
 ```
 
-## Arch
+### Arch
 - Must install Snap manualy, if paru is installed like garuda the initilising script command bellow will install it
 
-################################################################
-##                   Windows                                ##
+
+# Windows 
 
 ```
                    .oodMMMMMMMMMMMMM
@@ -50,8 +50,7 @@ _)      \.___.,|     .'
        ````^^^^  ^^MMMMMMMMMMMMMMMMM
                       ````^^^^^^MMMM
 ```
-
-## Windows
+### pull straight from git method (no ansible)
 
 - Make Windows Terminal Launch Parallels Arm 64  Fix "launch as admin" in Windows Terminal
 	- Run `winget upgrade --all`
@@ -73,7 +72,7 @@ Invoke-Expression $($ScriptFromGithHub.Content)
 	- Keep in mind My script has Titus's right click menu command  and bloated apps Commands
 	- Restart PC Again
 
-### WSL Method (Works)
+### Ansible WSL Method (Works)
 FYI I have to make custom facts file manualy (i only tested "skip" fact on all of them--> could make a script to automate that)
 FYI eveything is contained inside the WSL distro and I can't manipulate windows at all
 
@@ -98,8 +97,8 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 
 
 
-###############################################################
-##                  Mac                                   ##
+
+# Mac  
 
 ```
                        .888
@@ -128,7 +127,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
            `""""""'  `"""""'
 ```
 
-## Mac Homebrew file Dump Method
+### Mac Homebrew file Dump Method
 - Install xcode-command-line-tools
 	- `xcode-select --install` 
 - Install Homebrew
@@ -146,7 +145,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 	- `sudo spctl --master-disable`
   
 
-## Parallels Ubuntu
+### Parallels Ubuntu
 - First BEFORE RUNNING THE SCRIPT
   - CHANGE KEY BINDINGS
     - Top Bar --> Device --> Keyboard --> customize --> click on Ubuntu in left pane 
@@ -181,7 +180,42 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
   -  (Next time try without this) `sudo apt install pip && sudo pip install ansible` FUCKING MAKE SURE THESE BOTH HAVE SUDO
   
 
-  
+
+  ```
+
+                       .,,uod8B8bou,,.
+              ..,uod8BBBBBBBBBBBBBBBBRPFT?l!i:.
+         ,=m8BBBBBBBBBBBBBBBRPFT?!||||||||||||||
+         !...:!TVBBBRPFT||||||||||!!^^""'   ||||
+         !.......:!?|||||!!^^""'            ||||
+         !.........||||                     ||||
+         !.........||||  ##                 ||||
+         !.........||||                     ||||
+         !.........||||                     ||||
+         !.........||||                     ||||
+         !.........||||                     ||||
+         `.........||||                    ,||||
+          .;.......||||               _.-!!|||||
+   .,uodWBBBBb.....||||       _.-!!|||||||||!:'
+!YBBBBBBBBBBBBBBb..!|||:..-!!|||||||!iof68BBBBBb....
+!..YBBBBBBBBBBBBBBb!!||||||||!iof68BBBBBBRPFT?!::   `.
+!....YBBBBBBBBBBBBBBbaaitf68BBBBBBRPFT?!:::::::::     `.
+!......YBBBBBBBBBBBBBBBBBBBRPFT?!::::::;:!^"`;:::       `.
+!........YBBBBBBBBBBRPFT?!::::::::::^''...::::::;         iBBbo.
+`..........YBRPFT?!::::::::::::::::::::::::;iof68bo.      WBBBBbo.
+  `..........:::::::::::::::::::::::;iof688888888888b.     `YBBBP^'
+    `........::::::::::::::::;iof688888888888888888888b.     `
+      `......:::::::::;iof688888888888888888888888888888b.
+        `....:::;iof688888888888888888888888888888888899fT!
+          `..::!8888888888888888888888888888888899fT|!^"'
+            `' !!988888888888888888888888899fT|!^"'
+                `!!8888888888888888899fT|!^"'
+                  `!988888888899fT|!^"'
+                    `!9899fT|!^"'
+                      `!^"'  
+											
+											```
+
 
 # Download & Run Bootstrap Scripts
 
