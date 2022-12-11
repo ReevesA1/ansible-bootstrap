@@ -1,4 +1,7 @@
-# Ensure PowerShell execution policy is set to RemoteSigned for the current user
+
+##################################################################################
+# Ensure PowerShell execution policy is set to RemoteSigned for the current user #
+##################################################################################
 $ExecutionPolicy = Get-ExecutionPolicy -Scope CurrentUser
 if ($ExecutionPolicy -eq "RemoteSigned") {
     Write-Verbose "Execution policy is already set to RemoteSigned for the current user, skipping..." -Verbose
@@ -7,8 +10,10 @@ else {
     Write-Verbose "Setting execution policy to RemoteSigned for the current user..." -Verbose
     Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 }
+################################################################
+##                  Ensure chocolatey installed               ##
+################################################################
 
-# Ensure chocolatey installed
 if ([bool](Get-Command -Name 'choco' -ErrorAction SilentlyContinue)) {
     Write-Verbose "Chocolatey is already installed, skip installation." -Verbose
 }
@@ -17,21 +22,44 @@ else {
     Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 }
 
+################################################################
+##                       Install Choco Packages               ##
+################################################################
 
-# Install Packages
-$Packages = @(
+# ORIGINAL LINES THAT WORKED
+#$Packages = @(
+#    "roboform"
+#    "7zip"
+#)
+#
+#ForEach ($PackageName in $Packages)
+#{
+#    choco install $PackageName -y
+#}
+
+$Chocolist = @(
+    #Unnecessary Windows 10 AppX Apps
     "roboform"
     "7zip"
+    "firefox"
 )
 
-ForEach ($PackageName in $Packages)
-{
-    choco install $PackageName -y
+
+
+
+Write-Host "Installing Choco Apps"
+
+foreach ($ChocoApp in $Chocolist) {
+    choco install $PackageName -y "*$ChocoApp*" 
+    Write-Host "Installing $ChocoApp."
 }
 
 
 
-# Remove Bloat Packages
+################################################################
+##                  Remove Bloat Packages                     ##
+################################################################
+
 
 $Bloatware = @(
     #Unnecessary Windows 10 AppX Apps
@@ -150,20 +178,28 @@ foreach ($Bloat in $Bloatware) {
 }
 
 
-#################################################################
+################################################################
+##               Classic Right Click Menu                      ##
+################################################################
 
-
+Write-Host "Restoring Classic Right CLick Menu"
 New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" -Name "InprocServer32" -force -value ""       
  
     
 
 
 
-# These dont work
-#_____________________________
+################################################################
+##               Final Touches                                ##
+################################################################
+
+Write-Output "Restart computer "
 
 
-#Write-Output "Restart computer "
+#####################################################################
+##     XXXXXXXXXXXXXX  These dont work yet XXXXXXXXXXXXXXXXXXXXX   ##
+#####################################################################
+
 #Restart-Computer
 
 #Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
