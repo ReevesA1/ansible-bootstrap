@@ -76,7 +76,7 @@ Write-Host "Installing Winget Apps"
 
 $WingetPackages = @(
     "DebaucheeOpenSourceGroup.Barrier"
-    "Cygwin.Cygwin"
+    "Cygwin.Cygwin" # this actualy installs it where it needs to be C:\cygwin64
 )
 
 ForEach ($WingetApp in $WingetPackages)
@@ -84,6 +84,17 @@ ForEach ($WingetApp in $WingetPackages)
     winget install -e --id $WingetApp 
 }
 
+Write-Host "Remove Winget Apps"
+
+$RemoveWingetPackages = @(
+    "DebaucheeOpenSourceGroup.Barrier"
+    "Cygwin.Cygwin" 
+)
+
+ForEach ($RMWingetApp in $RemoveWingetPackages)
+{
+    winget uninstall -e --id $RMWingetApp 
+}
 
 
 ################################################################
