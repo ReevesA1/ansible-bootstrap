@@ -40,20 +40,32 @@ $ChocoPackages = @(
     "object-desktop"
     "files"
     "godot"
-#    "streamdeck"
-#    "icloud"
-#    "logseq"
-#    "utorrent"
-#    "translucenttb"
-#    "freefilesync"
-#    "airexplorer " #Closed sourse program I thought about using to sync megasync on a schedule 
-#    "obsidian"
 )
 
 ForEach ($ChocoApp in $ChocoPackages)
 {
     choco install $ChocoApp  -y
 }
+
+
+Write-Host "Removing Choco Apps"
+
+$RemoveChocoPackages = @(
+    "streamdeck"
+    "icloud"
+    "logseq"
+    "utorrent"
+    "translucenttb"
+    "freefilesync"
+    "airexplorer " #Closed sourse program I thought about using to sync megasync on a schedule 
+    "obsidian"
+)
+
+ForEach ($RMChocoApp in $RemoveChocoPackages)
+{
+    choco uninstall $ChocoApp  -y
+}
+
 
 
 ################################################################
@@ -64,12 +76,14 @@ Write-Host "Installing Winget Apps"
 
 $WingetPackages = @(
     "7zip"
+    "DebaucheeOpenSourceGroup.Barrier"
+    "Cygwin.Cygwin"
   
 )
 
 ForEach ($WingetApp in $WingetPackages)
 {
-    choco install $ChocoApp  -y
+    winget install -e --id $WingetApp  -y
 }
 
 
