@@ -104,9 +104,6 @@ $WingetPackages = @(
     "Mozilla.Firefox"
 
 
-    #Privacy and Security Focused
-    "IDRIX.VeraCrypt"
-    "ProtonTechnologies.ProtonVPN"
 
     #Productivity
     "Notion.Notion"
@@ -157,7 +154,7 @@ $WingetPackages = @(
 #    "Oxen.Session"
 #    "Discord.Discord"
     ####Media
-#"Spotify.Spotify"
+#   "Spotify.Spotify"
     ####Gaming
 #    "Valve.Steam"
 #    "Nvidia.GeForceExperience"
@@ -165,6 +162,9 @@ $WingetPackages = @(
 #    "ElectronicArts.EADesktop"
 #    "Amazon.Games"
 #    "GOG.Galaxy"
+    #####Privacy and Security Focused
+#    "IDRIX.VeraCrypt"
+#    "ProtonTechnologies.ProtonVPN"
 
 
 ############Only if a server make a function ###################
