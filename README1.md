@@ -52,15 +52,10 @@ _)      \.___.,|     .'
 ```
 ### pull straight from git method (no ansible)
 
-- Make Windows Terminal Launch Parallels Arm 64  Fix "launch as admin" in Windows Terminal
-	- Run `winget upgrade --all`
-  - then Download and install 
-	  - https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170
 
-
-- Main Windows Boostrap Script Command
 - Always Run `winget upgrade --all`
-	- Then In Powershell as Admin Run
+- Then In Powershell as Admin Run
+
 ```
 .{
 $ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/win-public-bootsrap.ps1
