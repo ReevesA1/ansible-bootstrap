@@ -54,7 +54,7 @@
 
 ### CYGWIN Method 
 
-- Copy paste this code block into Powershell as Adminastrator (Ctrl+V will copy as a block but only when as Admin for some reason)
+- Copy paste this code block into Powershell as Adminastrator 
 
 
 ```
@@ -67,8 +67,6 @@ $file = "$env:homepath\Downloads\1-cygwin-setup.ps1"
 powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
 }
 ```
-- Will need to run it twice CLOSE AND RELAUNCH POWERSHELL MANUALY then run code block again
-	- First time its install choco then the second time it will install cygwin (i need to find a way to .source powershell to avoid this)
 - Then Still in powershell as Admin get the second script I need to run in cygwin 
 ```
 .{
@@ -78,7 +76,8 @@ $file = "C:\cygwin64\home\rocket\2-run-in-cygwin.sh"
 (New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
 }
 ```
-- Open cygwin and run it
+- Open cygwin AS ADMIN!!!! and run it 
+	- `ls` to see if its there then `./2-run-in-cygwin.sh`
 
 ### WSL Method (Works)
 FYI I have to make custom facts file manualy (i only tested "skip" fact on all of them--> could make a script to automate that)
