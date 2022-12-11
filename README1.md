@@ -67,7 +67,7 @@ $file = "$env:homepath\Downloads\1-cygwin-setup.ps1"
 powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
 }
 ```
-- Then Still in powershell as Admin get the second script I need to run in cygwin 
+- Then Still in powershell as Admin run this code to download script (for some reason it doesnt allways work just keep trying wtf)
 ```
 .{
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
