@@ -6,23 +6,24 @@
 ################################################################
 ##                   Linux                                    ##
 
-#    _nnnn_
-#        dGGGGMMb
-#       @p~qp~~qMb
-#       M|@||@) M|
-#       @,----.JM|
-#      JS^\__/  qKL
-#     dZP        qKRb
-#    dZP          qKKb
-#   fZP            SMMb
-#   HZM            MMMM
-#   FqM            MMMM
-# __| ".        |\dS"qML
-# |    `.       | `' \Zq
-#_)      \.___.,|     .'
-#\____   )MMMMMP|   .'
-#     `-'       `--' hjm
-#
+```
+    _nnnn_
+        dGGGGMMb
+       @p~qp~~qMb
+       M|@||@) M|
+       @,----.JM|
+      JS^\__/  qKL
+     dZP        qKRb
+    dZP          qKKb
+   fZP            SMMb
+   HZM            MMMM
+   FqM            MMMM
+ __| ".        |\dS"qML
+ |    `.       | `' \Zq
+_)      \.___.,|     .'
+\____   )MMMMMP|   .'
+     `-'       `--' hjm
+```
 
 ## Arch
 - Must install Snap manualy, if paru is installed like garuda the initilising script command bellow will install it
@@ -30,29 +31,29 @@
 ################################################################
 ##                   Windows                                ##
 
-
-#                   .oodMMMMMMMMMMMMM
-#       ..oodMMM  MMMMMMMMMMMMMMMMMMM
-# oodMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
-# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
-# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
-# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
-# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
-# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
-# 
-# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
-# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
-# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
-# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
-# MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
-# `^^^^^^MMMMMMM  MMMMMMMMMMMMMMMMMMM
-#       ````^^^^  ^^MMMMMMMMMMMMMMMMM
-#                      ````^^^^^^MMMM
-
+```
+                   .oodMMMMMMMMMMMMM
+       ..oodMMM  MMMMMMMMMMMMMMMMMMM
+ oodMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ 
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMM  MMMMMMMMMMMMMMMMMMM
+ `^^^^^^MMMMMMM  MMMMMMMMMMMMMMMMMMM
+       ````^^^^  ^^MMMMMMMMMMMMMMMMM
+                      ````^^^^^^MMMM
+```
 
 ## Windows
 
-- Parallels Arm 64  Fix "launch as admin" in Windows Terminal
+- Make Windows Terminal Launch Parallels Arm 64  Fix "launch as admin" in Windows Terminal
 	- Run `winget upgrade --all`
   - then Download and install 
 	  - https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170
@@ -100,32 +101,32 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 ###############################################################
 ##                  Mac                                   ##
 
-
-#                       .888
-#                     .8888'
-#                    .8888'
-#                    888'
-#                    8'
-#       .88888888888. .88888888888.
-#    .8888888888888888888888888888888.
-#  .8888888888888888888888888888888888.
-# .&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'
-# &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'
-# &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'
-# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:
-# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:
-# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:
-# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.
-# %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.
-# `%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.
-# `00000000000000000000000000000000000'
-#  `000000000000000000000000000000000'
-#   `0000000000000000000000000000000'
-#     `###########################'
-#       `#######################'
-#         `#########''########'
-#           `""""""'  `"""""'
-#
+```
+                       .888
+                     .8888'
+                    .8888'
+                    888'
+                    8'
+       .88888888888. .88888888888.
+    .8888888888888888888888888888888.
+  .8888888888888888888888888888888888.
+ .&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'
+ &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'
+ &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&'
+ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:
+ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:
+ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.
+ `%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.
+ `00000000000000000000000000000000000'
+  `000000000000000000000000000000000'
+   `0000000000000000000000000000000'
+     `###########################'
+       `#######################'
+         `#########''########'
+           `""""""'  `"""""'
+```
 
 ## Mac Homebrew file Dump Method
 - Install xcode-command-line-tools
