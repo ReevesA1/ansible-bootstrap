@@ -52,47 +52,7 @@
 
 ## Windows
 
-### CYGWIN Method 
-
-- Update winget `winget upgrade --all`
-
-- Programs I need to download manually (should all be in mega folder)
-	- Only Arm64 so powershell admin works properly in windows Terminal = https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170
-	- Python3 (need to hit 2 options during install) = https://www.python.org/downloads/windows/
-	- Visual Studio Build Tools (Must check Desktop development with C++ 7gb ish/will work for Arm)= https://visualstudio.microsoft.com/visual-cpp-build-tools/
-
-
-
-- Copy paste this code block into Powershell as Adminastrator 
-
-
-```
-.{
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$url = "https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/1-cygwin-setup.ps1"
-$file = "$env:homepath\Downloads\1-cygwin-setup.ps1"
-
-(New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
-powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
-}
-```
-
-
-- Launch Cygwin As ADMIN once so it creates folders
-- Then Still in powershell as Admin run this code to download script 
-
-
-```
-.{
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$url = "https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/2-run-in-cygwin.sh"
-$file = "c:\cygwin64\home\rocket\2-run-in-cygwin.sh"
-(New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
-}
-```
-- Open cygwin AS ADMIN!!!! and run it 
-	- `ls` to see if its there then `./2-run-in-cygwin.sh`
-
+- Fix "launch as admin" in Windows Terminal in Parallels Arm 64 =  https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170
 
 
 ### WSL Method (Works)
