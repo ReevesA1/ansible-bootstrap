@@ -26,32 +26,17 @@ else {
 ##                       Install Choco Packages               ##
 ################################################################
 
-# ORIGINAL LINES THAT WORKED
-#$Packages = @(
-#    "roboform"
-#    "7zip"
-#)
-#
-#ForEach ($PackageName in $Packages)
-#{
-#    choco install $PackageName -y
-#}
-
-$Chocolist = @(
-    #Unnecessary Windows 10 AppX Apps
-    "roboform -y"
-    "7zip -y"
-    "firefox -y"
-)
-
-
-
-
 Write-Host "Installing Choco Apps"
 
-foreach ($ChocoApp in $Chocolist) {
-    choco install "*$ChocoApp*"
-    Write-Host "Installing $ChocoApp."
+$ChocoPackages = @(
+    "roboform"
+    "7zip"
+    "firefox"
+)
+
+ForEach ($ChocoApp in $ChocoPackages)
+{
+    choco install $ChocoApp  -y
 }
 
 
