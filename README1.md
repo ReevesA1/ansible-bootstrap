@@ -52,7 +52,10 @@
 
 ## Windows
 
-- Fix "launch as admin" in Windows Terminal in Parallels Arm 64 =  https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170
+- Parallels Arm 64  Fix "launch as admin" in Windows Terminal
+	- Run `winget upgrade --all`
+  - then Download and install 
+	  - https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170
 
 - In Powershell as Admin Run
 ```

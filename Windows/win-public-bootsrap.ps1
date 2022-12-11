@@ -40,6 +40,10 @@ $ChocoPackages = @(
     "object-desktop"
     "files"
     "godot"
+############ not on Parallesls make a function for that################
+#    "virtualbox" 
+#    "virtualbox-guest-additions-guest.install
+#    "icloud"
 )
 
 ForEach ($ChocoApp in $ChocoPackages)
@@ -48,11 +52,13 @@ ForEach ($ChocoApp in $ChocoPackages)
 }
 
 
+##########################
+
+
 Write-Host "Removing Choco Apps"
 
 $RemoveChocoPackages = @(
     "streamdeck"
-    "icloud"
     "logseq"
     "utorrent"
     "translucenttb"
@@ -75,8 +81,83 @@ ForEach ($RMChocoApp in $RemoveChocoPackages)
 Write-Host "Installing Winget Apps"
 
 $WingetPackages = @(
-    "DebaucheeOpenSourceGroup.Barrier"
+    
+    #Windows Power User
+    "Microsoft.VisualStudioCode"
     "Cygwin.Cygwin" # this actualy installs it where it needs to be C:\cygwin64
+    "Microsoft.PowerAutomateDesktop"
+    "Microsoft.PowerToys"
+
+
+    #Browsers
+    "Mozilla.Firefox"
+
+    #Networking 
+    "ZeroTier.ZeroTierOne"
+    "Mega.MEGASync"
+    "Google.Drive" #Im paying 25/year for 100gb might as well use it, this app will mount it as a drive
+
+
+
+    #Privacy and Security Focused
+    "IDRIX.VeraCrypt"
+    "ProtonTechnologies.ProtonVPN"
+
+
+
+    
+
+    #Utilities
+    "Lexikos.AutoHotkey"
+    "File-New-Project.EarTrumpet"
+    "Balena.Etcher"
+    "RaspberryPiFoundation.RaspberryPiImager"
+    "RustDesk.RustDesk"
+    "REALiX.HWiNFO"
+    "MiniTool.PartitionWizard.Free"
+    "QL-Win.QuickLook"
+    "ShareX.ShareX"
+    "NathanOsman.NitroShare"
+    "Flameshot.Flameshot"
+    "Logitech.GHUB"
+    "ElaborateBytes.VirtualCloneDrive"
+    "VideoLAN.VLC"
+    "BleachBit.BleachBit"
+
+
+
+
+    #Social
+    "Oxen.Session"
+
+
+    #Work together (look in Notion espanso page for video)
+    "Espanso.Espanso"
+    "voidtools.Everything"
+    "Flow-Launcher.Flow-Launcher"
+
+    #Terminal
+    #winget install -e --id Microsoft.WindowsTerminal  #should be there natively now
+    "Starship.Starship"
+
+
+
+############ not on Parallesls make a function for that################
+#    "DebaucheeOpenSourceGroup.Barrier"
+#    "Nvidia.GeForceExperience"
+#    "Valve.Steam"
+
+############Only if a server make a function ###################
+    ##Media SERVER 
+#    "Jellyfin.Server"
+#    "Plex.Plex" # not sure what is different then `winget install -e --id Plex.PlexMediaPlayer`, but this install the app
+#    "Plex.PlexMediaServer" #also need this for the actual server
+    ##Torrent Server
+#    "AppWork.JDownloader"
+#    "c0re100.qBittorrent-Enhanced-Edition"
+    #Gaming Server
+
+
 )
 
 ForEach ($WingetApp in $WingetPackages)
@@ -84,11 +165,86 @@ ForEach ($WingetApp in $WingetPackages)
     winget install -e --id $WingetApp 
 }
 
+
+################
+
+
 Write-Host "Remove Winget Apps"
 
 $RemoveWingetPackages = @(
-    "DebaucheeOpenSourceGroup.Barrier"
-    "Cygwin.Cygwin" 
+
+    # Replaced On MAc
+    "Twilio.Authy" #Only using on mac now
+    "Ferdium.Ferdium" # only using mail app on mac now but this app could be usefull for something else other then mail
+
+    #Gaming
+    "Nvidia.GeForceNow"
+    "Libretro.RetroArch"
+    "Emulationstation.Emulationstation"
+    "EpicGames.EpicGamesLauncher"
+    "ElectronicArts.EADesktop"
+    "Amazon.Games"
+    "GOG.Galaxy"
+    "BlueStack.BlueStacks"
+
+    #Media
+    "XBMCFoundation.Kodi"
+    "Stremio.Stremio"
+    "Spotify.Spotify"
+    "Amazon.Kindle"
+    "Plex.PlexMediaPlayer"
+
+    #Productivity
+    "Notion.Notion"
+    "MarkText.MarkText"
+    "Doist.Todoist"
+    "ransome1.sleek"
+    "ONLYOFFICE.DesktopEditors"
+    "RustemMussabekov.Raindrop"
+    "KDE.Krita"
+    "Joplin.Joplin"
+
+    #Social
+    "Telegram.TelegramDesktop"
+    "OpenWhisperSystems.Signal"
+    "Discord.Discord"
+    "Caprine.Caprine"
+
+
+    #Privacy and Security Focused
+    "PrestonN.FreeTube"
+    "OO-Software.ShutUp10"
+    "Bitwarden.Bitwarden"
+
+    #Browser 
+    "TorProject.TorBrowser"
+
+    #Linux Focused
+    "Git.Git"
+    "GitHub.GitHubDesktop"
+    "GitHub.cli"
+    "Microsoft.OpenSSH.Beta"
+    "Python.Python.3.9"
+    "Docker.DockerDesktop"
+    "GNU.Emacs"
+    "Neovim.Neovim"
+
+
+    #Mega has replaced these (has the most gb $ plan)
+    "extcloud.NextcloudDesktop"
+    "Insynchq.Insync"
+
+    #Terminals
+    "Eugeny.Tabby" #good for multiple ssh clients 
+
+
+    #Misc
+    "eTeks.SweetHome3D"
+    "VSCodium.VSCodium" # I Use Vs code way better for plugins
+    "Stardock.Fences" # Replaced with choco object-desktop
+    "Stardock.Start11" # Replaced with choco object-desktop
+
+
 )
 
 ForEach ($RMWingetApp in $RemoveWingetPackages)
