@@ -39,9 +39,9 @@ else {
 
 $Chocolist = @(
     #Unnecessary Windows 10 AppX Apps
-    "roboform"
-    "7zip"
-    "firefox"
+    "roboform -y"
+    "7zip -y"
+    "firefox -y"
 )
 
 
@@ -50,7 +50,7 @@ $Chocolist = @(
 Write-Host "Installing Choco Apps"
 
 foreach ($ChocoApp in $Chocolist) {
-    choco install "*$ChocoApp*"  -y 
+    choco install "*$ChocoApp*"
     Write-Host "Installing $ChocoApp."
 }
 
