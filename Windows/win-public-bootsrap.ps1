@@ -29,7 +29,7 @@ else {
 Write-Host "Installing Choco Apps"
 
 $ChocoPackages = @(
-    "roboform"
+    "roboform --ignore-checksums"
     "7zip"
     "firefox"
 )
