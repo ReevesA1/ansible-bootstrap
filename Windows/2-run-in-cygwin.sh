@@ -1,6 +1,7 @@
 cd C:\cygwin64
 
-./cygwinsetup.exe --quiet-mode --packages git,python3
+./cygwinsetup.exe --quiet-mode --packages git,python3,python3-devel,python3-setuptools,gcc,make 
+
 
 /usr/bin/python3.9.exe -m pip install --upgrade pip
 
