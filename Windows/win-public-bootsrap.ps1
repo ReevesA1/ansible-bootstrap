@@ -157,4 +157,4 @@ Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
 
 Write-Output "Restart computer "
 
-Invoke-Reboot
+Restart-Computer
