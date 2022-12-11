@@ -84,26 +84,31 @@ $WingetPackages = @(
     
     #Windows Power User
     "Microsoft.VisualStudioCode"
+    "GitHub.GitHubDesktop"
     "Cygwin.Cygwin" # this actualy installs it where it needs to be C:\cygwin64
     "Microsoft.PowerAutomateDesktop"
     "Microsoft.PowerToys"
+    "GitHub.cli"
+    "GitHub.GitHubDesktop"
+#    "Git.Git"
+#    "Microsoft.OpenSSH.Beta"
+#    "Python.Python.3.9"
+#    "Docker.DockerDesktop"
 
 
     #Browsers
     "Mozilla.Firefox"
-
-    #Networking 
-    "ZeroTier.ZeroTierOne"
-    "Mega.MEGASync"
-    "Google.Drive" #Im paying 25/year for 100gb might as well use it, this app will mount it as a drive
-
 
 
     #Privacy and Security Focused
     "IDRIX.VeraCrypt"
     "ProtonTechnologies.ProtonVPN"
 
-
+    #Productivity
+    "Notion.Notion"
+    "MarkText.MarkText"
+    "Doist.Todoist"
+    "RustemMussabekov.Raindrop"
 
     
 
@@ -116,8 +121,6 @@ $WingetPackages = @(
     "REALiX.HWiNFO"
     "MiniTool.PartitionWizard.Free"
     "QL-Win.QuickLook"
-    "ShareX.ShareX"
-    "NathanOsman.NitroShare"
     "Flameshot.Flameshot"
     "Logitech.GHUB"
     "ElaborateBytes.VirtualCloneDrive"
@@ -127,8 +130,6 @@ $WingetPackages = @(
 
 
 
-    #Social
-    "Oxen.Session"
 
 
     #Work together (look in Notion espanso page for video)
@@ -142,16 +143,30 @@ $WingetPackages = @(
 
 
 
-############ not on Parallesls make a function for that################
+############ not on Parallels make a function for that################
+    #####Networking 
 #    "DebaucheeOpenSourceGroup.Barrier"
-#    "Nvidia.GeForceExperience"
+#    "ZeroTier.ZeroTierOne"
+#    "Mega.MEGASync"
+#    "Google.Drive" #Im paying 25/year for 100gb might as well use it, this app will mount it as a drive
+    ####Social
+#    "Oxen.Session"
+#    "Discord.Discord"
+    ####Media
+#"Spotify.Spotify"
+    ####Gaming
 #    "Valve.Steam"
+#    "Nvidia.GeForceExperience"
+#    "EpicGames.EpicGamesLauncher"
+#    "ElectronicArts.EADesktop"
+#    "Amazon.Games"
+#    "GOG.Galaxy"
+
 
 ############Only if a server make a function ###################
     ##Media SERVER 
 #    "Jellyfin.Server"
-#    "Plex.Plex" # not sure what is different then `winget install -e --id Plex.PlexMediaPlayer`, but this install the app
-#    "Plex.PlexMediaServer" #also need this for the actual server
+#    "Plex.PlexMediaServer"
     ##Torrent Server
 #    "AppWork.JDownloader"
 #    "c0re100.qBittorrent-Enhanced-Edition"
@@ -177,37 +192,28 @@ $RemoveWingetPackages = @(
     "Twilio.Authy" #Only using on mac now
     "Ferdium.Ferdium" # only using mail app on mac now but this app could be usefull for something else other then mail
 
-    #Gaming
+    ####Gaming/Emulation
     "Nvidia.GeForceNow"
     "Libretro.RetroArch"
     "Emulationstation.Emulationstation"
-    "EpicGames.EpicGamesLauncher"
-    "ElectronicArts.EADesktop"
-    "Amazon.Games"
-    "GOG.Galaxy"
     "BlueStack.BlueStacks"
 
     #Media
     "XBMCFoundation.Kodi"
     "Stremio.Stremio"
-    "Spotify.Spotify"
     "Amazon.Kindle"
     "Plex.PlexMediaPlayer"
 
+
     #Productivity
-    "Notion.Notion"
-    "MarkText.MarkText"
-    "Doist.Todoist"
     "ransome1.sleek"
     "ONLYOFFICE.DesktopEditors"
-    "RustemMussabekov.Raindrop"
     "KDE.Krita"
     "Joplin.Joplin"
 
     #Social
     "Telegram.TelegramDesktop"
     "OpenWhisperSystems.Signal"
-    "Discord.Discord"
     "Caprine.Caprine"
 
 
@@ -220,12 +226,6 @@ $RemoveWingetPackages = @(
     "TorProject.TorBrowser"
 
     #Linux Focused
-    "Git.Git"
-    "GitHub.GitHubDesktop"
-    "GitHub.cli"
-    "Microsoft.OpenSSH.Beta"
-    "Python.Python.3.9"
-    "Docker.DockerDesktop"
     "GNU.Emacs"
     "Neovim.Neovim"
 
@@ -241,8 +241,12 @@ $RemoveWingetPackages = @(
     #Misc
     "eTeks.SweetHome3D"
     "VSCodium.VSCodium" # I Use Vs code way better for plugins
-    "Stardock.Fences" # Replaced with choco object-desktop
-    "Stardock.Start11" # Replaced with choco object-desktop
+    "ShareX.ShareX"
+    "NathanOsman.NitroShare"
+
+    # Replaced with choco object-desktop
+    "Stardock.Fences" 
+    "Stardock.Start11" 
 
 
 )
