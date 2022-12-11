@@ -212,9 +212,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
                 !!8888888888888888899fT|!^"
                   !988888888899fT|!^"
                     !9899fT|!^"
-                      !^"  
-											
-    ```
+                      !^"  ```
 
 
 # Download & Run Bootstrap Scripts
