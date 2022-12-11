@@ -4,7 +4,7 @@ cd C:\cygwin64
 
 /usr/bin/python3.9.exe -m pip install --upgrade pip
 
-pip install ansible
+python3 -m pip install --user ansible
 
 
 
