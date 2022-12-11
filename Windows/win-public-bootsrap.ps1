@@ -116,15 +116,9 @@ $WingetPackages = @(
     #Utilities
     "Lexikos.AutoHotkey"
     "File-New-Project.EarTrumpet"
-    "Balena.Etcher"
-    "RaspberryPiFoundation.RaspberryPiImager"
-    "RustDesk.RustDesk"
     "REALiX.HWiNFO"
-    "MiniTool.PartitionWizard.Free"
     "QL-Win.QuickLook"
     "Flameshot.Flameshot"
-    "Logitech.GHUB"
-    "ElaborateBytes.VirtualCloneDrive"
     "VideoLAN.VLC"
     "BleachBit.BleachBit"
 
@@ -165,6 +159,11 @@ $WingetPackages = @(
     #####Privacy and Security Focused
 #    "IDRIX.VeraCrypt"
 #    "ProtonTechnologies.ProtonVPN"
+    #### Utilities
+#    "Balena.Etcher"
+#    "RaspberryPiFoundation.RaspberryPiImager"
+#    "MiniTool.PartitionWizard.Free"
+#    "ElaborateBytes.VirtualCloneDrive"
 
 
 ############Only if a server make a function ###################
@@ -246,6 +245,7 @@ $RemoveWingetPackages = @(
     "VSCodium.VSCodium" # I Use Vs code way better for plugins
     "ShareX.ShareX"
     "NathanOsman.NitroShare"
+    "RustDesk.RustDesk"
 
     # Replaced with choco object-desktop
     "Stardock.Fences" 
@@ -253,6 +253,11 @@ $RemoveWingetPackages = @(
 
     #Server
     "Jellyfin.Server"
+
+    #Logitech 
+    "Logitech.GHUB" #if running speakers
+    "Logitech.Options" #if runnin Mx Mouse 
+
 
 )
 
