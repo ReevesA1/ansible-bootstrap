@@ -150,11 +150,23 @@ foreach ($Bloat in $Bloatware) {
 }
 
 
-Write-Host "Restoring Default Right Click Menu Layout"
-New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" -Name "InprocServer32" -force -value ""       
+       
+If ( $WPFMiscTweaksRightClickMenu.IsChecked -eq $true ) {
+    Write-Host "Setting Classic Right-Click Menu..."
+    New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" -Name "InprocServer32" -force -value ""       
+    $WPFMiscTweaksRightClickMenu.IsChecked = $true
+}
 
-Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
 
-Write-Output "Restart computer "
 
-Restart-Computer
+
+
+
+# These dont work
+#_____________________________
+
+
+#Write-Output "Restart computer "
+#Restart-Computer
+
+#Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
