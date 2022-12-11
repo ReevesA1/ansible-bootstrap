@@ -57,7 +57,10 @@
   - then Download and install 
 	  - https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170
 
-- In Powershell as Admin Run
+
+- Main Windows Boostrap Script Command
+- Always Run `winget upgrade --all`
+	- Then In Powershell as Admin Run
 ```
 .{
 $ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/win-public-bootsrap.ps1
