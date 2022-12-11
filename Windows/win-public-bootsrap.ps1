@@ -63,7 +63,7 @@ $RemoveChocoPackages = @(
 
 ForEach ($RMChocoApp in $RemoveChocoPackages)
 {
-    choco uninstall $ChocoApp  -y
+    choco uninstall $RMChocoApp  -y
 }
 
 
@@ -78,12 +78,11 @@ $WingetPackages = @(
     "7zip"
     "DebaucheeOpenSourceGroup.Barrier"
     "Cygwin.Cygwin"
-  
 )
 
 ForEach ($WingetApp in $WingetPackages)
 {
-    winget install -e --id $WingetApp  -y
+    winget install -e --id $WingetApp 
 }
 
 
