@@ -54,6 +54,7 @@
 
 ### CYGWIN Method 
 
+- Update winget `winget upgrade --all`
 
 - Programs I need to download manually (should all be in mega folder)
 	- Only Arm64 so powershell admin works properly in windows Terminal = https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170
@@ -61,7 +62,7 @@
 	- Visual Studio Build Tools (Must check Desktop development with C++ 7gb ish/will work for Arm)= https://visualstudio.microsoft.com/visual-cpp-build-tools/
 
 
-- then update winget `winget upgrade --all`
+
 - Copy paste this code block into Powershell as Adminastrator 
 
 
@@ -75,8 +76,12 @@ $file = "$env:homepath\Downloads\1-cygwin-setup.ps1"
 powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
 }
 ```
-- Launch Cygwin once so it creates folders
+
+
+- Launch Cygwin As ADMIN once so it creates folders
 - Then Still in powershell as Admin run this code to download script 
+
+
 ```
 .{
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
@@ -87,6 +92,8 @@ $file = "c:\cygwin64\home\rocket\2-run-in-cygwin.sh"
 ```
 - Open cygwin AS ADMIN!!!! and run it 
 	- `ls` to see if its there then `./2-run-in-cygwin.sh`
+
+
 
 ### WSL Method (Works)
 FYI I have to make custom facts file manualy (i only tested "skip" fact on all of them--> could make a script to automate that)
