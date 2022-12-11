@@ -2,7 +2,7 @@ cd C:\cygwin64
 
 ./cygwinsetup.exe --quiet-mode --packages git,python3
 
-pip3 install ansible
+pip install ansible
 
 /usr/bin/python3.9.exe -m pip install --upgrade pip
 
