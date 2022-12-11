@@ -33,7 +33,6 @@ $ChocoPackages = @(
     "ripgrep"
     "hackfont"
     "7zip"
-    "qttabbar"
     "onecommander"
     "winaero-tweaker.install"
     "tinymediamanager"
@@ -69,6 +68,7 @@ $RemoveChocoPackages = @(
     "freefilesync"
     "airexplorer " #Closed sourse program I thought about using to sync megasync on a schedule 
     "obsidian"
+    "qttabbar" # This was to add tabs to exmplorer windows does it natively now
 )
 
 ForEach ($RMChocoApp in $RemoveChocoPackages)
@@ -121,6 +121,7 @@ $WingetPackages = @(
     "Flameshot.Flameshot"
     "VideoLAN.VLC"
     "BleachBit.BleachBit"
+    
 
 
 
