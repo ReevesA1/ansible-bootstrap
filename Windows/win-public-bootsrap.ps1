@@ -75,7 +75,6 @@ ForEach ($RMChocoApp in $RemoveChocoPackages)
 Write-Host "Installing Winget Apps"
 
 $WingetPackages = @(
-    "7zip"
     "DebaucheeOpenSourceGroup.Barrier"
     "Cygwin.Cygwin"
 )
