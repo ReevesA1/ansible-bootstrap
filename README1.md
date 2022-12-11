@@ -54,6 +54,14 @@
 
 ### CYGWIN Method 
 
+
+- Programs I need to download manually
+	- Only Arm64 so powershell admin works properly in windows Terminal = https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170
+	- Python3 (need to hit 3 options during install) = https://www.python.org/downloads/windows/
+	- Ms Build Tools (Must check Visual Studio Build tools 2022 7gb ish/will work for Arm)= https://visualstudio.microsoft.com/visual-cpp-build-tools/
+
+
+- then update winget `winget upgrade --all`
 - Copy paste this code block into Powershell as Adminastrator 
 
 
