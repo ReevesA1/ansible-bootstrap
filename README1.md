@@ -69,6 +69,7 @@ Invoke-Expression $($ScriptFromGithHub.Content)
 ```
 - Restart PC
 - If I want Debloat with `irm christitus.com/win | iex`
+	- Keep in mind My script has Titus's right click menu command  and bloated apps Commands
 	- Restart PC Again
 
 ### WSL Method (Works)
