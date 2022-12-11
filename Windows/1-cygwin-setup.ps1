@@ -19,6 +19,6 @@ else {
     Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 }
 
-choco install cygwin --params "/InstallDir:C:\cygwin64 /DesktopIcon -y"
+choco install cygwin --params "/InstallDir:C:\cygwin64 /DesktopIcon" -y
 
 
