@@ -54,6 +54,14 @@
 
 - Fix "launch as admin" in Windows Terminal in Parallels Arm 64 =  https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170
 
+- In Powershell as Admin Run
+```
+.{
+$ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/win-public-bootsrap.ps1
+Invoke-Expression $($ScriptFromGithHub.Content)
+}
+```
+
 
 ### WSL Method (Works)
 FYI I have to make custom facts file manualy (i only tested "skip" fact on all of them--> could make a script to automate that)
