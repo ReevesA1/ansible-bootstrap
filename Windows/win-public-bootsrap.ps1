@@ -44,6 +44,11 @@ $ChocoPackages = @(
 #    "virtualbox" 
 #    "virtualbox-guest-additions-guest.install
 #    "icloud"
+
+
+############Only if a server make a function ###################
+#    "utorrent" # may try to use qbitorrent first
+
 )
 
 ForEach ($ChocoApp in $ChocoPackages)
@@ -60,7 +65,6 @@ Write-Host "Removing Choco Apps"
 $RemoveChocoPackages = @(
     "streamdeck"
     "logseq"
-    "utorrent"
     "translucenttb"
     "freefilesync"
     "airexplorer " #Closed sourse program I thought about using to sync megasync on a schedule 
@@ -165,12 +169,11 @@ $WingetPackages = @(
 
 ############Only if a server make a function ###################
     ##Media SERVER 
-#    "Jellyfin.Server"
 #    "Plex.PlexMediaServer"
     ##Torrent Server
 #    "AppWork.JDownloader"
-#    "c0re100.qBittorrent-Enhanced-Edition"
-    #Gaming Server
+#    "c0re100.qBittorrent-Enhanced-Edition" #if not able to make scedule and to access from other local PC's Use Choco Utorrent
+ 
 
 
 )
@@ -248,6 +251,8 @@ $RemoveWingetPackages = @(
     "Stardock.Fences" 
     "Stardock.Start11" 
 
+    #Server
+    "Jellyfin.Server"
 
 )
 
