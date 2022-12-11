@@ -121,6 +121,7 @@ $WingetPackages = @(
     "Flameshot.Flameshot"
     "VideoLAN.VLC"
     "BleachBit.BleachBit"
+    "Sejda.PDFDesktop" #pdf viewer
     
 
 
