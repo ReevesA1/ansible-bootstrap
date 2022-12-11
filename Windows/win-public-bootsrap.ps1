@@ -19,7 +19,10 @@ else {
 
 
 # Install Packages
-$Packages = 'firefox', 'git'
+$Packages = @(
+    "roboform"
+    "7zip"
+)
 
 ForEach ($PackageName in $Packages)
 {
