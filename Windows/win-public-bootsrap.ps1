@@ -29,9 +29,25 @@ else {
 Write-Host "Installing Choco Apps"
 
 $ChocoPackages = @(
-    "roboform --ignore-checksums"
     "7zip"
-    "firefox"
+    "qttabbar"
+    "onecommander"
+    "icloud"
+    "streamdeck"
+    "winaero-tweaker.install"
+    "tinymediamanager"
+    "bat"
+    "ripgrep"
+    "hackfont"
+    "object-desktop"
+    "files"
+#    "logseq"
+#    "utorrent"
+#    "godot"
+#    "translucenttb"
+#    "freefilesync"
+#    "airexplorer " #Closed sourse program I thought about using to sync megasync on a schedule 
+#    "obsidian"
 )
 
 ForEach ($ChocoApp in $ChocoPackages)
