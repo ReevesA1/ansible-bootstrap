@@ -67,12 +67,13 @@ $file = "$env:homepath\Downloads\1-cygwin-setup.ps1"
 powershell.exe -ExecutionPolicy ByPass -File $file -Verbose
 }
 ```
-- Then Still in powershell as Admin run this code to download script (for some reason it doesnt allways work just keep trying wtf)
+- Launch Cygwin once so it creates folders
+- Then Still in powershell as Admin run this code to download script 
 ```
 .{
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $url = "https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/2-run-in-cygwin.sh"
-$file = "C:\cygwin64\home\rocket\2-run-in-cygwin.sh"
+$file = "c:\cygwin64\home\rocket\2-run-in-cygwin.sh"
 (New-Object -TypeName System.Net.WebClient).DownloadFile($url, $file)
 }
 ```
