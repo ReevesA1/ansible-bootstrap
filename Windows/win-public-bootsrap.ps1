@@ -35,7 +35,6 @@ $ChocoPackages = @(
     "7zip"
     "onecommander"
     "winaero-tweaker.install"
-    "tinymediamanager"
     "object-desktop"
     "files"
     "godot"
@@ -65,6 +64,7 @@ $RemoveChocoPackages = @(
     "streamdeck"
     "logseq"
     "translucenttb"
+    "tinymediamanager"
     "freefilesync"
     "airexplorer " #Closed sourse program I thought about using to sync megasync on a schedule 
     "obsidian"
