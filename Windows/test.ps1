@@ -29,7 +29,7 @@ $bloatware = @(
     # default Windows 11 apps
     "MicrosoftTeams"
     "Microsoft.Todos"
-    "Microsoft.PowerAutomateDesktop"
+    "Microsoft.PowerAutomateDesktop" # I reinstall it with winget
 
     # default Windows 10 apps
     "Microsoft.549981C3F5F10"        # Cortana Offline
@@ -339,13 +339,10 @@ function menu {
     Write-Host "================ $Title ================"
     Write-Host
     Write-Host "1: Do all steps below"
-    Write-Host
     Write-Host "2: Just install winget"
-    Write-Host
     Write-Host "3: Install Apps under graphical"
     Write-Host "4: Install Apps under apps"
     Write-Host "5: Remove bloatware"
-    Write-Host
     Write-Host "6: Install Taskjob for automatic updates"
     Write-Host "7: Get List of all installed Apps"
     Write-Host
