@@ -54,6 +54,7 @@ _)      \.___.,|     .'
 
 
 - Always Run `winget upgrade --all`
+- CHANGE PC NAME!!!!
 - Then In Powershell as Admin Run
 
 ```

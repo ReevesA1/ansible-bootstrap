@@ -102,6 +102,7 @@ $WingetPackages = @(
 
     #Browsers
     "Mozilla.Firefox"
+    "LibreWolf.LibreWolf"
 
 
 
