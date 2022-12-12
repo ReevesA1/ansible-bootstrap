@@ -13,16 +13,16 @@ $graphical = @(
 $apps = @(
     @{name = "7zip.7zip" }
     @{name = "Foxit.FoxitReader" }
-    @{name = "Microsoft.VC++2015-2022Redist-x86" }
-    @{name = "Microsoft.VC++2015-2022Redist-x64" }
-    @{name = "9NCBCSZSJRSB"; source = "msstore" }        # Spotify
-    @{name = "9NKSQGP7F2NH"; source = "msstore" }        # Whatsapp Desktop
-    @{name = "9WZDNCRFJ3TJ"; source = "msstore" }        # Netflix
-    @{name = "9P6RC76MSMMJ"; source = "msstore" }        # Prime Video
-    @{name = "9PMMSR1CGPWG"; source = "msstore" }        # HEIF-PictureExtension
-    @{name = "9MVZQVXJBQ9V"; source = "msstore" }        # AV1 VideoExtension
-    @{name = "9NCTDW2W1BH8"; source = "msstore" }        # Raw-PictureExtension
-    @{name = "9N95Q1ZZPMH4"; source = "msstore" }        # MPEG-2-VideoExtension
+#    @{name = "Microsoft.VC++2015-2022Redist-x86" }
+#    @{name = "Microsoft.VC++2015-2022Redist-x64" }
+#    @{name = "9NCBCSZSJRSB"; source = "msstore" }        # Spotify
+#    @{name = "9NKSQGP7F2NH"; source = "msstore" }        # Whatsapp Desktop
+#    @{name = "9WZDNCRFJ3TJ"; source = "msstore" }        # Netflix
+#    @{name = "9P6RC76MSMMJ"; source = "msstore" }        # Prime Video
+#    @{name = "9PMMSR1CGPWG"; source = "msstore" }        # HEIF-PictureExtension
+#    @{name = "9MVZQVXJBQ9V"; source = "msstore" }        # AV1 VideoExtension
+#    @{name = "9NCTDW2W1BH8"; source = "msstore" }        # Raw-PictureExtension
+#    @{name = "9N95Q1ZZPMH4"; source = "msstore" }        # MPEG-2-VideoExtension
 );
 
 $bloatware = @(
