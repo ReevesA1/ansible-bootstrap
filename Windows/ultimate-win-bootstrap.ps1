@@ -388,7 +388,7 @@ function menu {
               debloating
               finish
           }
-          if ($actions -eq 6) {
+          if ($actions -eq 7) {
               install_winget
               get_list
           }
