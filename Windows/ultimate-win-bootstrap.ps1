@@ -126,8 +126,9 @@ function install_winget_silent_list {
 ### These apps are installed silently for all users ###
 # for msstore apps you need to specify the source like below
 $microsoft_store_list = @(
-    @{name = "Microsoft.VC++2015-2022Redist-x86" }
-    @{name = "Microsoft.VC++2015-2022Redist-x64" }       # Package contains both ARM64 and X64 binaries. Does it fix parralles issue?
+#    @{name = "Microsoft.VC++2015-2022Redist-x86" }
+#    @{name = "Microsoft.VC++2015-2022Redist-x64" }       # Package contains both ARM64 and X64 binaries. Does it fix parralles issue?
+    @{name = "Microsoft.VC++2015-2022Redist-arm64" }
     @{name = "9WZDNCRFJ3TJ"; source = "msstore" }        # Netflix
     @{name = "9P6RC76MSMMJ"; source = "msstore" }        # Prime Video
 );
