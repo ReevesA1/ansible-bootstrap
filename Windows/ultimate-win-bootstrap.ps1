@@ -127,8 +127,8 @@ function install_winget_silent_list {
 # for msstore apps you need to specify the source like below
 $microsoft_store_list = @(
 #    @{name = "Microsoft.VC++2015-2022Redist-x86" }
-#    @{name = "Microsoft.VC++2015-2022Redist-x64" }       # Package contains both ARM64 and X64 binaries. Does it fix parralles issue?
-    @{name = "Microsoft.VC++2015-2022Redist-arm64" }
+#    @{name = "Microsoft.VC++2015-2022Redist-x64" }      
+#    @{name = "Microsoft.VC++2015-2022Redist-arm64" }    # THought it could maybe fix my parallels issue but it does not have a candidate
     @{name = "9WZDNCRFJ3TJ"; source = "msstore" }        # Netflix
     @{name = "9P6RC76MSMMJ"; source = "msstore" }        # Prime Video
 );
