@@ -137,19 +137,19 @@ $microsoft_store_list = @(
 function install_microsoft_store_list {
   Write-Host -ForegroundColor Cyan "Installing new apps in microsoft_store_list"
   Foreach ($microsoft_store_app in $microsoft_store_list) {
-      $listApp = winget list --exact -q $app.name
-      if (![String]::Join("", $listApp).Contains($app.name)) {
-          Write-Host -ForegroundColor Yellow  "Install:" $app.name
+      $list_microsoft_store_app = winget list --exact -q $microsoft_store_app.name
+      if (![String]::Join("", $list_microsoft_store_app).Contains($microsoft_store_app.name)) {
+          Write-Host -ForegroundColor Yellow  "Install:" $microsoft_store_app.name
           # MS Store apps
-          if ($app.source -ne $null) {
-              winget install --exact --silent --accept-package-agreements --accept-source-agreements $app.name --source $app.source
+          if ($microsoft_store_app.source -ne $null) {
+              winget install --exact --silent --accept-package-agreements --accept-source-agreements $microsoft_store_app.name --source $microsoft_store_app.source
               if ($LASTEXITCODE -eq 0) {
-                  Write-Host -ForegroundColor Green $app.name "successfully installed."
+                  Write-Host -ForegroundColor Green $microsoft_store_app.name "successfully installed."
               }
               else {
-                  $app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
+                  $microsoft_store_app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
                   Write-Host
-                  Write-Host -ForegroundColor Red $app.name "couldn't be installed."
+                  Write-Host -ForegroundColor Red $microsoft_store_app.name"couldn't be installed."
                   Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
                   Write-Host
                   Pause
@@ -157,14 +157,14 @@ function install_microsoft_store_list {
           }
           # All other Apps
           else {
-              winget install --exact --silent --scope machine --accept-package-agreements --accept-source-agreements $app.name
+              winget install --exact --silent --scope machine --accept-package-agreements --accept-source-agreements $microsoft_store_app.name
               if ($LASTEXITCODE -eq 0) {
-                  Write-Host -ForegroundColor Green $app.name "successfully installed."
+                  Write-Host -ForegroundColor Green $microsoft_store_app.name "successfully installed."
               }
               else {
-                  $app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
+                  $microsoft_store_app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
                   Write-Host
-                  Write-Host -ForegroundColor Red $app.name "couldn't be installed."
+                  Write-Host -ForegroundColor Red $microsoft_store_app.name "couldn't be installed."
                   Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
                   Write-Host
                   Pause
@@ -172,7 +172,7 @@ function install_microsoft_store_list {
           }
       }
       else {
-          Write-Host -ForegroundColor Yellow "Skip installation of" $app.name
+          Write-Host -ForegroundColor Yellow "Skip installation of" $microsoft_store_app.name
       }
   }
   Pause
@@ -388,8 +388,7 @@ function menu {
               debloating
               finish
           }
-          if ($actions -eq 7) {
-              install_winget
+          if ($actions -eq 6) {
               get_list
           }
           menu
