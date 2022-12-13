@@ -74,20 +74,20 @@ $winget_silent_list = @(
 ############################################################################################
 function install_winget_silent_list {
   Write-Host -ForegroundColor Cyan "Installing new Apps in winget_silent_list"
-  Foreach ($winget_app in $winget_silent_list) {
-      $listApp = winget list --exact -q $app.name
-      if (![String]::Join("", $listApp).Contains($app.name)) {
-          Write-Host -ForegroundColor Yellow  "Install:" $app.name
+  Foreach ($winget_silent_app in $winget_silent_list) {
+      $list_winget_silent_app = winget list --exact -q $winget_silent_app.name
+      if (![String]::Join("", $list_winget_silent_app).Contains($winget_silent_app.name)) {
+          Write-Host -ForegroundColor Yellow  "Install:" $winget_silent_app.name
           # MS Store apps
-          if ($app.source -ne $null) {
-              winget install --exact --silent --accept-package-agreements --accept-source-agreements $app.name --source $app.source
+          if ($winget_silent_app.source -ne $null) {
+              winget install --exact --silent --accept-package-agreements --accept-source-agreements $winget_silent_app.name --source $winget_silent_app.source
               if ($LASTEXITCODE -eq 0) {
-                  Write-Host -ForegroundColor Green $app.name "successfully installed."
+                  Write-Host -ForegroundColor Green $winget_silent_app.name "successfully installed."
               }
               else {
-                  $app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
+                  $winget_silent_app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
                   Write-Host
-                  Write-Host -ForegroundColor Red $app.name "couldn't be installed."
+                  Write-Host -ForegroundColor Red $winget_silent_app.name "couldn't be installed."
                   Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
                   Write-Host
                   Pause
@@ -95,14 +95,14 @@ function install_winget_silent_list {
           }
           # All other Apps
           else {
-              winget install --exact --silent --scope machine --accept-package-agreements --accept-source-agreements $app.name
+              winget install --exact --silent --scope machine --accept-package-agreements --accept-source-agreements $winget_silent_app.name
               if ($LASTEXITCODE -eq 0) {
-                  Write-Host -ForegroundColor Green $app.name "successfully installed."
+                  Write-Host -ForegroundColor Green $winget_silent_app.name "successfully installed."
               }
               else {
-                  $app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
+                  $winget_silent_app.name+ " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
                   Write-Host
-                  Write-Host -ForegroundColor Red $app.name "couldn't be installed."
+                  Write-Host -ForegroundColor Red $winget_silent_app.name "couldn't be installed."
                   Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
                   Write-Host
                   Pause
@@ -110,7 +110,7 @@ function install_winget_silent_list {
           }
       }
       else {
-          Write-Host -ForegroundColor Yellow "Skip installation of" $app.name
+          Write-Host -ForegroundColor Yellow "Skip installation of" $winget_silent_app.name
       }
   }
   Pause
