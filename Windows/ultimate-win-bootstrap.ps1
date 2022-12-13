@@ -128,7 +128,7 @@ function install_winget_silent_list {
 $microsoft_store_list = @(
 #    @{name = "Microsoft.VC++2015-2022Redist-x86" }
 #    @{name = "Microsoft.VC++2015-2022Redist-x64" }      
-#    @{name = "Microsoft.VC++2015-2022Redist-arm64" }    # THought it could maybe fix my parallels issue but it does not have a candidate
+    @{name = "Microsoft.VC++2015-2022Redist-arm64" }    # THought it could maybe fix my parallels issue but it does not have a candidate
     @{name = "9WZDNCRFJ3TJ"; source = "msstore" }        # Netflix
     @{name = "9P6RC76MSMMJ"; source = "msstore" }        # Prime Video
 );
@@ -339,6 +339,16 @@ function finish {
 #############################################################################################
 ################################      Backend of Menu        ################################
 #############################################################################################
+
+
+
+# Variables
+$hasPackageManager = Get-AppxPackage -Name 'Microsoft.Winget.Source' | Select Name, Version
+$hasVCLibs = Get-AppxPackage -Name 'Microsoft.VCLibs.140.00.UWPDesktop' | Select Name, Version
+$hasXAML = Get-AppxPackage -Name 'Microsoft.UI.Xaml.2.7*' | Select Name, Version
+$hasAppInstaller = Get-AppxPackage -Name 'Microsoft.DesktopAppInstaller' | Select Name, Version
+$DesktopPath = [System.Environment]::GetFolderPath([System.Environment+SpecialFolder]::Desktop)
+$errorlog = "winget_error.log"
 
 
 
