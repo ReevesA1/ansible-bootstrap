@@ -18,32 +18,32 @@ $winget_gui_list = @(
 function install_winget_gui_list {
   Write-Host -ForegroundColor Cyan "Installing new Apps in winget_gui_list"
   Foreach ($winget_gui_app in $winget_gui_list) {
-      $listGUI = winget list --exact -q $gui.name
-      if (![String]::Join("", $listGUI).Contains($gui.name)) {
-          Write-Host -ForegroundColor Yellow "Install:" $gui.name
-          if ($gui.source -ne $null) {
-              winget install --exact --interactive --accept-package-agreements --accept-source-agreements $gui.name --source $gui.source
+      $list_winget_gui_app = winget list --exact -q $winget_gui_app.name
+      if (![String]::Join("", $list_winget_gui_app).Contains($winget_gui_app.name)) {
+          Write-Host -ForegroundColor Yellow "Install:" $winget_gui_app.name
+          if ($winget_gui_app.source -ne $null) {
+              winget install --exact --interactive --accept-package-agreements --accept-source-agreements $winget_gui_app.name --source $winget_gui_app.source
               if ($LASTEXITCODE -eq 0) {
-                  Write-Host -ForegroundColor Green $gui.name "successfully installed."
+                  Write-Host -ForegroundColor Green $winget_gui_app.name "successfully installed."
               }
               else {
-                  $gui.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
+                  $winget_gui_app.name+ " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
                   Write-Host
-                  Write-Host -ForegroundColor Red $gui.name "couldn't be installed."
+                  Write-Host -ForegroundColor Red $winget_gui_app.name "couldn't be installed."
                   Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
                   Write-Host
                   Pause
               }
           }
           else {
-              winget install --exact --interactive --accept-package-agreements --accept-source-agreements $gui.name
+              winget install --exact --interactive --accept-package-agreements --accept-source-agreements $winget_gui_app.name
               if ($LASTEXITCODE -eq 0) {
-                  Write-Host -ForegroundColor Green $gui.name "successfully installed."
+                  Write-Host -ForegroundColor Green $winget_gui_app.name "successfully installed."
               }
               else {
-                  $gui.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
+                  $winget_gui_app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
                   Write-Host
-                  Write-Host -ForegroundColor Red $gui.name "couldn't be installed."
+                  Write-Host -ForegroundColor Red $winget_gui_app.name "couldn't be installed."
                   Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
                   Write-Host
                   Pause
@@ -51,7 +51,7 @@ function install_winget_gui_list {
           }
       }
       else {
-          Write-Host -ForegroundColor Yellow "Skip installation of" $gui.name
+          Write-Host -ForegroundColor Yellow "Skip installation of" $winget_gui_app.name
       }
   }
   Pause
