@@ -8,16 +8,16 @@
 
 ### Here can you add apps that you want to configure during installation ###
 # just add the app id from winget
-$winget-gui-list = @(
+$winget_gui_list = @(
     @{name = "Mozilla.Firefox"}
 );
 
 
 
 ############################################################################################
-function install_winget-gui-list {
-  Write-Host -ForegroundColor Cyan "Installing new Apps in winget-gui-list"
-  Foreach ($winget-gui-app in $winget-gui-list) {
+function install_winget_gui_list {
+  Write-Host -ForegroundColor Cyan "Installing new Apps in winget_gui_list"
+  Foreach ($winget_gui_app in $winget_gui_list) {
       $listGUI = winget list --exact -q $gui.name
       if (![String]::Join("", $listGUI).Contains($gui.name)) {
           Write-Host -ForegroundColor Yellow "Install:" $gui.name
@@ -66,15 +66,15 @@ function install_winget-gui-list {
 
 ### Winget apps are installed silently for all users ###
 # just add the app id from winget
-$winget-silent-list = @(
+$winget_silent_list = @(
     @{name = "LibreWolf.LibreWolf" }
 );
 
 
 ############################################################################################
-function install_winget-silent-list {
-  Write-Host -ForegroundColor Cyan "Installing new Apps in winget-silent-list"
-  Foreach ($winget-app in $winget-silent-list) {
+function install_winget_silent_list {
+  Write-Host -ForegroundColor Cyan "Installing new Apps in winget_silent_list"
+  Foreach ($winget_app in $winget_silent_list) {
       $listApp = winget list --exact -q $app.name
       if (![String]::Join("", $listApp).Contains($app.name)) {
           Write-Host -ForegroundColor Yellow  "Install:" $app.name
@@ -125,7 +125,7 @@ function install_winget-silent-list {
 
 ### These apps are installed silently for all users ###
 # for msstore apps you need to specify the source like below
-$microsoft-store-list = @(
+$microsoft_store_list = @(
     @{name = "Microsoft.VC++2015-2022Redist-x86" }
     @{name = "Microsoft.VC++2015-2022Redist-x64" }       # Package contains both ARM64 and X64 binaries. Does it fix parralles issue?
     @{name = "9WZDNCRFJ3TJ"; source = "msstore" }        # Netflix
@@ -134,9 +134,9 @@ $microsoft-store-list = @(
 
 
 ############################################################################################
-function install_microsoft-store-list {
-  Write-Host -ForegroundColor Cyan "Installing new apps in microsoft-store-list"
-  Foreach ($microsoft-store-app in $microsoft-store-list) {
+function install_microsoft_store_list {
+  Write-Host -ForegroundColor Cyan "Installing new apps in microsoft_store_list"
+  Foreach ($microsoft_store_app in $microsoft_store_list) {
       $listApp = winget list --exact -q $app.name
       if (![String]::Join("", $listApp).Contains($app.name)) {
           Write-Host -ForegroundColor Yellow  "Install:" $app.name
@@ -349,9 +349,9 @@ function menu {
   Write-Host "================ $Title ================"
   Write-Host
   Write-Host "1: Do all steps below"
-  Write-Host "2: Install winget-gui-list" 
-  Write-Host "3: Install winget-silent-list" 
-  Write-Host "4: Install microsoft-store-list" 
+  Write-Host "2: Install winget_gui_list" 
+  Write-Host "3: Install winget_silent_list" 
+  Write-Host "4: Install microsoft_store_list" 
   Write-Host "5: Remove bloatware"
   Write-Host "6: Get List of all winget installed Apps"
   Write-Host
@@ -366,22 +366,22 @@ function menu {
               exit
           }
           if ($actions -eq 1) {
-              install_winget-gui-list
-              install_winget-silent-list
-              install_microsoft-store-list
+              install_winget_gui_list
+              install_winget_silent_list
+              install_microsoft_store_list
               debloating
               finish
           }
           if ($actions -eq 2) {
-              install_winget-gui-list
+              install_winget_gui_list
               finish
           }
           if ($actions -eq 3) {
-              install_winget-silent-list
+              install_winget_silent_list
               finish
           }
           if ($actions -eq 4) {
-              install_microsoft-store-list
+              install_microsoft_store_list
               finish
           }
           if ($actions -eq 5) {
