@@ -123,6 +123,7 @@ $WingetPackages = @(
     "VideoLAN.VLC"
     "BleachBit.BleachBit"
     "Sejda.PDFDesktop" #pdf viewer
+    "angryziber.AngryIPScanner"
     
 
 
