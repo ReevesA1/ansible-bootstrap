@@ -81,7 +81,7 @@ function prompt
 $Host.UI.RawUI.WindowTitle = "PowerShell {0}" -f $PSVersionTable.PSVersion.ToString()
 if ($isAdmin)
 {
-    $Host.UI.RawUI.WindowTitle += " [ADMIN]"
+    $Host.UI.RawUI.WindowTitle += " [ADMIN - Be Careful]"
 }
 
 
