@@ -1,5 +1,7 @@
 #### Alias's
 
+# view net-adapter
+Set-Alias -Name eth -Value get-netadapter
 
 # Set UNIX-like aliases for the admin command, so sudo <command> will run the command
 # with elevated rights. 
@@ -16,6 +18,12 @@ function winup {Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -AutoReboot | 
 function winult {$ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1
 Invoke-Expression $($ScriptFromGithHub.Content)}
 
+
+
+# Find out if the current user identity is elevated (has admin rights)
+$identity = [Security.Principal.WindowsIdentity]::GetCurrent()
+$principal = New-Object Security.Principal.WindowsPrincipal $identity
+$isAdmin = $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
 ##### Advanced Settings
 
