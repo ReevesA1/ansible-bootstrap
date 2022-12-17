@@ -136,7 +136,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 - Turn off google analytics `brew analytics off`
 - Install wget to pull the script below
 	- `arch -arm64 brew install wget`
-	- `arch -arm64 brew install ansible`
+	- `arch -arm64 brew install ansible` # Could also install with python if I run into issues
 - Disable Mac gate keeper
 	- `sudo spctl --master-disable`
   
