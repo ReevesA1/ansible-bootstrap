@@ -10,7 +10,7 @@ Set-Alias -Name eth -Value get-netadapter
 
 #View and Edit profile
 #function pro {Notepad $PROFILE.CurrentUserAllHosts}
-function pro {Notepad $PROFILE.AllUsersAllHosts} # Use AllUsers instead of Current so all my commands work when Im Admin
+function pswrc {Notepad $PROFILE.AllUsersAllHosts} # Use AllUsers instead of Current so all my commands work when Im Admin
 
 # Update windows with PSWindowsUpdate Module
 function winup {Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -AutoReboot | Out-File "C:\($env.computername-Get-Date -f yyyy-MM-dd)-MSUpdates.log" -Force}
