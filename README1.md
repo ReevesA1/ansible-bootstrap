@@ -131,12 +131,12 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
   - Run these 2 Commands to Add Path
    	- ```echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/rocket/.zprofile```
    	- ```eval "$(/opt/homebrew/bin/brew shellenv)"```
-  - Install `brew bundle`
+  - Install `arch -arm64 brew bundle`
       
 - Turn off google analytics `brew analytics off`
 - Install wget to pull the script below
-	- `brew install wget`
-	- `brew install ansible`
+	- `arch -arm64 brew install wget`
+	- `arch -arm64 brew install ansible`
 - Disable Mac gate keeper
 	- `sudo spctl --master-disable`
   
