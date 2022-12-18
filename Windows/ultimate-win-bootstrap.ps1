@@ -11,7 +11,8 @@ function Check-RunAsAdministrator {
 
   # If the current process is not elevated, create a new elevated process
   if (-not $isElevated) {
-    Start-Process PowerShell -Verb runAs
+    Start-Process Pwsh -Verb runAs
+    exit
   }
 }
 
