@@ -90,11 +90,12 @@ function uninstall_chocolatey_list {
   Check-RunAsAdministrator
   Write-Host "Uninstalling Choco Apps"
   $RemoveChocoList = @(
-      "7zip"
+      "files"
     )
-  ForEach ($RemoveChocoApp in $RemoveChocoList)
-  {
-      choco uninstall $RemoveChocoApp  -y
+  ForEach ($RemoveChocoApp in $RemoveChocoList){
+    # Check if the package is installed
+    $installed = choco list --local-only | Select-String $RemoveChocoApp
+    if ($installed -eq choco uninstall $AddChocoApp -y)
   }
 }
 
