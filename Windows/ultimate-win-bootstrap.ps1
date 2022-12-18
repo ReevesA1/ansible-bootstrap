@@ -90,21 +90,16 @@ function uninstall_chocolatey_list {
     )
 
   # Loop through the array and try to uninstall each package
-  foreach ($RemoveChocoApp in $RemoveChocoList) {
-      # Check if the package is installed
-      $chocoappinstalled = choco list -l $RemoveChocoApp 
-      if ($chocoappinstalled) {
-      # Package is installed, so uninstall it
-      choco uninstall $RemoveChocoApp -y
-    } else {
-      # Package is not installed, so skip it
-      Write-Output "Package $RemoveChocoApp  is not installed, skipping uninstall"
+    foreach ($RemoveChocoApp in $RemoveChocoList) {
+    # Check if the package is installed
+    $chocoappinstalled = choco list -lo | Select-Object -ExpandProperty Name | Where-Object {$_ -eq $RemoveChocoApp}
+    
+  # If the package is installed, uninstall it
+    if ($chocoappinstalled) {
+    choco uninstall $package -y
     }
   }
 }
-
-
-
 
 
 function get_list {
@@ -480,7 +475,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test3" 
+              Write-Host "test4" 
               finish
           }
           menu
