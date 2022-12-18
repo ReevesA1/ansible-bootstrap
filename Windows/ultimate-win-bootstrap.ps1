@@ -84,13 +84,13 @@ function install_chocolatey_list {
 
 #################
 
-Write-Host "Uninstalling Choco Apps"
-$RemoveChocoList = @(
-    "files"
-  )
+
 
 function uninstall_chocolatey_list {
-  
+  Write-Host "Uninstalling Choco Apps"
+  $RemoveChocoList = @(
+      "files"
+    )  
 # Loop through the array and try to uninstall each package
   foreach ($RemoveChocoApp in $RemoveChocoList) {
   choco uninstall $RemoveChocoApp -y
@@ -193,14 +193,17 @@ function install_winget_silent_list {
 
 #################
 
-Write-Host "Uninstalling Choco Apps"
-$RemoveWingetlistList = @(
-    "files"
-  )
 
 
 function uninstall_winget_list {
   
+
+
+Write-Host "Uninstalling Winget Apps"
+$RemoveWingetlistList = @(
+    "files"
+  )
+
 # Loop through the array and try to uninstall each package
   foreach ($RemoveWingetApp in $RemoveWingetList) {
   choco uninstall $RemoveWingetApp -y
@@ -499,7 +502,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test9" 
+              Write-Host "test0" 
               finish
           }
           menu
