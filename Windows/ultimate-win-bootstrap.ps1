@@ -431,7 +431,7 @@ function menu {
   Write-Host "4: Install chocolatey Apps " 
   Write-Host
   Write-Host -ForegroundColor Magenta "0: Quit"
-  Write-Host -ForegroundColor Yellow "99: Install chocolatey Apps " 
+  Write-Host -ForegroundColor DarkYellow "99: Test if Script is reloaded" 
   Write-Host
   
   $actions = "0"
