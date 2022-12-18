@@ -140,8 +140,8 @@ function install-winget {
 ### Winget apps are installed silently for all users ###
 # just add the app id from winget
 $winget_silent_list = @(
-    @{name = "LibreWolf.LibreWolf" }
-#    @{name = "Mozilla.Firefox" }
+#    @{name = "LibreWolf.LibreWolf" }
+    @{name = "Mozilla.Firefox" }
 );
 
 
@@ -200,13 +200,13 @@ function uninstall_winget_list {
 
 
 Write-Host "Uninstalling Winget Apps"
-$RemoveWingetlistList = @(
-    "files"
+$RemoveWingetList = @(
+  "LibreWolf.LibreWolf" 
   )
 
 # Loop through the array and try to uninstall each package
   foreach ($RemoveWingetApp in $RemoveWingetList) {
-  choco uninstall $RemoveWingetApp -y
+  winget uninstall $RemoveWingetApp 
   }
 }
   
@@ -502,7 +502,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test0" 
+              Write-Host "test1" 
               finish
           }
           menu
