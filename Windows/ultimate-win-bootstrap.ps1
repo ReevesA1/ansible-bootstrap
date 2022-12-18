@@ -62,7 +62,24 @@ function install_chocolatey {
 ################################################################
 ##        4 ---->     Install Chocolatey  Packages            ##
 ################################################################
-
+function install_chocolatey_list {
+  Write-Host "Installing Choco Apps"
+  $ChocoPackages = @(
+      "bat"
+      "ripgrep"
+      "hackfont"
+      "7zip"
+      "onecommander"
+      "winaero-tweaker.install"
+      "object-desktop"
+      "files"
+      "godot"
+    )
+  ForEach ($ChocoApp in $ChocoPackages)
+  {
+      choco install $ChocoApp  -y
+  }
+}
 
 ################################################################
 ##        X ---->     WINGET GUI Packages                     ##
@@ -454,7 +471,7 @@ function menu {
               finish
           }
           if ($actions -eq 4) {
-              x
+              install_chocolatey_list
               finish
           }
           if ($actions -eq 5) {
@@ -465,7 +482,7 @@ function menu {
               x
           }
           if ($actions -eq 99) {
-              Write-Host "test4" 
+              Write-Host "test5" 
               finish
           }
           menu
