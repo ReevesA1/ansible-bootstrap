@@ -460,8 +460,7 @@ function menu {
               finish
           }
           if ($actions -eq 3) {
-              Check-RunAsAdministrator()
-              install_chocolatey 
+              Check-RunAsAdministrator(install_chocolatey)
               finish
           }
           if ($actions -eq 4) {
