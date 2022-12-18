@@ -69,7 +69,7 @@ function install_chocolatey_list {
       "onecommander"
       "winaero-tweaker.install"
       "object-desktop"
-      "files"
+#      "files"
       "godot"
     )
   ForEach ($AddChocoApp in $AddChocoList){
@@ -472,7 +472,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test7" 
+              Write-Host "test8" 
               finish
           }
           menu
