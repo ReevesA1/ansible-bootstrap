@@ -11,13 +11,18 @@ Set-Alias -Name eth -Value get-netadapter
 
 
 #View and Edit profile
-#function pro {Notepad $PROFILE.CurrentUserAllHosts}
-function pswrc {Notepad $PROFILE.AllUsersAllHosts} # Use AllUsers instead of Current so all my commands work when Im Admin
+#function pro {Notepad $PROFILE.AllUsersAllHosts}
+function pro {Notepad $PROFILE.CurrentUsersAllHosts} # Use AllUsers instead of Current so all my commands work when Im Admin
 
 # Update windows with PSWindowsUpdate Module
 # Refer to https://www.youtube.com/watch?v=M2mMQfPGZsE&list=WL&index=13&t=2s
+### The next command is the original
 #function winup {Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -AutoReboot | Out-File "C:\($env.computername-Get-Date -f yyyy-MM-dd)-MSUpdates.log" -Force}
-function winup {Install-WindowsUpdate -MicrosoftUpdate -AcceptAll | Out-File -FilePath "$($env:USERPROFILE)\Desktop\MSUpdates.log" -Force}
+### the next command would not run in powershell 7
+#function winup {Install-WindowsUpdate -MicrosoftUpdate -AcceptAll | Out-File -FilePath "$($env:USERPROFILE)\Desktop\MSUpdates.log" -Force}
+### the next command works in powershell 7
+function winup {Get-WindowsUpdate -install -MicrosoftUpdate -AcceptAll | Out-File -FilePath "$($env:USERPROFILE)\Desktop\MSUpdates.log" -Force} 
+
 
 #Run ultimate-win-bootstrap.ps1
 function winult {$ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1
@@ -90,11 +95,13 @@ function admin
     if ($args.Count -gt 0)
     {   
        $argList = "& '" + $args + "'"
-       Start-Process "$psHome\powershell.exe" -Verb runAs -ArgumentList $argList
+       #Start-Process "$psHome\powershell.exe" -Verb runAs -ArgumentList $argList
+       Start-Process "$psHome\pwsh.exe" -Verb runAs -ArgumentList $argList
     }
     else
     {
-       Start-Process "$psHome\powershell.exe" -Verb runAs
+       #Start-Process "$psHome\powershell.exe" -Verb runAs
+       Start-Process "$psHome\pwsh.exe" -Verb runAs
     }
 }
 
