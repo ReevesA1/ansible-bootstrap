@@ -1,6 +1,6 @@
 # Based on https://github.com/Kugane/winget
 ################################################################
-##                      Shared Function                       ##
+##      Shared Check for admin Function                       ##
 ################################################################
 
 
@@ -91,10 +91,42 @@ function uninstall_chocolatey_list {
 
   # Loop through the array and try to uninstall each package
   foreach ($RemoveChocoApp in $RemoveChocoList) {
+      # Check if the package is installed
+      $chocoappinstalled = choco list -l $RemoveChocoApp 
+      if ($chocoappinstalled) {
+      # Package is installed, so uninstall it
       choco uninstall $RemoveChocoApp -y
+    } else {
+      # Package is not installed, so skip it
+      Write-Output "Package $RemoveChocoApp  is not installed, skipping uninstall"
+    }
+  }
+
+
+###########
+foreach ($package in $packagesToUninstall) {
+  # Check if the package is installed
+  $installed = choco list -l $package
+  if ($installed) {
+    # Package is installed, so uninstall it
+    choco uninstall $package
+  } else {
+    # Package is not installed, so skip it
+    Write-Output "Package $package is not installed, skipping uninstall"
   }
 }
+############
 
+
+
+function get_list {
+  $timestamp = get-date -Format dd_MM_yyyy
+  $newPath = "$DesktopPath\" + "winget_"+ $env:computername + "_$timestamp" + ".txt"
+  Write-Host -ForegroundColor Yellow "Generating Applist..."
+  winget list > $newPath
+  Write-Host -ForegroundColor Magenta "List saved on $newPath"
+  Pause
+}
 
 ################################################################
 ##        4 ---->     Sync Winget  Packages                   ##
@@ -182,7 +214,7 @@ function install_winget_silent_list {
 
 
 ################################################################
-##        X ---->        Microsoft Store Packages ETC         ##
+##      5 ---->  Install Microsoft Store Packages ETC         ##
 ################################################################
 
 ### These apps are installed silently for all users ###
@@ -246,7 +278,7 @@ function install_microsoft_store_list {
 
 
 ################################################################
-##           X ---->             Remove Bloateware            ##
+##           6 ---->             Remove Bloateware            ##
 ################################################################
 
 $bloatware = @(
@@ -374,27 +406,14 @@ function debloating {
 
 
 
-################################################################
-##       X ---->       Get List of installed Apps            ##
-################################################################
-
-
-function get_list {
-  $timestamp = get-date -Format dd_MM_yyyy
-  $newPath = "$DesktopPath\" + "winget_"+ $env:computername + "_$timestamp" + ".txt"
-  Write-Host -ForegroundColor Yellow "Generating Applist..."
-  winget list > $newPath
-  Write-Host -ForegroundColor Magenta "List saved on $newPath"
-  Pause
-}
 
 ################################################################
-##                      Finished   Choices                    ##
+##                 Shared Function  Finished   Choices        ##
 ################################################################
 
 function finish {
   Write-Host
-  Write-Host -ForegroundColor Magenta  "Installation finished"
+  Write-Host -ForegroundColor DarkGreen  "Process Has finished"
   Write-Host
   Pause
 }
@@ -429,6 +448,8 @@ function menu {
   Write-Host "2: Ensure PowerShell Execution Policy is set to RemoteSigned for the Current User "
   Write-Host "3: Sync Chocolatey Apps "
   Write-Host "4: Sync Winget Apps "
+  Write-Host "5: Install Microsoft Store Apps"
+  Write-Host "6: Remove Bloatware"
   Write-Host
   Write-Host -ForegroundColor Magenta "0: Quit"
   Write-Host -ForegroundColor DarkYellow "99: Test if Script is reloaded" 
@@ -453,6 +474,7 @@ function menu {
               install_chocolatey
               install_chocolatey_list 
               uninstall_chocolatey_list 
+              get_list
               finish
           }
           if ($actions -eq 4) {
@@ -461,14 +483,15 @@ function menu {
               finish
           }
           if ($actions -eq 5) {
-              x
+              install_microsoft_store_list
               finish
           }
           if ($actions -eq 6) {
-              x
+              debloating
+              finish
           }
           if ($actions -eq 99) {
-              Write-Host "test0" 
+              Write-Host "test1" 
               finish
           }
           menu
