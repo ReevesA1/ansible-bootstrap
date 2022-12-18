@@ -42,9 +42,8 @@ function execution_policy {
 }
 
 
-
 ################################################################
-##       3 ---->            Ensure chocolatey installed       ##
+##        3 ---->     Sync Chocolatey  Packages               ##
 ################################################################
 
 function install_chocolatey {
@@ -59,9 +58,6 @@ function install_chocolatey {
 }
 
 
-################################################################
-##        4 ---->     Sync Chocolatey  Packages               ##
-################################################################
 function install_chocolatey_list {
   Check-RunAsAdministrator
   Write-Host "Installing Choco Apps"
@@ -82,7 +78,7 @@ function install_chocolatey_list {
   }
 }
 
-function install_chocolatey_list {
+function uninstall_chocolatey_list {
   Check-RunAsAdministrator
   Write-Host "Uninstalling Choco Apps"
   $RemoveChocoList = @(
@@ -457,8 +453,8 @@ function menu {
   Write-Host
   Write-Host "1: Reload This Script"
   Write-Host "2: Ensure PowerShell execution policy is set to RemoteSigned for the current user "
-  Write-Host "3: Ensure chocolatey is installed " 
-  Write-Host "4: Install chocolatey Apps " 
+  Write-Host "3: Sync chocolatey Apps "
+  Write-Host "4: "
   Write-Host
   Write-Host -ForegroundColor Magenta "0: Quit"
   Write-Host -ForegroundColor DarkYellow "99: Test if Script is reloaded" 
@@ -481,6 +477,8 @@ function menu {
           }
           if ($actions -eq 3) {
               install_chocolatey
+              install_chocolatey_list 
+              uninstall_chocolatey_list 
               finish
           }
           if ($actions -eq 4) {
@@ -495,7 +493,7 @@ function menu {
               x
           }
           if ($actions -eq 99) {
-              Write-Host "test7" 
+              Write-Host "test8" 
               finish
           }
           menu
