@@ -410,10 +410,10 @@ Function Check-RunAsAdministrator()
 }
 
 #Check Script is running with Elevated Privileges
-Check-RunAsAdministrator
+#Check-RunAsAdministrator
 
 #Place your script here.
-write-host "Welcome"
+#write-host "Welcome"
 #############################################################################################
 ################################      Backend of Menu        ################################
 #############################################################################################
