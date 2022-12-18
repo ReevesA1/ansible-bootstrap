@@ -478,8 +478,8 @@ function menu {
               get_list
           }
           if ($actions -eq 99) {
-            Write-Host "test" 
-            finish
+              Write-Host "test" 
+              finish
           }
           menu
       }
