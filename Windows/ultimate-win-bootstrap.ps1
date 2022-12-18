@@ -1,9 +1,9 @@
 # Base on https://github.com/Kugane/winget
 
-
+#
 
 ################################################################
-##        1 ---->     WINGET GRAPHICAL INSTALL                ##
+##        1 ---->     WINGET GUI Packages                     ##
 ################################################################
 
 ### Here can you add apps that you want to configure during installation ###
