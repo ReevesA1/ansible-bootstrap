@@ -1,4 +1,43 @@
 # Based on https://github.com/Kugane/winget
+################################################################
+##                      Shared Function                       ##
+################################################################
+Function Check-RunAsAdministrator()
+{
+    #Get current user context
+    $CurrentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent())
+    
+    #Check user is running the script is member of Administrator Group
+    if($CurrentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator))
+    {
+        Write-host "Script is running with Administrator privileges!"
+    }
+    else
+      {
+        #Create a new Elevated process to Start PowerShell
+        $ElevatedProcess = New-Object System.Diagnostics.ProcessStartInfo "PowerShell";
+
+        # Specify the current script path and name as a parameter
+        $ElevatedProcess.Arguments = "& '" + $script:MyInvocation.MyCommand.Path + "'"
+
+        #Set the Process to elevated
+        $ElevatedProcess.Verb = "runas"
+
+        #Start the new elevated process
+        [System.Diagnostics.Process]::Start($ElevatedProcess)
+
+        #Exit from the current, unelevated, process
+        Exit
+       
+  }
+}
+
+#The Commented line below is the line I add to scripts to check if Script is running with Elevated Privileges
+#Check-RunAsAdministrator
+
+#Place your script here.
+#write-host "Welcome"
+
 
 ################################################
 ##      1 ---->    Reload This Script         ##
@@ -30,6 +69,7 @@ function execution_policy {
 ################################################################
 
 function install_chocolatey {
+  Check-RunAsAdministrator
   if ([bool](Get-Command -Name 'choco' -ErrorAction SilentlyContinue)) {
     Write-Verbose "Chocolatey is already installed, skip installation." -Verbose
   }
@@ -376,44 +416,7 @@ function finish {
 
 
 
-################################################################
-##                      Shared Function                       ##
-################################################################
-Function Check-RunAsAdministrator()
-{
-    #Get current user context
-    $CurrentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent())
-    
-    #Check user is running the script is member of Administrator Group
-    if($CurrentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator))
-    {
-        Write-host "Script is running with Administrator privileges!"
-    }
-    else
-      {
-        #Create a new Elevated process to Start PowerShell
-        $ElevatedProcess = New-Object System.Diagnostics.ProcessStartInfo "PowerShell";
 
-        # Specify the current script path and name as a parameter
-        $ElevatedProcess.Arguments = "& '" + $script:MyInvocation.MyCommand.Path + "'"
-
-        #Set the Process to elevated
-        $ElevatedProcess.Verb = "runas"
-
-        #Start the new elevated process
-        [System.Diagnostics.Process]::Start($ElevatedProcess)
-
-        #Exit from the current, unelevated, process
-        Exit
-       
-  }
-}
-
-#Check Script is running with Elevated Privileges
-#Check-RunAsAdministrator
-
-#Place your script here.
-#write-host "Welcome"
 #############################################################################################
 ################################      Backend of Menu        ################################
 #############################################################################################
@@ -460,7 +463,7 @@ function menu {
               finish
           }
           if ($actions -eq 3) {
-              Check-RunAsAdministrator(install_chocolatey)
+              install_chocolatey
               finish
           }
           if ($actions -eq 4) {
@@ -475,7 +478,7 @@ function menu {
               get_list
           }
           if ($actions -eq 99) {
-            Check-RunAsAdministrator(install_chocolatey)
+            Write-Host "test" 
             finish
           }
           menu
