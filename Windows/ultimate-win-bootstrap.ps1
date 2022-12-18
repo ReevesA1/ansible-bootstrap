@@ -84,6 +84,7 @@ function install_chocolatey_list {
 
 
 function uninstall_chocolatey_list {
+  Write-Host "Uninstalling Choco Apps"
   $RemoveChocoList = @(
       "files"
       "godot"
@@ -91,15 +92,7 @@ function uninstall_chocolatey_list {
 
   # Loop through the array and try to uninstall each package
   foreach ($RemoveChocoApp in $RemoveChocoList) {
-    # Check if the package is installed
-    $installed = choco list -l $RemoveChocoApp 
-    if ($installed) {
-      # Package is installed, so uninstall it
-      choco uninstall $package
-    } else {
-      # Package is not installed, so skip it
-      Write-Output "Package $RemoveChocoApp is not installed, skipping uninstall"
-    }
+      choco uninstall $package -y
   }
 }
 
@@ -107,10 +100,32 @@ function uninstall_chocolatey_list {
 ################################################################
 ##        4 ---->     Sync Winget  Packages                   ##
 ################################################################
-# FYI WINGET SHOULD BE NATIVE IN WINDOWS 11 NOW
+function install-winget {
+  # Check if Winget is installed
+  $wingetInstalled = Get-Command winget -ErrorAction SilentlyContinue
+
+  # If Winget is not installed, install it
+  if (-not $wingetInstalled) {
+    # Download the latest version of Winget from GitHub
+    Invoke-WebRequest -Uri https://github.com/microsoft/winget-cli/releases/download/v0.3.3254-preview/Microsoft.DesktopAppInstaller_4.2021.3254.0_x64__8wekyb3d8bbwe.msixbundle -OutFile winget.msixbundle
+
+    # Install the downloaded MSIX bundle
+    Add-AppxPackage .\winget.msixbundle
+
+    # Delete the downloaded file
+    Remove-Item .\winget.msixbundle
+  } else {
+    # Winget is already installed, check for updates
+    $updateAvailable = winget update check
+    if ($updateAvailable) {
+      # Update is available, upgrade to the latest version
+      winget upgrade
+    }
+  }
+}
 
 
-
+############################################################################################
 ### Winget apps are installed silently for all users ###
 # just add the app id from winget
 $winget_silent_list = @(
@@ -442,6 +457,7 @@ function menu {
               finish
           }
           if ($actions -eq 4) {
+              install-winget
               install_winget_silent_list
               finish
           }
@@ -453,7 +469,7 @@ function menu {
               x
           }
           if ($actions -eq 99) {
-              Write-Host "test6" 
+              Write-Host "test8" 
               finish
           }
           menu
