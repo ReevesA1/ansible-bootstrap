@@ -72,11 +72,19 @@ function install_chocolatey_list {
       "files"
       "godot"
     )
-  ForEach ($AddChocoApp in $AddChocoList)
-  {
-      choco install $AddChocoApp  -y
+  ForEach ($AddChocoApp in $AddChocoList){
+    # Check if the package is already installed
+    $installed = choco list --local-only | Select-String $AddChocoApp
+    if ($installed -eq $null) {
+      # Install the package if it is not already installed
+      choco install $package -y
+    }
   }
 }
+
+
+
+
 
 function uninstall_chocolatey_list {
   Check-RunAsAdministrator
@@ -493,7 +501,7 @@ function menu {
               x
           }
           if ($actions -eq 99) {
-              Write-Host "test8" 
+              Write-Host "test9" 
               finish
           }
           menu
