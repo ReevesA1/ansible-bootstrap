@@ -82,6 +82,7 @@ function install_chocolatey_list {
   }
 }
 
+#################
 
 Write-Host "Uninstalling Choco Apps"
 $RemoveChocoList = @(
@@ -89,23 +90,13 @@ $RemoveChocoList = @(
   )
 
 function uninstall_chocolatey_list {
-#    [cmdletbinding()]
-#    param(
-#      [string[]]$RemoveChocoList
-#    )
-
-
-  # Loop through the array and try to uninstall each package
-    foreach ($RemoveChocoApp in $RemoveChocoList) {
-    # Check if the package is installed
-    $chocoappinstalled = choco list -lo | Select-Object -ExpandProperty Name | Where-Object {$_ -eq $RemoveChocoApp}
-    
-  # If the package is installed, uninstall it
-    if ($chocoappinstalled) {
-    choco uninstall $RemoveChocoApp -y
-    }
+  
+# Loop through the array and try to uninstall each package
+  foreach ($RemoveChocoApp in $RemoveChocoList) {
+  choco uninstall $RemoveChocoApp -y
   }
 }
+
 
 
 function get_list {
@@ -481,7 +472,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test6" 
+              Write-Host "test7" 
               finish
           }
           menu
