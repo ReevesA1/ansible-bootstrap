@@ -101,7 +101,7 @@ function uninstall_chocolatey_list {
       Write-Output "Package $RemoveChocoApp  is not installed, skipping uninstall"
     }
   }
-
+}
 
 ###########
 foreach ($package in $packagesToUninstall) {
