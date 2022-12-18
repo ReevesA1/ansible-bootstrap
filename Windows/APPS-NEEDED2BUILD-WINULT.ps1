@@ -38,6 +38,7 @@ $ChocoPackages = @(
     "object-desktop"
     "files"
     "godot"
+    "powershell-core" # I use choco because the path for AlluserAllHost is not locked down and I can make my universal profile
 ############ not on Parallesls make a function for that################
 #    "virtualbox" 
 #    "virtualbox-guest-additions-guest.install
@@ -94,7 +95,7 @@ $WingetPackages = @(
     "Microsoft.PowerToys"
     "GitHub.cli"
     "GitHub.GitHubDesktop"
-    "Microsoft.PowerShell" #Newest Powershell
+#    "Microsoft.PowerShell" #Newest Powershell but I can't make a AllUserALlHost Profile since Path is locked down AF Use Choco
 #    "Git.Git"
 #    "Microsoft.OpenSSH.Beta"
 #    "Python.Python.3.9"
