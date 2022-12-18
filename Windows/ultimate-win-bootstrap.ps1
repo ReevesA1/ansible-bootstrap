@@ -456,7 +456,7 @@ function menu {
               get_list
           }
           if ($actions -eq 99) {
-              Write-Host "test1" 
+              Write-Host "test2" 
               finish
           }
           menu
