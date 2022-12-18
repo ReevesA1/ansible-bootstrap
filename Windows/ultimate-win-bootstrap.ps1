@@ -456,11 +456,11 @@ function menu {
               finish
           }
           if ($actions -eq 2) {
-              Check-RunAsAdministrator
               execution_policy 
               finish
           }
           if ($actions -eq 3) {
+              Check-RunAsAdministrator
               install_chocolatey 
               finish
           }
