@@ -103,19 +103,7 @@ function uninstall_chocolatey_list {
   }
 }
 
-###########
-foreach ($package in $packagesToUninstall) {
-  # Check if the package is installed
-  $installed = choco list -l $package
-  if ($installed) {
-    # Package is installed, so uninstall it
-    choco uninstall $package
-  } else {
-    # Package is not installed, so skip it
-    Write-Output "Package $package is not installed, skipping uninstall"
-  }
-}
-############
+
 
 
 
@@ -491,7 +479,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test1" 
+              Write-Host "test2" 
               finish
           }
           menu
