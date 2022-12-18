@@ -70,7 +70,7 @@ function install_chocolatey_list {
       "winaero-tweaker.install"
       "object-desktop"
       "files"
-#      "godot"
+      "godot"
     )
   ForEach ($AddChocoApp in $AddChocoList){
     # Check if the package is already installed
@@ -86,7 +86,7 @@ function install_chocolatey_list {
 function uninstall_chocolatey_list {
   Write-Host "Uninstalling Choco Apps"
   $RemoveChocoList = @(
-      "godot"
+      "files"
     )
 
   # Loop through the array and try to uninstall each package
@@ -475,7 +475,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test4" 
+              Write-Host "test5" 
               finish
           }
           menu
