@@ -83,9 +83,6 @@ function install_chocolatey_list {
 }
 
 
-
-
-
 function uninstall_chocolatey_list {
   Check-RunAsAdministrator
   Write-Host "Uninstalling Choco Apps"
@@ -99,72 +96,19 @@ function uninstall_chocolatey_list {
   }
 }
 
-################################################################
-##        X ---->     WINGET GUI Packages                     ##
-################################################################
-
-### Here can you add apps that you want to configure during installation ###
-# just add the app id from winget
-$winget_gui_list = @(
-    @{name = "Mozilla.Firefox"}
-);
-
-
-
-############################################################################################
-function install_winget_gui_list {
-  Write-Host -ForegroundColor Cyan "Installing new Apps in winget_gui_list"
-  Foreach ($winget_gui_app in $winget_gui_list) {
-      $list_winget_gui_app = winget list --exact -q $winget_gui_app.name
-      if (![String]::Join("", $list_winget_gui_app).Contains($winget_gui_app.name)) {
-          Write-Host -ForegroundColor Yellow "Install:" $winget_gui_app.name
-          if ($winget_gui_app.source -ne $null) {
-              winget install --exact --interactive --accept-package-agreements --accept-source-agreements $winget_gui_app.name --source $winget_gui_app.source
-              if ($LASTEXITCODE -eq 0) {
-                  Write-Host -ForegroundColor Green $winget_gui_app.name "successfully installed."
-              }
-              else {
-                  $winget_gui_app.name+ " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
-                  Write-Host
-                  Write-Host -ForegroundColor Red $winget_gui_app.name "couldn't be installed."
-                  Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
-                  Write-Host
-                  Pause
-              }
-          }
-          else {
-              winget install --exact --interactive --accept-package-agreements --accept-source-agreements $winget_gui_app.name
-              if ($LASTEXITCODE -eq 0) {
-                  Write-Host -ForegroundColor Green $winget_gui_app.name "successfully installed."
-              }
-              else {
-                  $winget_gui_app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
-                  Write-Host
-                  Write-Host -ForegroundColor Red $winget_gui_app.name "couldn't be installed."
-                  Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
-                  Write-Host
-                  Pause
-              }            
-          }
-      }
-      else {
-          Write-Host -ForegroundColor Yellow "Skip installation of" $winget_gui_app.name
-      }
-  }
-  Pause
-  Clear-Host
-}
-
 
 ################################################################
-##          X ---->      Winget Silent Packages               ##
+##        4 ---->     Sync Winget  Packages                   ##
 ################################################################
+# FYI WINGET SHOULD BE NATIVE IN WINDOWS 11 NOW
+
 
 
 ### Winget apps are installed silently for all users ###
 # just add the app id from winget
 $winget_silent_list = @(
     @{name = "LibreWolf.LibreWolf" }
+    @{name = "Mozilla.Firefox" }
 );
 
 
@@ -461,9 +405,9 @@ function menu {
   Write-Host "================ $Title ================"
   Write-Host
   Write-Host "1: Reload This Script"
-  Write-Host "2: Ensure PowerShell execution policy is set to RemoteSigned for the current user "
-  Write-Host "3: Sync chocolatey Apps "
-  Write-Host "4: "
+  Write-Host "2: Ensure PowerShell Execution Policy is set to RemoteSigned for the Current User "
+  Write-Host "3: Sync Chocolatey Apps "
+  Write-Host "4: Sync Winget Apps "
   Write-Host
   Write-Host -ForegroundColor Magenta "0: Quit"
   Write-Host -ForegroundColor DarkYellow "99: Test if Script is reloaded" 
@@ -491,7 +435,7 @@ function menu {
               finish
           }
           if ($actions -eq 4) {
-              install_chocolatey_list
+              install_winget_silent_list
               finish
           }
           if ($actions -eq 5) {
@@ -502,7 +446,7 @@ function menu {
               x
           }
           if ($actions -eq 99) {
-              Write-Host "test1" 
+              Write-Host "test2" 
               finish
           }
           menu
