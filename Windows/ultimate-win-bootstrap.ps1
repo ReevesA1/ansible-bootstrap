@@ -5,8 +5,8 @@
 ################################################
 
 function winult {
-  $ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1
-  Invoke-Expression $($ScriptFromGithHub.Content)
+    $ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1
+    Invoke-Expression $($ScriptFromGithHub.Content)
 }
 
 
