@@ -99,11 +99,11 @@ function uninstall_chocolatey_list {
 
 
 
-function get_list {
+function get_choco_list {
   $timestamp = get-date -Format dd_MM_yyyy
-  $newPath = "$DesktopPath\" + "winget_"+ $env:computername + "_$timestamp" + ".txt"
+  $newPath = "$DesktopPath\" + "choco_"+ $env:computername + "_$timestamp" + ".txt"
   Write-Host -ForegroundColor Yellow "Generating Applist..."
-  winget list > $newPath
+  choco list > $newPath
   Write-Host -ForegroundColor Magenta "List saved on $newPath"
   Pause
 }
@@ -191,7 +191,32 @@ function install_winget_silent_list {
   Clear-Host
 }
 
+#################
 
+Write-Host "Uninstalling Choco Apps"
+$RemoveWingetlistList = @(
+    "files"
+  )
+
+
+function uninstall_winget_list {
+  
+# Loop through the array and try to uninstall each package
+  foreach ($RemoveWingetApp in $RemoveWingetList) {
+  choco uninstall $RemoveWingetApp -y
+  }
+}
+  
+  
+  
+function get_winget_list {
+  $timestamp = get-date -Format dd_MM_yyyy
+  $newPath = "$DesktopPath\" + "winget_"+ $env:computername + "_$timestamp" + ".txt"
+  Write-Host -ForegroundColor Yellow "Generating Applist..."
+  winget list > $newPath
+  Write-Host -ForegroundColor Magenta "List saved on $newPath"
+  Pause
+}
 
 ################################################################
 ##      5 ---->  Install Microsoft Store Packages ETC         ##
@@ -455,12 +480,14 @@ function menu {
               install_chocolatey
               install_chocolatey_list 
               uninstall_chocolatey_list 
-              get_list
+              get_choco_list 
               finish
           }
           if ($actions -eq 4) {
               install-winget
               install_winget_silent_list
+              uninstall_winget_list
+              get_winget_list
               finish
           }
           if ($actions -eq 5) {
@@ -472,7 +499,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test8" 
+              Write-Host "test9" 
               finish
           }
           menu
