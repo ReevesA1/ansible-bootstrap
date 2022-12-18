@@ -13,6 +13,7 @@ Set-Alias -Name eth -Value get-netadapter
 function pswrc {Notepad $PROFILE.AllUsersAllHosts} # Use AllUsers instead of Current so all my commands work when Im Admin
 
 # Update windows with PSWindowsUpdate Module
+# Refer to https://www.youtube.com/watch?v=M2mMQfPGZsE&list=WL&index=13&t=2s
 function winup {Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -AutoReboot | Out-File "C:\($env.computername-Get-Date -f yyyy-MM-dd)-MSUpdates.log" -Force}
 
 #Run ultimate-win-bootstrap.ps1
