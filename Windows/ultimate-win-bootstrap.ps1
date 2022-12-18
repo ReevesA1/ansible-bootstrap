@@ -103,7 +103,7 @@ function get_choco_list {
   $timestamp = get-date -Format dd_MM_yyyy
   $newPath = "$DesktopPath\" + "choco_"+ $env:computername + "_$timestamp" + ".txt"
   Write-Host -ForegroundColor Yellow "Generating Applist..."
-  choco list > $newPath
+  choco list -localonly > $newPath
   Write-Host -ForegroundColor Magenta "List saved on $newPath"
   Pause
 }
@@ -502,7 +502,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test1" 
+              Write-Host "test3" 
               finish
           }
           menu
