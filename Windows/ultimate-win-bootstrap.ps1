@@ -16,6 +16,7 @@ function Check-RunAsAdministrator {
   }
 }
 
+#Just add `Check-RunAsAdministrator` at the start of any function
 
 ################################################
 ##      1 ---->    Reload This Script         ##
@@ -26,7 +27,7 @@ function winult {$ScriptFromGithHub = Invoke-WebRequest https://raw.githubuserco
 
 
 #########################################################################################################
-##      1 ---->    Ensure PowerShell execution policy is set to RemoteSigned for the current user      ##
+##      2 ---->    Ensure PowerShell execution policy is set to RemoteSigned for the current user      ##
 #########################################################################################################
 
 function execution_policy {
@@ -43,7 +44,7 @@ function execution_policy {
 
 
 ################################################################
-##                  Ensure chocolatey installed               ##
+##       3 ---->            Ensure chocolatey installed       ##
 ################################################################
 
 function install_chocolatey {
@@ -57,8 +58,14 @@ function install_chocolatey {
   }
 }
 
+
 ################################################################
-##        1 ---->     WINGET GUI Packages                     ##
+##        4 ---->     Install Chocolatey  Packages            ##
+################################################################
+
+
+################################################################
+##        X ---->     WINGET GUI Packages                     ##
 ################################################################
 
 ### Here can you add apps that you want to configure during installation ###
@@ -115,7 +122,7 @@ function install_winget_gui_list {
 
 
 ################################################################
-##          2 ---->      Winget Silent Packages               ##
+##          X ---->      Winget Silent Packages               ##
 ################################################################
 
 
@@ -175,7 +182,7 @@ function install_winget_silent_list {
 
 
 ################################################################
-##        3 ---->        Microsoft Store Packages ETC         ##
+##        X ---->        Microsoft Store Packages ETC         ##
 ################################################################
 
 ### These apps are installed silently for all users ###
@@ -239,7 +246,7 @@ function install_microsoft_store_list {
 
 
 ################################################################
-##                       Remove Bloateware                    ##
+##           X ---->             Remove Bloateware            ##
 ################################################################
 
 $bloatware = @(
@@ -368,7 +375,7 @@ function debloating {
 
 
 ################################################################
-##                      Get List of installed Apps            ##
+##       X ---->       Get List of installed Apps            ##
 ################################################################
 
 
@@ -421,8 +428,10 @@ function menu {
   Write-Host "1: Reload This Script"
   Write-Host "2: Ensure PowerShell execution policy is set to RemoteSigned for the current user "
   Write-Host "3: Ensure chocolatey is installed " 
+  Write-Host "4: Install chocolatey Apps " 
   Write-Host
   Write-Host -ForegroundColor Magenta "0: Quit"
+  Write-Host -ForegroundColor Yellow "99: Install chocolatey Apps " 
   Write-Host
   
   $actions = "0"
@@ -445,15 +454,15 @@ function menu {
               finish
           }
           if ($actions -eq 4) {
-              install_microsoft_store_list
+              x
               finish
           }
           if ($actions -eq 5) {
-              debloating
+              x
               finish
           }
           if ($actions -eq 6) {
-              get_list
+              x
           }
           if ($actions -eq 99) {
               Write-Host "test3" 
