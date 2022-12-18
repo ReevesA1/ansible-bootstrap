@@ -84,15 +84,21 @@ function install_chocolatey_list {
 
 
 function uninstall_chocolatey_list {
-  Check-RunAsAdministrator
-  Write-Host "Uninstalling Choco Apps"
   $RemoveChocoList = @(
       "files"
     )
-  ForEach ($RemoveChocoApp in $RemoveChocoList){
+
+  # Loop through the array and try to uninstall each package
+  foreach ($RemoveChocoApp in $RemoveChocoList) {
     # Check if the package is installed
-    $installed = choco list --local-only | Select-String $RemoveChocoApp
-    if ($installed -eq "choco uninstall $AddChocoApp -y")
+    $installed = choco list -l $package
+    if ($installed) {
+      # Package is installed, so uninstall it
+      choco uninstall $package
+    } else {
+      # Package is not installed, so skip it
+      Write-Output "Package $RemoveChocoApp is not installed, skipping uninstall"
+    }
   }
 }
 
@@ -446,7 +452,7 @@ function menu {
               x
           }
           if ($actions -eq 99) {
-              Write-Host "test2" 
+              Write-Host "test3" 
               finish
           }
           menu
