@@ -1,8 +1,8 @@
 # Based on https://github.com/Kugane/winget
 
-################################################################################################
-##        Ensure PowerShell execution policy is set to RemoteSigned for the current user      ##
-################################################################################################
+#########################################################################################################
+##      1 ---->    Ensure PowerShell execution policy is set to RemoteSigned for the current user      ##
+#########################################################################################################
 
 function execution_policy {
     $ExecutionPolicy = Get-ExecutionPolicy -Scope CurrentUser
@@ -13,6 +13,20 @@ function execution_policy {
         Write-Verbose "Setting execution policy to RemoteSigned for the current user..." -Verbose
         Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
     }
+}
+
+
+################################################################
+##                  Ensure chocolatey installed               ##
+################################################################
+function install_chocolatey {
+  if ([bool](Get-Command -Name 'choco' -ErrorAction SilentlyContinue)) {
+    Write-Verbose "Chocolatey is already installed, skip installation." -Verbose
+  }
+  else {
+    Write-Verbose "Installing Chocolatey..." -Verbose
+    Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+  }
 }
 
 ################################################################
@@ -373,7 +387,7 @@ function menu {
   Write-Host "================ $Title ================"
   Write-Host
   Write-Host "1: Ensure PowerShell execution policy is set to RemoteSigned for the current user "
-  Write-Host "2: Install winget_gui_list" 
+  Write-Host "2: Ensure chocolatey is installed " 
   Write-Host "3: Install winget_silent_list" 
   Write-Host "4: Install microsoft_store_list" 
   Write-Host "5: Remove bloatware"
@@ -394,7 +408,7 @@ function menu {
               finish
           }
           if ($actions -eq 2) {
-              install_winget_gui_list
+              install_chocolatey 
               finish
           }
           if ($actions -eq 3) {
