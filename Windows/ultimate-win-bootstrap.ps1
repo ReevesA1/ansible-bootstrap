@@ -60,12 +60,12 @@ function install_chocolatey {
 
 
 ################################################################
-##        4 ---->     Install Chocolatey  Packages            ##
+##        4 ---->     Sync Chocolatey  Packages               ##
 ################################################################
 function install_chocolatey_list {
   Check-RunAsAdministrator
   Write-Host "Installing Choco Apps"
-  $ChocoPackages = @(
+  $AddChocoList = @(
       "bat"
       "ripgrep"
       "hackfont"
@@ -76,9 +76,21 @@ function install_chocolatey_list {
       "files"
       "godot"
     )
-  ForEach ($ChocoApp in $ChocoPackages)
+  ForEach ($AddChocoApp in $AddChocoList)
   {
-      choco install $ChocoApp  -y
+      choco install $AddChocoApp  -y
+  }
+}
+
+function install_chocolatey_list {
+  Check-RunAsAdministrator
+  Write-Host "Uninstalling Choco Apps"
+  $RemoveChocoList = @(
+      "7zip"
+    )
+  ForEach ($RemoveChocoApp in $RemoveChocoList)
+  {
+      choco uninstall $RemoveChocoApp  -y
   }
 }
 
@@ -483,7 +495,7 @@ function menu {
               x
           }
           if ($actions -eq 99) {
-              Write-Host "test6" 
+              Write-Host "test7" 
               finish
           }
           menu
