@@ -85,7 +85,8 @@ function install_chocolatey_list {
 
 function uninstall_chocolatey_list {
   $RemoveChocoList = @(
-      "files",
+      "files"
+      "godot"
     )
 
   # Loop through the array and try to uninstall each package
@@ -452,7 +453,7 @@ function menu {
               x
           }
           if ($actions -eq 99) {
-              Write-Host "test5" 
+              Write-Host "test6" 
               finish
           }
           menu
