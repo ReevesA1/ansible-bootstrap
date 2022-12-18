@@ -27,7 +27,7 @@ Function Check-RunAsAdministrator()
         [System.Diagnostics.Process]::Start($ElevatedProcess)
 
         #Exit from the current, unelevated, process
-        Exit
+#        Exit
        
   }
 }
