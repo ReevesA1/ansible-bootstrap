@@ -89,10 +89,10 @@ $RemoveChocoList = @(
   )
 
 function uninstall_chocolatey_list {
-    [cmdletbinding()]
-    param(
-      [string[]]$RemoveChocoList
-    )
+#    [cmdletbinding()]
+#    param(
+#      [string[]]$RemoveChocoList
+#    )
 
 
   # Loop through the array and try to uninstall each package
@@ -481,7 +481,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test5" 
+              Write-Host "test6" 
               finish
           }
           menu
