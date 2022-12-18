@@ -1,5 +1,13 @@
 # Based on https://github.com/Kugane/winget
 
+################################################
+##      1 ---->    Reload This Script         ##
+################################################
+
+function winult {$ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1
+  Invoke-Expression $($ScriptFromGithHub.Content)}
+
+
 #########################################################################################################
 ##      1 ---->    Ensure PowerShell execution policy is set to RemoteSigned for the current user      ##
 #########################################################################################################
@@ -386,33 +394,30 @@ function menu {
   Clear-Host
   Write-Host "================ $Title ================"
   Write-Host
-  Write-Host "1: Ensure PowerShell execution policy is set to RemoteSigned for the current user "
-  Write-Host "2: Ensure chocolatey is installed " 
-  Write-Host "3: Install winget_silent_list" 
-  Write-Host "4: Install microsoft_store_list" 
-  Write-Host "5: Remove bloatware"
-  Write-Host "6: Get List of all winget installed Apps"
+  Write-Host "1: Reload This Script"
+  Write-Host "2: Ensure PowerShell execution policy is set to RemoteSigned for the current user "
+  Write-Host "3: Ensure chocolatey is installed " 
   Write-Host
   Write-Host -ForegroundColor Magenta "0: Quit"
   Write-Host
   
   $actions = "0"
-  while ($actions -notin "0..7") {
+  while ($actions -notin "0..99") {
   $actions = Read-Host -Prompt 'What you want to do?'
-      if ($actions -in 0..7) {
+      if ($actions -in 0..99) {
           if ($actions -eq 0) {
               exit
           }
           if ($actions -eq 1) {
-              execution_policy 
+              winult
               finish
           }
           if ($actions -eq 2) {
-              install_chocolatey 
+              execution_policy 
               finish
           }
           if ($actions -eq 3) {
-              install_winget_silent_list
+              install_chocolatey 
               finish
           }
           if ($actions -eq 4) {
@@ -425,6 +430,10 @@ function menu {
           }
           if ($actions -eq 6) {
               get_list
+          }
+          if ($actions -eq 99) {
+            winult
+            finish
           }
           menu
       }
