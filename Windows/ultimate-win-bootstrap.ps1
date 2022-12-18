@@ -63,6 +63,7 @@ function install_chocolatey {
 ##        4 ---->     Install Chocolatey  Packages            ##
 ################################################################
 function install_chocolatey_list {
+  Check-RunAsAdministrator
   Write-Host "Installing Choco Apps"
   $ChocoPackages = @(
       "bat"
@@ -482,7 +483,7 @@ function menu {
               x
           }
           if ($actions -eq 99) {
-              Write-Host "test5" 
+              Write-Host "test6" 
               finish
           }
           menu
