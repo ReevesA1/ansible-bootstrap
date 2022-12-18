@@ -148,8 +148,45 @@ function install-winget {
 ### Winget apps are installed silently for all users ###
 # just add the app id from winget
 $winget_silent_list = @(
-#    @{name = "LibreWolf.LibreWolf" }
-    @{name = "Mozilla.Firefox" }
+
+    # Windows Power User
+    @{name = "Microsoft.VisualStudioCode"}
+    @{name = "GitHub.GitHubDesktop"}
+    @{name = "Cygwin.Cygwin"} # this actualy installs it where it needs to be C:\cygwin64
+    @{name = "Microsoft.PowerAutomateDesktop"}
+    @{name = "Microsoft.PowerToys"}
+    @{name = "GitHub.cli"}
+    @{name = "GitHub.GitHubDesktop"}
+    @{name = "Microsoft.PowerShell"} #Newest Powershell but I can't make a AllUserALlHost Profile since Path is locked down AF but choco can't install modules
+
+    #Browsers
+    @{name = "Mozilla.Firefox"}
+    @{name = "LibreWolf.LibreWolf"}
+
+    #Productivity
+    @{name = "Notion.Notion"}
+    @{name = "MarkText.MarkText"}
+    @{name = "Doist.Todoist"}
+    @{name = "RustemMussabekov.Raindrop"}
+
+    #Utilities
+    @{name = "Lexikos.AutoHotkey"}
+    @{name = "File-New-Project.EarTrumpet"}
+    @{name = "REALiX.HWiNFO"}
+    @{name = "QL-Win.QuickLook"}
+    @{name = "Flameshot.Flameshot"}
+    @{name = "VideoLAN.VLC"}
+    @{name = "BleachBit.BleachBit"}
+    @{name = "Sejda.PDFDesktop"} #pdf viewer
+    @{name = "angryziber.AngryIPScanner"}
+    
+    #Work together (look in Notion espanso page for video)
+    @{name = "Espanso.Espanso"}
+    @{name = "voidtools.Everything"}
+    @{name = "Flow-Launcher.Flow-Launcher"}
+
+    #Terminal
+    @{name = "Starship.Starship"}
 );
 
 
@@ -209,7 +246,81 @@ function uninstall_winget_list {
 
 Write-Host "Uninstalling Winget Apps"
 $RemoveWingetList = @(
-  "LibreWolf.LibreWolf" 
+
+  # Replaced On MAc
+  "Twilio.Authy" #Only using on mac now
+  "Ferdium.Ferdium" # only using mail app on mac now but this app could be usefull for something else other then mail
+
+  # Future Power User Stuff
+  "Git.Git"
+  "Microsoft.OpenSSH.Beta"
+  "Python.Python.3.9"
+  "Docker.DockerDesktop"
+
+  ####Gaming/Emulation
+  "Nvidia.GeForceNow"
+  "Libretro.RetroArch"
+  "Emulationstation.Emulationstation"
+  "BlueStack.BlueStacks"
+
+  #Media
+  "XBMCFoundation.Kodi"
+  "Stremio.Stremio"
+  "Amazon.Kindle"
+  "Plex.PlexMediaPlayer"
+
+
+  #Productivity
+  "ransome1.sleek"
+  "ONLYOFFICE.DesktopEditors"
+  "KDE.Krita"
+  "Joplin.Joplin"
+
+  #Social
+  "Telegram.TelegramDesktop"
+  "OpenWhisperSystems.Signal"
+  "Caprine.Caprine"
+
+
+  #Privacy and Security Focused
+  "PrestonN.FreeTube"
+  "OO-Software.ShutUp10"
+  "Bitwarden.Bitwarden"
+
+  #Browser 
+  "TorProject.TorBrowser"
+
+  #Linux Focused
+  "GNU.Emacs"
+  "Neovim.Neovim"
+
+
+  #Mega has replaced these (has the most gb $ plan)
+  "extcloud.NextcloudDesktop"
+  "Insynchq.Insync"
+
+  #Terminals
+  "Eugeny.Tabby" #good for multiple ssh clients 
+
+
+  #Misc
+  "eTeks.SweetHome3D"
+  "VSCodium.VSCodium" # I Use Vs code way better for plugins
+  "ShareX.ShareX"
+  "NathanOsman.NitroShare"
+  "RustDesk.RustDesk"
+
+  # Replaced with choco object-desktop
+  "Stardock.Fences" 
+  "Stardock.Start11" 
+
+  #Server
+  "Jellyfin.Server"
+
+  #Logitech 
+  "Logitech.GHUB" #if running speakers
+  "Logitech.Options" #if runnin Mx Mouse 
+  
   )
 
 # Loop through the array and try to uninstall each package
@@ -241,6 +352,7 @@ $microsoft_store_list = @(
 #    @{name = "Microsoft.VC++2015-2022Redist-arm64" }    # THought it could maybe fix my parallels issue but it does not have a candidate
     @{name = "9WZDNCRFJ3TJ"; source = "msstore" }        # Netflix
     @{name = "9P6RC76MSMMJ"; source = "msstore" }        # Prime Video
+    @{name = "9n0dx20hk701"; source = "msstore" }        # Windows Terminal
 );
 
 
