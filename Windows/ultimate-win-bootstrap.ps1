@@ -77,7 +77,7 @@ function install_chocolatey_list {
     $installed = choco list --local-only | Select-String $AddChocoApp
     if ($installed -eq $null) {
       # Install the package if it is not already installed
-      choco install $package -y
+      choco install $AddChocoApp -y
     }
   }
 }
@@ -501,7 +501,7 @@ function menu {
               x
           }
           if ($actions -eq 99) {
-              Write-Host "test9" 
+              Write-Host "test0" 
               finish
           }
           menu
