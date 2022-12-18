@@ -16,7 +16,8 @@ function pswrc {Notepad $PROFILE.AllUsersAllHosts} # Use AllUsers instead of Cur
 
 # Update windows with PSWindowsUpdate Module
 # Refer to https://www.youtube.com/watch?v=M2mMQfPGZsE&list=WL&index=13&t=2s
-function winup {Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -AutoReboot | Out-File "C:\($env.computername-Get-Date -f yyyy-MM-dd)-MSUpdates.log" -Force}
+#function winup {Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -AutoReboot | Out-File "C:\($env.computername-Get-Date -f yyyy-MM-dd)-MSUpdates.log" -Force}
+function winup {Install-WindowsUpdate -MicrosoftUpdate -AcceptAll | Out-File -FilePath "$($env:USERPROFILE)\Desktop\MSUpdates.log" -Force}
 
 #Run ultimate-win-bootstrap.ps1
 function winult {$ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1
