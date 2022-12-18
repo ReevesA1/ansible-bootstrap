@@ -68,8 +68,9 @@ function install_chocolatey_list {
       "7zip"
       "onecommander"
       "winaero-tweaker.install"
+#    "powershell-core" # Can't install Modules Must with this version use winget
       "object-desktop"
-#      "files"
+      "files"
       "godot"
     )
   ForEach ($AddChocoApp in $AddChocoList){
@@ -89,7 +90,14 @@ function install_chocolatey_list {
 function uninstall_chocolatey_list {
   Write-Host "Uninstalling Choco Apps"
   $RemoveChocoList = @(
-      "files"
+      "streamdeck"
+      "logseq"
+      "translucenttb"
+      "tinymediamanager"
+      "freefilesync"
+      "airexplorer " #Closed sourse program I thought about using to sync megasync on a schedule 
+      "obsidian"
+      "qttabbar"
     )  
 # Loop through the array and try to uninstall each package
   foreach ($RemoveChocoApp in $RemoveChocoList) {
