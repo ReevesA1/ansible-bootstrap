@@ -401,7 +401,7 @@ function debloating {
 
 function finish {
   Write-Host
-  Write-Host -ForegroundColor DarkGreen  "Process Has finished"
+  Write-Host -ForegroundColor DarkGreen  "Processes Has finished"
   Write-Host
   Pause
 }
