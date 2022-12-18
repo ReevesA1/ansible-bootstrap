@@ -38,6 +38,7 @@ $ChocoPackages = @(
     "object-desktop"
     "files"
     "godot"
+    "powershell-core"
 ############ not on Parallesls make a function for that################
 #    "virtualbox" 
 #    "virtualbox-guest-additions-guest.install
