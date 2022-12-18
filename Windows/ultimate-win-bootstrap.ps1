@@ -346,6 +346,34 @@ function debloating {
 
 
 
+
+################################################################
+##                      Get List of installed Apps            ##
+################################################################
+
+
+function get_list {
+  $timestamp = get-date -Format dd_MM_yyyy
+  $newPath = "$DesktopPath\" + "winget_"+ $env:computername + "_$timestamp" + ".txt"
+  Write-Host -ForegroundColor Yellow "Generating Applist..."
+  winget list > $newPath
+  Write-Host -ForegroundColor Magenta "List saved on $newPath"
+  Pause
+}
+
+################################################################
+##                      Finished   Choices                    ##
+################################################################
+
+function finish {
+  Write-Host
+  Write-Host -ForegroundColor Magenta  "Installation finished"
+  Write-Host
+  Pause
+}
+
+
+
 ################################################################
 ##                      Shared Function                       ##
 ################################################################
@@ -384,39 +412,6 @@ Check-RunAsAdministrator
 
 #Place your script here.
 write-host "Welcome"
-
-################################################################
-##                      Get List of installed Apps            ##
-################################################################
-
-
-function get_list {
-  $timestamp = get-date -Format dd_MM_yyyy
-  $newPath = "$DesktopPath\" + "winget_"+ $env:computername + "_$timestamp" + ".txt"
-  Write-Host -ForegroundColor Yellow "Generating Applist..."
-  winget list > $newPath
-  Write-Host -ForegroundColor Magenta "List saved on $newPath"
-  Pause
-}
-
-################################################################
-##                      Finished                              ##
-################################################################
-
-function finish {
-  Write-Host
-  Write-Host -ForegroundColor Magenta  "Installation finished"
-  Write-Host
-  Pause
-}
-
-
-
-
-
-
-
-
 #############################################################################################
 ################################      Backend of Menu        ################################
 #############################################################################################
@@ -459,7 +454,7 @@ function menu {
               finish
           }
           if ($actions -eq 2) {
-              Check-RunAsAdministrator()
+              Check-RunAsAdministrator
               execution_policy 
               finish
           }
