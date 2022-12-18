@@ -382,6 +382,7 @@ $bloatware = @(
 ### Debloating ###
 # Based on this gist: https://github.com/W4RH4WK/Debloat-Windows-10/blob/master/scripts/remove-default-apps.ps1
 function debloating {
+  Check-RunAsAdministrator
   Write-Host -ForegroundColor Cyan "Remove bloatware"
   Foreach ($blt in $bloatware) {
       Write-Host -ForegroundColor Red "Removing:" $blt
@@ -479,7 +480,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test2" 
+              Write-Host "test3" 
               finish
           }
           menu
