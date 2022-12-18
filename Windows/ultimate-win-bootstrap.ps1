@@ -92,7 +92,7 @@ function uninstall_chocolatey_list {
   ForEach ($RemoveChocoApp in $RemoveChocoList){
     # Check if the package is installed
     $installed = choco list --local-only | Select-String $RemoveChocoApp
-    if ($installed -eq choco uninstall $AddChocoApp -y)
+    if ($installed -eq "choco uninstall $AddChocoApp -y")
   }
 }
 
