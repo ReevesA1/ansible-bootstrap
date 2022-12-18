@@ -92,7 +92,7 @@ function uninstall_chocolatey_list {
 
   # Loop through the array and try to uninstall each package
   foreach ($RemoveChocoApp in $RemoveChocoList) {
-      choco uninstall $package -y
+      choco uninstall $RemoveChocoApp -y
   }
 }
 
