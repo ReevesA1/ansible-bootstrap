@@ -24,9 +24,11 @@ function execution_policy {
 }
 
 
+
 ################################################################
 ##                  Ensure chocolatey installed               ##
 ################################################################
+
 function install_chocolatey {
   if ([bool](Get-Command -Name 'choco' -ErrorAction SilentlyContinue)) {
     Write-Verbose "Chocolatey is already installed, skip installation." -Verbose
