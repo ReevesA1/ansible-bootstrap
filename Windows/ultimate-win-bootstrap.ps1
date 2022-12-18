@@ -475,7 +475,7 @@ function menu {
               get_list
           }
           if ($actions -eq 99) {
-            winult
+            Check-RunAsAdministrator(install_chocolatey)
             finish
           }
           menu
