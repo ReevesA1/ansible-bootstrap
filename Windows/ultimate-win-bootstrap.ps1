@@ -1,6 +1,19 @@
-# Base on https://github.com/Kugane/winget
+# Based on https://github.com/Kugane/winget
 
-#
+################################################################################################
+##        Ensure PowerShell execution policy is set to RemoteSigned for the current user      ##
+################################################################################################
+
+function execution_policy {
+    $ExecutionPolicy = Get-ExecutionPolicy -Scope CurrentUser
+    if ($ExecutionPolicy -eq "RemoteSigned") {
+        Write-Verbose "Execution policy is already set to RemoteSigned for the current user, skipping..." -Verbose
+    }
+    else {
+        Write-Verbose "Setting execution policy to RemoteSigned for the current user..." -Verbose
+        Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+    }
+}
 
 ################################################################
 ##        1 ---->     WINGET GUI Packages                     ##
@@ -353,13 +366,13 @@ $errorlog = "winget_error.log"
 
 
 
-### Question what to do ###
+### Choose Number for what to do ###
 function menu {
   [string]$Title = 'Ultimate Menu'
   Clear-Host
   Write-Host "================ $Title ================"
   Write-Host
-  Write-Host "1: Do all steps below"
+  Write-Host "1: Ensure PowerShell execution policy is set to RemoteSigned for the current user "
   Write-Host "2: Install winget_gui_list" 
   Write-Host "3: Install winget_silent_list" 
   Write-Host "4: Install microsoft_store_list" 
@@ -377,10 +390,7 @@ function menu {
               exit
           }
           if ($actions -eq 1) {
-              install_winget_gui_list
-              install_winget_silent_list
-              install_microsoft_store_list
-              debloating
+              execution_policy 
               finish
           }
           if ($actions -eq 2) {
