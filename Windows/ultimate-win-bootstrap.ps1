@@ -11,7 +11,7 @@ function Check-RunAsAdministrator {
 
   # If the current process is not elevated, create a new elevated process
   if (-not $isElevated) {
-    Start-Process Pwsh -Verb runAs
+    Start-Process Pwsh -Verb runAs -ArgumentList "-Command winult"
     exit
   }
 }
@@ -456,7 +456,7 @@ function menu {
               get_list
           }
           if ($actions -eq 99) {
-              Write-Host "test2" 
+              Write-Host "test3" 
               finish
           }
           menu
