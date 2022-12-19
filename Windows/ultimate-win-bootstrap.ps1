@@ -353,7 +353,7 @@ function install_winget_x86arm64_list {
           Write-Host -ForegroundColor Yellow  "Install:" $winget_x86arm64_app.name
           # MS Store apps
           if ($winget_x86arm64_app.source -ne $null) {
-              winget install  --accept-package-agreements --accept-source-agreements $winget_x86arm64_app.name --source $winget_x86arm64_app.source # removed --exact for python to install removed --silent for cygwin to install->  more options here https://learn.microsoft.com/en-us/windows/package-manager/winget/install
+              winget install  --accept-package-agreements --accept-source-agreements $winget_x86arm64_app.name --source $winget_x86arm64_app.source ## removed --exact for python to install removed --silent for cygwin to install->  more options here https://learn.microsoft.com/en-us/windows/package-manager/winget/install
               if ($LASTEXITCODE -eq 0) {
                   Write-Host -ForegroundColor Green $winget_x86arm64_app.name "successfully installed."
               }
