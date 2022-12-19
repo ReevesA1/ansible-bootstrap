@@ -251,27 +251,42 @@ function uninstall_chocolatey_list {
     )  
 # Loop through the array and try to uninstall each package
   foreach ($RemoveChocoApp in $RemoveChocoList) {
-  choco uninstall $RemoveChocoApp -y -r
+  choco uninstall $RemoveChocoApp -y 
   }
 }
 
-#  ____      _       ____ _                        _     _     _   
-# / ___| ___| |_    / ___| |__   ___   ___ ___    | |   (_)___| |_ 
-#| |  _ / _ \ __|  | |   | '_ \ / _ \ / __/ _ \   | |   | / __| __|
-#| |_| |  __/ |_   | |___| | | | (_) | (_| (_) |  | |___| \__ \ |_ 
-# \____|\___|\__|___\____|_| |_|\___/ \___\___/___|_____|_|___/\__|
-#              |_____|                       |_____|               
-#
+#############################
+# ____            _    _                 ____ _                     
+#|  _ \  ___  ___| | _| |_ ___  _ __    / ___| |__   ___   ___ ___  
+#| | | |/ _ \/ __| |/ / __/ _ \| '_ \  | |   | '_ \ / _ \ / __/ _ \ 
+#| |_| |  __/\__ \   <| || (_) | |_) | | |___| | | | (_) | (_| (_) |
+#|____/ \___||___/_|\_\\__\___/| .__/   \____|_| |_|\___/ \___\___/ 
+#                              |_|                                  
+# _     _     _   
+#| |   (_)___| |_ 
+#| |   | / __| __|
+#| |___| \__ \ |_ 
+#|_____|_|___/\__|
+#                 
 
-function get_choco_list {
+
+function get_choco_x86arm64_list {
   $timestamp = get-date -Format dd_MM_yyyy
-  $newPath = "$DesktopPath\" + "choco_"+ $env:computername + "_$timestamp" + ".txt"
+  $newPath = "$DesktopPath\" + "choco_x86arm64_"+ $env:computername + "_$timestamp" + ".txt"
   Write-Host -ForegroundColor Yellow "Generating Applist..."
   choco list -localonly > $newPath
   Write-Host -ForegroundColor Magenta "List saved on $newPath"
   Pause
 }
 
+function get_choco_x86only_list {
+  $timestamp = get-date -Format dd_MM_yyyy
+  $newPath = "$DesktopPath\" + "choco_x86only_"+ $env:computername + "_$timestamp" + ".txt"
+  Write-Host -ForegroundColor Yellow "Generating Applist..."
+  choco list -localonly > $newPath
+  Write-Host -ForegroundColor Magenta "List saved on $newPath"
+  Pause
+}
 ################################################################
 ##        4 ---->     X86&Arm64 Winget  Packages               ##
 ################################################################
@@ -594,12 +609,33 @@ $RemoveWingetList = @(
   winget uninstall $RemoveWingetApp 
   }
 }
+
+######################################### 
+# ____            _    _               __        ___                  _   
+#|  _ \  ___  ___| | _| |_ ___  _ __   \ \      / (_)_ __   __ _  ___| |_ 
+#| | | |/ _ \/ __| |/ / __/ _ \| '_ \   \ \ /\ / /| | '_ \ / _` |/ _ \ __|
+#| |_| |  __/\__ \   <| || (_) | |_) |   \ V  V / | | | | | (_| |  __/ |_ 
+#|____/ \___||___/_|\_\\__\___/| .__/     \_/\_/  |_|_| |_|\__, |\___|\__|
+#                              |_|                         |___/          
+# _     _     _   
+#| |   (_)___| |_ 
+#| |   | / __| __|
+#| |___| \__ \ |_ 
+#|_____|_|___/\__|
+#
   
-  
-  
-function get_winget_list {
+function get_winget_x86arm64_list {
   $timestamp = get-date -Format dd_MM_yyyy
-  $newPath = "$DesktopPath\" + "winget_"+ $env:computername + "_$timestamp" + ".txt"
+  $newPath = "$DesktopPath\" + "winget_X86amr64_"+ $env:computername + "_$timestamp" + ".txt"
+  Write-Host -ForegroundColor Yellow "Generating Applist..."
+  winget list > $newPath
+  Write-Host -ForegroundColor Magenta "List saved on $newPath"
+  Pause
+}
+
+function get_winget_x86only_list {
+  $timestamp = get-date -Format dd_MM_yyyy
+  $newPath = "$DesktopPath\" + "winget_x86only_"+ $env:computername + "_$timestamp" + ".txt"
   Write-Host -ForegroundColor Yellow "Generating Applist..."
   winget list > $newPath
   Write-Host -ForegroundColor Magenta "List saved on $newPath"
@@ -859,11 +895,13 @@ function menu {
   Clear-Host
   Write-Host "================ $Title ================"
   Write-Host
+  Write-Host "       Prerequisites           "
+  Write-Host "_______________________________"
   Write-Host "1: Reload This Script"
   Write-Host "2: Ensure PowerShell Execution Policy is set to RemoteSigned for the Current User "
   Write-Host
-  Write-Host "       Install Packages        "
-  Write-Host "_______________________________"
+  Write-Host "       Install/Remove Packages    "
+  Write-Host "__________________________________"
   Write-Host "3: Sync Choco x86 + arm64 Apps"
   Write-Host "4: Sync Choco x86 Only Apps"
   Write-Host "5: Sync Winget x86 + arm64 Apps "
@@ -871,6 +909,13 @@ function menu {
   Write-Host "7: Install Universal Microsoft Store Apps"
   Write-Host "8: Remove Bloatware"
   Write-Host
+  Write-Host "       Advanced Settings          "
+  Write-Host "__________________________________"
+  Write-Host
+  Write-Host
+  Write-Host
+  Write-Host "                Admin             "
+  Write-Host "__________________________________"
   Write-Host -ForegroundColor Magenta "0: Quit"
   Write-Host -ForegroundColor DarkYellow "99: Test if Script is reloaded" 
   Write-Host
@@ -894,28 +939,28 @@ function menu {
               install_chocolatey
               chocolatey_X86Arm64_list
               uninstall_chocolatey_list 
-              get_choco_list 
+              get_choco_x86arm64_list
               finish
           }
           if ($actions -eq 4) {
               install_chocolatey
               chocolatey_X86_list
               uninstall_chocolatey_list 
-              get_choco_list 
+              get_choco_x86only_list
               finish
           }
           if ($actions -eq 5) {
               install-winget
               install_winget_x86arm64_list 
               uninstall_winget_list
-              get_winget_list
+              get_winget_x86arm64_list
               finish
           }
           if ($actions -eq 6) {
               install-winget
               install_winget_x86_list 
               uninstall_winget_list
-              get_winget_list
+              get_winget_x86only_list
               finish
           }
           if ($actions -eq 7) {
