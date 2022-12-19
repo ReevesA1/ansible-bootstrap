@@ -823,15 +823,15 @@ $errorlog = "winget_error.log"
 function menu {
   [string]$Title = 'Ultimate Menu'
   Clear-Host
-  Write-Host "================ $Title ================"
+  Write-Host -ForegroundColor DarkBlue "================ $Title ================"
   Write-Host
-  Write-Host "       Prerequisites           "
-  Write-Host "_______________________________"
+  Write-Host -ForegroundColor Blue "       Prerequisites           "
+  Write-Host -ForegroundColor Blue "_______________________________"
   Write-Host "1: Reload This Script"
   Write-Host "2: Ensure PowerShell Execution Policy is set to RemoteSigned for the Current User "
   Write-Host
-  Write-Host "       Install/Remove Packages    "
-  Write-Host "__________________________________"
+  Write-Host -ForegroundColor Blue "       Install/Remove Packages    "
+  Write-Host -ForegroundColor Blue "__________________________________"
   Write-Host "3: Sync Choco x86 + arm64 Apps"
   Write-Host "4: Sync Choco x86 Only Apps"
   Write-Host "5: Sync Winget x86 + arm64 Apps "
@@ -839,13 +839,13 @@ function menu {
   Write-Host "7: Install Universal Microsoft Store Apps"
   Write-Host "8: Remove Bloatware"
   Write-Host
-  Write-Host "       Advanced Settings          "
-  Write-Host "__________________________________"
+  Write-Host -ForegroundColor Blue "       Advanced Settings          "
+  Write-Host -ForegroundColor Blue "__________________________________"
   Write-Host
   Write-Host
   Write-Host
-  Write-Host "                Admin             "
-  Write-Host "__________________________________"
+  Write-Host -ForegroundColor Blue "                Admin             "
+  Write-Host -ForegroundColor Blue "__________________________________"
   Write-Host -ForegroundColor Magenta "0: Quit"
   Write-Host -ForegroundColor DarkYellow "99: Test if Script is reloaded" 
   Write-Host

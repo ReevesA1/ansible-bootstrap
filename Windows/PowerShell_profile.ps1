@@ -26,7 +26,7 @@ function winup {Get-WindowsUpdate -install -MicrosoftUpdate -AcceptAll | Out-Fil
 
 #Run ultimate-win-bootstrap.ps1
 function winult {$ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1
-Invoke-Expression $($ScriptFromGithHub.Content)}
+Invoke-Expression $($ScriptFromGithHub.Content)} 
 
 
 # Tab Cycle = Shows navigable menu of all options when hitting Tab
