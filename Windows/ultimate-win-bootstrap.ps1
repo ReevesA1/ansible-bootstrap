@@ -317,6 +317,7 @@ $winget_x86arm64_list = @(
     @{name = "GitHub.cli"}
     @{name = "GitHub.GitHubDesktop"}
     @{name = "Microsoft.PowerShell"} #Newest Powershell but I can't make a AllUserALlHost Profile since Path is locked down AF but choco can't install modules
+    @{name = "Cygwin.Cygwin"} # Must allways do a `winget upgrade --all` to install on arm64
 
     #Browsers
     @{name = "Mozilla.Firefox"}
@@ -337,6 +338,7 @@ $winget_x86arm64_list = @(
 
 
 function install_winget_x86arm64_list {
+  winget upgrade --all
   Write-Host -ForegroundColor Cyan "Installing new Apps in winget_x86arm64_list"
   Foreach ($winget_x86arm64_app in $winget_x86arm64_list) {
       $list_winget_x86arm64_app = winget list --exact -q $winget_x86arm64_app.name
@@ -459,6 +461,7 @@ $winget_x86_list  = @(
 
 
 function install_winget_x86_list {
+  winget upgrade --all
   Write-Host -ForegroundColor Cyan "Installing new Apps in winget_x86_list"
   Foreach ($winget_x86_app in $winget_x86_list) {
       $list_winget_x86_app = winget list --exact -q $winget_x86_app.name
@@ -536,7 +539,7 @@ $RemoveWingetList = @(
   "Microsoft.OpenSSH.Beta"
   "Python.Python.3.9"
   "Docker.DockerDesktop"
-  "Cygwin.Cygwin"
+  
 
   ####Gaming/Emulation
   "Nvidia.GeForceNow"

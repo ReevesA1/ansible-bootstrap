@@ -18,16 +18,14 @@ Remove-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905b
 
 
 ################################################################
-##               Final Touches                                ##
+##               Update                           ##
 ################################################################
 
-Write-Output "Restart computer !!!!!!!!!!!!!!"
+winget upgrade --all
 
+################################################################
+##               Restart                               ##
+################################################################
 
-#####################################################################
-##     XXXXXXXXXXXXXX  These dont work yet XXXXXXXXXXXXXXXXXXXXX   ##
-#####################################################################
-
-#Restart-Computer
-
-#Install-WindowsUpdate -AcceptEula -GetUpdatesFromMS
+Write-Output "Restart computer !!!"
+Restart-Computer
