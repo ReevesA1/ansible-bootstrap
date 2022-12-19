@@ -321,6 +321,8 @@ $winget_x86arm64_list = @(
     @{name = "GitHub.cli"}
     @{name = "GitHub.GitHubDesktop"}
     @{name = "Microsoft.PowerShell"} #Newest Powershell but I can't make a AllUserALlHost Profile since Path is locked down AF but choco can't install modules
+    @{name = "Python.Python"}
+    @{name = "Cygwin.Cygwin"} #must be after python
    
 
     #Browsers
@@ -542,10 +544,16 @@ $RemoveWingetList = @(
 
   # Future Power User Stuff
   "Git.Git"
-  "Microsoft.OpenSSH.Beta"
-  "Python.Python.3.9"
+  "Microsoft.OpenSSH"
   "Docker.DockerDesktop"
-  "Cygwin.Cygwin" # Does not work in arm (it did once tho???)
+
+  # Cygwin
+  # Update winget `winget upgrade --all`
+  # Programs I need to download manually before it will 
+	# Only Arm64 so powershell admin works properly in windows Terminal = https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170
+	# Python3 (need to hit 2 options during install) = https://www.python.org/downloads/windows/
+	# Visual Studio Build Tools (Must check Desktop development with C++ 7gb ish/will work for Arm)= https://visualstudio.microsoft.com/visual-cpp-build-tools/
+  "Cygwin.Cygwin" 
 
   ####Gaming/Emulation
   "Nvidia.GeForceNow"
@@ -981,7 +989,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test1" 
+              Write-Host "test2" 
               finish
           }
           menu
