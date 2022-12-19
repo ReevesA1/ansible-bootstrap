@@ -23,11 +23,11 @@ function Check-RunAsAdministrator {
   $isElevated = $currentPrincipal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
 
   # If the current process is not elevated, create a new elevated process (notice I use Pwsh for powershell 7 and up instead of using just the word powershell (for old powershell 5)
-  if (-not $isElevated) { 
-    Start-Process Pwsh -Verb runAs -ArgumentList "-Command {`
-      $ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1`
-      Invoke-Expression $($ScriptFromGithHub.Content)`
-    }"
+    if (-not $isElevated) { 
+      Start-Process Pwsh -Verb runAs -ArgumentList "-Command '{`
+        $ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1`
+        Invoke-Expression $($ScriptFromGithHub.Content)` 
+      }'"
     exit
   }
 }
@@ -905,7 +905,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test1" 
+              Write-Host "test69" 
               finish
           }
           menu
