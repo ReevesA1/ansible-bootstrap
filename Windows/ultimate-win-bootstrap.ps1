@@ -353,7 +353,7 @@ function install_winget_x86arm64_list {
           Write-Host -ForegroundColor Yellow  "Install:" $winget_x86arm64_app.name
           # MS Store apps
           if ($winget_x86arm64_app.source -ne $null) {
-              winget install --silent --accept-package-agreements --accept-source-agreements $winget_x86arm64_app.name --source $winget_x86arm64_app.source # removed --exact more options here https://learn.microsoft.com/en-us/windows/package-manager/winget/install
+              winget install --silent --accept-package-agreements --accept-source-agreements --verbose-logs $winget_x86arm64_app.name --source $winget_x86arm64_app.source # removed --exact more options here https://learn.microsoft.com/en-us/windows/package-manager/winget/install
               if ($LASTEXITCODE -eq 0) {
                   Write-Host -ForegroundColor Green $winget_x86arm64_app.name "successfully installed."
               }
@@ -989,7 +989,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test9" 
+              Write-Host "test1" 
               finish
           }
           menu
