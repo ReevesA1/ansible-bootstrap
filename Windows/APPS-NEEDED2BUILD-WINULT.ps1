@@ -9,15 +9,9 @@ $ChocoPackages = @(
     "virtualbox"
     "virtualbox-guest-additions-guest.install"
     "icloud"
+    "utorrent"
 )
 
-
-Write-Host "Installing Choco Apps Only on server"
-
-$ChocoPackages = @(
-    "utorrent" # may try to use qbitorrent first
-
-)
 
 
 
