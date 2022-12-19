@@ -24,7 +24,8 @@ function Check-RunAsAdministrator {
 
   # If the current process is not elevated, create a new elevated process
   if (-not $isElevated) {
-    Start-Process Pwsh -Verb runAs -ArgumentList "-Command winult"
+    Start-Process Pwsh -Verb runAs -ArgumentList "-Command $ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1
+    Invoke-Expression $($ScriptFromGithHub.Content)"
     exit
   }
 }
@@ -902,7 +903,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test420" 
+              Write-Host "test0" 
               finish
           }
           menu
