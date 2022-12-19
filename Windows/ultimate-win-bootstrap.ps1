@@ -327,7 +327,8 @@ function install_winget_x86arm64_list {
             "GitHub.cli"
             "GitHub.GitHubDesktop"
             "Microsoft.PowerShell" #Newest Powershell but I can't make a AllUserALlHost Profile since Path is locked down AF but choco can't install modules
-            "Python.Python.3.11" #not sure how to make it the latest version everytime ?
+# works     Python.Python.3.11" #not sure how to make it the latest version everytime ?
+            "Python.Python"
             "Cygwin.Cygwin"
           
 
@@ -352,85 +353,6 @@ function install_winget_x86arm64_list {
     }
   }
 }
-##                                                        
-#$winget_x86arm64_list = @(
-#
-#    # Windows Power User
-#    @{name = "Microsoft.VisualStudioCode"}
-#    @{name = "GitHub.GitHubDesktop"}
-#    @{name = "Microsoft.PowerAutomateDesktop"}
-#    @{name = "Microsoft.PowerToys"}
-#    @{name = "GitHub.cli"}
-#    @{name = "GitHub.GitHubDesktop"}
-#    @{name = "Microsoft.PowerShell"} #Newest Powershell but I can't make a AllUserALlHost Profile since Path is locked down AF but choco can't install modules
-#    @{name = "Python.Python.3.11"} #not sure how to make it the latest version everytime ?
-#    @{name = "Cygwin.Cygwin"} 
-#   
-#
-#    #Browsers
-#    @{name = "Mozilla.Firefox"}
-#    @{name = "LibreWolf.LibreWolf"}
-#
-#
-#    #Utilities
-#    @{name = "Lexikos.AutoHotkey"}
-#    @{name = "REALiX.HWiNFO"}
-#    @{name = "Flameshot.Flameshot"}
-#    @{name = "VideoLAN.VLC"}
-#    @{name = "Sejda.PDFDesktop"} #pdf viewer
-#
-#);
-#
-#
-######################## Function for list above
-#
-#
-#function install_winget_x86arm64_list {
-#  Write-Host "Update Winget -all" 
-#  winget upgrade --all
-#  Write-Host -ForegroundColor Cyan "Installing new Apps in winget_x86arm64_list"
-#  Foreach ($winget_x86arm64_app in $winget_x86arm64_list) {
-#      $list_winget_x86arm64_app = winget list --exact -q $winget_x86arm64_app.name
-#      if (![String]::Join("", $list_winget_x86arm64_app).Contains($winget_x86arm64_app.name)) {
-#          Write-Host -ForegroundColor Yellow  "Install:" $winget_x86arm64_app.name
-#          # MS Store apps
-#          if ($winget_x86arm64_app.source -ne $null) {
-#              winget install  --accept-package-agreements --accept-source-agreements #$winget_x86arm64_app.name --source $winget_x86arm64_app.source ## removed --exact for python to install removed --silent for cygwin to install->  more options here https://learn.microsoft.com/en-us/windows/package-manager/winget/install
-#              if ($LASTEXITCODE -eq 0) {
-#                  Write-Host -ForegroundColor Green $winget_x86arm64_app.name "successfully installed."
-#              }
-#              else {
-#                  $winget_x86arm64_app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
-#                  Write-Host
-#                  Write-Host -ForegroundColor Red $winget_x86arm64_app.name "couldn't be installed."
-#                  Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
-#                  Write-Host
-#                  Pause
-#              }    
-#          }
-#          # All other Apps
-#          else {
-#              winget install --exact --silent --scope machine --accept-package-agreements --accept-source-agreements $winget_x86arm64_app.name
-#              if ($LASTEXITCODE -eq 0) {
-#                  Write-Host -ForegroundColor Green $winget_x86arm64_app.name "successfully installed."
-#              }
-#              else {
-#                  $winget_x86arm64_app.name+ " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
-#                  Write-Host
-#                  Write-Host -ForegroundColor Red $winget_x86arm64_app.name "couldn't be installed."
-#                  Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
-#                  Write-Host
-#                  Pause
-#              }  
-#          }
-#      }
-#      else {
-#          Write-Host -ForegroundColor Yellow "Skip installation of" $winget_x86arm64_app.name
-#      }
-#  }
-#  Pause
-#  Clear-Host
-#}
 
 
 ###################################################################################
@@ -448,6 +370,74 @@ function install_winget_x86arm64_list {
 #                        \___/|_| |_|_|\__, |
 #                                      |___/ 
 #                       
+function install_winget_x86_list {
+ 
+
+      Write-Host "Update Winget -all" 
+      winget upgrade --all
+      Write-Host "Installing WingetX86+arm64 Apps"
+      $AddWingetList = @(
+        #Productivity
+        "Notion.Notion"
+        "MarkText.MarkText"
+        "Doist.Todoist"
+        "RustemMussabekov.Raindrop"
+
+        #Utilities
+        "File-New-Project.EarTrumpet"
+        "QL-Win.QuickLook"
+        "BleachBit.BleachBit"
+        "angryziber.AngryIPScanner"
+        
+
+        #Work together (look in Notion espanso page for video)
+        "Espanso.Espanso"
+        "voidtools.Everything"
+        "Flow-Launcher.Flow-Launcher"
+
+        #Terminal
+        "Starship.Starship"
+        #####Networking 
+        "DebaucheeOpenSourceGroup.Barrier"
+        "ZeroTier.ZeroTierOne"
+        "Mega.MEGASync"
+        "Google.Drive" #Im paying 25/year for 100gb might as well use it, this app will mount it as a drive
+        ####Social
+        "Oxen.Session"
+        "Discord.Discord"
+        ####Media
+        "Spotify.Spotify"
+        ####Gaming
+        "Valve.Steam"
+        "Nvidia.GeForceExperience"
+        "EpicGames.EpicGamesLauncher"
+        "ElectronicArts.EADesktop"
+        "Amazon.Games"
+        "GOG.Galaxy"
+        #####Privacy and Security Focused
+        "IDRIX.VeraCrypt"
+        "ProtonTechnologies.ProtonVPN"
+        #### Utilities
+        "Balena.Etcher"
+        "RaspberryPiFoundation.RaspberryPiImager"
+        "MiniTool.PartitionWizard.Free"
+        "ElaborateBytes.VirtualCloneDrive"
+        ##Media SERVER 
+        "Plex.PlexMediaServer"
+        ##Torrent Server
+        "AppWork.JDownloader"
+        "c0re100.qBittorrent-Enhanced-Edition" #if not able to make scedule and to access from other local PC's Use Choco Utorrent
+
+    )
+    ForEach ($AddWingetApp in $AddWingetList){
+      # Check if the package is already installed
+      $installed = winget list | Select-String $AddWingetApp
+      if ($installed -eq $null) {
+        # Install the package if it is not already installed
+        winget install $AddWingetApp --accept-package-agreements --accept-source-agreements
+    }
+  }
+}
 
 ### These Winget apps are installed silently for all users ###
 $winget_x86_list  = @(
