@@ -1,17 +1,14 @@
-#################################################################
-# _   _____ 
-# |  ___\ \ / /_ _|
-# | |_   \ V / | | 
-# |  _|   | |  | | 
-# |_|     |_| |___|
-# 
-
+################################################
+##                   FYI's                    ##
+################################################
 
 # Based on https://github.com/Kugane/winget
 
 
+################################################
+##              Shared Functions              ##
+################################################
 
-################################################################
 # ____  _                        _              _       _           _       
 #/ ___|| |__   __ _ _ __ ___  __| |            / \   __| |_ __ ___ (_)_ __  
 #\___ \| '_ \ / _` | '__/ _ \/ _` |  _____    / _ \ / _` | '_ ` _ \| | '_ \ 
@@ -33,6 +30,31 @@ function Check-RunAsAdministrator {
 }
 
 #Just add `Check-RunAsAdministrator` at the start of any function
+
+###################################################
+# ____  _                        _   ___           _        _ _ 
+#/ ___|| |__   __ _ _ __ ___  __| | |_ _|_ __  ___| |_ __ _| | |
+#\___ \| '_ \ / _` | '__/ _ \/ _` |  | || '_ \/ __| __/ _` | | |
+# ___) | | | | (_| | | |  __/ (_| |  | || | | \__ \ || (_| | | |
+#|____/|_| |_|\__,_|_|  \___|\__,_| |___|_| |_|___/\__\__,_|_|_|
+#                                                               
+#  ____ _                     _       _             
+# / ___| |__   ___   ___ ___ | | __ _| |_ ___ _   _ 
+#| |   | '_ \ / _ \ / __/ _ \| |/ _` | __/ _ \ | | |
+#| |___| | | | (_) | (_| (_) | | (_| | ||  __/ |_| |
+# \____|_| |_|\___/ \___\___/|_|\__,_|\__\___|\__, |
+#
+
+function install_chocolatey {
+  Check-RunAsAdministrator
+  if ([bool](Get-Command -Name 'choco' -ErrorAction SilentlyContinue)) {
+    Write-Verbose "Chocolatey is already installed, skip installation." -Verbose
+  }
+  else {
+    Write-Verbose "Installing Chocolatey..." -Verbose
+    Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+  }
+}
 
 
 ###################################################
@@ -136,32 +158,9 @@ function execution_policy {
 
 
 ################################################################
-##        3 ---->     Sync Chocolatey  Packages               ##
+##        3 ---->     X86&Arm64 Choco  Packages               ##
 ################################################################
-#        
-# ___           _        _ _ 
-#|_ _|_ __  ___| |_ __ _| | |
-# | || '_ \/ __| __/ _` | | |
-# | || | | \__ \ || (_| | | |
-#|___|_| |_|___/\__\__,_|_|_|
-#                            
-#  ____ _                     _       _             
-# / ___| |__   ___   ___ ___ | | __ _| |_ ___ _   _ 
-#| |   | '_ \ / _ \ / __/ _ \| |/ _` | __/ _ \ | | |
-#| |___| | | | (_) | (_| (_) | | (_| | ||  __/ |_| |
-# \____|_| |_|\___/ \___\___/|_|\__,_|\__\___|\__, |
-#                                             |___/ 
 
-function install_chocolatey {
-  Check-RunAsAdministrator
-  if ([bool](Get-Command -Name 'choco' -ErrorAction SilentlyContinue)) {
-    Write-Verbose "Chocolatey is already installed, skip installation." -Verbose
-  }
-  else {
-    Write-Verbose "Installing Chocolatey..." -Verbose
-    Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-  }
-}
 
  
 #  ____ _                       _     _     _       
@@ -177,9 +176,9 @@ function install_chocolatey {
 #/_/\_\___/ \___/  |_|  \__,_|_|  |_| |_| |_|\___/   |_|  
                                                                                
 
-function install_chocolatey_list {
+function chocolatey_X86Arm64_list {
   Check-RunAsAdministrator
-  Write-Host "Installing Choco Apps"
+  Write-Host "Installing ChocoX86+arm64 Apps"
   $AddChocoList = @(
       "bat"
       "ripgrep"
@@ -201,6 +200,27 @@ function install_chocolatey_list {
     }
   }
 }
+
+#################
+function chocolatey_X86_list {
+  Check-RunAsAdministrator
+  Write-Host "Installing ChocoX86 Apps"
+  $AddChocoList = @(
+      "virtualbox"
+      "virtualbox-guest-additions-guest.install"
+      "icloud"
+      "utorrent"
+    )
+  ForEach ($AddChocoApp in $AddChocoList){
+    # Check if the package is already installed
+    $installed = choco list --local-only | Select-String $AddChocoApp
+    if ($installed -eq $null) {
+      # Install the package if it is not already installed
+      choco install $AddChocoApp -y
+    }
+  }
+}
+
 
 #################
 
@@ -387,6 +407,36 @@ $winget_x86_list  = @(
 
     #Terminal
     @{name = "Starship.Starship"}
+    #####Networking 
+    @{name = "DebaucheeOpenSourceGroup.Barrier"}
+    @{name = "ZeroTier.ZeroTierOne"}
+    @{name = "Mega.MEGASync"}
+    @{name = "Google.Drive"} #Im paying 25/year for 100gb might as well use it, this app will mount it as a drive
+    ####Social
+    @{name = "Oxen.Session"}
+    @{name = "Discord.Discord"}
+    ####Media
+    @{name = "Spotify.Spotify"}
+    ####Gaming
+    @{name = "Valve.Steam"}
+    @{name = "Nvidia.GeForceExperience"}
+    @{name = "EpicGames.EpicGamesLauncher"}
+    @{name = "ElectronicArts.EADesktop"}
+    @{name = "Amazon.Games"}
+    @{name = "GOG.Galaxy"}
+    #####Privacy and Security Focused
+    @{name = "IDRIX.VeraCrypt"}
+    @{name = "ProtonTechnologies.ProtonVPN"}
+    #### Utilities
+    @{name = "Balena.Etcher"}
+    @{name = "RaspberryPiFoundation.RaspberryPiImager"}
+    @{name = "MiniTool.PartitionWizard.Free"}
+    @{name = "ElaborateBytes.VirtualCloneDrive"}
+    ##Media SERVER 
+    @{name = "Plex.PlexMediaServer"}
+    ##Torrent Server
+    @{name = "AppWork.JDownloader"}
+    @{name = "c0re100.qBittorrent-Enhanced-Edition"} #if not able to make scedule and to access from other local PC's Use Choco Utorrent
 );
 
 
@@ -772,11 +822,12 @@ function menu {
   Write-Host
   Write-Host "1: Reload This Script"
   Write-Host "2: Ensure PowerShell Execution Policy is set to RemoteSigned for the Current User "
-  Write-Host "3: Sync Chocolatey Apps "
-  Write-Host "4: Sync Winget x86+ arm64 Apps "
-  Write-Host "5: Sync Winget x86 Only Apps "
-  Write-Host "x: Install Microsoft Store Apps"
-  Write-Host "x: Remove Bloatware"
+  Write-Host "3: Sync Choco x86 + arm64 Apps"
+  Write-Host "4: Sync Choco x86 Only Apps"
+  Write-Host "5: Sync Winget x86 + arm64 Apps "
+  Write-Host "6: Sync Winget x86 Only Apps "
+  Write-Host "7: Install Universal Microsoft Store Apps"
+  Write-Host "8: Remove Bloatware"
   Write-Host
   Write-Host -ForegroundColor Magenta "0: Quit"
   Write-Host -ForegroundColor DarkYellow "99: Test if Script is reloaded" 
@@ -799,23 +850,37 @@ function menu {
           }
           if ($actions -eq 3) {
               install_chocolatey
-              install_chocolatey_list 
+              chocolatey_X86Arm64_list
               uninstall_chocolatey_list 
               get_choco_list 
               finish
           }
           if ($actions -eq 4) {
+              install_chocolatey
+              chocolatey_X86_list
+              uninstall_chocolatey_list 
+              get_choco_list 
+              finish
+          }
+          if ($actions -eq 5) {
               install-winget
               install_winget_x86arm64_list 
               uninstall_winget_list
               get_winget_list
               finish
           }
-          if ($actions -eq 5) {
+          if ($actions -eq 6) {
+              install-winget
+              install_winget_x86_list 
+              uninstall_winget_list
+              get_winget_list
+              finish
+          }
+          if ($actions -eq 7) {
               install_microsoft_store_list
               finish
           }
-          if ($actions -eq 6) {
+          if ($actions -eq 8) {
               debloating
               finish
           }
