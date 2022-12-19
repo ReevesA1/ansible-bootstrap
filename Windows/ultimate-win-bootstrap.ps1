@@ -981,7 +981,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test5" 
+              Write-Host "test6" 
               finish
           }
           menu
