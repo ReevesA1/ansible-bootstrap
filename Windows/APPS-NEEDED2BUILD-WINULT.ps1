@@ -1,4 +1,9 @@
 
+######## USE TO HELP BE BUILD ###################
+
+# Write readme for ansible git
+- Follow Notion Fresh Build tutorial I built 
+- Use Universal Bootstrap for inspiration
 
 
 
@@ -47,5 +52,6 @@ Restart-Computer
 ################################################################
 
 # TO hardcord disables normal mode all together allways in power shell
- Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name 'EnableLUA' -Value 0
- Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name 'EnableLUA' -Value 1
+ Set-ItemProperty -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System' -Name 'ConsentPromptBehaviorAdmin' -Value 0 # 0 is off 3 is Always notify but nothing in between seems to work
+
+  
