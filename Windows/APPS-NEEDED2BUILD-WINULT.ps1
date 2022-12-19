@@ -38,3 +38,10 @@ Get-WindowsUpdate -install -MicrosoftUpdate -AcceptAll | Out-File -FilePath "$($
 
 Write-Output "Restart computer !!!"
 Restart-Computer
+
+
+################################################################
+##               change the user account control (UAC)                             ##
+################################################################
+ Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name 'EnableLUA' -Value 0
+ Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name 'EnableLUA' -Value 1
