@@ -553,7 +553,7 @@ $RemoveWingetList = @(
 	# Only Arm64 so powershell admin works properly in windows Terminal = https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170
 	# Python3 (need to hit 2 options during install) = https://www.python.org/downloads/windows/
 	# Visual Studio Build Tools (Must check Desktop development with C++ 7gb ish/will work for Arm)= https://visualstudio.microsoft.com/visual-cpp-build-tools/
-  "Cygwin.Cygwin" 
+  #"Cygwin.Cygwin" 
 
   ####Gaming/Emulation
   "Nvidia.GeForceNow"
@@ -989,7 +989,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test2" 
+              Write-Host "test3" 
               finish
           }
           menu
