@@ -85,6 +85,7 @@ Invoke-Expression $($ScriptFromGithHub.Content)
 }
 ```
 
+
 ## Ansible WSL Method (Works)
 FYI I have to make custom facts file manualy (i only tested "skip" fact on all of them--> could make a script to automate that)
 FYI eveything is contained inside the WSL distro and I can't manipulate windows at all
