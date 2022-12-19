@@ -313,7 +313,7 @@ function get_choco_x86only_list {
 
 
 function install_winget_x86arm64_list {
-
+        Check-RunAsAdministrator
         Write-Host "Update Winget -all" 
         winget upgrade --all
         Write-Host "Installing WingetX86+arm64 Apps"
@@ -370,9 +370,8 @@ function install_winget_x86arm64_list {
 #                        \___/|_| |_|_|\__, |
 #                                      |___/ 
 #                       
-function install_winget_x86_list {
- 
-
+function install_winget_x86_list { 
+      Check-RunAsAdministrator
       Write-Host "Update Winget -all" 
       winget upgrade --all
       Write-Host "Installing WingetX86+arm64 Apps"
