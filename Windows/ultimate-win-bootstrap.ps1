@@ -321,7 +321,7 @@ $winget_x86arm64_list = @(
     @{name = "GitHub.cli"}
     @{name = "GitHub.GitHubDesktop"}
     @{name = "Microsoft.PowerShell"} #Newest Powershell but I can't make a AllUserALlHost Profile since Path is locked down AF but choco can't install modules
-    @{name = "Python.Python.3.11"}
+    @{name = "Python.Python.3.11"} #not sure how to make it the latest version everytime ?
     @{name = "Cygwin.Cygwin"} 
    
 
@@ -981,7 +981,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test2" 
+              Write-Host "test3" 
               finish
           }
           menu
