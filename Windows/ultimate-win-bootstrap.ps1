@@ -188,7 +188,6 @@ function chocolatey_X86Arm64_list {
       "7zip"
       "onecommander"
       "winaero-tweaker.install"
-#    "powershell-core" # Can't install Modules Must with this version use winget
       "object-desktop"
       "files"
       "godot"
@@ -327,8 +326,7 @@ function install_winget_x86arm64_list {
             "GitHub.cli"
             "GitHub.GitHubDesktop"
             "Microsoft.PowerShell" #Newest Powershell but I can't make a AllUserALlHost Profile since Path is locked down AF but choco can't install modules
-# works     Python.Python.3.11" #not sure how to make it the latest version everytime ?
-            "Python.Python"
+            "Python.Python.3.11" #not sure how to make it the latest version everytime
             "Cygwin.Cygwin"
           
 
@@ -343,6 +341,30 @@ function install_winget_x86arm64_list {
             "Flameshot.Flameshot"
             "VideoLAN.VLC"
             "Sejda.PDFDesktop" #pdf viewer
+            #Productivity
+            "Notion.Notion"
+            "MarkText.MarkText"
+            "Doist.Todoist"
+            "RustemMussabekov.Raindrop"
+
+            #Utilities
+            "File-New-Project.EarTrumpet"
+            "QL-Win.QuickLook"
+            "BleachBit.BleachBit"
+            "angryziber.AngryIPScanner"
+                    
+
+            #Work together (look in Notion espanso page for video)
+            "Espanso.Espanso"
+            "voidtools.Everything"
+            "Flow-Launcher.Flow-Launcher"
+
+            #Terminal
+            "Starship.Starship"
+            #Social
+            "Discord.Discord"
+            ####Media
+            "Spotify.Spotify"
       )
       ForEach ($AddWingetApp in $AddWingetList){
         # Check if the package is already installed
@@ -375,27 +397,7 @@ function install_winget_x86_list {
       Write-Host "Update Winget -all" 
       winget upgrade --all
       Write-Host "Installing WingetX86+arm64 Apps"
-      $AddWingetList = @(
-        #Productivity
-        "Notion.Notion"
-        "MarkText.MarkText"
-        "Doist.Todoist"
-        "RustemMussabekov.Raindrop"
-
-        #Utilities
-        "File-New-Project.EarTrumpet"
-        "QL-Win.QuickLook"
-        "BleachBit.BleachBit"
-        "angryziber.AngryIPScanner"
-        
-
-        #Work together (look in Notion espanso page for video)
-        "Espanso.Espanso"
-        "voidtools.Everything"
-        "Flow-Launcher.Flow-Launcher"
-
-        #Terminal
-        "Starship.Starship"
+      $AddWingetList = @(  
         #####Networking 
         "DebaucheeOpenSourceGroup.Barrier"
         "ZeroTier.ZeroTierOne"
@@ -403,9 +405,6 @@ function install_winget_x86_list {
         "Google.Drive" #Im paying 25/year for 100gb might as well use it, this app will mount it as a drive
         ####Social
         "Oxen.Session"
-        "Discord.Discord"
-        ####Media
-        "Spotify.Spotify"
         ####Gaming
         "Valve.Steam"
         "Nvidia.GeForceExperience"
@@ -425,7 +424,6 @@ function install_winget_x86_list {
         "Plex.PlexMediaServer"
         ##Torrent Server
         "AppWork.JDownloader"
-        "c0re100.qBittorrent-Enhanced-Edition" #if not able to make scedule and to access from other local PC's Use Choco Utorrent
 
     )
     ForEach ($AddWingetApp in $AddWingetList){
@@ -904,7 +902,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test69" 
+              Write-Host "test420" 
               finish
           }
           menu
