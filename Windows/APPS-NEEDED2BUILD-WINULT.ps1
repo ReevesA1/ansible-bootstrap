@@ -20,8 +20,9 @@ Remove-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905b
 ################################################################
 ##               Update                           ##
 ################################################################
-
+# How to string together? 
 winget upgrade --all
+Get-WindowsUpdate -install -MicrosoftUpdate -AcceptAll | Out-File -FilePath "$($env:USERPROFILE)\Desktop\MSUpdates.log" -Force
 
 ################################################################
 ##               Restart                               ##

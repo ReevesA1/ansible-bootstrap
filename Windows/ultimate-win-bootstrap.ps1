@@ -178,6 +178,8 @@ function execution_policy {
 
 function chocolatey_X86Arm64_list {
   Check-RunAsAdministrator
+  Write-Host "Update Choco -all"  
+  choco upgrade all -y
   Write-Host "Installing ChocoX86+arm64 Apps"
   $AddChocoList = @(
       "bat"
@@ -204,6 +206,8 @@ function chocolatey_X86Arm64_list {
 #################
 function chocolatey_X86_list {
   Check-RunAsAdministrator
+  Write-Host "Update Choco -all"  
+  choco upgrade all -y
   Write-Host "Installing ChocoX86 Apps"
   $AddChocoList = @(
       "virtualbox"
@@ -338,6 +342,7 @@ $winget_x86arm64_list = @(
 
 
 function install_winget_x86arm64_list {
+  Write-Host "Update Winget -all" 
   winget upgrade --all
   Write-Host -ForegroundColor Cyan "Installing new Apps in winget_x86arm64_list"
   Foreach ($winget_x86arm64_app in $winget_x86arm64_list) {
@@ -461,6 +466,7 @@ $winget_x86_list  = @(
 
 
 function install_winget_x86_list {
+  Write-Host "Update Winget -all" 
   winget upgrade --all
   Write-Host -ForegroundColor Cyan "Installing new Apps in winget_x86_list"
   Foreach ($winget_x86_app in $winget_x86_list) {
@@ -975,7 +981,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test420" 
+              Write-Host "test1" 
               finish
           }
           menu
