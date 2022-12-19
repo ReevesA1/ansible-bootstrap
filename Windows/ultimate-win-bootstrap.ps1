@@ -1,7 +1,23 @@
+#################################################################
+# _   _____ 
+# |  ___\ \ / /_ _|
+# | |_   \ V / | | 
+# |  _|   | |  | | 
+# |_|     |_| |___|
+# 
+
+
 # Based on https://github.com/Kugane/winget
+
+
+
 ################################################################
-##      Shared Check for admin Function                       ##
-################################################################
+# ____  _                        _              _       _           _       
+#/ ___|| |__   __ _ _ __ ___  __| |            / \   __| |_ __ ___ (_)_ __  
+#\___ \| '_ \ / _` | '__/ _ \/ _` |  _____    / _ \ / _` | '_ ` _ \| | '_ \ 
+# ___) | | | | (_| | | |  __/ (_| | |_____|  / ___ \ (_| | | | | | | | | | |
+#|____/|_| |_|\__,_|_|  \___|\__,_|         /_/   \_\__,_|_| |_| |_|_|_| |_|
+#
 
 
 function Check-RunAsAdministrator {
@@ -18,9 +34,80 @@ function Check-RunAsAdministrator {
 
 #Just add `Check-RunAsAdministrator` at the start of any function
 
+
+###################################################
+# ____  _                        _           ___           _        _ _ 
+#/ ___|| |__   __ _ _ __ ___  __| |         |_ _|_ __  ___| |_ __ _| | |
+#\___ \| '_ \ / _` | '__/ _ \/ _` |  _____   | || '_ \/ __| __/ _` | | |
+# ___) | | | | (_| | | |  __/ (_| | |_____|  | || | | \__ \ || (_| | | |
+#|____/|_| |_|\__,_|_|  \___|\__,_|         |___|_| |_|___/\__\__,_|_|_|
+#                                                                       
+#__        ___                  _   
+#\ \      / (_)_ __   __ _  ___| |_ 
+# \ \ /\ / /| | '_ \ / _` |/ _ \ __|
+#  \ V  V / | | | | | (_| |  __/ |_ 
+#   \_/\_/  |_|_| |_|\__, |\___|\__|
+
+
+
+function install-winget {
+  # Check if Winget is installed
+  $wingetInstalled = Get-Command winget -ErrorAction SilentlyContinue
+
+  # If Winget is not installed, install it
+  if (-not $wingetInstalled) {
+    # Download the latest version of Winget from GitHub
+    Invoke-WebRequest -Uri https://github.com/microsoft/winget-cli/releases/download/v0.3.3254-preview/Microsoft.DesktopAppInstaller_4.2021.3254.0_x64__8wekyb3d8bbwe.msixbundle -OutFile winget.msixbundle
+
+    # Install the downloaded MSIX bundle
+    Add-AppxPackage .\winget.msixbundle
+
+    # Delete the downloaded file
+    Remove-Item .\winget.msixbundle
+  } else {
+    # Winget is already installed, check for updates
+    $updateAvailable = winget update check
+    if ($updateAvailable) {
+      # Update is available, upgrade to the latest version
+      winget upgrade
+    }
+  }
+}
+
+
+
+######################################
+
+# ____  _                        _           _____ _       _     _     
+#/ ___|| |__   __ _ _ __ ___  __| |         |  ___(_)_ __ (_)___| |__  
+#\___ \| '_ \ / _` | '__/ _ \/ _` |  _____  | |_  | | '_ \| / __| '_ \ 
+# ___) | | | | (_| | | |  __/ (_| | |_____| |  _| | | | | | \__ \ | | |
+#|____/|_| |_|\__,_|_|  \___|\__,_|         |_|   |_|_| |_|_|___/_| |_|
+#
+
+function finish {
+  Write-Host
+  Write-Host -ForegroundColor DarkGreen  "Processes Has finished"
+  Write-Host
+  Pause
+}
+
+
+##################################################################################################################################################################
+##################################################################################################################################################################
+##################################################################################################################################################################
+##################################################################################################################################################################
+
 ################################################
 ##      1 ---->    Reload This Script         ##
 ################################################
+#____      _                 _                 _       _   
+#|  _ \ ___| | ___   __ _  __| |  ___  ___ _ __(_)_ __ | |_ 
+#| |_) / _ \ |/ _ \ / _` |/ _` | / __|/ __| '__| | '_ \| __|
+#|  _ <  __/ | (_) | (_| | (_| | \__ \ (__| |  | | |_) | |_ 
+#|_| \_\___|_|\___/ \__,_|\__,_| |___/\___|_|  |_| .__/ \__|
+
+
 
 function winult {$ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1
   Invoke-Expression $($ScriptFromGithHub.Content)}
@@ -29,6 +116,12 @@ function winult {$ScriptFromGithHub = Invoke-WebRequest https://raw.githubuserco
 #########################################################################################################
 ##      2 ---->    Ensure PowerShell execution policy is set to RemoteSigned for the current user      ##
 #########################################################################################################
+                          _   _                           _ _            
+#  _____  _____  ___ _   _| |_(_) ___  _ __    _ __   ___ | (_) ___ _   _ 
+# / _ \ \/ / _ \/ __| | | | __| |/ _ \| '_ \  | '_ \ / _ \| | |/ __| | | |
+#|  __/>  <  __/ (__| |_| | |_| | (_) | | | | | |_) | (_) | | | (__| |_| |
+# \___/_/\_\___|\___|\__,_|\__|_|\___/|_| |_| | .__/ \___/|_|_|\___|\__, |
+#                                             |_|                   |___/ 
 
 function execution_policy {
     $ExecutionPolicy = Get-ExecutionPolicy -Scope CurrentUser
@@ -45,6 +138,19 @@ function execution_policy {
 ################################################################
 ##        3 ---->     Sync Chocolatey  Packages               ##
 ################################################################
+#        
+# ___           _        _ _ 
+#|_ _|_ __  ___| |_ __ _| | |
+# | || '_ \/ __| __/ _` | | |
+# | || | | \__ \ || (_| | | |
+#|___|_| |_|___/\__\__,_|_|_|
+#                            
+#  ____ _                     _       _             
+# / ___| |__   ___   ___ ___ | | __ _| |_ ___ _   _ 
+#| |   | '_ \ / _ \ / __/ _ \| |/ _` | __/ _ \ | | |
+#| |___| | | | (_) | (_| (_) | | (_| | ||  __/ |_| |
+# \____|_| |_|\___/ \___\___/|_|\__,_|\__\___|\__, |
+#                                             |___/ 
 
 function install_chocolatey {
   Check-RunAsAdministrator
@@ -57,6 +163,19 @@ function install_chocolatey {
   }
 }
 
+ 
+#  ____ _                       _     _     _       
+# / ___| |__   ___   ___ ___   | |   (_)___| |_   _ 
+#| |   | '_ \ / _ \ / __/ _ \  | |   | / __| __| (_)
+#| |___| | | | (_) | (_| (_) | | |___| \__ \ |_   _ 
+# \____|_| |_|\___/ \___\___/  |_____|_|___/\__| (_)
+#                                                   
+#      ___   __                               __   _  _   
+#__  _( _ ) / /_    _    __ _ _ __ _ __ ___  / /_ | || |  
+#\ \/ / _ \| '_ \ _| |_ / _` | '__| '_ ` _ \| '_ \| || |_ 
+# >  < (_) | (_) |_   _| (_| | |  | | | | | | (_) |__   _|
+#/_/\_\___/ \___/  |_|  \__,_|_|  |_| |_| |_|\___/   |_|  
+                                                                               
 
 function install_chocolatey_list {
   Check-RunAsAdministrator
@@ -85,7 +204,18 @@ function install_chocolatey_list {
 
 #################
 
-
+#  ____ _                       _     _     _       
+# / ___| |__   ___   ___ ___   | |   (_)___| |_   _ 
+#| |   | '_ \ / _ \ / __/ _ \  | |   | / __| __| (_)
+#| |___| | | | (_) | (_| (_) | | |___| \__ \ |_   _ 
+# \____|_| |_|\___/ \___\___/  |_____|_|___/\__| (_)
+#                                                   
+# ____  _____ __  __  _____     _______ 
+#|  _ \| ____|  \/  |/ _ \ \   / / ____|
+#| |_) |  _| | |\/| | | | \ \ / /|  _|  
+#|  _ <| |___| |  | | |_| |\ V / | |___ 
+#|_| \_\_____|_|  |_|\___/  \_/  |_____|
+#
 
 function uninstall_chocolatey_list {
   Write-Host "Uninstalling Choco Apps"
@@ -105,7 +235,13 @@ function uninstall_chocolatey_list {
   }
 }
 
-
+#  ____      _       ____ _                        _     _     _   
+# / ___| ___| |_    / ___| |__   ___   ___ ___    | |   (_)___| |_ 
+#| |  _ / _ \ __|  | |   | '_ \ / _ \ / __/ _ \   | |   | / __| __|
+#| |_| |  __/ |_   | |___| | | | (_) | (_| (_) |  | |___| \__ \ |_ 
+# \____|\___|\__|___\____|_| |_|\___/ \___\___/___|_____|_|___/\__|
+#              |_____|                       |_____|               
+#
 
 function get_choco_list {
   $timestamp = get-date -Format dd_MM_yyyy
@@ -117,42 +253,30 @@ function get_choco_list {
 }
 
 ################################################################
-##        4 ---->     Sync Winget  Packages                   ##
+##        4 ---->     X86&Arm64 Winget  Packages               ##
 ################################################################
-function install-winget {
-  # Check if Winget is installed
-  $wingetInstalled = Get-Command winget -ErrorAction SilentlyContinue
 
-  # If Winget is not installed, install it
-  if (-not $wingetInstalled) {
-    # Download the latest version of Winget from GitHub
-    Invoke-WebRequest -Uri https://github.com/microsoft/winget-cli/releases/download/v0.3.3254-preview/Microsoft.DesktopAppInstaller_4.2021.3254.0_x64__8wekyb3d8bbwe.msixbundle -OutFile winget.msixbundle
-
-    # Install the downloaded MSIX bundle
-    Add-AppxPackage .\winget.msixbundle
-
-    # Delete the downloaded file
-    Remove-Item .\winget.msixbundle
-  } else {
-    # Winget is already installed, check for updates
-    $updateAvailable = winget update check
-    if ($updateAvailable) {
-      # Update is available, upgrade to the latest version
-      winget upgrade
-    }
-  }
-}
 
 
 ############################################################################################
-### Winget apps are installed silently for all users ###
-# just add the app id from winget
-$winget_silent_list = @(
+### These Winget apps are installed silently for all users ###
+# _     _     _                  _                  _   
+#| |   (_)___| |_   _  __      _(_)_ __   __ _  ___| |_ 
+#| |   | / __| __| (_) \ \ /\ / / | '_ \ / _` |/ _ \ __|
+#| |___| \__ \ |_   _   \ V  V /| | | | | (_| |  __/ |_ 
+#|_____|_|___/\__| (_)   \_/\_/ |_|_| |_|\__, |\___|\__|
+#                                        |___/          
+#      ___   __                               __   _  _   
+#__  _( _ ) / /_         __ _ _ __ _ __ ___  / /_ | || |  
+#\ \/ / _ \| '_ \ _____ / _` | '__| '_ ` _ \| '_ \| || |_ 
+# >  < (_) | (_) |_____| (_| | |  | | | | | | (_) |__   _|
+#/_/\_\___/ \___/       \__,_|_|  |_| |_| |_|\___/   |_|  
+#                                                        
+$winget_x86arm64_list = @(
 
     # Windows Power User
     @{name = "Microsoft.VisualStudioCode"}
     @{name = "GitHub.GitHubDesktop"}
-    @{name = "Cygwin.Cygwin"} # this actualy installs it where it needs to be C:\cygwin64
     @{name = "Microsoft.PowerAutomateDesktop"}
     @{name = "Microsoft.PowerToys"}
     @{name = "GitHub.cli"}
@@ -163,6 +287,86 @@ $winget_silent_list = @(
     @{name = "Mozilla.Firefox"}
     @{name = "LibreWolf.LibreWolf"}
 
+
+    #Utilities
+    @{name = "Lexikos.AutoHotkey"}
+    @{name = "REALiX.HWiNFO"}
+    @{name = "Flameshot.Flameshot"}
+    @{name = "VideoLAN.VLC"}
+    @{name = "Sejda.PDFDesktop"} #pdf viewer
+
+);
+
+
+####################### Function for list above
+
+
+function install_winget_x86arm64_list {
+  Write-Host -ForegroundColor Cyan "Installing new Apps in winget_x86arm64_list"
+  Foreach ($winget_x86arm64_app in $winget_x86arm64_list) {
+      $list_winget_x86arm64_app = winget list --exact -q $winget_x86arm64_app.name
+      if (![String]::Join("", $list_winget_x86arm64_app).Contains($winget_x86arm64_app.name)) {
+          Write-Host -ForegroundColor Yellow  "Install:" $winget_x86arm64_app.name
+          # MS Store apps
+          if ($winget_x86arm64_app.source -ne $null) {
+              winget install --exact --silent --accept-package-agreements --accept-source-agreements $winget_x86arm64_app.name --source $winget_x86arm64_app.source
+              if ($LASTEXITCODE -eq 0) {
+                  Write-Host -ForegroundColor Green $winget_x86arm64_app.name "successfully installed."
+              }
+              else {
+                  $winget_x86arm64_app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
+                  Write-Host
+                  Write-Host -ForegroundColor Red $winget_x86arm64_app.name "couldn't be installed."
+                  Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
+                  Write-Host
+                  Pause
+              }    
+          }
+          # All other Apps
+          else {
+              winget install --exact --silent --scope machine --accept-package-agreements --accept-source-agreements $winget_x86arm64_app.name
+              if ($LASTEXITCODE -eq 0) {
+                  Write-Host -ForegroundColor Green $winget_x86arm64_app.name "successfully installed."
+              }
+              else {
+                  $winget_x86arm64_app.name+ " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
+                  Write-Host
+                  Write-Host -ForegroundColor Red $winget_x86arm64_app.name "couldn't be installed."
+                  Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
+                  Write-Host
+                  Pause
+              }  
+          }
+      }
+      else {
+          Write-Host -ForegroundColor Yellow "Skip installation of" $winget_x86arm64_app.name
+      }
+  }
+  Pause
+  Clear-Host
+}
+
+
+###################################################################################
+
+# _     _     _                  _                  _          ___   __   
+#| |   (_)___| |_   _  __      _(_)_ __   __ _  ___| |_  __  _( _ ) / /_  
+#| |   | / __| __| (_) \ \ /\ / / | '_ \ / _` |/ _ \ __| \ \/ / _ \| '_ \ 
+#| |___| \__ \ |_   _   \ V  V /| | | | | (_| |  __/ |_   >  < (_) | (_) |
+#|_____|_|___/\__| (_)   \_/\_/ |_|_| |_|\__, |\___|\__| /_/\_\___/ \___/ 
+#                                        |___/                            
+#                         ___        _       
+#                        / _ \ _ __ | |_   _ 
+#                       | | | | '_ \| | | | |
+#                       | |_| | | | | | |_| |
+#                        \___/|_| |_|_|\__, |
+#                                      |___/ 
+#                       
+
+### These Winget apps are installed silently for all users ###
+$winget_x86_list  = @(
+
+
     #Productivity
     @{name = "Notion.Notion"}
     @{name = "MarkText.MarkText"}
@@ -170,16 +374,12 @@ $winget_silent_list = @(
     @{name = "RustemMussabekov.Raindrop"}
 
     #Utilities
-    @{name = "Lexikos.AutoHotkey"}
     @{name = "File-New-Project.EarTrumpet"}
-    @{name = "REALiX.HWiNFO"}
     @{name = "QL-Win.QuickLook"}
-    @{name = "Flameshot.Flameshot"}
-    @{name = "VideoLAN.VLC"}
     @{name = "BleachBit.BleachBit"}
-    @{name = "Sejda.PDFDesktop"} #pdf viewer
     @{name = "angryziber.AngryIPScanner"}
     
+
     #Work together (look in Notion espanso page for video)
     @{name = "Espanso.Espanso"}
     @{name = "voidtools.Everything"}
@@ -190,23 +390,25 @@ $winget_silent_list = @(
 );
 
 
-############################################################################################
-function install_winget_silent_list {
-  Write-Host -ForegroundColor Cyan "Installing new Apps in winget_silent_list"
-  Foreach ($winget_silent_app in $winget_silent_list) {
-      $list_winget_silent_app = winget list --exact -q $winget_silent_app.name
-      if (![String]::Join("", $list_winget_silent_app).Contains($winget_silent_app.name)) {
-          Write-Host -ForegroundColor Yellow  "Install:" $winget_silent_app.name
+####################################### Function for list above
+
+
+function install_winget_x86_list {
+  Write-Host -ForegroundColor Cyan "Installing new Apps in winget_x86_list"
+  Foreach ($winget_x86_app in $winget_x86_list) {
+      $list_winget_x86_app = winget list --exact -q $winget_x86_app.name
+      if (![String]::Join("", $list_winget_x86_app).Contains($winget_x86_app.name)) {
+          Write-Host -ForegroundColor Yellow  "Install:" $winget_x86_app.name
           # MS Store apps
-          if ($winget_silent_app.source -ne $null) {
-              winget install --exact --silent --accept-package-agreements --accept-source-agreements $winget_silent_app.name --source $winget_silent_app.source
+          if ($winget_x86_app.source -ne $null) {
+              winget install --exact --silent --accept-package-agreements --accept-source-agreements $winget_x86_app.name --source $winget_x86_app.source
               if ($LASTEXITCODE -eq 0) {
-                  Write-Host -ForegroundColor Green $winget_silent_app.name "successfully installed."
+                  Write-Host -ForegroundColor Green $winget_x86_app.name "successfully installed."
               }
               else {
-                  $winget_silent_app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
+                  $winget_x86_app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
                   Write-Host
-                  Write-Host -ForegroundColor Red $winget_silent_app.name "couldn't be installed."
+                  Write-Host -ForegroundColor Red $winget_x86_app.name "couldn't be installed."
                   Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
                   Write-Host
                   Pause
@@ -214,14 +416,14 @@ function install_winget_silent_list {
           }
           # All other Apps
           else {
-              winget install --exact --silent --scope machine --accept-package-agreements --accept-source-agreements $winget_silent_app.name
+              winget install --exact --silent --scope machine --accept-package-agreements --accept-source-agreements $winget_x86_app.name
               if ($LASTEXITCODE -eq 0) {
-                  Write-Host -ForegroundColor Green $winget_silent_app.name "successfully installed."
+                  Write-Host -ForegroundColor Green $winget_x86_app.name "successfully installed."
               }
               else {
-                  $winget_silent_app.name+ " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
+                  $winget_x86_app.name+ " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
                   Write-Host
-                  Write-Host -ForegroundColor Red $winget_silent_app.name "couldn't be installed."
+                  Write-Host -ForegroundColor Red $winget_x86_app.name "couldn't be installed."
                   Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
                   Write-Host
                   Pause
@@ -229,15 +431,22 @@ function install_winget_silent_list {
           }
       }
       else {
-          Write-Host -ForegroundColor Yellow "Skip installation of" $winget_silent_app.name
+          Write-Host -ForegroundColor Yellow "Skip installation of" $winget_x86_app.name
       }
   }
   Pause
   Clear-Host
 }
 
-#################
 
+
+#################################################################################
+#____  _____ __  __  _____     _______ 
+#|  _ \| ____|  \/  |/ _ \ \   / / ____|
+#| |_) |  _| | |\/| | | | \ \ / /|  _|  
+#|  _ <| |___| |  | | |_| |\ V / | |___ 
+#|_| \_\_____|_|  |_|\___/  \_/  |_____|
+                                       
 
 
 function uninstall_winget_list {
@@ -256,6 +465,7 @@ $RemoveWingetList = @(
   "Microsoft.OpenSSH.Beta"
   "Python.Python.3.9"
   "Docker.DockerDesktop"
+  "Cygwin.Cygwin"
 
   ####Gaming/Emulation
   "Nvidia.GeForceNow"
@@ -341,7 +551,7 @@ function get_winget_list {
 }
 
 ################################################################
-##      5 ---->  Install Microsoft Store Packages ETC         ##
+##      X ---->  Install Microsoft Store Packages ETC         ##
 ################################################################
 
 ### These apps are installed silently for all users ###
@@ -406,7 +616,7 @@ function install_microsoft_store_list {
 
 
 ################################################################
-##           6 ---->             Remove Bloateware            ##
+##           X ---->             Remove Bloateware            ##
 ################################################################
 
 $bloatware = @(
@@ -536,19 +746,6 @@ function debloating {
 
 
 
-################################################################
-##                 Shared Function  Finished   Choices        ##
-################################################################
-
-function finish {
-  Write-Host
-  Write-Host -ForegroundColor DarkGreen  "Processes Has finished"
-  Write-Host
-  Pause
-}
-
-
-
 
 #############################################################################################
 ################################      Backend of Menu        ################################
@@ -576,9 +773,10 @@ function menu {
   Write-Host "1: Reload This Script"
   Write-Host "2: Ensure PowerShell Execution Policy is set to RemoteSigned for the Current User "
   Write-Host "3: Sync Chocolatey Apps "
-  Write-Host "4: Sync Winget Apps "
-  Write-Host "5: Install Microsoft Store Apps"
-  Write-Host "6: Remove Bloatware"
+  Write-Host "4: Sync Winget x86+ arm64 Apps "
+  Write-Host "5: Sync Winget x86 Only Apps "
+  Write-Host "x: Install Microsoft Store Apps"
+  Write-Host "x: Remove Bloatware"
   Write-Host
   Write-Host -ForegroundColor Magenta "0: Quit"
   Write-Host -ForegroundColor DarkYellow "99: Test if Script is reloaded" 
@@ -608,7 +806,7 @@ function menu {
           }
           if ($actions -eq 4) {
               install-winget
-              install_winget_silent_list
+              install_winget_x86arm64_list 
               uninstall_winget_list
               get_winget_list
               finish
