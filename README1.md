@@ -56,7 +56,12 @@ _)      \.___.,|     .'
 - CHANGE PC NAME!!!!
 
 ### Copy Github Profile
+```
+.{
+New-Item $PROFILE.CurrentUserAllHosts -ItemType File -Force
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/PowerShell_profile.ps1 -OutFile $PROFILE.CurrentUserAllHosts
+}
+```
 
 ### Setup Latest PowerShell 
 - Install Winget with the latest version of Powershell. ( I think winget is installed by default? if not add that section here as well as in script)
