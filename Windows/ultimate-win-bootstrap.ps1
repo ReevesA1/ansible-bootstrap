@@ -321,7 +321,7 @@ $winget_x86arm64_list = @(
     @{name = "GitHub.cli"}
     @{name = "GitHub.GitHubDesktop"}
     @{name = "Microsoft.PowerShell"} #Newest Powershell but I can't make a AllUserALlHost Profile since Path is locked down AF but choco can't install modules
-    @{name = "Python.Python.3.10 -e"}
+    @{name = "Python.Python"}
     @{name = "Cygwin.Cygwin"} #must be after python
    
 
@@ -353,7 +353,7 @@ function install_winget_x86arm64_list {
           Write-Host -ForegroundColor Yellow  "Install:" $winget_x86arm64_app.name
           # MS Store apps
           if ($winget_x86arm64_app.source -ne $null) {
-              winget install --exact --silent --accept-package-agreements --accept-source-agreements $winget_x86arm64_app.name --source $winget_x86arm64_app.source
+              winget install --silent --accept-package-agreements --accept-source-agreements $winget_x86arm64_app.name --source $winget_x86arm64_app.source # removed --exact more options here https://learn.microsoft.com/en-us/windows/package-manager/winget/install
               if ($LASTEXITCODE -eq 0) {
                   Write-Host -ForegroundColor Green $winget_x86arm64_app.name "successfully installed."
               }
@@ -989,7 +989,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test7" 
+              Write-Host "test8" 
               finish
           }
           menu
