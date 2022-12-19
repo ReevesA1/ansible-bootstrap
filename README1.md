@@ -50,12 +50,33 @@ _)      \.___.,|     .'
        ````^^^^  ^^MMMMMMMMMMMMMMMMM
                       ````^^^^^^MMMM
 ```
-## Pull From Git Method (NO Ansible)
+## ultimate-win-bootstrap.ps1 (NO Ansible)
 
+### First step
+- CHANGE PC NAME!!!!
+
+### Setup Latest PowerShell 
+- Install Winget with the latest version of Powershell. ( I think winget is installed by default? if not add that section here as well as in script)
+  - FYI I need to use winget to allow the installation of modules, because choco wouldn’t because of where the directory is stored under choco?.
+  - FYI I thought that admin wouldnt be able to see and use my $profile but it does recognise it!!!!
+  - `winget install Microsoft.PowerShell`
+### Windows Terminal Setup
+- Make Powershell 7 Default Shell (don't make it open as admin) + change the color to "Campbell Powershell" 
+- Delete profiles that I dont want like Azure profile and Old Powershell
+- Cygwin Add to Windows Terminal (video in notion if I forget) 
+
+### Install Modules
+
+-  Install PSWindowsUpdate Module
+```
+.{
+Install-Module PSWindowsUpdate
+Add-WUServiceManager -MicrosoftUpdate
+} 
+```
 
 - Always Run `winget upgrade --all`
-- CHANGE PC NAME!!!!
-- Then In Powershell as Admin Run
+- Then In the Latest Powershell
 
 ```
 .{
@@ -63,10 +84,6 @@ $ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA
 Invoke-Expression $($ScriptFromGithHub.Content)
 }
 ```
-- Restart PC
-- If I want Debloat with `irm christitus.com/win | iex`
-	- Keep in mind My script has Titus's right click menu command  and bloated apps Commands
-	- Restart PC Again
 
 ## Ansible WSL Method (Works)
 FYI I have to make custom facts file manualy (i only tested "skip" fact on all of them--> could make a script to automate that)
