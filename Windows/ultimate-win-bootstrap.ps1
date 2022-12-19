@@ -477,7 +477,7 @@ function install_winget_x86_list {
           Write-Host -ForegroundColor Yellow  "Install:" $winget_x86_app.name
           # MS Store apps
           if ($winget_x86_app.source -ne $null) {
-              winget install --exact --silent --accept-package-agreements --accept-source-agreements $winget_x86_app.name --source $winget_x86_app.source
+              winget install --accept-package-agreements --accept-source-agreements# --exact --silent $winget_x86_app.name --source $winget_x86_app.source
               if ($LASTEXITCODE -eq 0) {
                   Write-Host -ForegroundColor Green $winget_x86_app.name "successfully installed."
               }
