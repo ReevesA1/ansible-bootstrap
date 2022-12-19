@@ -861,6 +861,9 @@ function menu {
   Write-Host
   Write-Host "1: Reload This Script"
   Write-Host "2: Ensure PowerShell Execution Policy is set to RemoteSigned for the Current User "
+  Write-Host
+  Write-Host "       Install Packages        "
+  Write-Host "_______________________________"
   Write-Host "3: Sync Choco x86 + arm64 Apps"
   Write-Host "4: Sync Choco x86 Only Apps"
   Write-Host "5: Sync Winget x86 + arm64 Apps "
