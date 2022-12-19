@@ -322,7 +322,7 @@ $winget_x86arm64_list = @(
     @{name = "GitHub.GitHubDesktop"}
     @{name = "Microsoft.PowerShell"} #Newest Powershell but I can't make a AllUserALlHost Profile since Path is locked down AF but choco can't install modules
     @{name = "Python.Python.3.11"}
-    @{name = "Cygwin.Cygwin"} #must be after python
+    @{name = "Cygwin.Cygwin"} 
    
 
     #Browsers
@@ -353,7 +353,7 @@ function install_winget_x86arm64_list {
           Write-Host -ForegroundColor Yellow  "Install:" $winget_x86arm64_app.name
           # MS Store apps
           if ($winget_x86arm64_app.source -ne $null) {
-              winget install --silent --accept-package-agreements --accept-source-agreements --verbose-logs $winget_x86arm64_app.name --source $winget_x86arm64_app.source # removed --exact more options here https://learn.microsoft.com/en-us/windows/package-manager/winget/install
+              winget install  --accept-package-agreements --accept-source-agreements $winget_x86arm64_app.name --source $winget_x86arm64_app.source # removed --exact for python to install removed --silent for cygwin to install->  more options here https://learn.microsoft.com/en-us/windows/package-manager/winget/install
               if ($LASTEXITCODE -eq 0) {
                   Write-Host -ForegroundColor Green $winget_x86arm64_app.name "successfully installed."
               }
@@ -546,14 +546,6 @@ $RemoveWingetList = @(
   "Git.Git"
   "Microsoft.OpenSSH"
   "Docker.DockerDesktop"
-
-  # Cygwin
-  # Update winget `winget upgrade --all`
-  # Programs I need to download manually before it will 
-	# Only Arm64 so powershell admin works properly in windows Terminal = https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170
-	# Python3 (need to hit 2 options during install) = https://www.python.org/downloads/windows/
-	# Visual Studio Build Tools (Must check Desktop development with C++ 7gb ish/will work for Arm)= https://visualstudio.microsoft.com/visual-cpp-build-tools/
-  #"Cygwin.Cygwin" 
 
   ####Gaming/Emulation
   "Nvidia.GeForceNow"
@@ -989,7 +981,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test1" 
+              Write-Host "test2" 
               finish
           }
           menu
