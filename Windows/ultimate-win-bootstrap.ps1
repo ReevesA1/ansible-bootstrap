@@ -251,7 +251,7 @@ function uninstall_chocolatey_list {
     )  
 # Loop through the array and try to uninstall each package
   foreach ($RemoveChocoApp in $RemoveChocoList) {
-  choco uninstall $RemoveChocoApp -y
+  choco uninstall $RemoveChocoApp -y -r
   }
 }
 
@@ -924,7 +924,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test69" 
+              Write-Host "test420" 
               finish
           }
           menu
