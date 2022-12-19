@@ -439,115 +439,7 @@ function install_winget_x86_list {
   }
 }
 
-### These Winget apps are installed silently for all users ###
-$winget_x86_list  = @(
-
-
-    #Productivity
-    @{name = "Notion.Notion"}
-    @{name = "MarkText.MarkText"}
-    @{name = "Doist.Todoist"}
-    @{name = "RustemMussabekov.Raindrop"}
-
-    #Utilities
-    @{name = "File-New-Project.EarTrumpet"}
-    @{name = "QL-Win.QuickLook"}
-    @{name = "BleachBit.BleachBit"}
-    @{name = "angryziber.AngryIPScanner"}
-    
-
-    #Work together (look in Notion espanso page for video)
-    @{name = "Espanso.Espanso"}
-    @{name = "voidtools.Everything"}
-    @{name = "Flow-Launcher.Flow-Launcher"}
-
-    #Terminal
-    @{name = "Starship.Starship"}
-    #####Networking 
-    @{name = "DebaucheeOpenSourceGroup.Barrier"}
-    @{name = "ZeroTier.ZeroTierOne"}
-    @{name = "Mega.MEGASync"}
-    @{name = "Google.Drive"} #Im paying 25/year for 100gb might as well use it, this app will mount it as a drive
-    ####Social
-    @{name = "Oxen.Session"}
-    @{name = "Discord.Discord"}
-    ####Media
-    @{name = "Spotify.Spotify"}
-    ####Gaming
-    @{name = "Valve.Steam"}
-    @{name = "Nvidia.GeForceExperience"}
-    @{name = "EpicGames.EpicGamesLauncher"}
-    @{name = "ElectronicArts.EADesktop"}
-    @{name = "Amazon.Games"}
-    @{name = "GOG.Galaxy"}
-    #####Privacy and Security Focused
-    @{name = "IDRIX.VeraCrypt"}
-    @{name = "ProtonTechnologies.ProtonVPN"}
-    #### Utilities
-    @{name = "Balena.Etcher"}
-    @{name = "RaspberryPiFoundation.RaspberryPiImager"}
-    @{name = "MiniTool.PartitionWizard.Free"}
-    @{name = "ElaborateBytes.VirtualCloneDrive"}
-    ##Media SERVER 
-    @{name = "Plex.PlexMediaServer"}
-    ##Torrent Server
-    @{name = "AppWork.JDownloader"}
-    @{name = "c0re100.qBittorrent-Enhanced-Edition"} #if not able to make scedule and to access from other local PC's Use Choco Utorrent
-);
-
-
-####################################### Function for list above
-
-
-function install_winget_x86_list {
-  Write-Host "Update Winget -all" 
-  winget upgrade --all
-  Write-Host -ForegroundColor Cyan "Installing new Apps in winget_x86_list"
-  Foreach ($winget_x86_app in $winget_x86_list) {
-      $list_winget_x86_app = winget list --exact -q $winget_x86_app.name
-      if (![String]::Join("", $list_winget_x86_app).Contains($winget_x86_app.name)) {
-          Write-Host -ForegroundColor Yellow  "Install:" $winget_x86_app.name
-          # MS Store apps
-          if ($winget_x86_app.source -ne $null) {
-              winget install --accept-package-agreements --accept-source-agreements# --exact --silent $winget_x86_app.name --source $winget_x86_app.source
-              if ($LASTEXITCODE -eq 0) {
-                  Write-Host -ForegroundColor Green $winget_x86_app.name "successfully installed."
-              }
-              else {
-                  $winget_x86_app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
-                  Write-Host
-                  Write-Host -ForegroundColor Red $winget_x86_app.name "couldn't be installed."
-                  Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
-                  Write-Host
-                  Pause
-              }    
-          }
-          # All other Apps
-          else {
-              winget install --exact --silent --scope machine --accept-package-agreements --accept-source-agreements $winget_x86_app.name
-              if ($LASTEXITCODE -eq 0) {
-                  Write-Host -ForegroundColor Green $winget_x86_app.name "successfully installed."
-              }
-              else {
-                  $winget_x86_app.name+ " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
-                  Write-Host
-                  Write-Host -ForegroundColor Red $winget_x86_app.name "couldn't be installed."
-                  Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
-                  Write-Host
-                  Pause
-              }  
-          }
-      }
-      else {
-          Write-Host -ForegroundColor Yellow "Skip installation of" $winget_x86_app.name
-      }
-  }
-  Pause
-  Clear-Host
-}
-
-
-
+#
 #################################################################################
 #__        ___                  _     _     _     _   
 #\ \      / (_)_ __   __ _  ___| |_  | |   (_)___| |_ 
@@ -1013,7 +905,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test7" 
+              Write-Host "test69" 
               finish
           }
           menu
