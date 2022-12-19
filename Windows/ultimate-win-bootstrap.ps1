@@ -321,7 +321,7 @@ $winget_x86arm64_list = @(
     @{name = "GitHub.cli"}
     @{name = "GitHub.GitHubDesktop"}
     @{name = "Microsoft.PowerShell"} #Newest Powershell but I can't make a AllUserALlHost Profile since Path is locked down AF but choco can't install modules
-    @{name = "Python.Python.3"}
+    @{name = "Python.Python.3.9"}
     @{name = "Cygwin.Cygwin"} #must be after python
    
 
@@ -989,7 +989,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test4" 
+              Write-Host "test5" 
               finish
           }
           menu
