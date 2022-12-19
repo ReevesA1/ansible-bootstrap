@@ -572,8 +572,9 @@ function get_winget_x86only_list {
   Pause
 }
 
+
 ################################################################
-##      7 ---->  Install Microsoft Store Packages ETC         ##
+#7 ->  Install Microsoft Store Packages ETC         ##
 ################################################################
 
 #
@@ -600,6 +601,7 @@ $microsoft_store_list = @(
     @{name = "9WZDNCRFJ3TJ"; source = "msstore" }        # Netflix
     @{name = "9P6RC76MSMMJ"; source = "msstore" }        # Prime Video
     @{name = "9n0dx20hk701"; source = "msstore" }        # Windows Terminal
+    @{name = "fb.messenger"; source = "msstore" }        # Windows Terminal
 );
 
 
