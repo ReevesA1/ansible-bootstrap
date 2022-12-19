@@ -314,41 +314,42 @@ function get_choco_x86only_list {
 
 function install_winget_x86arm64_list {
 winget_x86arm64_list = @(
-      Write-Host "Update Winget -all" 
-      winget upgrade --all
-      Write-Host "Installing WingetX86+arm64 Apps"
-      $AddWingetList = @(
+        Write-Host "Update Winget -all" 
+        winget upgrade --all
+        Write-Host "Installing WingetX86+arm64 Apps"
+        $AddWingetList = @(
 
-          # Windows Power User
-          "Microsoft.VisualStudioCode"
-          "GitHub.GitHubDesktop"
-          "Microsoft.PowerAutomateDesktop"
-          "Microsoft.PowerToys"
-          "GitHub.cli"
-          "GitHub.GitHubDesktop"
-          "Microsoft.PowerShell" #Newest Powershell but I can't make a AllUserALlHost Profile since Path is locked down AF but choco can't install modules
-          "Python.Python.3.11" #not sure how to make it the latest version everytime ?
-          "Cygwin.Cygwin"
-        
+            # Windows Power User
+            "Microsoft.VisualStudioCode"
+            "GitHub.GitHubDesktop"
+            "Microsoft.PowerAutomateDesktop"
+            "Microsoft.PowerToys"
+            "GitHub.cli"
+            "GitHub.GitHubDesktop"
+            "Microsoft.PowerShell" #Newest Powershell but I can't make a AllUserALlHost Profile since Path is locked down AF but choco can't install modules
+            "Python.Python.3.11" #not sure how to make it the latest version everytime ?
+            "Cygwin.Cygwin"
+          
 
-          #Browsers
-          "Mozilla.Firefox"
-          "LibreWolf.LibreWolf"
+            #Browsers
+            "Mozilla.Firefox"
+            "LibreWolf.LibreWolf"
 
 
-          #Utilities
-          "Lexikos.AutoHotkey"
-          "REALiX.HWiNFO"
-          "Flameshot.Flameshot"
-          "VideoLAN.VLC"
-          "Sejda.PDFDesktop" #pdf viewer
-    )
-    ForEach ($AddWingetApp in $AddWingetList){
-      # Check if the package is already installed
-      $installed = winget list | Select-String $AddWingetApp
-      if ($installed -eq $null) {
-        # Install the package if it is not already installed
-        winget install $AddWingetApp --accept-package-agreements --accept-source-agreements
+            #Utilities
+            "Lexikos.AutoHotkey"
+            "REALiX.HWiNFO"
+            "Flameshot.Flameshot"
+            "VideoLAN.VLC"
+            "Sejda.PDFDesktop" #pdf viewer
+      )
+      ForEach ($AddWingetApp in $AddWingetList){
+        # Check if the package is already installed
+        $installed = winget list | Select-String $AddWingetApp
+        if ($installed -eq $null) {
+          # Install the package if it is not already installed
+          winget install $AddWingetApp --accept-package-agreements --accept-source-agreements
+    }
   }
 }
 ##                                                        
