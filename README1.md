@@ -74,7 +74,7 @@ Install-Module PSWindowsUpdate
 Add-WUServiceManager -MicrosoftUpdate
 } 
 ```
-
+### Run the Script
 - Always Run `winget upgrade --all`
 - Then In the Latest Powershell
 
