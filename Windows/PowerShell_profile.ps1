@@ -13,6 +13,7 @@ Set-Alias -Name eth -Value get-netadapter
 #View and Edit profile
 #function pro {Notepad $PROFILE.AllUsersAllHosts}
 function pro {Notepad $PROFILE.CurrentUserAllHosts}
+function proupdate {Invoke-WebRequest -Uri https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/PowerShell_profile.ps1 -OutFile $PROFILE.CurrentUserAllHosts && Notepad $PROFILE.CurrentUserAllHosts}
 
 # Update windows with PSWindowsUpdate Module
 # Refer to https://www.youtube.com/watch?v=M2mMQfPGZsE&list=WL&index=13&t=2s
