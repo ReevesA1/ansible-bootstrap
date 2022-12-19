@@ -823,7 +823,7 @@ $errorlog = "winget_error.log"
 function menu {
   [string]$Title = 'Ultimate Menu'
   Clear-Host
-  Write-Host -ForegroundColor DarkBlue "================ $Title ================"
+  Write-Host -ForegroundColor DarkGray "================ $Title ================"
   Write-Host
   Write-Host -ForegroundColor Blue "       Prerequisites           "
   Write-Host -ForegroundColor Blue "_______________________________"
