@@ -617,8 +617,7 @@ function install_microsoft_store_list{
       Write-Host "Update Winget -all" 
       winget upgrade --all
       Write-Host "Installing MSstore Apps"
-      $AddWingetList = @(  
-        #####Networking 
+      $AddMSstoreList = @(  
         "9WZDNCRFJ3TJ", #Netflix
         "9P6RC76MSMMJ", #PrimeVideo
         "9n0dx20hk701", # Windows Terminal
@@ -946,7 +945,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test - netflix" 
+              Write-Host "test - netflix2" 
               finish
           }
           menu
