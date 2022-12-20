@@ -616,19 +616,16 @@ function install_microsoft_store_list{
       Check-RunAsAdministrator
       Write-Host "Update Winget -all" 
       winget upgrade --all
-      Write-Host "Installing WingetX86+arm64 Apps"
+      Write-Host "Installing MSstore Apps"
       $AddWingetList = @(  
         #####Networking 
-        #"9WZDNCRFJ3TJ", #Netflix
+        "9WZDNCRFJ3TJ", #Netflix
         "9P6RC76MSMMJ", #PrimeVideo
         "9n0dx20hk701", # Windows Terminal
-        "SpotifyAB.SpotifyMusic",
-        "4DF9E0F8.Netflix",
-        "Facebook.Facebook"
-  
-
+        "Facebook.Messenger"
+        "Spotify.Spotify"
     )
-    ForEach ($AddWingetApp in $AddWingetList){
+    ForEach ($AddMSstoreApp in $AddMSstoreList){
       # Check if the package is already installed
       $installed = winget list | Select-String $AddWingetApp
       if ($installed -eq $null) {
@@ -949,7 +946,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test - Spotify3" 
+              Write-Host "test - netflix" 
               finish
           }
           menu
