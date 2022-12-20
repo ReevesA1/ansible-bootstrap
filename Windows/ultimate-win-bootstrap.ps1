@@ -396,13 +396,15 @@ function install_winget_x86_list {
       winget upgrade --all
       Write-Host "Installing WingetX86+arm64 Apps"
       $AddWingetList = @(  
+        #### MEDIA
+        "Spotify.Spotify" # for sure X86 Only
         #####Networking 
         "DebaucheeOpenSourceGroup.Barrier"
-        "ZeroTier.ZeroTierOne"
+        "ZeroTier.ZeroTierOne" # for sure X86 Only
         "Mega.MEGASync"
         "Google.Drive" #Im paying 25/year for 100gb might as well use it, this app will mount it as a drive
         ####Social
-        "Oxen.Session"
+        "Oxen.Session" # for sure X86 Only
         ####Gaming
         "Valve.Steam"
         "Nvidia.GeForceExperience"
@@ -411,13 +413,13 @@ function install_winget_x86_list {
         "Amazon.Games"
         "GOG.Galaxy"
         #####Privacy and Security Focused
-        "IDRIX.VeraCrypt"
+        "IDRIX.VeraCrypt" # for sure X86 Only
         "ProtonTechnologies.ProtonVPN"
         #### Utilities
         "Balena.Etcher"
         "RaspberryPiFoundation.RaspberryPiImager"
         "MiniTool.PartitionWizard.Free"
-        "ElaborateBytes.VirtualCloneDrive"
+        "ElaborateBytes.VirtualCloneDrive" # for sure X86 Only
         ##Media SERVER 
         "Plex.PlexMediaServer"
         ##Torrent Server
@@ -592,7 +594,6 @@ function install_microsoft_store_list{
     winget install  "9WZDNCRFJ3TJ" --accept-package-agreements --accept-source-agreements # Netflix
     winget install  "9P6RC76MSMMJ" --accept-package-agreements --accept-source-agreements # PrimeVidio
     winget install  "9n0dx20hk701" --accept-package-agreements --accept-source-agreements # Windows Terminal
-    winget install  "Spotify.Spotify" --accept-package-agreements --accept-source-agreements # Spotify
     winget install  "Facebook.Messenger" --accept-package-agreements --accept-source-agreements # Facebook Messenger
 }
 
