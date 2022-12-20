@@ -591,25 +591,54 @@ function get_winget_x86only_list {
 
 
 ###############
-function install_microsoft_store_list {
-  $MSstoreList = @(
-    #"9WZDNCRFJ3TJ", #Netflix
-    "9P6RC76MSMMJ", #PrimeVideo
-    "9n0dx20hk701", # Windows Terminal
-    "SpotifyAB.SpotifyMusic",
-    "4DF9E0F8.Netflix",
-    "Facebook.Facebook"
-  )
+#function install_microsoft_store_list {
+#  $MSstoreList = @(
+#    #"9WZDNCRFJ3TJ", #Netflix
+#    "9P6RC76MSMMJ", #PrimeVideo
+#    "9n0dx20hk701", # Windows Terminal
+#    "SpotifyAB.SpotifyMusic",
+#    "4DF9E0F8.Netflix",
+#    "Facebook.Facebook"
+#  )
+#
+#  ForEach ($MSstoreApp in $MSstoreList){
+#    # Check if the app is already installed
+#    $installed = Get-AppxPackage -Name $MSstoreApp -ErrorAction SilentlyContinue
+#    if (!$installed) {
+#      # If the app is not installed, install it
+#      Add-AppxPackage -Name $MSstoreApp
+#    }
+#  }
+#}
+###############
 
-  ForEach ($MSstoreApp in $MSstoreList){
-    # Check if the app is already installed
-    $installed = Get-AppxPackage -Name $MSstoreApp -ErrorAction SilentlyContinue
-    if (!$installed) {
-      # If the app is not installed, install it
-      Add-AppxPackage -Name $MSstoreApp
+function install_microsoft_store_list{ 
+      Check-RunAsAdministrator
+      Write-Host "Update Winget -all" 
+      winget upgrade --all
+      Write-Host "Installing WingetX86+arm64 Apps"
+      $AddWingetList = @(  
+        #####Networking 
+        #"9WZDNCRFJ3TJ", #Netflix
+        "9P6RC76MSMMJ", #PrimeVideo
+        "9n0dx20hk701", # Windows Terminal
+        "SpotifyAB.SpotifyMusic",
+        "4DF9E0F8.Netflix",
+        "Facebook.Facebook"
+  
+
+    )
+    ForEach ($AddWingetApp in $AddWingetList){
+      # Check if the package is already installed
+      $installed = winget list | Select-String $AddWingetApp
+      if ($installed -eq $null) {
+        # Install the package if it is not already installed
+        winget install $AddWingetApp --accept-package-agreements --accept-source-agreements
     }
   }
 }
+
+
 #################
 
 ### These apps are installed silently for all users ###
