@@ -591,118 +591,16 @@ function get_winget_x86only_list {
 #|_|   \__,_|\___|_|\_\__,_|\__, |\___||___/
 #                           |___/           
 function install_microsoft_store_list{ 
+  # Use the Search to find ID's `winget search -s msstore "APPNAME"`
     winget install  "9WZDNCRFJ3TJ" --accept-package-agreements --accept-source-agreements # Netflix
     winget install  "9P6RC76MSMMJ" --accept-package-agreements --accept-source-agreements # PrimeVidio
     winget install  "9n0dx20hk701" --accept-package-agreements --accept-source-agreements # Windows Terminal
     winget install  "Facebook.Messenger" --accept-package-agreements --accept-source-agreements # Facebook Messenger
+   
+
 }
 
-###############
-#function install_microsoft_store_list {
-#  $MSstoreList = @(
-#    #"9WZDNCRFJ3TJ", #Netflix
-#    "9P6RC76MSMMJ", #PrimeVideo
-#    "9n0dx20hk701", # Windows Terminal
-#    "SpotifyAB.SpotifyMusic",
-#    "4DF9E0F8.Netflix",
-#    "Facebook.Facebook"
-#  )
-#
-#  ForEach ($MSstoreApp in $MSstoreList){
-#    # Check if the app is already installed
-#    $installed = Get-AppxPackage -Name $MSstoreApp -ErrorAction SilentlyContinue
-#    if (!$installed) {
-#      # If the app is not installed, install it
-#      Add-AppxPackage -Name $MSstoreApp
-#    }
-#  }
-#}
-###############
 
-
-
-#function install_microsoft_store_list{ 
-#      Check-RunAsAdministrator
-#      Write-Host "Update Winget -all" 
-#      winget upgrade --all
-#      Write-Host "Installing MSstore Apps"
-#      $AddMSstoreList = @(  
-#        "9WZDNCRFJ3TJ", #Netflix
-#        "9P6RC76MSMMJ", #PrimeVideo
-#        "9n0dx20hk701", # Windows Terminal
-#        "Facebook.Messenger"
-#        "Spotify.Spotify"
-#    )
-#    ForEach ($AddMSstoreApp in $AddMSstoreList){
-#      # Check if the package is already installed
-#      $installed = winget list | Select-String $AddWingetApp
-#      if ($installed -eq $null) {
-#        # Install the package if it is not already installed
-#        winget install $AddWingetApp --accept-package-agreements --accept-source-agreements
-#    }
-#  }
-#}
-
-
-#################
-
-### These apps are installed silently for all users ###
-# for msstore apps you need to specify the source like below
-#microsoft_store_list = @(
-#    @{name = "Microsoft.VC++2015-2022Redist-x86" }
-#    @{name = "Microsoft.VC++2015-2022Redist-x64" }      
-#    @{name = "Microsoft.VC++2015-2022Redist-arm64" }    # THought it could maybe fix my parallels issue but it does not have a candidate
-#    @{name = "9WZDNCRFJ3TJ"; source = "msstore" }        # Netflix
-#    @{name = "9P6RC76MSMMJ"; source = "msstore" }        # Prime Video
-#    @{name = "9n0dx20hk701"; source = "msstore" }        # Windows Terminal
-#);
-#
-#
-#############################################################################################
-#function install_microsoft_store_list {
-#  Write-Host -ForegroundColor Cyan "Installing new apps in microsoft_store_list"
-#  Foreach ($microsoft_store_app in $microsoft_store_list) {
-#      $list_microsoft_store_app = winget list --exact -q $microsoft_store_app.name
-#      if (![String]::Join("", $list_microsoft_store_app).Contains($microsoft_store_app.name)) {
-#          Write-Host -ForegroundColor Yellow  "Install:" $microsoft_store_app.name
-#          # MS Store apps
-#          if ($microsoft_store_app.source -ne $null) {
-#              winget install --exact --silent --accept-package-agreements --accept-source-agreements $microsoft_store_app.name --source $microsoft_store_app.source
-#              if ($LASTEXITCODE -eq 0) {
-#                  Write-Host -ForegroundColor Green $microsoft_store_app.name "successfully installed."
-#              }
-#              else {
-#                  $microsoft_store_app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
-#                  Write-Host
-#                  Write-Host -ForegroundColor Red $microsoft_store_app.name"couldn't be installed."
-#                  Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
-#                  Write-Host
-#                  Pause
-#              }    
-#          }
-#          # All other Apps
-#          else {
-#              winget install --exact --silent --scope machine --accept-package-agreements --accept-source-agreements $microsoft_store_app.name
-#              if ($LASTEXITCODE -eq 0) {
-#                  Write-Host -ForegroundColor Green $microsoft_store_app.name "successfully installed."
-#              }
-#              else {
-#                  $microsoft_store_app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
-#                  Write-Host
-#                  Write-Host -ForegroundColor Red $microsoft_store_app.name "couldn't be installed."
-#                  Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
-#                  Write-Host
-#                  Pause
-#              }  
-#          }
-#      }
-#      else {
-#          Write-Host -ForegroundColor Yellow "Skip installation of" $microsoft_store_app.name
-#      }
-#  }
-#  Pause
-#  Clear-Host
-#}
 #
 #
 #
