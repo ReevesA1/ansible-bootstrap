@@ -588,31 +588,29 @@ function get_winget_x86only_list {
 #|  __/ (_| | (__|   < (_| | (_| |  __/\__ \
 #|_|   \__,_|\___|_|\_\__,_|\__, |\___||___/
 #                           |___/           
+
+
+###############
 function install_microsoft_store_list {
-  Write-Host "Update MSstore -all" 
-  Get-WindowsUpdate -install -MicrosoftUpdate -AcceptAll | Out-File -FilePath "$($env:USERPROFILE)\Desktop\MSUpdates.log" -Force
-  Write-Host "Installing MSstore Apps"
   $MSstoreList = @(
-      "9WZDNCRFJ3TJ"#Netflix
-      "9P6RC76MSMMJ"#PrimeVideo
-      "9n0dx20hk701"
-      #"SpotifyAB.SpotifyMusic"
-      #"4DF9E0F8.Netflix"
-      #"Facebook.Facebook"
-    )
+    #"9WZDNCRFJ3TJ", #Netflix
+    "9P6RC76MSMMJ", #PrimeVideo
+    "9n0dx20hk701", # Windows Terminal
+    "SpotifyAB.SpotifyMusic",
+    "4DF9E0F8.Netflix",
+    "Facebook.Facebook"
+  )
+
   ForEach ($MSstoreApp in $MSstoreList){
-      # Check if the app is already installed
-      $installed = Get-AppxPackage -Name $MSstoreApp -ErrorAction 
-    SilentlyContinue
+    # Check if the app is already installed
+    $installed = Get-AppxPackage -Name $MSstoreApp -ErrorAction SilentlyContinue
     if (!$installed) {
       # If the app is not installed, install it
-      Add-AppxPackage -Name $MSstoreApp 
+      Add-AppxPackage -Name $MSstoreApp
     }
   }
 }
-
-
-
+#################
 
 ### These apps are installed silently for all users ###
 # for msstore apps you need to specify the source like below
@@ -922,7 +920,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test - Spotify" 
+              Write-Host "test - Spotify2" 
               finish
           }
           menu
