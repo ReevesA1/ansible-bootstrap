@@ -949,7 +949,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test - Spotify2" 
+              Write-Host "test - Spotify3" 
               finish
           }
           menu
