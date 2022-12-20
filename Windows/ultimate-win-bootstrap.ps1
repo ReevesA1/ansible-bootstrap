@@ -588,7 +588,13 @@ function get_winget_x86only_list {
 #|  __/ (_| | (__|   < (_| | (_| |  __/\__ \
 #|_|   \__,_|\___|_|\_\__,_|\__, |\___||___/
 #                           |___/           
-
+function install_microsoft_store_list{ 
+    winget install  "9WZDNCRFJ3TJ" --accept-package-agreements --accept-source-agreements # Netflix
+    winget install  "9P6RC76MSMMJ" --accept-package-agreements --accept-source-agreements # PrimeVidio
+    winget install  "9n0dx20hk701" --accept-package-agreements --accept-source-agreements # Windows Terminal
+    winget install  "Spotify.Spotify" --accept-package-agreements --accept-source-agreements # Spotify
+    winget install  "Facebook.Messenger" --accept-package-agreements --accept-source-agreements # Facebook Messenger
+}
 
 ###############
 #function install_microsoft_store_list {
@@ -612,27 +618,29 @@ function get_winget_x86only_list {
 #}
 ###############
 
-function install_microsoft_store_list{ 
-      Check-RunAsAdministrator
-      Write-Host "Update Winget -all" 
-      winget upgrade --all
-      Write-Host "Installing MSstore Apps"
-      $AddMSstoreList = @(  
-        "9WZDNCRFJ3TJ", #Netflix
-        "9P6RC76MSMMJ", #PrimeVideo
-        "9n0dx20hk701", # Windows Terminal
-        "Facebook.Messenger"
-        "Spotify.Spotify"
-    )
-    ForEach ($AddMSstoreApp in $AddMSstoreList){
-      # Check if the package is already installed
-      $installed = winget list | Select-String $AddWingetApp
-      if ($installed -eq $null) {
-        # Install the package if it is not already installed
-        winget install $AddWingetApp --accept-package-agreements --accept-source-agreements
-    }
-  }
-}
+
+
+#function install_microsoft_store_list{ 
+#      Check-RunAsAdministrator
+#      Write-Host "Update Winget -all" 
+#      winget upgrade --all
+#      Write-Host "Installing MSstore Apps"
+#      $AddMSstoreList = @(  
+#        "9WZDNCRFJ3TJ", #Netflix
+#        "9P6RC76MSMMJ", #PrimeVideo
+#        "9n0dx20hk701", # Windows Terminal
+#        "Facebook.Messenger"
+#        "Spotify.Spotify"
+#    )
+#    ForEach ($AddMSstoreApp in $AddMSstoreList){
+#      # Check if the package is already installed
+#      $installed = winget list | Select-String $AddWingetApp
+#      if ($installed -eq $null) {
+#        # Install the package if it is not already installed
+#        winget install $AddWingetApp --accept-package-agreements --accept-source-agreements
+#    }
+#  }
+#}
 
 
 #################
@@ -945,7 +953,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test - netflix2" 
+              Write-Host "test - netflix3" 
               finish
           }
           menu
