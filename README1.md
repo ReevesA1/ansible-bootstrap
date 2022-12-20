@@ -63,6 +63,7 @@ Invoke-WebRequest -Uri https://raw.githubusercontent.com/ReevesA1/ansible-bootst
 Notepad $PROFILE.CurrentUserAllHosts
 }
 ```
+- Close and Reopen Powershell to "source it"
 ### Setup Latest PowerShell 
 - Install Winget with the latest version of Powershell. ( I think winget is installed by default? if not add that section here as well as in script)
   - FYI I need to use winget to allow the installation of modules, because choco wouldn’t because of where the directory is stored under choco?.

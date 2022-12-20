@@ -363,8 +363,6 @@ function install_winget_x86arm64_list {
             "Starship.Starship"
             #Social
             "Discord.Discord"
-            ####Media
-            "Spotify.Spotify"
       )
       ForEach ($AddWingetApp in $AddWingetList){
         # Check if the package is already installed
@@ -590,71 +588,94 @@ function get_winget_x86only_list {
 #|  __/ (_| | (__|   < (_| | (_| |  __/\__ \
 #|_|   \__,_|\___|_|\_\__,_|\__, |\___||___/
 #                           |___/           
-#
-
-### These apps are installed silently for all users ###
-# for msstore apps you need to specify the source like below
-$microsoft_store_list = @(
-#    @{name = "Microsoft.VC++2015-2022Redist-x86" }
-#    @{name = "Microsoft.VC++2015-2022Redist-x64" }      
-#    @{name = "Microsoft.VC++2015-2022Redist-arm64" }    # THought it could maybe fix my parallels issue but it does not have a candidate
-    @{name = "9WZDNCRFJ3TJ"; source = "msstore" }        # Netflix
-    @{name = "9P6RC76MSMMJ"; source = "msstore" }        # Prime Video
-    @{name = "9n0dx20hk701"; source = "msstore" }        # Windows Terminal
-    @{name = "fb.messenger"; source = "msstore" }        # Windows Terminal
-);
-
-
-############################################################################################
 function install_microsoft_store_list {
-  Write-Host -ForegroundColor Cyan "Installing new apps in microsoft_store_list"
-  Foreach ($microsoft_store_app in $microsoft_store_list) {
-      $list_microsoft_store_app = winget list --exact -q $microsoft_store_app.name
-      if (![String]::Join("", $list_microsoft_store_app).Contains($microsoft_store_app.name)) {
-          Write-Host -ForegroundColor Yellow  "Install:" $microsoft_store_app.name
-          # MS Store apps
-          if ($microsoft_store_app.source -ne $null) {
-              winget install --exact --silent --accept-package-agreements --accept-source-agreements $microsoft_store_app.name --source $microsoft_store_app.source
-              if ($LASTEXITCODE -eq 0) {
-                  Write-Host -ForegroundColor Green $microsoft_store_app.name "successfully installed."
-              }
-              else {
-                  $microsoft_store_app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
-                  Write-Host
-                  Write-Host -ForegroundColor Red $microsoft_store_app.name"couldn't be installed."
-                  Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
-                  Write-Host
-                  Pause
-              }    
-          }
-          # All other Apps
-          else {
-              winget install --exact --silent --scope machine --accept-package-agreements --accept-source-agreements $microsoft_store_app.name
-              if ($LASTEXITCODE -eq 0) {
-                  Write-Host -ForegroundColor Green $microsoft_store_app.name "successfully installed."
-              }
-              else {
-                  $microsoft_store_app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
-                  Write-Host
-                  Write-Host -ForegroundColor Red $microsoft_store_app.name "couldn't be installed."
-                  Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
-                  Write-Host
-                  Pause
-              }  
-          }
-      }
-      else {
-          Write-Host -ForegroundColor Yellow "Skip installation of" $microsoft_store_app.name
-      }
+  Write-Host "Update MSstore -all" 
+  Get-WindowsUpdate -install -MicrosoftUpdate -AcceptAll | Out-File -FilePath "$($env:USERPROFILE)\Desktop\MSUpdates.log" -Force
+  Write-Host "Installing MSstore Apps"
+  $MSstoreList = @(
+      "9WZDNCRFJ3TJ"#Netflix
+      "9P6RC76MSMMJ"#PrimeVideo
+      "9n0dx20hk701"
+      #"SpotifyAB.SpotifyMusic"
+      #"4DF9E0F8.Netflix"
+      #"Facebook.Facebook"
+    )
+  ForEach ($MSstoreApp in $MSstoreList){
+      # Check if the app is already installed
+      $installed = Get-AppxPackage -Name $MSstoreApp -ErrorAction 
+    SilentlyContinue
+    if (!$installed) {
+      # If the app is not installed, install it
+      Add-AppxPackage -Name $MSstoreApp 
+    }
   }
-  Pause
-  Clear-Host
 }
 
 
 
 
-################################################################
+### These apps are installed silently for all users ###
+# for msstore apps you need to specify the source like below
+#microsoft_store_list = @(
+#    @{name = "Microsoft.VC++2015-2022Redist-x86" }
+#    @{name = "Microsoft.VC++2015-2022Redist-x64" }      
+#    @{name = "Microsoft.VC++2015-2022Redist-arm64" }    # THought it could maybe fix my parallels issue but it does not have a candidate
+#    @{name = "9WZDNCRFJ3TJ"; source = "msstore" }        # Netflix
+#    @{name = "9P6RC76MSMMJ"; source = "msstore" }        # Prime Video
+#    @{name = "9n0dx20hk701"; source = "msstore" }        # Windows Terminal
+#);
+#
+#
+#############################################################################################
+#function install_microsoft_store_list {
+#  Write-Host -ForegroundColor Cyan "Installing new apps in microsoft_store_list"
+#  Foreach ($microsoft_store_app in $microsoft_store_list) {
+#      $list_microsoft_store_app = winget list --exact -q $microsoft_store_app.name
+#      if (![String]::Join("", $list_microsoft_store_app).Contains($microsoft_store_app.name)) {
+#          Write-Host -ForegroundColor Yellow  "Install:" $microsoft_store_app.name
+#          # MS Store apps
+#          if ($microsoft_store_app.source -ne $null) {
+#              winget install --exact --silent --accept-package-agreements --accept-source-agreements $microsoft_store_app.name --source $microsoft_store_app.source
+#              if ($LASTEXITCODE -eq 0) {
+#                  Write-Host -ForegroundColor Green $microsoft_store_app.name "successfully installed."
+#              }
+#              else {
+#                  $microsoft_store_app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
+#                  Write-Host
+#                  Write-Host -ForegroundColor Red $microsoft_store_app.name"couldn't be installed."
+#                  Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
+#                  Write-Host
+#                  Pause
+#              }    
+#          }
+#          # All other Apps
+#          else {
+#              winget install --exact --silent --scope machine --accept-package-agreements --accept-source-agreements $microsoft_store_app.name
+#              if ($LASTEXITCODE -eq 0) {
+#                  Write-Host -ForegroundColor Green $microsoft_store_app.name "successfully installed."
+#              }
+#              else {
+#                  $microsoft_store_app.name + " couldn't be installed." | Add-Content "$DesktopPath\$errorlog"
+#                  Write-Host
+#                  Write-Host -ForegroundColor Red $microsoft_store_app.name "couldn't be installed."
+#                  Write-Host -ForegroundColor Yellow "Write in $DesktopPath\$errorlog"
+#                  Write-Host
+#                  Pause
+#              }  
+#          }
+#      }
+#      else {
+#          Write-Host -ForegroundColor Yellow "Skip installation of" $microsoft_store_app.name
+#      }
+#  }
+#  Pause
+#  Clear-Host
+#}
+#
+#
+#
+#
+#################################################################
 ##           8 ---->             Remove Bloatware            ##
 ################################################################
 # ____                               
@@ -737,9 +758,6 @@ $bloatware = @(
     "Microsoft.Whiteboard"
 
     # non-Microsoft
-    "4DF9E0F8.Netflix"
-    "SpotifyAB.SpotifyMusic"
-    "Facebook.Facebook"
     "2FE3CB00.PicsArt-PhotoStudio"
     "46928bounde.EclipseManager"
     "613EBCEA.PolarrPhotoEditorAcademicEdition"
@@ -904,7 +922,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test2" 
+              Write-Host "test - Spotify" 
               finish
           }
           menu
