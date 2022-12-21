@@ -73,7 +73,7 @@ Notepad $PROFILE.CurrentUserAllHosts
 }
 ```
 ### Set Executation Policy (to allow execution of scripts)
-`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine -Force -Verbose`
+`Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
 - see list to see if it worked `Get-ExecutionPolicy -List `
 - Close and Reopen Powershell to "source it"
 ### Setup Latest PowerShell 
