@@ -78,7 +78,7 @@ Notepad $PROFILE.CurrentUserAllHosts
 - see list to see if it worked `Get-ExecutionPolicy -List `
 - Close and Reopen Powershell to "source it"
 
-### Change the user account control (UAC)   
+### As Admin Change the user account control (UAC)   
 - Change to off so I don't get annoying admin popups
 `Set-ItemProperty -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System' -Name 'ConsentPromptBehaviorAdmin' -Value 0`
 ### As Admin Install Modules
