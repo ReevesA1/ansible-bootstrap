@@ -1,10 +1,10 @@
-# Setting UP the DISTRUBUTIONS with ANSIBLE 
+# Bootstraping Each OS 
 - No matter what OS Im using make sure my username is "rocket"
 - Make sure it is updated `sudo apt update` or packages won't get installed
 
 
 
-# Linux 
+# Linux Ansible
 
 ```
     _nnnn_
@@ -25,8 +25,44 @@ _)      \.___.,|     .'
      `-'       `--' hjm
 ```
 
-## Arch
+### Arch
 - Must install Snap manualy, if paru is installed like garuda the initilising script command bellow will install it
+
+### Parallels Ubuntu
+- First BEFORE RUNNING THE SCRIPT
+  - Turn off all sharing with mac operating system so files dont show up on desktip ect
+  - CHANGE KEY BINDINGS
+    - Top Bar --> Device --> Keyboard --> customize --> click on Ubuntu in left pane 
+      - at the bottom hit the + button and straight up add from mac single "command button" and to Linux single "control button"  ONLY HAVE TO DO THIS ONCE!
+  - Make "my_normal_user" Account
+	- as the parallel user create a new Admin User with the GUI then log out and log back in as that "new_normal_user"
+    	- also enable log in automaticaly
+	-  Change complex password to simple 
+   	    -  go to `sudo gedit /etc/pam.d/common-password` and overwrite the  bottom section with the code below. 
+   	    -  Once changed use the `passwd` command to change to my normal password.
+	- Update with `sudo apt update && sudo apt upgrade` it will ask to overwrite "pam password file" choose NO!!!S 
+	- delete old parallel User from GUI
+  - Take a Snapshot
+  
+  
+	```
+	 # here are the per-package modules (the "Primary" block)
+	   	password	[success=1 default=ignore]	pam_unix.so minlen=4 sha512
+	   	# here's the fallback if no module succeeds
+	   	password	requisite			pam_deny.so
+	   	# prime the stack with a positive return value if there isn't one already;
+		# this avoids us returning an error just because nothing sets a success code
+		# since the modules above will each just jump around	
+		password	required			pam_permit.so
+		# and here are more per-package modules (the "Additional" block)
+		password	optional	pam_gnome_keyring.so 
+		# end of pam-auth-update config 
+
+	```
+
+- AFTER RUNNING THE MAIN SCRIPT RUN
+  -  `sudo apt remove ansible`
+  -  (Next time try without this) `sudo apt install pip && sudo pip install ansible` FUCKING MAKE SURE THESE BOTH HAVE SUDO
 
 
 # Windows 
@@ -54,6 +90,8 @@ _)      \.___.,|     .'
 
 ### First step
 - CHANGE PC NAME!!!!
+- If Runing Windows in Paralles Turn Off All Sharing with mac (so icons dont show up on desktop).
+- Setup terminal with powershell 7 and take a snapshot
 
 ### Setup Latest PowerShell 
 - Install Winget with the latest version of Powershell. ( I think winget is installed by default? if not add that section here as well as in script)
@@ -176,39 +214,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 	- `sudo spctl --master-disable`
   
 
-## Parallels Ubuntu
-- First BEFORE RUNNING THE SCRIPT
-  - CHANGE KEY BINDINGS
-    - Top Bar --> Device --> Keyboard --> customize --> click on Ubuntu in left pane 
-      - at the bottom hit the + button and straight up add from mac single "command button" and to Linux single "control button"  ONLY HAVE TO DO THIS ONCE!
-  - Make "my_normal_user" Account
-	- as the parallel user create a new Admin User with the GUI then log out and log back in as that "new_normal_user"
-    	- also enable log in automaticaly
-	-  Change complex password to simple 
-   	    -  go to `sudo gedit /etc/pam.d/common-password` and overwrite the  bottom section with the code below. 
-   	    -  Once changed use the `passwd` command to change to my normal password.
-	- Update with `sudo apt update && sudo apt upgrade` it will ask to overwrite "pam password file" choose NO!!!S 
-	- delete old parallel User from GUI
-  
-  
-	```
-	 # here are the per-package modules (the "Primary" block)
-	   	password	[success=1 default=ignore]	pam_unix.so minlen=4 sha512
-	   	# here's the fallback if no module succeeds
-	   	password	requisite			pam_deny.so
-	   	# prime the stack with a positive return value if there isn't one already;
-		# this avoids us returning an error just because nothing sets a success code
-		# since the modules above will each just jump around	
-		password	required			pam_permit.so
-		# and here are more per-package modules (the "Additional" block)
-		password	optional	pam_gnome_keyring.so 
-		# end of pam-auth-update config 
 
-	```
-
-- AFTER RUNNING THE MAIN SCRIPT RUN
-  -  `sudo apt remove ansible`
-  -  (Next time try without this) `sudo apt install pip && sudo pip install ansible` FUCKING MAKE SURE THESE BOTH HAVE SUDO
   
 # Universal
 
