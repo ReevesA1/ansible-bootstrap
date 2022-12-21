@@ -55,7 +55,16 @@ _)      \.___.,|     .'
 ### First step
 - CHANGE PC NAME!!!!
 
-### Copy Github Profile
+### Setup Latest PowerShell 
+- Install Winget with the latest version of Powershell. ( I think winget is installed by default? if not add that section here as well as in script)
+  - FYI I need to use winget to allow the installation of modules, because choco wouldn’t because of where the directory is stored under choco?.
+  - FYI I thought that admin wouldnt be able to see and use my $profile but it does recognise it!!!!
+  - `winget install Microsoft.PowerShell`
+### Windows Terminal Setup
+- Make Powershell 7 Default Shell (don't make it open as admin) + change the color to "Campbell Powershell" 
+- Delete profiles that I dont want like Azure profile and Old Powershell
+
+### Copy $Profile.ps1
 ```
 .{
 New-Item $PROFILE.CurrentUserAllHosts -ItemType File -Force
@@ -63,6 +72,9 @@ Invoke-WebRequest -Uri https://raw.githubusercontent.com/ReevesA1/ansible-bootst
 Notepad $PROFILE.CurrentUserAllHosts
 }
 ```
+### Set Executation Policy (to allow execution of scripts)
+`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine -Force -Verbose`
+- see list to see if it worked `Get-ExecutionPolicy -List `
 - Close and Reopen Powershell to "source it"
 ### Setup Latest PowerShell 
 - Install Winget with the latest version of Powershell. ( I think winget is installed by default? if not add that section here as well as in script)
@@ -72,7 +84,7 @@ Notepad $PROFILE.CurrentUserAllHosts
 ### Windows Terminal Setup
 - Make Powershell 7 Default Shell (don't make it open as admin) + change the color to "Campbell Powershell" 
 - Delete profiles that I dont want like Azure profile and Old Powershell
-- Cygwin Add to Windows Terminal (video in notion if I forget) 
+
 
 ### Install Modules
 
