@@ -72,21 +72,15 @@ Invoke-WebRequest -Uri https://raw.githubusercontent.com/ReevesA1/ansible-bootst
 Notepad $PROFILE.CurrentUserAllHosts
 }
 ```
+- Close and Reopen Powershell to "source it"
 ### Set Executation Policy (to allow execution of scripts)
 `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
 - see list to see if it worked `Get-ExecutionPolicy -List `
 - Close and Reopen Powershell to "source it"
-### Setup Latest PowerShell 
-- Install Winget with the latest version of Powershell. ( I think winget is installed by default? if not add that section here as well as in script)
-  - FYI I need to use winget to allow the installation of modules, because choco wouldn’t because of where the directory is stored under choco?.
-  - FYI I thought that admin wouldnt be able to see and use my $profile but it does recognise it!!!!
-  - `winget install Microsoft.PowerShell`
-### Windows Terminal Setup
-- Make Powershell 7 Default Shell (don't make it open as admin) + change the color to "Campbell Powershell" 
-- Delete profiles that I dont want like Azure profile and Old Powershell
 
-
-### Install Modules
+### Change the user account control (UAC)   
+`Set-ItemProperty -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System' -Name 'ConsentPromptBehaviorAdmin'`
+### As Admin Install Modules
 
 -  Install PSWindowsUpdate Module
 ```
@@ -95,6 +89,7 @@ Install-Module PSWindowsUpdate
 Add-WUServiceManager -MicrosoftUpdate
 } 
 ```
+- Test it as admin run  my alias `winup`
 ### Run the Script
 - Always Run `winget upgrade --all`
 - Then In the Latest Powershell
