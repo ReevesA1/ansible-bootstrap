@@ -521,9 +521,7 @@ $RemoveWingetList = @(
   "NathanOsman.NitroShare"
   "RustDesk.RustDesk"
 
-  # Replaced with choco object-desktop
-  "Stardock.Fences" 
-  "Stardock.Start11" 
+
 
   #Server
   "Jellyfin.Server"
