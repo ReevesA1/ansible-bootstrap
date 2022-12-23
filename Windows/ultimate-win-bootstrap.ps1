@@ -363,6 +363,9 @@ function install_winget_x86arm64_list {
             "Starship.Starship"
             #Social
             "Discord.Discord"
+
+            #Privacy
+            "Cryptomator.Cryptomator"
       )
       ForEach ($AddWingetApp in $AddWingetList){
         # Check if the package is already installed
