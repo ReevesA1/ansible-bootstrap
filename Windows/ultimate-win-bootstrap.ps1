@@ -320,6 +320,7 @@ function install_winget_x86arm64_list {
 
             # Windows Power User
             "Microsoft.VisualStudioCode"
+            "Microsoft.VisualStudio.2022.Community-Preview"
             "GitHub.GitHubDesktop"
             "Microsoft.PowerAutomateDesktop"
             "Microsoft.PowerToys"
