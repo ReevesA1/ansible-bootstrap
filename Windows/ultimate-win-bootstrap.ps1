@@ -325,10 +325,11 @@ function install_winget_x86arm64_list {
             "Microsoft.PowerAutomateDesktop"
             "Microsoft.PowerToys"
             "GitHub.cli"
-            "GitHub.GitHubDesktop"
             "Microsoft.PowerShell" #Newest Powershell but I can't make a AllUserALlHost Profile since Path is locked down AF but choco can't install modules
             "Python.Python.3.11" #not sure how to make it the latest version everytime
             "Cygwin.Cygwin"
+            "Git.Git"
+            "Docker.DockerDesktop"
           
 
             #Browsers
@@ -468,9 +469,7 @@ $RemoveWingetList = @(
   "Ferdium.Ferdium" # only using mail app on mac now but this app could be usefull for something else other then mail
 
   # Future Power User Stuff
-  "Git.Git"
   "Microsoft.OpenSSH"
-  "Docker.DockerDesktop"
 
   ####Gaming/Emulation
   "Nvidia.GeForceNow"
