@@ -596,7 +596,7 @@ function get_winget_x86only_list {
 function install_microsoft_store_list{ 
   # Use the Search to find ID's `winget search -s msstore "APPNAME"`
     winget install  "9WZDNCRFJ3TJ" --accept-package-agreements --accept-source-agreements # Netflix
-    winget install  "9P6RC76MSMMJ" --accept-package-agreements --accept-source-agreements # PrimeVidio
+    winget install  "9P6RC76MSMMJ" --accept-package-agreements --accept-source-agreements # PrimeVideo
     winget install  "Facebook.Messenger" --accept-package-agreements --accept-source-agreements # Facebook Messenger
    
 
