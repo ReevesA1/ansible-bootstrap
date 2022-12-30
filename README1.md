@@ -91,7 +91,8 @@ _)      \.___.,|     .'
 ### First step
 - CHANGE PC NAME!!!!
 - If Runing Windows in Paralles Turn Off All Sharing with mac (so icons dont show up on desktop).
-- Setup terminal with powershell 7 and take a snapshot
+- Make sure System is fully updated 
+- If a virtual machine good time to take a snapshot 
 
 ### Set Executation Policy (to allow execution of scripts)
 `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
@@ -100,7 +101,8 @@ _)      \.___.,|     .'
 
 ### Make sure winget is installed
 - Windows 10 I for sure need to install winget I think windows 11 is good to go
-  - go to windows store and search for "app installer"
+  - go to windows store and make sure all apps  are updated
+  - and search for "app installer"
 ### Setup Latest PowerShell 
 - Install Winget with the latest version of Powershell. 
   - FYI I need to use winget version to allow the installation of modules, because choco wouldn’t because of where the directory is stored under choco?.
