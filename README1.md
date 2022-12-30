@@ -136,7 +136,7 @@ Install-Module PSWindowsUpdate
 Add-WUServiceManager -MicrosoftUpdate
 } 
 ```
-- Test it as admin run  my alias `winup`
+- Test it as admin run  my alias `winup` works on windows 10 + 11 + arm
 ### Run the Script
 - Always Run `winget upgrade --all`
 - Then In the Latest Powershell
