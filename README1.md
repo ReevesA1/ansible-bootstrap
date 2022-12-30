@@ -93,6 +93,10 @@ _)      \.___.,|     .'
 - If Runing Windows in Paralles Turn Off All Sharing with mac (so icons dont show up on desktop).
 - Setup terminal with powershell 7 and take a snapshot
 
+### Set Executation Policy (to allow execution of scripts)
+`Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
+- see list to see if it worked `Get-ExecutionPolicy -List `
+- Close and Reopen Powershell to "source it"
 
 ### Make sure winget is installed
 - Windows 10 I for sure need to install winget I think windows 11 is good to go
@@ -140,10 +144,6 @@ Invoke-WebRequest -Uri https://raw.githubusercontent.com/ReevesA1/ansible-bootst
 Notepad $PROFILE.CurrentUserAllHosts
 }
 ```
-- Close and Reopen Powershell to "source it"
-### Set Executation Policy (to allow execution of scripts)
-`Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
-- see list to see if it worked `Get-ExecutionPolicy -List `
 - Close and Reopen Powershell to "source it"
 
 ### As Admin Change the user account control (UAC)   
