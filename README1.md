@@ -109,7 +109,7 @@ _)      \.___.,|     .'
   - FYI I thought that admin wouldnt be able to see and use my $profile but it does recognise it!!!!
   - `winget install Microsoft.PowerShell`
 ### Windows Terminal Setup
-- `winget install -e --id Microsoft.WindowsTerminal`
+- `winget install -e --id Microsoft.PowerShell.Preview`or`winget install -e --id Microsoft.WindowsTerminal` #this is the only place I have the terminal being installed so I can swith between preview and normal(only reason Im iffy about preview is because I use mac and ubuntu to and they dont have the preview version)
 - Make Powershell 7 Default Shell (don't make it open as admin) + change the color to "Campbell Powershell" 
 - Delete profiles that I dont want like Azure profile and Old Powershell
 
