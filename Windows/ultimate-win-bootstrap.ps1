@@ -211,8 +211,8 @@ function chocolatey_X86_list {
   $AddChocoList = @(
       "virtualbox"
       "virtualbox-guest-additions-guest.install"
-      "icloud"
-      "utorrent"
+      #"icloud" # not secure was a attack late 2022 might just use it on mac now
+      #"utorrent"
     )
   ForEach ($AddChocoApp in $AddChocoList){
     # Check if the package is already installed
@@ -239,18 +239,20 @@ function chocolatey_X86_list {
 #|  _ <| |___| |  | | |_| |\ V / | |___ 
 #|_| \_\_____|_|  |_|\___/  \_/  |_____|
 #
+#
 
+# I keep these here for reference !!!!!!!!!!!!!!!!!!
 function uninstall_chocolatey_list {
   Write-Host "Uninstalling Choco Apps"
   $RemoveChocoList = @(
-      "streamdeck"
-      "logseq"
-      "translucenttb"
-      "tinymediamanager"
-      "freefilesync"
-      "airexplorer " #Closed sourse program I thought about using to sync megasync on a schedule 
-      "obsidian"
-      "qttabbar"
+      #"streamdeck" #using on ubuntu right now
+      #"logseq"
+      #"translucenttb"
+      #"tinymediamanager" #don't use anymore since I don't scrape
+      #"freefilesync"
+      #"airexplorer " #Closed sourse program I thought about using to sync megasync on a schedule 
+      #"obsidian"
+      #"qttabbar" # windows expolorer adds tabs natively now
     )  
 # Loop through the array and try to uninstall each package
   foreach ($RemoveChocoApp in $RemoveChocoList) {
@@ -429,6 +431,7 @@ function install_winget_x86_list {
         "Plex.PlexMediaServer"
         ##Torrent Server
         "AppWork.JDownloader"
+        "qBittorrent.qBittorrent" #if not use choco utorrent above
 
     )
     ForEach ($AddWingetApp in $AddWingetList){
