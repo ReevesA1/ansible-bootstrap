@@ -95,6 +95,7 @@ _)      \.___.,|     .'
 
 
 ### Make sure winget is installed
+- Windows 10 I for sure need to install winget I think windows 11 is good to go
 ```
 .{
   function install-winget {
@@ -123,8 +124,8 @@ _)      \.___.,|     .'
 }
 ```
 ### Setup Latest PowerShell 
-- Install Winget with the latest version of Powershell. ( I think winget is installed by default? if not add that section here as well as in script)
-  - FYI I need to use winget to allow the installation of modules, because choco wouldn’t because of where the directory is stored under choco?.
+- Install Winget with the latest version of Powershell. 
+  - FYI I need to use winget version to allow the installation of modules, because choco wouldn’t because of where the directory is stored under choco?.
   - FYI I thought that admin wouldnt be able to see and use my $profile but it does recognise it!!!!
   - `winget install Microsoft.PowerShell`
 ### Windows Terminal Setup
