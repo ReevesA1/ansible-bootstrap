@@ -93,6 +93,35 @@ _)      \.___.,|     .'
 - If Runing Windows in Paralles Turn Off All Sharing with mac (so icons dont show up on desktop).
 - Setup terminal with powershell 7 and take a snapshot
 
+
+### Make sure winget is installed
+```
+.{
+  function install-winget {
+    # Check if Winget is installed
+    $wingetInstalled = Get-Command winget -ErrorAction SilentlyContinue
+
+    # If Winget is not installed, install it
+    if (-not $wingetInstalled) {
+      # Download the latest version of Winget from GitHub
+      Invoke-WebRequest -Uri https://github.com/microsoft/winget-cli/releases/download/v0.3.3254-preview/Microsoft.DesktopAppInstaller_4.2021.3254.0_x64__8wekyb3d8bbwe.msixbundle -OutFile winget.msixbundle
+
+      # Install the downloaded MSIX bundle
+      Add-AppxPackage .\winget.msixbundle
+
+      # Delete the downloaded file
+      Remove-Item .\winget.msixbundle
+    } else {
+      # Winget is already installed, check for updates
+      $updateAvailable = winget update check
+      if ($updateAvailable) {
+        # Update is available, upgrade to the latest version
+        winget upgrade
+      }
+    }
+  }
+}
+```
 ### Setup Latest PowerShell 
 - Install Winget with the latest version of Powershell. ( I think winget is installed by default? if not add that section here as well as in script)
   - FYI I need to use winget to allow the installation of modules, because choco wouldn’t because of where the directory is stored under choco?.
