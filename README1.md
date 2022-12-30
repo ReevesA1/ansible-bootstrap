@@ -103,6 +103,9 @@ _)      \.___.,|     .'
 - Windows 10 I for sure need to install winget I think windows 11 is good to go
   - go to windows store and make sure all apps  are updated
   - and search for "app installer"
+
+### Install Barrier if needed
+- `winget install -e --id DebaucheeOpenSourceGroup.Barrier`
 ### Setup Latest PowerShell 
 - With Winget install the latest version of Powershell.  
 - `winget install -e --id Microsoft.PowerShell.Preview`or`winget install -e --id Microsoft.PowerShell` #this is the only place I Powershell being installed so I can swith between preview and normal easily (only reason Im iffy about preview is because I use mac and ubuntu to and they dont have the preview version)
