@@ -327,7 +327,6 @@ function install_winget_x86arm64_list {
             "Microsoft.PowerAutomateDesktop"
             "Microsoft.PowerToys"
             "GitHub.cli"
-            "Microsoft.PowerShell" #Newest Powershell but I can't make a AllUserALlHost Profile since Path is locked down AF but choco can't install modules
             "Python.Python.3.11" #not sure how to make it the latest version everytime
             "Cygwin.Cygwin"
             "Git.Git"
