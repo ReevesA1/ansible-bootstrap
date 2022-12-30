@@ -17,7 +17,7 @@ function updatepro {Invoke-WebRequest -Uri https://raw.githubusercontent.com/Ree
 
 # Chris titus Debloat script
 function wintitus {irm christitus.com/win | iex}
-}
+
 
 # Update windows with PSWindowsUpdate Module
 # Refer to https://www.youtube.com/watch?v=M2mMQfPGZsE&list=WL&index=13&t=2s
