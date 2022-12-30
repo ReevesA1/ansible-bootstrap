@@ -139,7 +139,7 @@ Add-WUServiceManager -MicrosoftUpdate
 - Test it as admin run  my alias `winup` works on windows 10 + 11 + arm
 ### Run the Script
 - Always Run `winget upgrade --all`
-- Then In the Latest Powershell `winult` OR
+- Then In the Latest Powershell `winult` alias OR
 
 ```
 .{
