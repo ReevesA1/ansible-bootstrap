@@ -598,7 +598,6 @@ function install_microsoft_store_list{
   # Use the Search to find ID's `winget search -s msstore "APPNAME"`
     winget install  "9WZDNCRFJ3TJ" --accept-package-agreements --accept-source-agreements # Netflix
     winget install  "9P6RC76MSMMJ" --accept-package-agreements --accept-source-agreements # PrimeVidio
-    winget install  "9n0dx20hk701" --accept-package-agreements --accept-source-agreements # Windows Terminal
     winget install  "Facebook.Messenger" --accept-package-agreements --accept-source-agreements # Facebook Messenger
    
 

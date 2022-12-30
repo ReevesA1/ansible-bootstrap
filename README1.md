@@ -104,11 +104,12 @@ _)      \.___.,|     .'
   - go to windows store and make sure all apps  are updated
   - and search for "app installer"
 ### Setup Latest PowerShell 
-- Install Winget with the latest version of Powershell. 
+- With Winget install the latest version of Powershell.  `winget install -e --id Microsoft.PowerShell`
   - FYI I need to use winget version to allow the installation of modules, because choco wouldn’t because of where the directory is stored under choco?.
   - FYI I thought that admin wouldnt be able to see and use my $profile but it does recognise it!!!!
   - `winget install Microsoft.PowerShell`
 ### Windows Terminal Setup
+- `winget install -e --id Microsoft.WindowsTerminal`
 - Make Powershell 7 Default Shell (don't make it open as admin) + change the color to "Campbell Powershell" 
 - Delete profiles that I dont want like Azure profile and Old Powershell
 
