@@ -110,7 +110,7 @@ _)      \.___.,|     .'
 - With Winget install the latest version of Powershell.  
 - `winget install -e --id Microsoft.PowerShell.Preview`or`winget install -e --id Microsoft.PowerShell` #this is the only place I Powershell being installed so I can swith between preview and normal easily (only reason Im iffy about preview is because I use mac and ubuntu to and they dont have the preview version)
   - FYI I need to use winget version to allow the installation of modules, because choco wouldn’t because of where the directory is stored under choco?.
-  - FYI Newest Powershell I can't make a AllUserALlHost $Profile since Path is locked down AF but choco can't install modules so Ive settle with winget powershell with the CurrentUser execution policy and everything works fine even as admin it can use my alias from my CurrentUser  $Profile
+  - FYI Newest Powershell I can't make a AllUserALlHost $Profile since Path is locked down AF but choco can't install modules so Ive settle with winget powershell with the CurrentUserAlHosts execution policy and everything works fine even as admin it can use my alias from my CurrentUser  $Profile
 
 ### Windows Terminal Setup
 - `winget install -e --id Microsoft.WindowsTerminal.Preview`or`winget install -e --id Microsoft.WindowsTerminal` #this is the only place I have the terminal being installed so I can swith between preview and normal easily
