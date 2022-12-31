@@ -16,7 +16,18 @@ function editpro {Notepad $PROFILE.CurrentUserAllHosts}
 function updatepro {Invoke-WebRequest -Uri https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/PowerShell_profile.ps1 -OutFile $PROFILE.CurrentUserAllHosts && Notepad $PROFILE.CurrentUserAllHosts}
 
 # Chris titus Debloat script
-function wintitus {Check-RunAsAdministrator irm christitus.com/win | iex}
+function wintitus {
+  # Check if the current process has elevated privileges
+  $currentPrincipal = [System.Security.Principal.WindowsPrincipal] [System.Security.Principal.WindowsIdentity]::GetCurrent()
+  $isElevated = $currentPrincipal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
+  $ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1
+  # If the current process is not elevated, create a new elevated process (notice I use Pwsh for powershell 7 and up instead of using just the word powershell (for old powershell 5)
+    if (-not $isElevated) { 
+      Start-Process Pwsh -Verb runAs -ArgumentList "-Command irm christitus.com/win | iex" 
+    exit
+  }
+}
+#function wintitus {irm christitus.com/win | iex}
 
 
 # Update windows with PSWindowsUpdate Module
@@ -123,19 +134,3 @@ Remove-Variable identity
 Remove-Variable principal
 
 
-################################################
-##              Shared Functions              ##
-################################################
-
-
-function Check-RunAsAdministrator {
-  # Check if the current process has elevated privileges
-  $currentPrincipal = [System.Security.Principal.WindowsPrincipal] [System.Security.Principal.WindowsIdentity]::GetCurrent()
-  $isElevated = $currentPrincipal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
-  $ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1
-  # If the current process is not elevated, create a new elevated process (notice I use Pwsh for powershell 7 and up instead of using just the word powershell (for old powershell 5)
-    if (-not $isElevated) { 
-      Start-Process Pwsh -Verb runAs -ArgumentList "-Command winult" 
-    exit
-  }
-}
