@@ -1,14 +1,40 @@
 
-######## USE TO HELP BE BUILD ###################
+################################################################
+##                  Sections To Incorporate                   ##
+################################################################
 
-# Write readme for ansible git
-- Follow Notion old windows Fresh Build tutorial I built 
-- Use Universal Bootstrap for inspiration
-- Look at Notion Powershell Sections I wrote
+
+### Apps Sections
+
+- Restart
+- Update
+
+### Advanced Options Section
+
+- right click menu + steal more from titus and internet
+- hotkeys
+
+### Directories Section
+
+- Home Folder to remove and add My default directories (gitgub, megasync etc(
+    - put here `C:\Users\rocket`
+- Copy Read Me so I can follow along build on each machine
+
+### Module Section
+
+- Windows Update Module (titus)
+- Install-Module Steam and then I could install wallpaper engine and maybe stardew
+- Ive got other modules bookmarked in mozilla
+
+### Dock/Taskbar Section
+
+- Use chatgpt do add icons to taskbar
+- other taskbar options?
+- File Explorer Quick Access Paths
 
 
 ################################################################
-##               Make a ultimate commands that runs everything    ##
+##               Make a ultimate commands that runs everything  ##
 ################################################################
 
 
@@ -16,16 +42,7 @@
 ##               Hotkeys                                   ##
 ################################################################
 
-################################################################
-##               Classic Right Click Menu                      ##
-################################################################
 
-Write-Host "Restoring Classic Right CLick Menu"
-New-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" -Name "InprocServer32" -force -value ""       
-
-Write-Host "Restoring Default Windows 11 Right Click Menu Layout"
-Remove-Item -Path "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" -Recurse -Confirm:$false -Force
- 
 
 
 ################################################################
