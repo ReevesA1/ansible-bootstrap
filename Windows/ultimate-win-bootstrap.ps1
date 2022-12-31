@@ -524,6 +524,7 @@ $RemoveWingetList = @(
   "ShareX.ShareX"
   "NathanOsman.NitroShare"
   "RustDesk.RustDesk"
+  "Samsung.DeX"
 
 
 
