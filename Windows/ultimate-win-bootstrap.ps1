@@ -332,18 +332,14 @@ function install_winget_x86arm64_list {
             "Git.Git"
             "Docker.DockerDesktop"
           
+            #Security
+            "SiberSystems.RoboForm"
 
             #Browsers
             "Mozilla.Firefox"
             "LibreWolf.LibreWolf"
 
 
-            #Utilities
-            "Lexikos.AutoHotkey"
-            "REALiX.HWiNFO"
-            "Flameshot.Flameshot"
-            "VideoLAN.VLC"
-            "Sejda.PDFDesktop" #pdf viewer
             #Productivity
             "Notion.Notion"
             "MarkText.MarkText"
@@ -355,6 +351,11 @@ function install_winget_x86arm64_list {
             "QL-Win.QuickLook"
             "BleachBit.BleachBit"
             "angryziber.AngryIPScanner"
+            "Lexikos.AutoHotkey"
+            "REALiX.HWiNFO"
+            "Flameshot.Flameshot"
+            "VideoLAN.VLC"
+            "Sejda.PDFDesktop" #pdf viewer
                     
 
             #Work together (look in Notion espanso page for video)
