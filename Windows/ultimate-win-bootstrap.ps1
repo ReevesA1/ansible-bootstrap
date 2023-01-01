@@ -191,6 +191,7 @@ function chocolatey_X86Arm64_list {
       "object-desktop"
       "files"
       "godot"
+      "procexp" #Process Explorer
     )
   ForEach ($AddChocoApp in $AddChocoList){
     # Check if the package is already installed
