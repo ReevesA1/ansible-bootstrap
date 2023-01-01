@@ -334,6 +334,8 @@ function install_winget_x86arm64_list {
           
             #Security
             "SiberSystems.RoboForm"
+            "CrowdSecurity.CrowdSec"
+            "CrowdSecurity.CrowdSecWindowsFirewallBouncer"
 
             #Browsers
             "Mozilla.Firefox"
