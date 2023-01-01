@@ -359,6 +359,7 @@ function install_winget_x86arm64_list {
             "Flameshot.Flameshot"
             "VideoLAN.VLC"
             "Sejda.PDFDesktop" #pdf viewer
+            "wingetui"
                     
 
             #Work together (look in Notion espanso page for video)
