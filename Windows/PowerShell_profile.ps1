@@ -12,8 +12,8 @@ Set-Alias -Name eth -Value get-netadapter
 
 #View and Edit profile
 #function pro {Notepad $PROFILE.AllUsersAllHosts}
-function editpro {Notepad $PROFILE.CurrentUserAllHosts}
-function updatepro {Invoke-WebRequest -Uri https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/PowerShell_profile.ps1 -OutFile $PROFILE.CurrentUserAllHosts && Notepad $PROFILE.CurrentUserAllHosts}
+function proedit {Notepad $PROFILE.CurrentUserAllHosts}
+function proupdate {Invoke-WebRequest -Uri https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/PowerShell_profile.ps1 -OutFile $PROFILE.CurrentUserAllHosts && Notepad $PROFILE.CurrentUserAllHosts}
 
 # Chris titus Debloat script
 function wintitus {
