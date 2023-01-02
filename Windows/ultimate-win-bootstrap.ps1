@@ -360,6 +360,7 @@ function install_winget_x86arm64_list {
             "VideoLAN.VLC"
             "Sejda.PDFDesktop" #pdf viewer
             "SomePythonThings.WingetUIStore"
+            "Rainmeter.Rainmeter"
                     
 
             #Work together (look in Notion espanso page for video)
