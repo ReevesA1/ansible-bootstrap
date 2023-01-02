@@ -191,7 +191,7 @@ function chocolatey_X86Arm64_list {
       "object-desktop"
       "files"
       "godot"
-      "procexp" #Process Explorer
+      "sysinternals" #Has Process Explorer and many more (make a shortcut on desktop to C:\ProgramData\chocolatey\lib\sysinternals\tools)
     )
   ForEach ($AddChocoApp in $AddChocoList){
     # Check if the package is already installed
@@ -483,6 +483,7 @@ $RemoveWingetList = @(
   "Libretro.RetroArch"
   "Emulationstation.Emulationstation"
   "BlueStack.BlueStacks"
+  "Playnite.Playnite"
 
   #Media
   "XBMCFoundation.Kodi"
