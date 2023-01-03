@@ -254,6 +254,7 @@ function uninstall_chocolatey_list {
       #"airexplorer " #Closed sourse program I thought about using to sync megasync on a schedule 
       #"obsidian"
       #"qttabbar" # windows expolorer adds tabs natively now
+      #"nerd-fonts-heavydata" # I can also download them individualy
     )  
 # Loop through the array and try to uninstall each package
   foreach ($RemoveChocoApp in $RemoveChocoList) {
