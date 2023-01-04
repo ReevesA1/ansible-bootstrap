@@ -255,6 +255,7 @@ function uninstall_chocolatey_list {
       #"obsidian"
       #"qttabbar" # windows expolorer adds tabs natively now
       #"nerd-fonts-heavydata" # I can also download them individualy
+      #"mousewithoutborders" # like barrier but only for windows
     )  
 # Loop through the array and try to uninstall each package
   foreach ($RemoveChocoApp in $RemoveChocoList) {
