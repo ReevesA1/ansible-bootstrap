@@ -264,7 +264,7 @@ function uninstall_chocolatey_list {
 
 #############################
 # ____            _    _                 ____ _                     
-#|  _ \  ___  ___| | _| |_ ___  _ __    / ___| |__   ___   ___ ___  
+#|  _ \  ___  ___| | _| |_ ___  _ __    / ___| |__   ___   ___ ___  ~
 #| | | |/ _ \/ __| |/ / __/ _ \| '_ \  | |   | '_ \ / _ \ / __/ _ \ 
 #| |_| |  __/\__ \   <| || (_) | |_) | | |___| | | | (_) | (_| (_) |
 #|____/ \___||___/_|\_\\__\___/| .__/   \____|_| |_|\___/ \___\___/ 
@@ -349,6 +349,7 @@ function install_winget_x86arm64_list {
             "MarkText.MarkText"
             "Doist.Todoist"
             "RustemMussabekov.Raindrop"
+            "Notepad++.Notepad++"
 
             #Utilities
             "File-New-Project.EarTrumpet"
