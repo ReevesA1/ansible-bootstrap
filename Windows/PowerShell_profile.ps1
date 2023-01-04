@@ -6,14 +6,22 @@
 ##           Basic Alias's & Functions                ##
 ########################################################
 
-# view net-adapter
-Set-Alias -Name eth -Value get-netadapter
+
+# Update Profile
+function proupdate {Invoke-WebRequest -Uri https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/PowerShell_profile.ps1 -OutFile $PROFILE.CurrentUserAllHosts && Notepad $PROFILE.CurrentUserAllHosts}
 
 
 #View and Edit profile
-#function pro {Notepad $PROFILE.AllUsersAllHosts}
-function proedit {Notepad $PROFILE.CurrentUserAllHosts}
-function proupdate {Invoke-WebRequest -Uri https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/PowerShell_profile.ps1 -OutFile $PROFILE.CurrentUserAllHosts && Notepad $PROFILE.CurrentUserAllHosts}
+function proedit {Invoke-Item $PROFILE.CurrentUserAllHosts} # will launch in the default $EDITOR
+#Other lInes I could use
+###All Users
+#function proedit {Notepad $PROFILE.AllUsersAllHosts}
+### Open in notepadd++
+#start notepad++ $PROFILE.CurrentUserAllHosts 
+### Open in notepad
+#function proedit {Notepad $PROFILE.CurrentUserAllHosts}
+
+
 
 # Chris titus Debloat script
 function wintitus {Start-Process Pwsh -Verb runAs -ArgumentList "-Command irm christitus.com/win | iex"}
@@ -47,7 +55,8 @@ function md5    { Get-FileHash -Algorithm MD5 $args }
 function sha1   { Get-FileHash -Algorithm SHA1 $args }
 function sha256 { Get-FileHash -Algorithm SHA256 $args }
 
-
+# view net-adapter
+Set-Alias -Name eth -Value get-netadapter
 ########################################################
 ##                  Admin/become Sudo Stuff           ##
 ########################################################
