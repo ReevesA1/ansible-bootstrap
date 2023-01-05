@@ -3,9 +3,8 @@
 #### Alias's
 
 ########################################################
-##           Basic Alias's & Functions                ##
+##           "PRO" Prefix Alias's                       ##
 ########################################################
-
 
 # Update Profile
 function proupdate {Invoke-WebRequest -Uri https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/PowerShell_profile.ps1 -OutFile $PROFILE.CurrentUserAllHosts && Notepad $PROFILE.CurrentUserAllHosts}
@@ -21,7 +20,9 @@ function proedit {Invoke-Item $PROFILE.CurrentUserAllHosts} # will launch in the
 ### Open in notepad
 #function proedit {Notepad $PROFILE.CurrentUserAllHosts}
 
-
+########################################################
+##           "Win" Prefix Alias's                       ##
+########################################################
 
 # Chris titus Debloat script
 function wintitus {Start-Process Pwsh -Verb runAs -ArgumentList "-Command irm christitus.com/win | iex"}
@@ -30,20 +31,19 @@ function wintitus {Start-Process Pwsh -Verb runAs -ArgumentList "-Command irm ch
 
 
 function winup {
-  Start-Process powershell.exe -Verb runAs -ArgumentList "choco upgrade all -y"
-  Wait-Process powershell
-  if ($LastExitCode -ne 0) {
-    break
+  # Check if the current user is an administrator
+  $isAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
+
+  # If the current user is not an administrator, output a message and return
+  if (-not $isAdmin) {
+    Write-Output "This function requires administrator privileges. Please run it with the runAs verb."
+    return
   }
 
-  Start-Process powershell.exe -Verb runAs -ArgumentList "winget upgrade --all"
-  Wait-Process powershell
-  if ($LastExitCode -ne 0) {
-    break
-  }
-
-  Start-Process powershell.exe -Verb runAs -ArgumentList "Get-WindowsUpdate -install -MicrosoftUpdate -AcceptAll"
-  Wait-Process powershell
+  # If the current user is an administrator, run the upgrading commands
+  choco upgrade all -y
+  winget upgrade --all
+  Get-WindowsUpdate -install -MicrosoftUpdate -AcceptAll
 }
 
 
@@ -51,6 +51,9 @@ function winup {
 function winult {$ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1
 Invoke-Expression $($ScriptFromGithHub.Content)} 
 
+########################################################
+##           Basic Alias's & Functions                ##
+########################################################
 
 # Tab Cycle = Shows navigable menu of all options when hitting Tab
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
