@@ -25,17 +25,20 @@ function proedit {Invoke-Item $PROFILE.CurrentUserAllHosts} # will launch in the
 
 # Chris titus Debloat script
 function wintitus {Start-Process Pwsh -Verb runAs -ArgumentList "-Command irm christitus.com/win | iex"}
+#without admin rights
 #function wintitus {irm christitus.com/win | iex}
 
 
-# Update windows with PSWindowsUpdate Module
-# Refer to https://www.youtube.com/watch?v=M2mMQfPGZsE&list=WL&index=13&t=2s
-### The next command is the original
-#function winup {Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -AutoReboot | Out-File "C:\($env.computername-Get-Date -f yyyy-MM-dd)-MSUpdates.log" -Force}
-### the next command would not run in powershell 7
-#function winup {Install-WindowsUpdate -MicrosoftUpdate -AcceptAll | Out-File -FilePath "$($env:USERPROFILE)\Desktop\MSUpdates.log" -Force}
-### the next command works in powershell 7
-function winup {Get-WindowsUpdate -install -MicrosoftUpdate -AcceptAll | Out-File -FilePath "$($env:USERPROFILE)\Desktop\MSUpdates.log" -Force} 
+function winup {
+  Start-Process powershell.exe -Verb runAs -ArgumentList "choco upgrade all -y | Out-File -FilePath '$($env:USERPROFILE)\Desktop\ChocoUpdates.log' -Force"
+  Wait-Process powershell
+
+  Start-Process powershell.exe -Verb runAs -ArgumentList "winget upgrade --all | Out-File -FilePath '$($env:USERPROFILE)\Desktop\WingetUpdates.log' -Force"
+  Wait-Process powershell
+
+  Start-Process powershell.exe -Verb runAs -ArgumentList "Get-WindowsUpdate -install -MicrosoftUpdate -AcceptAll | Out-File -FilePath '$($env:USERPROFILE)\Desktop\MSUpdates.log' -Force"
+  Wait-Process powershell
+}
 
 
 #Run ultimate-win-bootstrap.ps1
