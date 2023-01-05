@@ -36,7 +36,7 @@ function winup {
 
   # If the current user is not an administrator, output a message and return
   if (-not $isAdmin) {
-    Write-Output "This function requires administrator privileges. Please run it with the runAs verb."
+    Write-Output -ForegroundColor Magenta "This function requires administrator privileges. Please run it with the runAs verb."
     return
   }
 
