@@ -30,13 +30,19 @@ function wintitus {Start-Process Pwsh -Verb runAs -ArgumentList "-Command irm ch
 
 
 function winup {
-  Start-Process powershell.exe -Verb runAs -ArgumentList "choco upgrade all -y | Out-File -FilePath '$($env:USERPROFILE)\Desktop\ChocoUpdates.log' -Force"
+  Start-Process powershell.exe -Verb runAs -ArgumentList "choco upgrade all -y"
   Wait-Process powershell
+  if ($LastExitCode -ne 0) {
+    break
+  }
 
-  Start-Process powershell.exe -Verb runAs -ArgumentList "winget upgrade --all | Out-File -FilePath '$($env:USERPROFILE)\Desktop\WingetUpdates.log' -Force"
+  Start-Process powershell.exe -Verb runAs -ArgumentList "winget upgrade --all"
   Wait-Process powershell
+  if ($LastExitCode -ne 0) {
+    break
+  }
 
-  Start-Process powershell.exe -Verb runAs -ArgumentList "Get-WindowsUpdate -install -MicrosoftUpdate -AcceptAll | Out-File -FilePath '$($env:USERPROFILE)\Desktop\MSUpdates.log' -Force"
+  Start-Process powershell.exe -Verb runAs -ArgumentList "Get-WindowsUpdate -install -MicrosoftUpdate -AcceptAll"
   Wait-Process powershell
 }
 
