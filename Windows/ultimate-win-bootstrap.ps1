@@ -417,6 +417,7 @@ function install_winget_x86_list {
         "ZeroTier.ZeroTierOne" # for sure X86 Only
         "Mega.MEGASync"
         "Google.Drive" #Im paying 25/year for 100gb might as well use it, this app will mount it as a drive
+        "Safing.Portmaster"
         ####Social
         "Oxen.Session" # for sure X86 Only
         ####Gaming
