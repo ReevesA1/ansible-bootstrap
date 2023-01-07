@@ -865,7 +865,7 @@ function menu {
               finish
           }
           if ($actions -eq 99) {
-              Write-Host "test - netflix3" 
+              Write-Host "test - sudo opening in wt?" 
               finish
           }
           menu
