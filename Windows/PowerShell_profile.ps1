@@ -24,6 +24,7 @@ function proedit {Invoke-Item $PROFILE.CurrentUserAllHosts} # will launch in the
 #start notepad++ $PROFILE.CurrentUserAllHosts 
 ### Open in notepad
 #function proedit {Notepad $PROFILE.CurrentUserAllHosts}
+#function proedit {code $PROFILE.CurrentUserAllHosts} #uses vs code
 
 ########################################################
 ##           "Win" Prefix Alias's                       ##
