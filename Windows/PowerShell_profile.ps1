@@ -1,11 +1,6 @@
 # Got some stuff from here https://gist.github.com/timsneath/19867b12eee7fd5af2ba
 
 
-########################################################
-##        Starship Cross shell Prompt                         ##
-########################################################
-
-Invoke-Expression (&starship init powershell)
 
 ########################################################
 ##           "PRO" Prefix Alias's                       ##
@@ -176,3 +171,9 @@ Remove-Variable identity
 Remove-Variable principal
 
 
+########################################################
+##        Starship Cross shell Prompt                         ##
+########################################################
+
+#Must be at the end of $PROFILE to work
+Invoke-Expression (&starship init powershell)
