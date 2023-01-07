@@ -53,9 +53,21 @@ function winup {
 }
 
 
-#Run ultimate-win-bootstrap.ps1
-function winult {$ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1
-Invoke-Expression $($ScriptFromGithHub.Content)} 
+
+function winult {
+  # Check if the current user is an administrator
+  $isAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
+
+  # If the current user is not an administrator, output a message and return
+  if (-not $isAdmin) {
+    Write-Host -ForegroundColor Magenta "This function requires administrator privileges. Please run it with the runAs verb."
+    return
+  }
+
+  # If the current user is an administrator, run the upgrading commands
+  $ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1
+  Invoke-Expression $($ScriptFromGithHub.Content)
+}
 
 ########################################################
 ##           Basic Alias's & Functions                ##
