@@ -61,6 +61,11 @@ Invoke-Expression $($ScriptFromGithHub.Content)}
 ##           Basic Alias's & Functions                ##
 ########################################################
 
+# Sourcing $Prifile
+
+function source {. $PROFILE.CurrentUserAllHosts}
+
+
 # Tab Cycle = Shows navigable menu of all options when hitting Tab
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 
