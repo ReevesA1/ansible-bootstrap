@@ -139,12 +139,14 @@ function admin
     {   
        $argList = "& '" + $args + "'"
        #Start-Process "$psHome\powershell.exe" -Verb runAs -ArgumentList $argList #(old powershell 5 way)
-       Start-Process "$psHome\pwsh.exe" -Verb runAs -ArgumentList $argList
+       #Start-Process "$psHome\pwsh.exe" -Verb runAs -ArgumentList $argList #(opens powershell 7 but not in windows terminal)
+       Start-Process "wt.exe" -ArgumentList "-p", "PowerShell" -Verb runAs
     }
     else
     {
        #Start-Process "$psHome\powershell.exe" -Verb runAs #(old powershell 5 way)
-       Start-Process "$psHome\pwsh.exe" -Verb runAs
+       #Start-Process "$psHome\pwsh.exe" -Verb runAs #(opens powershell 7 but not in windows terminal)
+       Start-Process "wt.exe" -ArgumentList "-p", "PowerShell" -Verb runAs
     }
 }
 
