@@ -63,7 +63,8 @@ Invoke-Expression $($ScriptFromGithHub.Content)}
 
 # Sourcing $Prifile
 
-function source {. $PROFILE.CurrentUserAllHosts}
+function softsource {. $PROFILE.CurrentUserAllHosts}
+function hardsource {Start-Process "wt.exe" -ArgumentList "-p", "PowerShell"}
 
 
 # Tab Cycle = Shows navigable menu of all options when hitting Tab
