@@ -24,7 +24,8 @@ function Check-RunAsAdministrator {
   $ScriptFromGithHub = Invoke-WebRequest https://raw.githubusercontent.com/ReevesA1/ansible-bootstrap/main/Windows/ultimate-win-bootstrap.ps1
   # If the current process is not elevated, create a new elevated process (notice I use Pwsh for powershell 7 and up instead of using just the word powershell (for old powershell 5)
     if (-not $isElevated) { 
-      Start-Process Pwsh -Verb runAs -ArgumentList "-Command winult" 
+     # Start-Process Pwsh -Verb runAs -ArgumentList "-Command winult" 
+      Start-Process "wt.exe" -ArgumentList "-p", "PowerShell", "-Command winult"  -Verb runAs
     exit
   }
 }
