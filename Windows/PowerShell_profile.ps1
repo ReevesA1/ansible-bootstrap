@@ -1,6 +1,11 @@
-# Based on https://gist.github.com/timsneath/19867b12eee7fd5af2ba
+# Got some stuff from here https://gist.github.com/timsneath/19867b12eee7fd5af2ba
 
-#### Alias's
+
+########################################################
+##        Starship Cross shell Prompt                         ##
+########################################################
+
+Invoke-Expression (&starship init powershell)
 
 ########################################################
 ##           "PRO" Prefix Alias's                       ##
@@ -69,6 +74,11 @@ function sha256 { Get-FileHash -Algorithm SHA256 $args }
 
 # view net-adapter
 Set-Alias -Name eth -Value get-netadapter
+
+
+
+
+
 ########################################################
 ##                  Admin/become Sudo Stuff           ##
 ########################################################
